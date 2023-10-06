@@ -36,8 +36,8 @@
         <Container class="javax.swing.JPanel" name="QuanlyNhaCungCap">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="NCC">
-                <Property name="tabTitle" type="java.lang.String" value="NCC"/>
+              <JTabbedPaneConstraints tabName=" Qu&#x1ea3;n l&#xfd; nh&#xe0; cung c&#x1ea5;p">
+                <Property name="tabTitle" type="java.lang.String" value=" Qu&#x1ea3;n l&#xfd; nh&#xe0; cung c&#x1ea5;p"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -147,6 +147,9 @@
                       <Dimension value="[140, 50]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton9">
                   <Properties>
@@ -364,6 +367,9 @@
                       <Dimension value="[140, 50]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>

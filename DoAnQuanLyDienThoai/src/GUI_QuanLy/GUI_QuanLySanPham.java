@@ -9,7 +9,8 @@ package GUI_QuanLy;
  * @author Admin
  */
 public class GUI_QuanLySanPham extends javax.swing.JPanel {
-
+    
+    private GUI_ThemThongTinSanPham themSp ;
     /**
      * Creates new form GUI_QuanLySanPham
      */
@@ -76,9 +77,14 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themSanPham2.png"))); // NOI18N
-        jButton4.setText("THÊM ");
+        jButton4.setText("THÊM SP ");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton4);
 
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -132,6 +138,12 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
         add(QuanlySanPham, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        themSp = new GUI_ThemThongTinSanPham();
+        themSp.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

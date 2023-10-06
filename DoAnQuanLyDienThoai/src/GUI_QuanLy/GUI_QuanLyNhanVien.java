@@ -9,7 +9,7 @@ package GUI_QuanLy;
  * @author Admin
  */
 public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
-
+    private  GUI_ThemThongTinNhanVien themNV;
     /**
      * Creates new form GUI_QuanLyNhanVien
      */
@@ -79,6 +79,11 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         jButton3.setText("THÊM ");
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton3);
 
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -133,6 +138,12 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
 
         add(QuanlyNhanVien, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        themNV = new GUI_ThemThongTinNhanVien();
+        themNV.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

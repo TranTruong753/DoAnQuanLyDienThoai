@@ -16,7 +16,7 @@ public class GUI_QuanLyNVvaTK extends javax.swing.JPanel {
      */
     public GUI_QuanLyNVvaTK() {
         initComponents();
-        jTabbedPane1.addTab("Quản lý Nhân Viên", guiNhanVien);
+        jTabbedPane1.addTab(" Quản lý Nhân Viên", guiNhanVien);
         jTabbedPane1.addTab("Quản lý Tài Khoản", guiTaiKhoan);
 
     }

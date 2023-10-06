@@ -19,7 +19,7 @@ public class GUI_QuanLySPvaKM extends javax.swing.JPanel {
      */
     public GUI_QuanLySPvaKM() {
         initComponents();
-        jTabbedPane1.addTab("Quản lý Sản Phẩm", guiSanPham);
+        jTabbedPane1.addTab(" Quản lý Sản Phẩm", guiSanPham);
         jTabbedPane1.addTab("Quản lý Khuyến Mãi", guiKhuyenMai);
 //        
     }

@@ -205,6 +205,7 @@ public void closeSideBar(int width, int height) {
         jLabelTitle.setText("DEVSTORE");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cross32.png"))); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -289,6 +290,7 @@ public void closeSideBar(int width, int height) {
         });
 
         jPanelMenu1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu1.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -323,6 +325,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu1.add(jPanel11, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu2.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -351,6 +354,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu2.add(jPanel12, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu3.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -379,6 +383,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu3.add(jPanel13, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu4.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu4.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -411,6 +416,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu4.add(jPanel15, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu5.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu5.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -439,6 +445,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu5.add(jPanel17, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu6.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu6.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -467,6 +474,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu6.add(jPanel19, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu7.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu7.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -495,6 +503,7 @@ public void closeSideBar(int width, int height) {
         jPanelMenu7.add(jPanel21, java.awt.BorderLayout.LINE_START);
 
         jPanelMenu8.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu8.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -574,6 +583,7 @@ public void closeSideBar(int width, int height) {
         jPanel7.setVerifyInputWhenFocusTarget(false);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
 
+        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jCheckBox1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/CloseListBlackx64.png"))); // NOI18N
         jCheckBox1.setPreferredSize(new java.awt.Dimension(64, 64));

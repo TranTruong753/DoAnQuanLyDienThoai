@@ -16,7 +16,7 @@ public class GUI_QuanLyKHvaBH extends javax.swing.JPanel {
      */
     public GUI_QuanLyKHvaBH() {
         initComponents();
-        jTabbedPane1.addTab("Quản lý Khách Hàng",guiKH);
+        jTabbedPane1.addTab(" Quản lý Khách Hàng",guiKH);
         jTabbedPane1.addTab("Quản lý Bảo Hành",guiBH);
         
     }

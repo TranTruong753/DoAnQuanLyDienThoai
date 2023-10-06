@@ -9,7 +9,9 @@ package GUI_QuanLy;
  * @author Admin
  */
 public class GUI_QuanLyNCC extends javax.swing.JPanel {
-
+    
+    private GUI_HoaDonXacNhanNhapHang nhapHang ;
+    private GUI_ThemThongTinNcc themNcc ;
     /**
      * Creates new form GUI_QuanLyNCC
      */
@@ -92,6 +94,11 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jButton5.setText("THÊM");
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton5.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton5);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -145,7 +152,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
 
         QuanlyNhaCungCap.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane1.addTab("NCC", QuanlyNhaCungCap);
+        jTabbedPane1.addTab(" Quản lý nhà cung cấp", QuanlyNhaCungCap);
 
         QuanlyHoaDonGiaoHang.setLayout(new java.awt.BorderLayout());
 
@@ -184,6 +191,11 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jButton8.setText("NHẬP HÀNG");
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton8.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         jPanel11.add(jButton8);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
@@ -239,6 +251,18 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
 
         add(jTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        nhapHang = new GUI_HoaDonXacNhanNhapHang();
+        nhapHang.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        themNcc = new GUI_ThemThongTinNcc();
+        themNcc.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
