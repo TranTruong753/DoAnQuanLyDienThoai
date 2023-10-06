@@ -27,7 +27,7 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     private GUI_QuanLyKHvaBH panelKHvaBH = new GUI_QuanLyKHvaBH();
     private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC();
     private GUI_QuanLyThongKe panelThongKe = new GUI_QuanLyThongKe();
-    private GUI_ThongTinDangNhap panelThongTinDangNhap = new GUI_ThongTinDangNhap();
+    private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
     
     // biến màu          
     public Color ColorMain,ColorClick,sidebar ;

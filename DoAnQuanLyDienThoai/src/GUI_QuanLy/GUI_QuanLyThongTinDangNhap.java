@@ -8,12 +8,12 @@ package GUI_QuanLy;
  *
  * @author Admin
  */
-public class GUI_ThongTinDangNhap extends javax.swing.JPanel {
+public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
 
     /**
      * Creates new form GUI_ThongTinDangNhap
      */
-    public GUI_ThongTinDangNhap() {
+    public GUI_QuanLyThongTinDangNhap() {
         initComponents();
     }
 
