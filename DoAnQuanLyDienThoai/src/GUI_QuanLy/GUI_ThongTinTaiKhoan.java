@@ -15,6 +15,7 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
      */
     public GUI_ThongTinTaiKhoan() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
