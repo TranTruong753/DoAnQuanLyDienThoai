@@ -71,6 +71,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(253, 253, 253));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -206,9 +207,9 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel_left_centerLayout.setVerticalGroup(
             jPanel_left_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_left_centerLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(111, 111, 111)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jPanel_left.add(jPanel_left_center, java.awt.BorderLayout.CENTER);
@@ -255,12 +256,14 @@ public class GUI_LogIn extends javax.swing.JFrame {
 
         jPanel_left_top.setBackground(new java.awt.Color(255, 255, 255));
         jPanel_left_top.setOpaque(false);
-        jPanel_left_top.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel_left_top.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
 
-        btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/close .png"))); // NOI18N
+        btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cross32.png"))); // NOI18N
         btn_close.setBorder(null);
+        btn_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_close.setMinimumSize(new java.awt.Dimension(40, 40));
         btn_close.setOpaque(true);
-        btn_close.setPreferredSize(new java.awt.Dimension(32, 32));
+        btn_close.setPreferredSize(new java.awt.Dimension(40, 40));
         btn_close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_closeActionPerformed(evt);
