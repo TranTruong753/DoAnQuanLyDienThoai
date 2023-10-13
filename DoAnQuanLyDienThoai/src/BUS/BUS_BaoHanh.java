@@ -11,5 +11,5 @@ import DTO.*;
  * @author Admin
  */
 public class BUS_BaoHanh {
-    Cuu code ngu
+   // Cuu code ngu
 }
