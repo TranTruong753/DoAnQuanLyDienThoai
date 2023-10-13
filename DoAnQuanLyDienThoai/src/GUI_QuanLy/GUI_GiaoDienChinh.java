@@ -45,11 +45,13 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
      * Creates new form GUI_GiaoDienChinh
      */
     public GUI_GiaoDienChinh() {
-        
+        this.setUndecorated(true);       
         initComponents();
-        settingColor();    
-        addMenu();
         this.setLocationRelativeTo(null) ;
+        this.settingColor();    
+        this.addMenu();
+       
+        
     }
 
     //FUNCITION
@@ -189,9 +191,8 @@ public void closeSideBar(int width, int height) {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
+        setType(java.awt.Window.Type.POPUP);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1500, 861));

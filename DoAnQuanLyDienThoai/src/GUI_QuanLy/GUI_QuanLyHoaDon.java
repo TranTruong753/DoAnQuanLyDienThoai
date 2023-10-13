@@ -4,17 +4,33 @@
  */
 package GUI_QuanLy;
 
+import BUS.*;
+import DTO.*;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.text.DecimalFormat;
+import java.util.*;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author Admin
  */
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
-
+    public BUS_HoaDon hdBus = new BUS_HoaDon();
+    
     /**
      * Creates new form GUI_QuanLyHoaDon
      */
     public GUI_QuanLyHoaDon() {
         initComponents();
+        loadHoaDonList(hdBus.getList());
     }
 
     /**
@@ -35,17 +51,19 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_HoaDon = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1250, 789));
+        setPreferredSize(new java.awt.Dimension(1250, 768));
         setLayout(new java.awt.BorderLayout());
 
+        QuanLyHoaDon.setMinimumSize(new java.awt.Dimension(1250, 768));
+        QuanLyHoaDon.setPreferredSize(new java.awt.Dimension(1250, 768));
         QuanLyHoaDon.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jTextField1);
@@ -93,7 +111,8 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_HoaDon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tbl_HoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,7 +120,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
                 "MÃ HĐ", "MÃ NV", "MÃ KH", "NGÀY LẬP", "TỔNG TIỀN", "GIẢM GIÁ", "TIỀN THANH TOÁN", "TIỀN KH", "TIỀN THÓI"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_HoaDon);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -116,7 +135,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -135,7 +154,74 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbl_HoaDon;
     // End of variables declaration//GEN-END:variables
+//FUCTION 
+    // tùy chỉnh giao diện bảng 
+    public void changeTable(JTable tblTable){
+        tblTable.setRowHeight(30);
+        // Điều chỉnh chiều rộng của các cột tại đây
+//    tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
+//    tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
+    // Thực hiện tương tự cho các cột còn lại
+    }
+    // hàm tạo bảng 
+    public void loadHoaDonList(List<DTO_HoaDon> hoadon) {
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.addColumn("MÃ HĐ");
+        dtm.addColumn("MÃ NV");
+        dtm.addColumn("MÃ KH");
+        dtm.addColumn("Ngày lập");
+        dtm.addColumn("Tổng Tiền");
+        dtm.addColumn("Giảm giá");
+        dtm.addColumn("Tiền thanh toán");
+        dtm.addColumn("Tiền khách");
+        dtm.addColumn("Tiền thừa");
+        tbl_HoaDon.setModel(dtm);
+        
+        List<DTO_HoaDon> arr = new ArrayList<>() ;
+        //arr = empBUS.getAllEmployees();
+        arr = hoadon;
+        for (int i = 0; i < arr.size(); i++) {
+            DTO_HoaDon em = arr.get(i);
+            
+            String maHd = em.getMaHD();
+            String maNv = em.getMaNV();
+            String maKh = em.getMaKH();
+            Date ngayLap = em.getNgayLap();
+            Double tongTien = em.getTongTien();
+            Double giamGia = em.getGiamGia();
+            Double tienThanhToan = em.getTienThanhToan();
+            Double tienKhach = em.getTienKhach();
+            Double tienThua = em.getTienThoi();
+            
+            Object[] row = {maHd, maNv, maKh, ngayLap, doubleToFormattedString(tongTien), doubleToFormattedString(giamGia), 
+                doubleToFormattedString(tienThanhToan), doubleToFormattedString(tienKhach), doubleToFormattedString(tienThua) };
+            dtm.addRow(row);
+        }
+
+        // Điều chỉnh chiều cao của các dòng
+       tbl_HoaDon.setRowHeight(40);
+
+       // Điều chỉnh font và chiều rộng của tiêu đề
+       JTableHeader header = tbl_HoaDon.getTableHeader();
+       header.setFont(new Font("Tahoma", Font.BOLD, 14));
+       header.setPreferredSize(new Dimension(50, 50));
+
+       // Căn giữa tiêu đề theo chiều dọc
+       DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
+       centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+     
+    }
+    
+    //HÀM có thể sử dụng nhiều
+    
+    // hàm chuyển Double sang string
+    public String doubleToFormattedString(Double number) {
+        // Định dạng số thành "xxx,xxx,xxx"
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(number);
+    }
+
 }
