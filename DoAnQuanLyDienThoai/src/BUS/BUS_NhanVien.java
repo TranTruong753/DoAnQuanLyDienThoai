@@ -32,8 +32,10 @@ public class BUS_NhanVien {
            
     }
     public ArrayList<DTO_NhanVien> timnv(String tk){
+        
+        System.out.println("dsfsdf");
         return nv.timnv(tk);
     }
-    //sdfsdfsdfsdf
+   
     
 }
