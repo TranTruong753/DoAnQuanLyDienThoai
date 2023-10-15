@@ -21,9 +21,9 @@ public class DAO {
         try {
             Connection cons=null;                  
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName = QLVPP;encrypt=false";
+            String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName = QLDT;encrypt=false";
             String username = "sa";
-            String password = "123456";
+            String password = "123456789";
             cons = (Connection) DriverManager.getConnection(dbUrl, username, password);
             return cons;
             

@@ -4,6 +4,12 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_NhanVien;
+import DTO.DTO_NhanVien;
+import QLController.QuanLyNhanVienController;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -13,10 +19,40 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
     /**
      * Creates new form GUI_ThongTinNhanVien2
      */
-    public GUI_ThemThongTinNhanVien() {
+    QuanLyNhanVienController ql;
+    BUS_NhanVien nvbus=new BUS_NhanVien();
+    public GUI_ThemThongTinNhanVien(QuanLyNhanVienController ql) {
         initComponents();
         setLocationRelativeTo(null) ;
+        this.ql=ql;
+        int t =nvbus.getList().size()+1;
+        int h=t;
+            if(t<10)
+                jtfMANV.setText("NV0"+t);
+            else
+                jtfMANV.setText("NV"+t);  
     }
+    public java.sql.Date cover(java.util.Date d){
+        return new java.sql.Date(d.getTime());
+    }
+    public boolean check_NumberPhone(String str) {
+      Pattern p_Viettel=Pattern.compile("^03[2-9][0-9]{8}$");
+      Pattern p_Mobifone=Pattern.compile("^07(0|9|7|6|8)[0-9]{7}$");
+      Pattern p_Vinaphone=Pattern.compile("^08[1-5][0-9]{7}$");
+      Pattern p_Vietnamobile=Pattern.compile("^05(6|8)[0-9]{7}$");
+      Pattern p_Gmobile=Pattern.compile("^059[0-9]{7}$");
+        
+        
+        if(str.length()==10 && str.indexOf("0")==0 )
+        {
+            return true;
+            
+        }else
+        {
+            return false;
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,21 +68,21 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfMANV = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jtfTENNV = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        jtfSDT = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jcalendar = new com.toedter.calendar.JDateChooser();
         jPanel10 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jrdNAM = new javax.swing.JRadioButton();
+        jrdNU = new javax.swing.JRadioButton();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaDIACHI = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
@@ -56,7 +92,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        jbtthem = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,14 +116,15 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jLabel25.setText("Mã Nhân Viên");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfMANV.setEnabled(false);
+        jtfMANV.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên Nhân viên");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfTENNV.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(650, 30));
@@ -108,14 +145,14 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jLabel27.setText("SĐT");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextField13.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfSDT.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel30.setText("Ngày sinh");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jDateChooser1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jcalendar.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(650, 30));
@@ -136,21 +173,21 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jLabel31.setText("Giới tính");
         jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRadioButton1.setText("Nam");
+        jrdNAM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jrdNAM.setText("Nam");
 
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRadioButton2.setText("Nữ");
+        jrdNU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jrdNU.setText("Nữ");
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("Địa chỉ");
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(200, 80));
-        jScrollPane1.setViewportView(jTextArea1);
+        jtaDIACHI.setColumns(20);
+        jtaDIACHI.setRows(5);
+        jtaDIACHI.setPreferredSize(new java.awt.Dimension(200, 80));
+        jScrollPane1.setViewportView(jtaDIACHI);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Tài khoản");
@@ -172,11 +209,11 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfMANV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfTENNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,11 +221,11 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -208,9 +245,9 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(jPanel8Layout.createSequentialGroup()
                                                 .addGap(41, 41, 41)
-                                                .addComponent(jRadioButton1)
+                                                .addComponent(jrdNAM)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jRadioButton2)
+                                                .addComponent(jrdNU)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -225,8 +262,8 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfMANV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfTENNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,8 +273,8 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,8 +289,8 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(jrdNAM)
+                            .addComponent(jrdNU))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,11 +350,16 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(17, 153, 142));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themNhanVien.png"))); // NOI18N
-        jButton3.setText("Thêm");
-        jButton3.setPreferredSize(new java.awt.Dimension(110, 40));
-        jPanel5.add(jButton3);
+        jbtthem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbtthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themNhanVien.png"))); // NOI18N
+        jbtthem.setText("Thêm");
+        jbtthem.setPreferredSize(new java.awt.Dimension(110, 40));
+        jbtthem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtthemActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jbtthem);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaNhanVien.png"))); // NOI18N
@@ -339,53 +381,54 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void jbtthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtthemActionPerformed
+     if(evt.getSource()==jbtthem){
+         if(jtfTENNV.getText().equals("") || jtaDIACHI.getText().equals("") || (!jrdNAM.isSelected() && !jrdNU.isSelected()) || jcalendar.getDate()==null)
+             JOptionPane.showMessageDialog(rootPane, "Thông tin chưa đầy đủ !");
+         else
+             if(!check_NumberPhone(jtfSDT.getText()))
+            JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ !");
+            else{
+                 DTO_NhanVien nv =new DTO_NhanVien();
+                 nv.setMANV(jtfMANV.getText());
+                 nv.setTENNV(jtfTENNV.getText());
+                 nv.setSDT(jtfSDT.getText());
+                 nv.setDIACHI(jtaDIACHI.getText());
+                 if(jrdNAM.isSelected())
+                     nv.setGIOITINH("Nam");
+                 else
+                     nv.setGIOITINH("Nữ");
+                 nv.setNGAYSINH(cover(jcalendar.getDate()));
+                 nv.setTRANGTHAI(1);
+                 if(nvbus.addNhanVien(nv))
+                 {JOptionPane.showMessageDialog(rootPane, "Thêm nhân viên thành công !");
+                  ql.setDateToTable();
+                  int t =nvbus.getList().size()+1;
+       
+                  if(t<10)
+                    jtfMANV.setText("NV0"+t);
+                  else
+                    jtfMANV.setText("NV"+t);
+                  jtfTENNV.setText("");
+                  jtfSDT.setText("");
+                  jtaDIACHI.setText("");
+                  jcalendar.setDate(null);
+                  
+  
+                 }
+                 
+             
+         }
+     }
+    }//GEN-LAST:event_jbtthemActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI_ThemThongTinNhanVien().setVisible(true);
-                
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
@@ -404,15 +447,17 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton jbtthem;
+    private com.toedter.calendar.JDateChooser jcalendar;
+    private javax.swing.JRadioButton jrdNAM;
+    private javax.swing.JRadioButton jrdNU;
+    private javax.swing.JTextArea jtaDIACHI;
+    private javax.swing.JTextField jtfMANV;
+    private javax.swing.JTextField jtfSDT;
+    private javax.swing.JTextField jtfTENNV;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }
