@@ -10,7 +10,6 @@ import GUI_QuanLy.GUI_QuanLyNhanVien;
 import GUI_QuanLy.GUI_ThemThongTinNhanVien;
 import GUI_QuanLy.GUI_ThongTinNhanVien;
 
-import QLTable.TableNhanVien;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
