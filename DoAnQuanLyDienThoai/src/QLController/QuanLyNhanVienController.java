@@ -16,6 +16,8 @@ import com.lowagie.text.Element;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
@@ -26,6 +28,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -190,8 +193,11 @@ public class QuanLyNhanVienController {
                  PdfWriter.getInstance(doc, new FileOutputStream(path+"\\"+"DSNhanVien.pdf"));
                  
                  doc.open();
+                 
+ 
                 // Tạo đối tượng Font cho chữ in đậm
                 com.lowagie.text.Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
+  
                 com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
                 // Tạo đối tượng Paragraph với văn bản "HOA DON MUA HANG" và định dạng chữ in đậm
                 Paragraph centerText = new Paragraph("Danh Sách Nhân Viên", boldFont);
@@ -234,9 +240,12 @@ public class QuanLyNhanVienController {
              } catch (DocumentException ex) {
                  Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
                  JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
-             }
+             }  catch (IOException ex) {
+                    Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+                }
            doc.close();
-                
+             
+
             }
 
             @Override
