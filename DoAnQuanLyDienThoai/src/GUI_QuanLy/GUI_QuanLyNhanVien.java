@@ -40,6 +40,7 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         controller = new QuanLyNhanVienController(jpnView, btnThem, jtfTim,btnXuatfile,this);
         controller.setDateToTable();
         controller.setEvent();
+        System.out.println("dd");
     }
 
     /**
