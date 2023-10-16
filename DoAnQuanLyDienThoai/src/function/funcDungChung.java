@@ -4,12 +4,20 @@
  */
 package function;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author Admin
  */
 public class funcDungChung {
-
+    
+    public String doubleToFormattedString(Double number) {
+        // Định dạng số thành "xxx,xxx,xxx"
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(number);
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -4,6 +4,7 @@
  */
 package GUI_QuanLy;
 
+import function.*;
 import BUS.*;
 import DTO.*;
 import java.awt.Dimension;
@@ -24,7 +25,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     public BUS_HoaDon hdBus = new BUS_HoaDon();
-    
+    public funcDungChung fuc = new funcDungChung();
     /**
      * Creates new form GUI_QuanLyHoaDon
      */
@@ -46,9 +47,6 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_HoaDon = new javax.swing.JTable();
@@ -86,28 +84,6 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
 
         QuanLyHoaDon.add(jPanel7, java.awt.BorderLayout.PAGE_END);
 
-        jPanel8.setBackground(new java.awt.Color(17, 153, 142));
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
-
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton7.setText("NHẬP FILE");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton7);
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton3.setText("XUẤT FILE");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton3);
-
-        QuanLyHoaDon.add(jPanel8, java.awt.BorderLayout.LINE_END);
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -128,7 +104,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1228, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -147,12 +123,9 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanLyHoaDon;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbl_HoaDon;
@@ -196,8 +169,8 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
             Double tienKhach = em.getTienKhach();
             Double tienThua = em.getTienThoi();
             
-            Object[] row = {maHd, maNv, maKh, ngayLap, doubleToFormattedString(tongTien), doubleToFormattedString(giamGia), 
-                doubleToFormattedString(tienThanhToan), doubleToFormattedString(tienKhach), doubleToFormattedString(tienThua) };
+            Object[] row = {maHd, maNv, maKh, ngayLap, fuc.doubleToFormattedString(tongTien), fuc.doubleToFormattedString(giamGia), 
+                fuc.doubleToFormattedString(tienThanhToan), fuc.doubleToFormattedString(tienKhach), fuc.doubleToFormattedString(tienThua) };
             dtm.addRow(row);
         }
 
@@ -215,13 +188,6 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
      
     }
     
-    //HÀM có thể sử dụng nhiều
     
-    // hàm chuyển Double sang string
-    public String doubleToFormattedString(Double number) {
-        // Định dạng số thành "xxx,xxx,xxx"
-        DecimalFormat df = new DecimalFormat("###,###,###");
-        return df.format(number);
-    }
 
 }
