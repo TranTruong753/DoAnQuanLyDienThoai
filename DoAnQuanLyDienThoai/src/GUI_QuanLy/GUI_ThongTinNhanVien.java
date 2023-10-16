@@ -7,6 +7,8 @@ package GUI_QuanLy;
 import DAL.DAL_NhanVien;
 import DTO.DTO_NhanVien;
 import QLController.QuanLyNhanVienController;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -418,11 +420,22 @@ public boolean check_NumberPhone(String str) {
 public java.sql.Date cover(java.util.Date d){
         return new java.sql.Date(d.getTime());
     }
+private static boolean is18YearsOld(Date dateOfBirth, Date currentDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateOfBirth);
+        calendar.add(Calendar.YEAR, 18);
+
+        return currentDate.compareTo(calendar.getTime()) >= 0;
+    }
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         if(evt.getSource()==btnLuu){
-        if(jtfTENNV.getText().equals("") || jtaDIACHI.getText().equals("") || (!jrdNAM.isSelected() && !jrdNU.isSelected()) || jCalendar.getDate()==null)
+        Calendar currentCalendar = Calendar.getInstance();
+         if(jtfTENNV.getText().equals("") || jtaDIACHI.getText().equals("") || (!jrdNAM.isSelected() && !jrdNU.isSelected()) || jCalendar.getDate()==null)
              JOptionPane.showMessageDialog(rootPane, "Thông tin chưa đầy đủ !");
          else
+             if(!is18YearsOld(jCalendar.getDate(), currentCalendar.getTime()))
+                 JOptionPane.showMessageDialog(rootPane, "Nhân viên chưa đủ tuổi !");
+          else
              if(!check_NumberPhone(jtfSDT.getText()))
             JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ !");    
              else{
@@ -438,11 +451,13 @@ public java.sql.Date cover(java.util.Date d){
         nv.setTRANGTHAI(1);
         if(nvbus.updateDTO_NhanVien(nv))
         {JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
-        ql.setDateToTable();}
+        ql.setDateToTable();
+        this.setVisible(false);}
         else
             JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thất bại !");
         }
         }
+        
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed

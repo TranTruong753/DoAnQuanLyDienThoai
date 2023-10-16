@@ -7,6 +7,8 @@ package GUI_QuanLy;
 import BUS.BUS_NhanVien;
 import DTO.DTO_NhanVien;
 import QLController.QuanLyNhanVienController;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -380,12 +382,22 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:    
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
+    private static boolean is18YearsOld(Date dateOfBirth, Date currentDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateOfBirth);
+        calendar.add(Calendar.YEAR, 18);
 
+        return currentDate.compareTo(calendar.getTime()) >= 0;
+    }
     private void jbtthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtthemActionPerformed
      if(evt.getSource()==jbtthem){
+         Calendar currentCalendar = Calendar.getInstance();
          if(jtfTENNV.getText().equals("") || jtaDIACHI.getText().equals("") || (!jrdNAM.isSelected() && !jrdNU.isSelected()) || jcalendar.getDate()==null)
              JOptionPane.showMessageDialog(rootPane, "Thông tin chưa đầy đủ !");
          else
+             if(!is18YearsOld(jcalendar.getDate(), currentCalendar.getTime()))
+                 JOptionPane.showMessageDialog(rootPane, "Nhân viên chưa đủ tuổi !");
+          else
              if(!check_NumberPhone(jtfSDT.getText()))
             JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ !");
             else{

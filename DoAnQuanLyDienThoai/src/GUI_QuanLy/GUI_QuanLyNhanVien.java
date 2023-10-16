@@ -5,6 +5,7 @@
 package GUI_QuanLy;
 
 import DAL.DAL_NhanVien;
+import DTO.DTO_NhanVien;
 import QLController.QuanLyNhanVienController;
 
 import com.lowagie.text.Document;
@@ -16,13 +17,23 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -187,7 +198,89 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNhapfileActionPerformed
 
     private void btnXuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatfileActionPerformed
-       
+                try{    
+                    System.out.println("xuat");
+                    XSSFWorkbook workbook =new XSSFWorkbook();
+                    XSSFSheet sheet =workbook.createSheet("Sản phẩm");
+                    XSSFRow headerRow = sheet.createRow(0);
+                    XSSFRow row=null;
+                    Cell cell=null;
+                    
+                    cell=headerRow.createCell(0,CellType.STRING);
+                    cell.setCellValue("STT");
+                    cell=headerRow.createCell(1,CellType.STRING);
+                    cell.setCellValue("Mã nhân viên");
+                    cell=headerRow.createCell(2,CellType.STRING);
+                    cell.setCellValue("Tên nhân viên");
+                    cell=headerRow.createCell(3,CellType.STRING);
+                    cell.setCellValue("Số điện thoại");
+                    cell=headerRow.createCell(4,CellType.STRING);
+                    cell.setCellValue("địa chỉ");
+                    cell=headerRow.createCell(5,CellType.STRING);
+                    cell.setCellValue("Giới tính");
+                    cell=headerRow.createCell(6,CellType.STRING);
+                    cell.setCellValue("Ngày sinh");
+//                    row =sheet.createRow(7);
+                    DAL_NhanVien sanPhamService = new DAL_NhanVien();
+                    List<DTO_NhanVien> listItem= sanPhamService.getList();
+                    
+                    if (listItem != null){
+                        int s=listItem.size();
+                        
+                        for (int i=0;i<s;i++){
+                            DTO_NhanVien sanpham=  listItem.get(i);
+                            if(sanpham.getTRANGTHAI()==1){
+                            row =sheet.createRow(i+1);
+                            cell=row.createCell(0,CellType.NUMERIC);
+                            cell.setCellValue(i+1);
+                            cell=row.createCell(1,CellType.STRING);
+                            cell.setCellValue(sanpham.getMANV());
+                            cell=row.createCell(2,CellType.STRING);
+                            cell.setCellValue(sanpham.getTENNV());
+                            cell=row.createCell(3,CellType.STRING);
+                            cell.setCellValue(sanpham.getSDT());
+                            cell=row.createCell(4,CellType.STRING);
+                            cell.setCellValue(sanpham.getDIACHI());
+                            cell=row.createCell(5,CellType.STRING);
+                            cell.setCellValue(sanpham.getGIOITINH());
+                            cell=row.createCell(6,CellType.STRING);
+                            cell.setCellValue(sanpham.getNGAYSINH().toString());}
+                        }
+
+                       JFileChooser fileChooser = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("File Excel", "xlsx");
+                        fileChooser.setFileFilter(filter);
+
+                        int returnValue = fileChooser.showSaveDialog(null);
+                        if (returnValue == JFileChooser.APPROVE_OPTION) {
+                            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                            // Đảm bảo đuôi file .xlsx
+                            if (!filePath.endsWith(".xlsx")) {
+                                filePath += ".xlsx";
+                            }
+
+                            // Lưu workbook ra file theo đường dẫn và tên file của người dùng đã chọn
+                            FileOutputStream fileOut;
+                            try {
+                                fileOut = new FileOutputStream(filePath);
+                                workbook.write(fileOut);
+                                fileOut.close();
+                                workbook.close();
+                                JOptionPane.showMessageDialog(null, "Xuất thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } 
+                    }
+                    
+
+                }catch (Exception h){
+                    h.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
+                
+
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
 
