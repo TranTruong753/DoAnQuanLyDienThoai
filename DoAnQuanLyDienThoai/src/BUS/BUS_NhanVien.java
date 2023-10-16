@@ -35,6 +35,10 @@ public class BUS_NhanVien {
         
         return nv.timnv(tk);
     }
+     public int themDS(){
+         
+         return nv.themDS();
+     }
    
     
 }

@@ -4,6 +4,37 @@
  */
 package GUI_QuanLy;
 
+import DAL.DAL_NhanVien;
+import DTO.DTO_NhanVien;
+import QLController.QuanLyNhanVienController;
+
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 /**
  *
  * @author Admin
@@ -13,8 +44,13 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
     /**
      * Creates new form GUI_QuanLyNhanVien
      */
+    DAL_NhanVien nvbus=new DAL_NhanVien();
+    QuanLyNhanVienController controller ;
     public GUI_QuanLyNhanVien() {
         initComponents();
+        controller = new QuanLyNhanVienController(jpnView, btnThem, jtfTim,btnXuatfile,this);
+        controller.setDateToTable();
+        controller.setEvent();    
     }
 
     /**
@@ -28,15 +64,14 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
 
         QuanlyNhanVien = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnNhapfile = new javax.swing.JButton();
+        btnXuatfile = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jpnView = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -48,8 +83,8 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jPanel6.add(jTextField1);
+        jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTim);
 
         QuanlyNhanVien.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -74,48 +109,58 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themNhanVien.png"))); // NOI18N
-        jButton3.setText("THÊM ");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themNhanVien.png"))); // NOI18N
+        btnThem.setText("THÊM ");
+        btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton3);
+        jPanel8.add(btnThem);
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton7.setText("NHẬP FILE");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton7);
+        btnNhapfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNhapfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
+        btnNhapfile.setText("NHẬP FILE");
+        btnNhapfile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNhapfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhapfile.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnNhapfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapfileActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnNhapfile);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton4.setText("XUẤT FILE");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton4);
+        btnXuatfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnXuatfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
+        btnXuatfile.setText("XUẤT FILE");
+        btnXuatfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnXuatfile.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatfileActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnXuatfile);
 
         QuanlyNhanVien.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MÃ NV", "TÊN NV", "NGÀY SINH", "SĐT", "ĐỊA CHỈ", "GIỚI TÍNH"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1180, Short.MAX_VALUE)
+        );
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -123,14 +168,14 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1180, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -139,24 +184,119 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         add(QuanlyNhanVien, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        themNV = new GUI_ThemThongTinNhanVien();
-        themNV.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnNhapfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapfileActionPerformed
+        if(evt.getSource()==btnNhapfile){
+            nvbus.themDS();
+            controller.setDateToTable();
+        }
+    }//GEN-LAST:event_btnNhapfileActionPerformed
+
+    private void btnXuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatfileActionPerformed
+                try{    
+                    System.out.println("xuat");
+                    XSSFWorkbook workbook =new XSSFWorkbook();
+                    XSSFSheet sheet =workbook.createSheet("Sản phẩm");
+                    XSSFRow headerRow = sheet.createRow(0);
+                    XSSFRow row=null;
+                    Cell cell=null;
+                    
+                    cell=headerRow.createCell(0,CellType.STRING);
+                    cell.setCellValue("STT");
+                    cell=headerRow.createCell(1,CellType.STRING);
+                    cell.setCellValue("Mã nhân viên");
+                    cell=headerRow.createCell(2,CellType.STRING);
+                    cell.setCellValue("Tên nhân viên");
+                    cell=headerRow.createCell(3,CellType.STRING);
+                    cell.setCellValue("Số điện thoại");
+                    cell=headerRow.createCell(4,CellType.STRING);
+                    cell.setCellValue("địa chỉ");
+                    cell=headerRow.createCell(5,CellType.STRING);
+                    cell.setCellValue("Giới tính");
+                    cell=headerRow.createCell(6,CellType.STRING);
+                    cell.setCellValue("Ngày sinh");
+//                    row =sheet.createRow(7);
+                    DAL_NhanVien sanPhamService = new DAL_NhanVien();
+                    List<DTO_NhanVien> listItem= sanPhamService.getList();
+                    List<DTO_NhanVien> listItem1=new ArrayList<>();
+                    for (int i=0;i<listItem.size();i++){
+                        if(listItem.get(i).getTRANGTHAI()==1)
+                            listItem1.add(listItem.get(i));
+                    }
+                    if (listItem1 != null){
+                        int s=listItem1.size();
+                        
+                        for (int i=0;i<s;i++){
+                            DTO_NhanVien sanpham=  listItem1.get(i);
+                            if(sanpham.getTRANGTHAI()==1){
+                            row =sheet.createRow(i+1);
+                            cell=row.createCell(0,CellType.NUMERIC);
+                            cell.setCellValue(i+1);
+                            cell=row.createCell(1,CellType.STRING);
+                            cell.setCellValue(sanpham.getMANV());
+                            cell=row.createCell(2,CellType.STRING);
+                            cell.setCellValue(sanpham.getTENNV());
+                            cell=row.createCell(3,CellType.STRING);
+                            cell.setCellValue(sanpham.getSDT());
+                            cell=row.createCell(4,CellType.STRING);
+                            cell.setCellValue(sanpham.getDIACHI());
+                            cell=row.createCell(5,CellType.STRING);
+                            cell.setCellValue(sanpham.getGIOITINH());
+                            cell=row.createCell(6,CellType.STRING);
+                            cell.setCellValue(sanpham.getNGAYSINH().toString());}
+                        }
+
+                       JFileChooser fileChooser = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("File Excel", "xlsx");
+                        fileChooser.setFileFilter(filter);
+
+                        int returnValue = fileChooser.showSaveDialog(null);
+                        if (returnValue == JFileChooser.APPROVE_OPTION) {
+                            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                            // Đảm bảo đuôi file .xlsx
+                            if (!filePath.endsWith(".xlsx")) {
+                                filePath += ".xlsx";
+                            }
+
+                            // Lưu workbook ra file theo đường dẫn và tên file của người dùng đã chọn
+                            FileOutputStream fileOut;
+                            try {
+                                fileOut = new FileOutputStream(filePath);
+                                workbook.write(fileOut);
+                                fileOut.close();
+                                workbook.close();
+                                JOptionPane.showMessageDialog(null, "Xuất thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } 
+                    }
+                    
+
+                }catch (Exception h){
+                    h.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
+                
+
+    }//GEN-LAST:event_btnXuatfileActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyNhanVien;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnNhapfile;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXuatfile;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jpnView;
+    private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables
 }
