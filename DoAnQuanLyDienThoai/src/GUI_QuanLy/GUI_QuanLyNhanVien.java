@@ -50,8 +50,7 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         initComponents();
         controller = new QuanLyNhanVienController(jpnView, btnThem, jtfTim,btnXuatfile,this);
         controller.setDateToTable();
-        controller.setEvent();
-        System.out.println("dd");
+        controller.setEvent();    
     }
 
     /**
@@ -223,12 +222,16 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
 //                    row =sheet.createRow(7);
                     DAL_NhanVien sanPhamService = new DAL_NhanVien();
                     List<DTO_NhanVien> listItem= sanPhamService.getList();
-                    
-                    if (listItem != null){
-                        int s=listItem.size();
+                    List<DTO_NhanVien> listItem1=new ArrayList<>();
+                    for (int i=0;i<listItem.size();i++){
+                        if(listItem.get(i).getTRANGTHAI()==1)
+                            listItem1.add(listItem.get(i));
+                    }
+                    if (listItem1 != null){
+                        int s=listItem1.size();
                         
                         for (int i=0;i<s;i++){
-                            DTO_NhanVien sanpham=  listItem.get(i);
+                            DTO_NhanVien sanpham=  listItem1.get(i);
                             if(sanpham.getTRANGTHAI()==1){
                             row =sheet.createRow(i+1);
                             cell=row.createCell(0,CellType.NUMERIC);
