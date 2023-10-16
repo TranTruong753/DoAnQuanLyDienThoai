@@ -57,42 +57,44 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     //FUNCITION
   
     
-   public void addMenu(){    
-       jTabbedPane1.add(panelBanHang);
-       jTabbedPane1.add(panelSPvaKM);
-       jTabbedPane1.add(panelNVvaTK);
-       jTabbedPane1.add(panelKHvaBH);
-       jTabbedPane1.add(panelHoaDon);
-       jTabbedPane1.add(panelNCC);
-       jTabbedPane1.add(panelThongKe);
-       jTabbedPane1.add(panelThongTinDangNhap);       
-   }
+public void addMenu(){    
+    jTabbedPane1.add(panelBanHang);
+    jTabbedPane1.add(panelSPvaKM);
+    jTabbedPane1.add(panelNVvaTK);
+    jTabbedPane1.add(panelKHvaBH);
+    jTabbedPane1.add(panelHoaDon);
+    jTabbedPane1.add(panelNCC);
+    jTabbedPane1.add(panelThongKe);
+    jTabbedPane1.add(panelThongTinDangNhap);       
+}
 
-    
-    public void settingColor(){
-        jCheckBox1.setOpaque(false);
-        ColorMain = new Color(17,153,142);
-        ColorClick = new Color(17,153,142) ;
-        sidebar = new Color(102,102,102);
-    }
-    
-    public void clickChangeColor(JPanel panelMenu, Color colorMenu) 
-    {
-        panelMenu.setBackground(colorMenu);
-    }
-   
-    public void visibleJPanelMenu1Title(boolean visibleOnOff){
-        jPanelMenu1Title.setVisible(visibleOnOff);
-        jPanelMenu2Title.setVisible(visibleOnOff);
-        jPanelMenu3Title.setVisible(visibleOnOff);
-        jPanelMenu4Title.setVisible(visibleOnOff);
-        jPanelMenu5Title.setVisible(visibleOnOff);
-        jPanelMenu6Title.setVisible(visibleOnOff);
-        jPanelMenu7Title.setVisible(visibleOnOff);
-        jPanelMenu8Title.setVisible(visibleOnOff);
-    }
 
- public void openSideBar(int width, int height) {
+ public void settingColor(){
+     jCheckBox1.setOpaque(false);
+     ColorMain = new Color(17,153,142);
+     ColorClick = new Color(17,153,142) ;
+     sidebar = new Color(102,102,102);
+ }
+
+ public void clickChangeColor(JPanel panelMenu, Color colorMenu) 
+ {
+     panelMenu.setBackground(colorMenu);
+ }
+
+ public void visibleJPanelMenu1Title(boolean visibleOnOff){
+     jPanelMenu1Title.setVisible(visibleOnOff);
+     jPanelMenu2Title.setVisible(visibleOnOff);
+     jPanelMenu3Title.setVisible(visibleOnOff);
+     jPanelMenu4Title.setVisible(visibleOnOff);
+     jPanelMenu5Title.setVisible(visibleOnOff);
+     jPanelMenu6Title.setVisible(visibleOnOff);
+     jPanelMenu7Title.setVisible(visibleOnOff);
+     jPanelMenu8Title.setVisible(visibleOnOff);
+ }
+
+
+ 
+public void openSideBar(int width, int height) {
     new Thread(new Runnable() {
         @Override
         public void run() {        
@@ -678,19 +680,15 @@ public void closeSideBar(int width, int height) {
             System.exit(0);
         }
         else
-          this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
- 
-			
+          this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);			
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jPanelSidebarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseEntered
-        // TODO add your handling code here:
-  
+        // TODO add your handling code here: 
     }//GEN-LAST:event_jPanelSidebarMouseEntered
 
     private void jPanelSidebarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseExited
-        // TODO add your handling code here:
-    
+        // TODO add your handling code here:  
     }//GEN-LAST:event_jPanelSidebarMouseExited
 
     private void jPanelSidebarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMousePressed
@@ -715,13 +713,11 @@ public void closeSideBar(int width, int height) {
 
     private void jPanelMenu1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseEntered
         // TODO add your handling code here:
-
-      
+   
     }//GEN-LAST:event_jPanelMenu1MouseEntered
 
     private void jPanelMenu1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseExited
-        // TODO add your handling code here:
-       
+        // TODO add your handling code here:      
     }//GEN-LAST:event_jPanelMenu1MouseExited
 
     /**
