@@ -49,6 +49,7 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grpGioiTinh = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -84,7 +85,7 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(676, 489));
+        setPreferredSize(new java.awt.Dimension(713, 489));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -186,10 +187,12 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
 
         jTextField15.setPreferredSize(new java.awt.Dimension(200, 30));
 
+        grpGioiTinh.add(jrdNAM);
         jrdNAM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrdNAM.setText("Nam");
         jrdNAM.setEnabled(false);
 
+        grpGioiTinh.add(jrdNU);
         jrdNU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrdNU.setText("Nữ");
         jrdNU.setEnabled(false);
@@ -483,6 +486,7 @@ private static boolean is18YearsOld(Date dateOfBirth, Date currentDate) {
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
+    private javax.swing.ButtonGroup grpGioiTinh;
     private com.toedter.calendar.JDateChooser jCalendar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

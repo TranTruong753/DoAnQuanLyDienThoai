@@ -65,6 +65,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gbtGioiTinh = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -99,6 +100,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(694, 489));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -175,9 +177,11 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jLabel31.setText("Giới tính");
         jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        gbtGioiTinh.add(jrdNAM);
         jrdNAM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrdNAM.setText("Nam");
 
+        gbtGioiTinh.add(jrdNU);
         jrdNU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrdNU.setText("Nữ");
 
@@ -257,7 +261,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,8 +314,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,6 +443,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup gbtGioiTinh;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
