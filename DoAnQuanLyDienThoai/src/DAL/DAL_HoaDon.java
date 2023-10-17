@@ -54,4 +54,37 @@ public class DAL_HoaDon {
         }
         return null;
     }
+    
+    public ArrayList<DTO_HoaDon> timHd(String tk) {
+        ArrayList<DTO_HoaDon> list =new ArrayList<>();
+        String sql="SELECT * FROM HoaDon where MAHD like N'%"+ tk +"%' or MANV like N'%"+ tk +"%' "
+                + "or MAKH like N'%"+ tk +"%'"
+                + "or NGAYLAP like N'%"+ tk +"%'"
+                + "or TONGTIEN like N'%"+ tk +"%'"
+                + "or GIAMGIA like N'%"+ tk +"%'"
+                + "or TIENTHANHTOAN N'%"+ tk +"%'"
+                + "or TIENKHACH like N'%"+ tk +"%'";
+        try {
+            Connection conn = DAO.getConnection();
+            PreparedStatement ps= conn.prepareStatement(sql);
+           ResultSet rs=ps.executeQuery();
+           while(rs.next()){
+               DTO_HoaDon hd=new DTO_HoaDon();
+               hd.setMaHD(rs.getString("MAHD"));
+               hd.setMaNV(rs.getString("MANV"));
+               hd.setMaKH(rs.getString("MAKH"));
+               hd.setNgayLap(rs.getDate("NGAYLAP"));
+               hd.setTongTien(rs.getDouble("TONGTIEN"));
+               hd.setGiamGia(rs.getDouble("GIAMGIA"));
+               hd.setTienThanhToan(rs.getDouble("TIENTHANHTOAN"));
+               hd.setTienKhach(rs.getDouble("TIENKHACH"));
+               hd.setTienThoi(rs.getDouble("TIENTHOI"));
+               hd.setTrangThai(rs.getInt("TrangThai"));
+               list.add(hd);
+           }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
