@@ -21,4 +21,5 @@ public class BUS_HoaDon {
     public List<DTO_HoaDon> getList() {
         return hd_DAL.getList();
     }
+    //cmt nhanhtestquangtruong
 }

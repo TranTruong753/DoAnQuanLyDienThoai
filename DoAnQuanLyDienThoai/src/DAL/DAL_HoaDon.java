@@ -54,4 +54,8 @@ public class DAL_HoaDon {
         }
         return null;
     }
+    
+     public java.sql.Date cover(java.util.Date d){
+        return new java.sql.Date(d.getTime());
+    }
 }
