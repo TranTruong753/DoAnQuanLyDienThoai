@@ -4,8 +4,10 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_TaiKhoan;
 import DAL.DAL_NhanVien;
 import DTO.DTO_NhanVien;
+import DTO.DTO_TaiKhoan;
 import QLController.QuanLyNhanVienController;
 
 import com.lowagie.text.Document;
@@ -44,6 +46,7 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
     /**
      * Creates new form GUI_QuanLyNhanVien
      */
+    BUS_TaiKhoan tk = new BUS_TaiKhoan();
     DAL_NhanVien nvbus=new DAL_NhanVien();
     QuanLyNhanVienController controller ;
     public GUI_QuanLyNhanVien() {
@@ -193,6 +196,25 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         if(evt.getSource()==btnNhapfile){
             nvbus.themDS();
             controller.setDateToTable();
+            List<DTO_NhanVien> listItem = nvbus.getList();
+            List<DTO_TaiKhoan> listtk = tk.getList();
+            for(int i=0;i<listItem.size();i++){
+                int dem=0;
+                for(int j=0;j<listtk.size();j++){
+                    if(listItem.get(i).getMANV().equals(listtk.get(j).getMANV()))
+                    { dem=1;break;}
+                }
+                if(dem==0){
+                    DTO_TaiKhoan tkadd =new DTO_TaiKhoan();
+                    tkadd.setTENDN(listItem.get(i).getMANV());
+                    tkadd.setMANV(listItem.get(i).getMANV());
+                    tkadd.setMK("123456789Aa@");
+                    tkadd.setPQ("Nhân viên");
+                    tk.addTaiKhoan(tkadd);
+                    
+                }
+            }
+            
         }
     }//GEN-LAST:event_btnNhapfileActionPerformed
 

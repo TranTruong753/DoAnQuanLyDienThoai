@@ -4,6 +4,12 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_TaiKhoan;
+import DTO.DTO_TaiKhoan;
+import QLController.QuanLyTaiKhoanController;
+import function.funcDungChung;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -13,9 +19,23 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
     /**
      * Creates new form GUI_ThongTinTaiKhoan2
      */
-    public GUI_ThongTinTaiKhoan() {
+    QuanLyTaiKhoanController ql;
+    BUS_TaiKhoan tkbus = new BUS_TaiKhoan();
+    DTO_TaiKhoan taikhoan = new DTO_TaiKhoan();
+    funcDungChung f =new funcDungChung();
+    public GUI_ThongTinTaiKhoan(DTO_TaiKhoan taikhoan,QuanLyTaiKhoanController ql) {
         initComponents();
         this.setLocationRelativeTo(null);
+        jtfMANV.setText(taikhoan.getMANV());
+        jtfTK.setText(taikhoan.getTENDN());
+        jtfMK.setText(taikhoan.getMK());
+        jcbPQ.addItem("Quản lý");
+        jcbPQ.addItem("Nhân viên");
+        if(taikhoan.getPQ().equals("Quản lý"))
+            jcbPQ.setSelectedIndex(1);
+        else jcbPQ.setSelectedIndex(2);
+        
+        this.ql=ql;
     }
 
     /**
@@ -32,13 +52,13 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTK = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jtfMK = new javax.swing.JTextField();
+        jtfMANV = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jcbPQ = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
@@ -46,8 +66,8 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnLuu = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +88,8 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Tài khoản :");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
+        jtfTK.setEnabled(false);
+        jtfTK.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Mã nhân viên :");
@@ -76,15 +97,18 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Mật khẩu :");
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(250, 30));
+        jtfMK.setEnabled(false);
+        jtfMK.setPreferredSize(new java.awt.Dimension(250, 30));
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(250, 30));
+        jtfMANV.setEnabled(false);
+        jtfMANV.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Chức vụ :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(72, 30));
+        jcbPQ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jcbPQ.setEnabled(false);
+        jcbPQ.setPreferredSize(new java.awt.Dimension(72, 30));
 
         jLabel5.setText("Thông báo");
 
@@ -104,11 +128,11 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jtfTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtfMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtfMANV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jcbPQ, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65))
         );
         jPanel4Layout.setVerticalGroup(
@@ -117,23 +141,23 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfMANV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbPQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -171,17 +195,27 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        jButton2.setText("Lưu");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel6.add(jButton2);
+        btnLuu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
+        btnLuu.setText("Lưu");
+        btnLuu.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnLuu);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhSuaNhanVien2.png"))); // NOI18N
-        jButton3.setText("Sửa");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel6.add(jButton3);
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhSuaNhanVien2.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnSua);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaNhanVien.png"))); // NOI18N
@@ -205,49 +239,40 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        jtfMK.setEnabled(true);
+        jcbPQ.setEnabled(true);
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        if(!f.checkPassword(jtfMK.getText()))
+            JOptionPane.showMessageDialog(rootPane, "Mật khẩu không hợp lệ");
+        else{
+        DTO_TaiKhoan tk = new DTO_TaiKhoan();
+        tk.setMANV(jtfMANV.getText());
+        tk.setTENDN(jtfTK.getText());
+        tk.setMK(jtfMK.getText());
+        if(jcbPQ.getSelectedItem().equals("Quản lý"))
+            tk.setPQ("Quản lý");
+        else tk.setPQ("Nhân viên");
+        tk.setTRANGTHAI(1);
+        if(tkbus.updateTaiKhoan(tk))
+        {JOptionPane.showMessageDialog(rootPane, "Thay đổi thành công!");
+        ql.setDateToTable();}
+        else
+            JOptionPane.showMessageDialog(rootPane, "Thay đổi thất bại !"); 
+        }
+    }//GEN-LAST:event_btnLuuActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinTaiKhoan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI_ThongTinTaiKhoan().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,9 +287,10 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> jcbPQ;
+    private javax.swing.JTextField jtfMANV;
+    private javax.swing.JTextField jtfMK;
+    private javax.swing.JTextField jtfTK;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

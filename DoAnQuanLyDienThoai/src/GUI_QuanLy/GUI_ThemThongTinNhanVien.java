@@ -5,7 +5,11 @@
 package GUI_QuanLy;
 
 import BUS.BUS_NhanVien;
+import BUS.BUS_TaiKhoan;
+import DAL.DAL_NhanVien;
+import DAL.DAL_TaiKhoan;
 import DTO.DTO_NhanVien;
+import DTO.DTO_TaiKhoan;
 import QLController.QuanLyNhanVienController;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +26,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
      * Creates new form GUI_ThongTinNhanVien2
      */
     QuanLyNhanVienController ql;
+    BUS_TaiKhoan tk=new BUS_TaiKhoan();
     BUS_NhanVien nvbus=new BUS_NhanVien();
     public GUI_ThemThongTinNhanVien(QuanLyNhanVienController ql) {
         initComponents();
@@ -417,6 +422,12 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
                  nv.setTRANGTHAI(1);
                  if(nvbus.addNhanVien(nv))
                  {JOptionPane.showMessageDialog(rootPane, "Thêm nhân viên thành công !");
+                  DTO_TaiKhoan tkadd =new DTO_TaiKhoan();
+                    tkadd.setTENDN(jtfMANV.getText());
+                    tkadd.setMANV(jtfMANV.getText());
+                    tkadd.setMK("123456789Aa@");
+                    tkadd.setPQ("Nhân viên");
+                    tk.addTaiKhoan(tkadd);
                   ql.setDateToTable();
                   int t =nvbus.getList().size()+1;
        
