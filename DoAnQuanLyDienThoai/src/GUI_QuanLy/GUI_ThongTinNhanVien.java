@@ -4,11 +4,15 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_TaiKhoan;
 import DAL.DAL_NhanVien;
 import DTO.DTO_NhanVien;
+import DTO.DTO_TaiKhoan;
 import QLController.QuanLyNhanVienController;
+import QLController.QuanLyTaiKhoanController;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -465,7 +469,16 @@ private static boolean is18YearsOld(Date dateOfBirth, Date currentDate) {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         if(evt.getSource()==btnXoa){
-     
+        BUS_TaiKhoan tk = new BUS_TaiKhoan();
+        List<DTO_TaiKhoan> listtk = tk.getList();
+        for(int i=0;i<listtk.size();i++){
+            if(listtk.get(i).getMANV().equals(jtfMANV.getText()))
+            {
+                listtk.get(i).setTRANGTHAI(0);
+                tk.updateTaiKhoan(listtk.get(i));
+                
+            }
+        }
         nv.setTRANGTHAI(0);
         if(nvbus.updateDTO_NhanVien(nv))
         {JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
