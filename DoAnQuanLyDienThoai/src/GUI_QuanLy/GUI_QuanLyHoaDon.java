@@ -14,6 +14,9 @@ import java.text.DecimalFormat;
 import java.util.*;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -34,6 +37,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     public GUI_QuanLyHoaDon() {
         initComponents();
         loadHoaDonList(hdBus.getList());
+        eventFind();
     }
 
     /**
@@ -66,6 +70,11 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jTextField1);
 
         QuanLyHoaDon.add(jPanel6, java.awt.BorderLayout.PAGE_START);
@@ -121,6 +130,11 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
 
         add(QuanLyHoaDon, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -195,6 +209,33 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     
     }
     
-    
+    public void eventFind(){
+        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = jTextField1.getText();
+                if(text.trim().length() == 0){
+                    rowSorter.setRowFilter(null);
+                }else{
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = jTextField1.getText();
+                if(text.trim().length() == 0){
+                    rowSorter.setRowFilter(null);
+                }else{
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                
+            }
+        });
+    }
 
 }

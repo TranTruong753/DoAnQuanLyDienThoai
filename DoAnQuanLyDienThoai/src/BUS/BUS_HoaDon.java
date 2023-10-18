@@ -22,7 +22,7 @@ public class BUS_HoaDon {
         return hd_DAL.getList();
     }
     //cmt nhanhtestquangtruong
-    public ArrayList<DTO_HoaDon> timnv(String tk){
+    public ArrayList<DTO_HoaDon> timHd(String tk){
         
         return hd_DAL.timHd(tk);
     }

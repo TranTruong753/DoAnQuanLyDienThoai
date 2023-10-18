@@ -57,13 +57,7 @@ public class DAL_HoaDon {
     
     public ArrayList<DTO_HoaDon> timHd(String tk) {
         ArrayList<DTO_HoaDon> list =new ArrayList<>();
-        String sql="SELECT * FROM HoaDon where MAHD like N'%"+ tk +"%' or MANV like N'%"+ tk +"%' "
-                + "or MAKH like N'%"+ tk +"%'"
-                + "or NGAYLAP like N'%"+ tk +"%'"
-                + "or TONGTIEN like N'%"+ tk +"%'"
-                + "or GIAMGIA like N'%"+ tk +"%'"
-                + "or TIENTHANHTOAN N'%"+ tk +"%'"
-                + "or TIENKHACH like N'%"+ tk +"%'";
+        String sql="SELECT * FROM HoaDon where MAHD like N'%"+ tk +"%' or MANV like N'%"+ tk +"%' ";
         try {
             Connection conn = DAO.getConnection();
             PreparedStatement ps= conn.prepareStatement(sql);
