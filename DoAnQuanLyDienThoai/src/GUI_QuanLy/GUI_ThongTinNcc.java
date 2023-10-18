@@ -4,6 +4,14 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_NhaCc;
+import DTO.DTO_NhaCc;
+import DTO.DTO_NhanVien;
+import QLController.QuanLyNhaCcController;
+import java.util.Calendar;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -13,9 +21,18 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
     /**
      * Creates new form GUI_ThongTinNcc2
      */
-    public GUI_ThongTinNcc() {
+    QuanLyNhaCcController ql;
+    DTO_NhaCc nv= new DTO_NhaCc();
+    private BUS_NhaCc nccbus=new BUS_NhaCc();
+    public GUI_ThongTinNcc(DTO_NhaCc ncc,QuanLyNhaCcController ql) {
         initComponents();
         this.setLocationRelativeTo(null);
+        jtfMANCC.setText(ncc.getMANCC());
+        jtfTENNCC.setText(ncc.getTENNCC());
+        jtfSDT.setText(ncc.getSDTNCC());
+        jtfDIACHI.setText(ncc.getDIACHI());
+        this.ql=ql;
+        
     }
 
     /**
@@ -32,22 +49,22 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfMANCC = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jtfTENNCC = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        jtfSDT = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtfDIACHI = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnLuu = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -77,31 +94,35 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
         jLabel25.setText("Mã Nhà cung cấp");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfMANCC.setEnabled(false);
+        jtfMANCC.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên Nhà cung cấp");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfTENNCC.setEnabled(false);
+        jtfTENNCC.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("SĐT ");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextField13.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfSDT.setEnabled(false);
+        jtfSDT.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("Địa chỉ");
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(200, 80));
-        jScrollPane1.setViewportView(jTextArea1);
+        jtfDIACHI.setColumns(20);
+        jtfDIACHI.setRows(5);
+        jtfDIACHI.setEnabled(false);
+        jtfDIACHI.setPreferredSize(new java.awt.Dimension(200, 80));
+        jScrollPane1.setViewportView(jtfDIACHI);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -113,11 +134,11 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtfMANCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
@@ -128,7 +149,7 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
                         .addGap(15, 15, 15)))
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jtfTENNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
         jPanel8Layout.setVerticalGroup(
@@ -137,14 +158,14 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfMANCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel8Layout.createSequentialGroup()
                             .addGap(6, 6, 6)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfTENNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +174,7 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -193,23 +214,38 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(17, 153, 142));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        jButton2.setText("Lưu");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel5.add(jButton2);
+        btnLuu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
+        btnLuu.setText("Lưu");
+        btnLuu.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnLuu);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhSua1.png"))); // NOI18N
-        jButton3.setText("Sửa");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel5.add(jButton3);
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhSua1.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnSua);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Xoa32.png"))); // NOI18N
-        jButton4.setText("Xóa");
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel5.add(jButton4);
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Xoa32.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnXoa);
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
@@ -229,48 +265,73 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        jtfTENNCC.setEnabled(true);
+        jtfSDT.setEnabled(true);
+        jtfDIACHI.setEnabled(true);
+    }//GEN-LAST:event_btnSuaActionPerformed
+public boolean check_NumberPhone(String str) {
+      Pattern p_Viettel=Pattern.compile("^03[2-9][0-9]{8}$");
+      Pattern p_Mobifone=Pattern.compile("^07(0|9|7|6|8)[0-9]{7}$");
+      Pattern p_Vinaphone=Pattern.compile("^08[1-5][0-9]{7}$");
+      Pattern p_Vietnamobile=Pattern.compile("^05(6|8)[0-9]{7}$");
+      Pattern p_Gmobile=Pattern.compile("^059[0-9]{7}$");
+        
+        
+        if(str.length()==10 && str.indexOf("0")==0 )
+        {
+            return true;
+            
+        }else
+        {
+            return false;
+        }
+    }
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        if(evt.getSource()==btnLuu){
+        
+         if(jtfTENNCC.getText().equals("") || jtfDIACHI.getText().equals("") )
+             JOptionPane.showMessageDialog(rootPane, "Thông tin chưa đầy đủ !");
+          else
+             if(!check_NumberPhone(jtfSDT.getText()))
+            JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ !");    
+             else{
+                    DTO_NhaCc NhanVien = new DTO_NhaCc();
+                    NhanVien.setMANCC(jtfMANCC.getText());
+                    NhanVien.setTENNCC(jtfTENNCC.getText());
+                    NhanVien.setSDTNCC(jtfSDT.getText());
+                    NhanVien.setDIACHI(jtfDIACHI.getText());
+                    NhanVien.setTRANGTHAI(1);
+                    if(nccbus.updateNhaCc(NhanVien))
+                            {JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
+                            ql.setDateToTable();
+                            this.setVisible(false);}
+                    else
+                            JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thất bại !");
+                            }
+        }
+    }//GEN-LAST:event_btnLuuActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        nv.setTRANGTHAI(0);
+        if(nccbus.updateNhaCc(nv))
+               {JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
+                ql.setDateToTable();
+                this.setVisible(false);}
+             else
+                JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");
+        
+    }//GEN-LAST:event_btnXoaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinNcc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinNcc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinNcc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThongTinNcc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI_ThongTinNcc().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
@@ -284,10 +345,10 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextArea jtfDIACHI;
+    private javax.swing.JTextField jtfMANCC;
+    private javax.swing.JTextField jtfSDT;
+    private javax.swing.JTextField jtfTENNCC;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,20 +4,22 @@
  */
 package QLController;
 
+import BUS.BUS_NhaCc;
 import BUS.BUS_NhanVien;
+import DTO.DTO_NhaCc;
 import DTO.DTO_NhanVien;
+import GUI_QuanLy.GUI_QuanLyNCC;
 import GUI_QuanLy.GUI_QuanLyNhanVien;
+import GUI_QuanLy.GUI_ThemThongTinNcc;
 import GUI_QuanLy.GUI_ThemThongTinNhanVien;
+import GUI_QuanLy.GUI_ThongTinNcc;
 import GUI_QuanLy.GUI_ThongTinNhanVien;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
@@ -29,7 +31,6 @@ import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,17 +53,17 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Admin
  */
-public class QuanLyNhanVienController {
+public class QuanLyNhaCcController {
     JTable table;
-    GUI_QuanLyNhanVien ql;
+    GUI_QuanLyNCC ql;
     private JPanel jpnView;
     private JButton btnThem,btnXuat;
     private JTextField jtfTim;
-    private BUS_NhanVien nvbus=new BUS_NhanVien();
-    private String[] listColumn = {"Mã nhân viên","Tên nhân viên", "Số điện thoại","Địa chỉ","Giới tính","Ngày sinh"};
+    private BUS_NhaCc nccbus=new BUS_NhaCc();
+    private String[] listColumn = {"Mã NCC","Tên NCC", "Số điện thoại","Địa chỉ"};
     private TableRowSorter<TableModel> rowSorter = null;
 
-    public QuanLyNhanVienController(JPanel jpnView, JButton btnThem, JTextField jtfTim,JButton btnXuat,GUI_QuanLyNhanVien ql){
+    public QuanLyNhaCcController(JPanel jpnView, JButton btnThem, JTextField jtfTim,JButton btnXuat,GUI_QuanLyNCC ql){
         this.jpnView = jpnView;
         this.btnThem = btnThem;
         this.jtfTim = jtfTim;
@@ -73,9 +74,9 @@ public class QuanLyNhanVienController {
         return new java.sql.Date(d.getTime());
     }
     public void setDateToTable(){
-        List<DTO.DTO_NhanVien> listItem = nvbus.getList();
+        List<DTO_NhaCc> listItem = nccbus.getList();
         
-        DefaultTableModel model = new TableNhanVien().setTableKH(listItem, listColumn);
+        DefaultTableModel model = new TableNhaCC().setTableKH(listItem, listColumn);
         table = new JTable(model);
         
         rowSorter = new TableRowSorter<>(table.getModel());
@@ -119,16 +120,15 @@ public class QuanLyNhanVienController {
                     int SRow = table.getSelectedRow();                       //Lay Index dong duoc chon
                     SRow = table.convertRowIndexToModel(SRow);     //Khi sap xep, Index dong duoc chon van dung
                     
-                    DTO_NhanVien NhanVien = new DTO_NhanVien();
-                    NhanVien.setMANV((String) model.getValueAt(SRow, 0));
-                    NhanVien.setTENNV(model.getValueAt(SRow,1).toString());
-                    NhanVien.setSDT(model.getValueAt(SRow, 2) != null ? model.getValueAt(SRow, 2).toString() : "");
+                    DTO_NhaCc NhanVien = new DTO_NhaCc();
+                    NhanVien.setMANCC((String) model.getValueAt(SRow, 0));
+                    NhanVien.setTENNCC(model.getValueAt(SRow,1).toString());
+                    NhanVien.setSDTNCC(model.getValueAt(SRow, 2).toString());
                     NhanVien.setDIACHI(model.getValueAt(SRow, 3).toString());
-                    NhanVien.setGIOITINH(model.getValueAt(SRow, 4).toString());
-                    NhanVien.setNGAYSINH((java.util.Date) model.getValueAt(SRow, 5));
+                    
                     //NhanVien.setTrangThai((int) model.getValueAt(SRow, 6));
                     
-                    GUI_ThongTinNhanVien KHframe = new GUI_ThongTinNhanVien(NhanVien,QuanLyNhanVienController.this);
+                    GUI_ThongTinNcc KHframe = new GUI_ThongTinNcc(NhanVien,QuanLyNhaCcController.this);
                     KHframe.setTitle("Thông tin khách hàng");
                     KHframe.setResizable(false);
                     KHframe.setLocationRelativeTo(null);
@@ -156,7 +156,7 @@ public class QuanLyNhanVienController {
         btnThem.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                GUI_ThemThongTinNhanVien frame =new GUI_ThemThongTinNhanVien(QuanLyNhanVienController.this);
+                GUI_ThemThongTinNcc frame =new GUI_ThemThongTinNcc(QuanLyNhaCcController.this);
                 frame.setTitle("Thông tin nhân viên thêm");
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
@@ -175,12 +175,90 @@ public class QuanLyNhanVienController {
             }
             
         });
-    }
+       btnXuat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                 String path="";
+             JFileChooser j=new JFileChooser();
+             j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+             int x=j.showSaveDialog(table);
+             if(x==JFileChooser.APPROVE_OPTION)
+             {
+                 path=j.getSelectedFile().getPath();
+                 
+             }
+             
+             Document doc=new Document(PageSize.A4, 20, 20, 20, 20);
+             try {
+                 PdfWriter.getInstance(doc, new FileOutputStream(path+"\\"+"DSNhanVien.pdf"));
+                 
+                 doc.open();
+                 
+ 
+                // Tạo đối tượng Font cho chữ in đậm
+                com.lowagie.text.Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
+  
+                com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
+                // Tạo đối tượng Paragraph với văn bản "HOA DON MUA HANG" và định dạng chữ in đậm
+                Paragraph centerText = new Paragraph("Danh Sách Nhân Viên", boldFont);
+                centerText.setAlignment(Element.ALIGN_CENTER);
 
-        
-        
-      
-    
-        
+                // Thêm đối tượng Paragraph vào tài liệu
+                 
+                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                 float[] columnWidths = {1.5f, 2.5f, 1.5f, 1.5f, 1.5f};
+                 PdfPTable b1 = new PdfPTable(columnWidths);
+                 
+                
+                 //PdfPTable b1=new PdfPTable(5);
+                 b1.addCell("MANCC");
+                  b1.addCell("TENNCC");
+                   b1.addCell("SDT");
+                    b1.addCell("DIACHI");
+                     
+                     
+                 for (int i = 0; i < table.getRowCount(); i++) {
+                     String MANCC=table.getValueAt(i, 0).toString();
+                     String TENNCC=table.getValueAt(i, 1).toString();
+                     String SDT= table.getValueAt(i, 2).toString();
+                     String DIACHI=table.getValueAt(i, 3).toString();
+                     
+                     
+                     b1.addCell(MANCC);
+                     b1.addCell(TENNCC);
+                     b1.addCell(SDT);
+                     b1.addCell(DIACHI);
+                     
+                     
+            
+                 }
+                 doc.add(b1);
+                 
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+                 JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+             } catch (DocumentException ex) {
+                 Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+                 JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+             }  catch (IOException ex) {
+                    Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+           doc.close();
+             
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnThem.setBackground(new Color(255,143,246));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnThem.setBackground(new Color(255,204,255));
+            }
+            
+        });
+    }
     
 }
