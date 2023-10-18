@@ -9,6 +9,7 @@ import BUS.*;
 import DTO.*;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
 import java.util.*;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ import javax.swing.table.TableRowSorter;
  * @author Admin
  */
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
+    private TableRowSorter<TableModel> rowSorter ;
     public BUS_HoaDon hdBus = new BUS_HoaDon();
     public funcDungChung fuc = new funcDungChung();
     /**
@@ -132,12 +134,27 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 //FUCTION 
     // tùy chỉnh giao diện bảng 
-    public void changeTable(JTable tblTable){
-        tblTable.setRowHeight(30);
+    public void changeTable(JTable tbl_HoaDon){
         // Điều chỉnh chiều rộng của các cột tại đây
-//    tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
-//    tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
-    // Thực hiện tương tự cho các cột còn lại
+        //tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
+        //tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
+        // Thực hiện tương tự cho các cột còn lại
+        // Điều chỉnh chiều cao của các dòng
+       tbl_HoaDon.setRowHeight(40);
+
+       // Điều chỉnh font và chiều rộng của tiêu đề
+       JTableHeader header = tbl_HoaDon.getTableHeader();
+       header.setFont(new Font("Tahoma", Font.BOLD, 14));
+       header.setPreferredSize(new Dimension(50, 50));
+
+       // Căn giữa tiêu đề theo chiều dọc
+       DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
+       centerRenderer.setHorizontalAlignment(JLabel.CENTER);   
+       
+       rowSorter = new TableRowSorter<>(tbl_HoaDon.getModel());
+       tbl_HoaDon.setRowSorter(rowSorter);
+       tbl_HoaDon.validate();
+       tbl_HoaDon.repaint();
     }
     // hàm tạo bảng 
     public void loadHoaDonList(List<DTO_HoaDon> hoadon) {
@@ -173,19 +190,9 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
                 fuc.doubleToFormattedString(tienThanhToan), fuc.doubleToFormattedString(tienKhach), fuc.doubleToFormattedString(tienThua) };
             dtm.addRow(row);
         }
-
-        // Điều chỉnh chiều cao của các dòng
-       tbl_HoaDon.setRowHeight(40);
-
-       // Điều chỉnh font và chiều rộng của tiêu đề
-       JTableHeader header = tbl_HoaDon.getTableHeader();
-       header.setFont(new Font("Tahoma", Font.BOLD, 14));
-       header.setPreferredSize(new Dimension(50, 50));
-
-       // Căn giữa tiêu đề theo chiều dọc
-       DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
-       centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-     
+        changeTable(tbl_HoaDon);
+        
+    
     }
     
     
