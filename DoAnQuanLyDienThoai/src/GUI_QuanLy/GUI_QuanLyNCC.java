@@ -4,6 +4,26 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_NhaCc;
+import DAL.DAL_NhanVien;
+import DTO.DTO_NhaCc;
+import DTO.DTO_NhanVien;
+import QLController.QuanLyNhaCcController;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
+
 /**
  *
  * @author Admin
@@ -15,8 +35,13 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
     /**
      * Creates new form GUI_QuanLyNCC
      */
+     private BUS_NhaCc nccbus=new BUS_NhaCc();
+     QuanLyNhaCcController controller;
     public GUI_QuanLyNCC() {
         initComponents();
+        controller = new QuanLyNhaCcController(jpnView, btnThem, jtfTim,btnXuatfile,this);
+        controller.setDateToTable();
+        controller.setEvent();  
     }
 
     /**
@@ -31,15 +56,14 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         QuanlyNhaCungCap = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnNhapfile = new javax.swing.JButton();
+        btnXuatfile = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jpnView = new javax.swing.JPanel();
         QuanlyHoaDonGiaoHang = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
@@ -63,8 +87,8 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jPanel6.add(jTextField1);
+        jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTim);
 
         QuanlyNhaCungCap.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -89,49 +113,58 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
-        jButton5.setText("THÊM");
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setPreferredSize(new java.awt.Dimension(140, 50));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
+        btnThem.setText("THÊM");
+        btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton5);
+        jPanel8.add(btnThem);
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton9.setText("NHẬP FILE");
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton9);
+        btnNhapfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNhapfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
+        btnNhapfile.setText("NHẬP FILE");
+        btnNhapfile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNhapfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhapfile.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnNhapfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapfileActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnNhapfile);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton4.setText("XUẤT FILE");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton4);
+        btnXuatfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnXuatfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
+        btnXuatfile.setText("XUẤT FILE");
+        btnXuatfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnXuatfile.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatfileActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnXuatfile);
 
         QuanlyNhaCungCap.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MÃ NCC", "TÊN NCC", "SĐT", "ĐỊA CHỈ"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 998, Short.MAX_VALUE)
+        );
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 628, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -139,14 +172,14 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -258,22 +291,107 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         nhapHang.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        themNcc = new GUI_ThemThongTinNcc();
-        themNcc.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+     
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnNhapfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapfileActionPerformed
+       nccbus.themDS();
+            controller.setDateToTable();
+    }//GEN-LAST:event_btnNhapfileActionPerformed
+
+    private void btnXuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatfileActionPerformed
+        try{    
+                    System.out.println("xuat");
+                    XSSFWorkbook workbook =new XSSFWorkbook();
+                    XSSFSheet sheet =workbook.createSheet("Sản phẩm");
+                    XSSFRow headerRow = sheet.createRow(0);
+                    XSSFRow row=null;
+                    Cell cell=null;
+                    
+                    cell=headerRow.createCell(0,CellType.STRING);
+                    cell.setCellValue("STT");
+                    cell=headerRow.createCell(1,CellType.STRING);
+                    cell.setCellValue("Mã nhà cung cấp");
+                    cell=headerRow.createCell(2,CellType.STRING);
+                    cell.setCellValue("Tên nhà cung cấp");
+                    cell=headerRow.createCell(3,CellType.STRING);
+                    cell.setCellValue("Số điện thoại");
+                    cell=headerRow.createCell(4,CellType.STRING);
+                    cell.setCellValue("địa chỉ");
+//                    row =sheet.createRow(7);
+                    BUS_NhaCc ncc =new BUS_NhaCc();
+                    List<DTO_NhaCc> listItem= ncc.getList();
+                    List<DTO_NhaCc> listItem1=new ArrayList<>();
+                    for (int i=0;i<listItem.size();i++){
+                        if(listItem.get(i).getTRANGTHAI()==1)
+                            listItem1.add(listItem.get(i));
+                    }
+                    if (listItem1 != null){
+                        int s=listItem1.size();
+                        
+                        for (int i=0;i<s;i++){
+                            DTO_NhaCc sanpham=  listItem1.get(i);
+                            if(sanpham.getTRANGTHAI()==1){
+                            row =sheet.createRow(i+1);
+                            cell=row.createCell(0,CellType.NUMERIC);
+                            cell.setCellValue(i+1);
+                            cell=row.createCell(1,CellType.STRING);
+                            cell.setCellValue(sanpham.getMANCC());
+                            cell=row.createCell(2,CellType.STRING);
+                            cell.setCellValue(sanpham.getTENNCC());
+                            cell=row.createCell(3,CellType.STRING);
+                            cell.setCellValue(sanpham.getSDTNCC());
+                            cell=row.createCell(4,CellType.STRING);
+                            cell.setCellValue(sanpham.getDIACHI());}
+                        }
+
+                       JFileChooser fileChooser = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("File Excel", "xlsx");
+                        fileChooser.setFileFilter(filter);
+
+                        int returnValue = fileChooser.showSaveDialog(null);
+                        if (returnValue == JFileChooser.APPROVE_OPTION) {
+                            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                            // Đảm bảo đuôi file .xlsx
+                            if (!filePath.endsWith(".xlsx")) {
+                                filePath += ".xlsx";
+                            }
+
+                            // Lưu workbook ra file theo đường dẫn và tên file của người dùng đã chọn
+                            FileOutputStream fileOut;
+                            try {
+                                fileOut = new FileOutputStream(filePath);
+                                workbook.write(fileOut);
+                                fileOut.close();
+                                workbook.close();
+                                JOptionPane.showMessageDialog(null, "Xuất thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } 
+                    }
+                    
+
+                }catch (Exception h){
+                    h.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
+        
+                
+    }//GEN-LAST:event_btnXuatfileActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyHoaDonGiaoHang;
     private javax.swing.JPanel QuanlyNhaCungCap;
+    private javax.swing.JButton btnNhapfile;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXuatfile;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
@@ -282,12 +400,11 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel jpnView;
+    private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables
 }
