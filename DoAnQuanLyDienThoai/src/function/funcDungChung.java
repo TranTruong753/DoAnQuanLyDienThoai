@@ -5,6 +5,8 @@
 package function;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -20,6 +22,15 @@ public class funcDungChung {
         // Định dạng số thành "xxx,xxx,xxx"
         DecimalFormat df = new DecimalFormat("###,###,###");
         return df.format(number);
+    }
+    
+     public static String dateToString(Date date, String format) {
+        if (date == null) {
+            return null;
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(date);
     }
     
     public String traVeMacDinh(String number){

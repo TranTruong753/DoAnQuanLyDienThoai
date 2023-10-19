@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import DTO.*;
 import GUI_QuanLy.GUI_ThongTinHoaDon;
-import function.funcDungChung;
+import function.*;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -53,6 +53,20 @@ public class QuanLyHoaDonController {
        // Căn giữa tiêu đề theo chiều dọc
        DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
        centerRenderer.setHorizontalAlignment(JLabel.CENTER);   
+   
+       CenterRenderer centerRendererRow = new CenterRenderer();
+
+        // Áp dụng renderer cho các cột cụ thể (thay thế 'columnIndex' bằng chỉ số cột của bạn)
+       tbl_HoaDon.getColumnModel().getColumn(0).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(1).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(2).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(3).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(4).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(5).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(6).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(7).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(8).setCellRenderer(centerRendererRow);
+       tbl_HoaDon.getColumnModel().getColumn(9).setCellRenderer(centerRendererRow);
        
        rowSorter = new TableRowSorter<>(tbl_HoaDon.getModel());
        tbl_HoaDon.setRowSorter(rowSorter);

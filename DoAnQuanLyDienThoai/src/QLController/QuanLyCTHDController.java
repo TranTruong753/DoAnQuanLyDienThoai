@@ -6,7 +6,7 @@ package QLController;
 
 import BUS.*;
 import DTO.*;
-import function.funcDungChung;
+import function.*;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -31,16 +31,12 @@ public class QuanLyCTHDController {
     
     //FUCTION 
     // tùy chỉnh giao diện bảng 
-    public void changeTable(JTable tbl_HoaDon){
+    public void changeTable(JTable tbl_CTHD){
         // Điều chỉnh chiều rộng của các cột tại đây
-        //tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
-        //tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
-        // Thực hiện tương tự cho các cột còn lại
-        // Điều chỉnh chiều cao của các dòng
-       tbl_HoaDon.setRowHeight(40);
+       tbl_CTHD.setRowHeight(40);
 
        // Điều chỉnh font và chiều rộng của tiêu đề
-       JTableHeader header = tbl_HoaDon.getTableHeader();
+       JTableHeader header = tbl_CTHD.getTableHeader();
        header.setFont(new Font("Tahoma", Font.BOLD, 14));
        header.setPreferredSize(new Dimension(50, 50));
 
@@ -48,19 +44,28 @@ public class QuanLyCTHDController {
        DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
        centerRenderer.setHorizontalAlignment(JLabel.CENTER);   
        
-       rowSorter = new TableRowSorter<>(tbl_HoaDon.getModel());
-       tbl_HoaDon.setRowSorter(rowSorter);
-       tbl_HoaDon.validate();
-       tbl_HoaDon.repaint();
+       CenterRenderer centerRendererRow = new CenterRenderer();
+       // Áp dụng renderer cho các cột cụ thể (thay thế 'columnIndex' bằng chỉ số cột của bạn)
+       tbl_CTHD.getColumnModel().getColumn(0).setCellRenderer(centerRendererRow);
+       tbl_CTHD.getColumnModel().getColumn(1).setCellRenderer(centerRendererRow);
+       tbl_CTHD.getColumnModel().getColumn(2).setCellRenderer(centerRendererRow);
+       tbl_CTHD.getColumnModel().getColumn(3).setCellRenderer(centerRendererRow);
+       tbl_CTHD.getColumnModel().getColumn(4).setCellRenderer(centerRendererRow);
+       tbl_CTHD.getColumnModel().getColumn(5).setCellRenderer(centerRendererRow);
+ 
+       
+       rowSorter = new TableRowSorter<>(tbl_CTHD.getModel());
+       tbl_CTHD.setRowSorter(rowSorter);
+       tbl_CTHD.validate();
+       tbl_CTHD.repaint();
     }
     // hàm tạo bảng 
-    public void loadHoaDonList(List<DTO_CTHD> cthd,JTable table) {
+    public void loadCTHoaDonList(List<DTO_CTHD> cthd,JTable table) {
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {        //Không được chỉnh sửa hàng và cột của bảng
                 return false;
-            }
-            
+            }            
         };
         dtm.addColumn("MÃ HĐ");
         dtm.addColumn("MÃ SP");
@@ -87,9 +92,7 @@ public class QuanLyCTHDController {
             Object[] row = {maHd, maSp, tenSp, soLuong, fuc.doubleToFormattedString(donGia), fuc.doubleToFormattedString(thanhTien)};
             dtm.addRow(row);
         }
-        changeTable(table);
-        
-    
+        changeTable(table);   
     }
     
 }
