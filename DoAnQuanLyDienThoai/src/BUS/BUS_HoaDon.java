@@ -21,9 +21,9 @@ public class BUS_HoaDon {
     public List<DTO_HoaDon> getList() {
         return hd_DAL.getList();
     }
-    //cmt nhanhtestquangtruong
-    public ArrayList<DTO_HoaDon> timHd(String tk){
-        
-        return hd_DAL.timHd(tk);
-    }
+   
+//    public ArrayList<DTO_HoaDon> timHd(String tk){
+//        
+//        return hd_DAL.timHd(tk);
+//    }
 }

@@ -182,6 +182,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         dtm.addColumn("Tiền thanh toán");
         dtm.addColumn("Tiền khách");
         dtm.addColumn("Tiền thừa");
+        dtm.addColumn("Ngày kết thúc bảo hành");
         tbl_HoaDon.setModel(dtm);
         
         List<DTO_HoaDon> arr = new ArrayList<>() ;
@@ -199,9 +200,11 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
             Double tienThanhToan = em.getTienThanhToan();
             Double tienKhach = em.getTienKhach();
             Double tienThua = em.getTienThoi();
+            Date ngayKtBh = em.getNgayKtBh();
             
             Object[] row = {maHd, maNv, maKh, ngayLap, fuc.doubleToFormattedString(tongTien), fuc.doubleToFormattedString(giamGia), 
-                fuc.doubleToFormattedString(tienThanhToan), fuc.doubleToFormattedString(tienKhach), fuc.doubleToFormattedString(tienThua) };
+                fuc.doubleToFormattedString(tienThanhToan), fuc.doubleToFormattedString(tienKhach), 
+                fuc.doubleToFormattedString(tienThua), ngayKtBh };
             dtm.addRow(row);
         }
         changeTable(tbl_HoaDon);

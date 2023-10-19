@@ -20,6 +20,7 @@ public class DTO_HoaDon {
     private Double tienThanhToan ;
     private Double tienKhach ;
     private Double tienThoi ;
+    private Date ngayKtBh ;
     private int trangThai ;
     
     static int maSo = 1000 ;
@@ -27,7 +28,7 @@ public class DTO_HoaDon {
     public DTO_HoaDon() {
     }
 
-    public DTO_HoaDon( String maNV, String maKH, Date ngayLap, Double tongTien, Double giamGia, Double tienThanhToan, Double tienKhach, Double tienThoi, int trangThai) {
+    public DTO_HoaDon( String maNV, String maKH, Date ngayLap, Double tongTien, Double giamGia, Double tienThanhToan, Double tienKhach, Double tienThoi, Date ngayKtBh, int trangThai) {
         maSo += 1;
         this.maHD = "HD" + maSo;
         this.maNV = maNV;
@@ -38,6 +39,7 @@ public class DTO_HoaDon {
         this.tienThanhToan = tienThanhToan;
         this.tienKhach = tienKhach;
         this.tienThoi = tienThoi;
+        this.ngayKtBh = ngayKtBh;
         this.trangThai = trangThai;
     }
 
@@ -111,6 +113,14 @@ public class DTO_HoaDon {
 
     public void setTienThoi(Double tienThoi) {
         this.tienThoi = tienThoi;
+    }
+
+    public Date getNgayKtBh() {
+        return ngayKtBh;
+    }
+
+    public void setNgayKtBh(Date ngayKtBh) {
+        this.ngayKtBh = ngayKtBh;
     }
 
     public int getTrangThai() {
