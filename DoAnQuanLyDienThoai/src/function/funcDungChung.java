@@ -21,6 +21,11 @@ public class funcDungChung {
         DecimalFormat df = new DecimalFormat("###,###,###");
         return df.format(number);
     }
+    
+    public String traVeMacDinh(String number){
+        return number.replace(".", "");
+    }
+    
     public  boolean checkPassword(String password) {
         // Kiểm tra độ dài của mật khẩu
         if (password.length() < 8) {

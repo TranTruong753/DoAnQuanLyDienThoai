@@ -7,6 +7,7 @@ package GUI_QuanLy;
 import function.*;
 import BUS.*;
 import DTO.*;
+import QLController.QuanLyHoaDonController;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -14,6 +15,7 @@ import java.text.DecimalFormat;
 import java.util.*;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -28,16 +30,17 @@ import javax.swing.table.TableRowSorter;
  * @author Admin
  */
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
-    private TableRowSorter<TableModel> rowSorter ;
+    private QuanLyHoaDonController ql = new QuanLyHoaDonController();
     public BUS_HoaDon hdBus = new BUS_HoaDon();
-    public funcDungChung fuc = new funcDungChung();
+    
     /**
      * Creates new form GUI_QuanLyHoaDon
      */
     public GUI_QuanLyHoaDon() {
         initComponents();
-        loadHoaDonList(hdBus.getList());
-        eventFind();
+        ql.loadHoaDonList(hdBus.getList(),this.tbl_HoaDon);
+        ql.eventFind(this.jtfTimKiem);
+        ql.eventClickTable(tbl_HoaDon);
     }
 
     /**
@@ -51,7 +54,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
 
         QuanLyHoaDon = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTimKiem = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -69,13 +72,8 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jTextField1);
+        jtfTimKiem.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTimKiem);
 
         QuanLyHoaDon.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -131,11 +129,6 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         add(QuanLyHoaDon, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanLyHoaDon;
@@ -143,102 +136,9 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jtfTimKiem;
     private javax.swing.JTable tbl_HoaDon;
     // End of variables declaration//GEN-END:variables
-//FUCTION 
-    // tùy chỉnh giao diện bảng 
-    public void changeTable(JTable tbl_HoaDon){
-        // Điều chỉnh chiều rộng của các cột tại đây
-        //tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
-        //tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
-        // Thực hiện tương tự cho các cột còn lại
-        // Điều chỉnh chiều cao của các dòng
-       tbl_HoaDon.setRowHeight(40);
 
-       // Điều chỉnh font và chiều rộng của tiêu đề
-       JTableHeader header = tbl_HoaDon.getTableHeader();
-       header.setFont(new Font("Tahoma", Font.BOLD, 14));
-       header.setPreferredSize(new Dimension(50, 50));
-
-       // Căn giữa tiêu đề theo chiều dọc
-       DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
-       centerRenderer.setHorizontalAlignment(JLabel.CENTER);   
-       
-       rowSorter = new TableRowSorter<>(tbl_HoaDon.getModel());
-       tbl_HoaDon.setRowSorter(rowSorter);
-       tbl_HoaDon.validate();
-       tbl_HoaDon.repaint();
-    }
-    // hàm tạo bảng 
-    public void loadHoaDonList(List<DTO_HoaDon> hoadon) {
-        DefaultTableModel dtm = new DefaultTableModel();
-        dtm.addColumn("MÃ HĐ");
-        dtm.addColumn("MÃ NV");
-        dtm.addColumn("MÃ KH");
-        dtm.addColumn("Ngày lập");
-        dtm.addColumn("Tổng Tiền");
-        dtm.addColumn("Giảm giá");
-        dtm.addColumn("Tiền thanh toán");
-        dtm.addColumn("Tiền khách");
-        dtm.addColumn("Tiền thừa");
-        dtm.addColumn("Ngày kết thúc bảo hành");
-        tbl_HoaDon.setModel(dtm);
-        
-        List<DTO_HoaDon> arr = new ArrayList<>() ;
-        //arr = empBUS.getAllEmployees();
-        arr = hoadon;
-        for (int i = 0; i < arr.size(); i++) {
-            DTO_HoaDon em = arr.get(i);
-            
-            String maHd = em.getMaHD();
-            String maNv = em.getMaNV();
-            String maKh = em.getMaKH();
-            Date ngayLap = em.getNgayLap();
-            Double tongTien = em.getTongTien();
-            Double giamGia = em.getGiamGia();
-            Double tienThanhToan = em.getTienThanhToan();
-            Double tienKhach = em.getTienKhach();
-            Double tienThua = em.getTienThoi();
-            Date ngayKtBh = em.getNgayKtBh();
-            
-            Object[] row = {maHd, maNv, maKh, ngayLap, fuc.doubleToFormattedString(tongTien), fuc.doubleToFormattedString(giamGia), 
-                fuc.doubleToFormattedString(tienThanhToan), fuc.doubleToFormattedString(tienKhach), 
-                fuc.doubleToFormattedString(tienThua), ngayKtBh };
-            dtm.addRow(row);
-        }
-        changeTable(tbl_HoaDon);
-        
-    
-    }
-    
-    public void eventFind(){
-        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                String text = jTextField1.getText();
-                if(text.trim().length() == 0){
-                    rowSorter.setRowFilter(null);
-                }else{
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                String text = jTextField1.getText();
-                if(text.trim().length() == 0){
-                    rowSorter.setRowFilter(null);
-                }else{
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                
-            }
-        });
-    }
 
 }

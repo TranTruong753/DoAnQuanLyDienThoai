@@ -45,13 +45,11 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
      * Creates new form GUI_GiaoDienChinh
      */
     public GUI_GiaoDienChinh() {
-        this.setUndecorated(true);       
-        initComponents();
-        this.setLocationRelativeTo(null) ;
+        this.setUndecorated(true);      
+        initComponents();       
+        this.setLocationRelativeTo(null) ;   
         this.settingColor();    
-        this.addMenu();
-       
-        
+        this.addMenu();  
     }
 
     //FUNCITION
