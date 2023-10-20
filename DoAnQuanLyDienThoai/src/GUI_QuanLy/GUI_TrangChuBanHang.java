@@ -4,6 +4,11 @@
  */
 package GUI_QuanLy;
 
+import BUS.*;
+import DTO.*;
+import java.awt.Dimension;
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
@@ -13,10 +18,41 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     /**
      * Creates new form GUI_TrangChuBanHang
      */
+    public DTO_SanPham sp = new DTO_SanPham();
+    public ArrayList<DTO_SanPham> listsp = new ArrayList<>();
+    public BUS_SanPham spBus = new BUS_SanPham();
+    public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
+    
     public GUI_TrangChuBanHang() {
         initComponents();
+        showSp();
     }
 
+    public void showSp(){
+        listsp.addAll(spBus.getList());
+        long soLuong = Math.round(Double.valueOf(listsp.size())/3) + 1  ;
+        int height = (int)soLuong * 317;
+        System.out.println(height);
+        Dimension preferredSize = new Dimension(850, height); 
+        jPanelSPs.setPreferredSize(preferredSize);
+     
+        for(int i = 0;i<listsp.size();i++){
+            sp = listsp.get(i);
+            GUI_ContainerPhone container = new GUI_ContainerPhone(sp);
+            containers.add(container);       
+        }
+        for(GUI_ContainerPhone ctn:containers){
+            jPanelSPs.add(ctn);
+        }
+        
+        
+    }
+     
+    public static void main(String[] args) {
+         GUI_TrangChuBanHang sp = new GUI_TrangChuBanHang();
+         
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,8 +69,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel16 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel18 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelSPs = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -99,30 +134,13 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel3.add(jPanel15, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane1.setToolTipText("");
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(850, 30000));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(850, 6000));
 
-        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel18.setPreferredSize(new java.awt.Dimension(850, 30000));
+        jPanelSPs.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 15);
         flowLayout1.setAlignOnBaseline(true);
-        jPanel18.setLayout(flowLayout1);
-
-        jPanel4.setPreferredSize(new java.awt.Dimension(250, 300));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jPanel18.add(jPanel4);
-
-        jScrollPane1.setViewportView(jPanel18);
+        jPanelSPs.setLayout(flowLayout1);
+        jScrollPane1.setViewportView(jPanelSPs);
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -269,15 +287,14 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelSPs;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;

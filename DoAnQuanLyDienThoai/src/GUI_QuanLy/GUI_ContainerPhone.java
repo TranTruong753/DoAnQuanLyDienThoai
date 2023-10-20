@@ -4,12 +4,20 @@
  */
 package GUI_QuanLy;
 
+import BUS.*;
+import DTO.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -21,13 +29,47 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
     /**
      * Creates new form GUI_ContainerPhone
      */
-    public String src = "";
+    public DTO_SanPham sp = new DTO_SanPham();
+    public BUS_SanPham spBus = new BUS_SanPham();
+    public ArrayList<GUI_ContainerPhone> container = new ArrayList<>();
+
+  
     
-    
-    public GUI_ContainerPhone() {
-        initComponents();     
+    public GUI_ContainerPhone(DTO_SanPham sp) {
+        initComponents();
+        this.sp = sp;
+        this.loadHinhAnhSp(this.sp.getImg().toString(), jlbHinhAnh, 250,250);
+        this.jlbTen.setText(this.sp.getTenSp());
     }
     
+    public void loadHinhAnhSp(String scr,JLabel jlb,int width,int height){
+       int desiredWidth = width; // Chiều rộng mong muốn
+        int desiredHeight = height; // Chiều cao mong muốn
+
+        try {
+            // Kiểm tra xem đường dẫn không null
+            if (scr != null) {
+                // Đọc hình ảnh từ đường dẫn
+                BufferedImage originalImage = ImageIO.read(getClass().getResource(scr));
+
+                // Thay đổi kích thước hình ảnh
+                Image resizedImage = originalImage.getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
+
+                // Tạo biểu tượng từ hình ảnh đã thay đổi kích thước
+                ImageIcon imageIcon = new ImageIcon(resizedImage);
+
+                // Đặt biểu tượng cho thành phần giao diện người dùng
+                jlb.setIcon(imageIcon);
+            } else {
+                // Xử lý trường hợp đường dẫn là null hoặc không tồn tại
+                // Có thể hiển thị một hình ảnh mặc định hoặc thông báo lỗi tùy ý
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+   
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,30 +81,37 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
 
         jPanel1 = new RoundedPanel(100);
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jlbHinhAnh = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlbTen = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("HÌNH ẢNH");
+        jlbHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbHinhAnh.setText("HÌNH ẢNH");
+        jlbHinhAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(17, 153, 142)));
+        jlbHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbHinhAnhMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jlbHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jlbHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -71,9 +120,10 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         jPanel4.setPreferredSize(new java.awt.Dimension(250, 50));
         jPanel4.setLayout(new java.awt.GridLayout(2, 1));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TÊN PHONE");
-        jPanel4.add(jLabel1);
+        jlbTen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlbTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbTen.setText("TÊN PHONE");
+        jPanel4.add(jlbTen);
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
@@ -89,15 +139,20 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jlbHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbHinhAnhMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jlbHinhAnhMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel jlbHinhAnh;
+    private javax.swing.JLabel jlbTen;
     // End of variables declaration//GEN-END:variables
 class RoundedPanel extends JPanel
     {
