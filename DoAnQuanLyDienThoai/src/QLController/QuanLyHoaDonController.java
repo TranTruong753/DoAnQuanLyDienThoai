@@ -149,6 +149,7 @@ public class QuanLyHoaDonController {
             }
         });
     }
+    
     public void eventClickTable(JTable table){
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -183,16 +184,11 @@ public class QuanLyHoaDonController {
                     hd.setTrangThai(1);
                     
                     GUI_ThongTinHoaDon hdFrame = new GUI_ThongTinHoaDon(hd,QuanLyHoaDonController.this);
-                    hdFrame.setTitle("Thông tin khách hàng");
+                    hdFrame.setTitle("Thông tin hóa đơn");
                     hdFrame.setResizable(false);
                     hdFrame.setLocationRelativeTo(null);
                     hdFrame.setVisible(true);
                     
-//                    GUI_ThongTinNcc KHframe = new GUI_ThongTinNcc(NhanVien,QuanLyNhaCcController.this);
-//                    KHframe.setTitle("Thông tin khách hàng");
-//                    KHframe.setResizable(false);
-//                    KHframe.setLocationRelativeTo(null);
-//                    KHframe.setVisible(true);
                 }
             }
             

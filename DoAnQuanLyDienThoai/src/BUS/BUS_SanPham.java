@@ -5,11 +5,22 @@
 package BUS;
 
 import DTO.*;
-
+import DAL.*;
+import java.awt.Component;
+import java.util.*;
 /**
  *
  * @author Admin
  */
 public class BUS_SanPham {
+    private DAL_SanPham sp_DAL = new DAL_SanPham();
+    private Component rootPane;
     
+    public List<DTO_SanPham> getList(){
+        return sp_DAL.getList();
+    }
+    
+    public ArrayList<DTO_SanPham> timSp(String key){     
+        return sp_DAL.timSp(key);
+    }
 }

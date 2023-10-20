@@ -4,6 +4,10 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_SanPham;
+import DTO.DTO_SanPham;
+import QLController.*;
+
 /**
  *
  * @author Admin
@@ -11,11 +15,16 @@ package GUI_QuanLy;
 public class GUI_QuanLySanPham extends javax.swing.JPanel {
     
     private GUI_ThemThongTinSanPham themSp ;
+    private QuanLySanPhamController ql = new QuanLySanPhamController();
+    private BUS_SanPham spBus = new BUS_SanPham();
     /**
      * Creates new form GUI_QuanLySanPham
      */
     public GUI_QuanLySanPham() {
         initComponents();
+        ql.loadSanPhamList(spBus.getList(), this.tblSp);
+        ql.eventFind(this.jtfTimKiem);
+        ql.eventClickTable(tblSp);
     }
 
     /**
@@ -29,7 +38,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
         QuanlySanPham = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTimKiem = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -37,7 +46,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblSp = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -49,8 +58,8 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jPanel6.add(jTextField1);
+        jtfTimKiem.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTimKiem);
 
         QuanlySanPham.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -107,7 +116,8 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblSp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -115,7 +125,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
                 "MÃ SP", "TÊN SP", "MÃ THƯƠNG HIỆU", "MÀU SẮC", "DUNG LƯỢNG", "ĐƠN GIÁ", "KHUYẾN MÃI", "SỐ LƯỢNG TỒN KHO"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblSp);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,7 +151,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        themSp = new GUI_ThemThongTinSanPham();
+        themSp = new GUI_ThemThongTinSanPham(ql);
         themSp.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -156,7 +166,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jtfTimKiem;
+    private javax.swing.JTable tblSp;
     // End of variables declaration//GEN-END:variables
 }

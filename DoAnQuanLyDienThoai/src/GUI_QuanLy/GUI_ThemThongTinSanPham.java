@@ -4,6 +4,13 @@
  */
 package GUI_QuanLy;
 
+import BUS.*;
+import DTO.*;
+import QLController.*;
+import function.*;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Admin
@@ -13,11 +20,34 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     /**
      * Creates new form GUI_UpdateThongTinSanPham2
      */
-    public GUI_ThemThongTinSanPham() {
+    private DTO_SanPham spDTO = new DTO_SanPham();
+    private BUS_SanPham spBUS = new BUS_SanPham();
+    private QuanLySanPhamController ql = new QuanLySanPhamController();
+    
+    private ArrayList<String> listMau ;
+    public GUI_ThemThongTinSanPham( QuanLySanPhamController ql) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.ql = ql;
+        this.loadListMauSacComBox();
     }
 
+    public void loadListMauSacComBox(){
+        listMau = new ArrayList<>();
+        listMau.add("Danh sách màu");
+        for(DTO_SanPham sp:spBUS.getList()){
+             String mauSac = sp.getMauSac();      
+            // Kiểm tra xem màu này đã tồn tại trong danh sách chưa
+            if (!listMau.contains(mauSac)) {
+                listMau.add(mauSac);
+            }
+        }
+         // Tạo một DefaultComboBoxModel với danh sách màu
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(listMau.toArray(new String[0]));
+
+        // Đặt model cho JComboBox
+        jComboBox1.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,21 +106,23 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jPanel8.setOpaque(false);
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Mã SP");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 50, 30));
 
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên SP");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 11, -1, -1));
+        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 11, 50, 30));
 
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField4.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel8.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
@@ -110,23 +142,24 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
         jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel28.setText("Mã TH");
         jLabel28.setPreferredSize(new java.awt.Dimension(50, 17));
-        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 81, -1, -1));
+        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 67, -1, 30));
 
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField5.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 75, -1, -1));
+        jPanel8.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel29.setText("Màu Sắc");
         jLabel29.setPreferredSize(new java.awt.Dimension(180, 17));
         jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 97, -1));
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách màu", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách màu", " " }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(80, 30));
         jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 200, -1));
 
@@ -144,25 +177,27 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("Dung lượng");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 151, -1, -1));
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
 
+        jTextField13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField13.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+        jPanel8.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel30.setText("Đơn giá");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 60, -1));
+        jPanel8.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 137, 60, 20));
 
+        jTextField14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField14.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, -1, -1));
+        jPanel8.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
 
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(650, 30));
@@ -178,29 +213,31 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel31.setText("Khuyến mãi");
         jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 187, -1, 30));
 
+        jTextField15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField15.setPreferredSize(new java.awt.Dimension(200, 30));
         jTextField15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField15ActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
+        jPanel8.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setText("SL tồn kho");
         jLabel32.setPreferredSize(new java.awt.Dimension(125, 17));
-        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 210, 80, -1));
+        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 187, 80, 30));
 
+        jTextField16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField16.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
+        jPanel8.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
 
         jPanel2.add(jPanel8);
 
@@ -303,44 +340,44 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI_ThemThongTinSanPham().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GUI_ThemThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new GUI_ThemThongTinSanPham().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -40,7 +40,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         initComponents();
         ql.loadHoaDonList(hdBus.getList(),this.tbl_HoaDon);
         ql.eventFind(this.jtfTimKiem);
-        ql.eventClickTable(tbl_HoaDon);
+        ql.eventClickTable(this.tbl_HoaDon);
     }
 
     /**

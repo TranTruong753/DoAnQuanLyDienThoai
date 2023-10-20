@@ -4,7 +4,7 @@
  */
 package DAL;
 
-import DTO.DTO_HoaDon;
+import DTO.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
