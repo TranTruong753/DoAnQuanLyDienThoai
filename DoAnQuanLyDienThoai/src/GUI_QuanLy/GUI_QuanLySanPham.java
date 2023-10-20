@@ -7,6 +7,7 @@ package GUI_QuanLy;
 import BUS.BUS_SanPham;
 import DTO.DTO_SanPham;
 import QLController.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,14 +16,16 @@ import QLController.*;
 public class GUI_QuanLySanPham extends javax.swing.JPanel {
     
     private GUI_ThemThongTinSanPham themSp ;
-    private QuanLySanPhamController ql = new QuanLySanPhamController();
+    private QuanLySanPhamController ql ;
     private BUS_SanPham spBus = new BUS_SanPham();
     /**
      * Creates new form GUI_QuanLySanPham
      */
+    
     public GUI_QuanLySanPham() {
         initComponents();
-        ql.loadSanPhamList(spBus.getList(), this.tblSp);
+        ql =  new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(),this.tblSp);
+        //ql.loadSanPhamList(spBus.getList(), this.tblSp);
         ql.eventFind(this.jtfTimKiem);
         ql.eventClickTable(tblSp);
     }

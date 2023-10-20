@@ -39,10 +39,6 @@ public class QuanLyHoaDonController {
     // tùy chỉnh giao diện bảng 
     public void changeTable(JTable tbl_HoaDon){
         // Điều chỉnh chiều rộng của các cột tại đây
-        //tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
-        //tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
-        // Thực hiện tương tự cho các cột còn lại
-        // Điều chỉnh chiều cao của các dòng
        tbl_HoaDon.setRowHeight(40);
 
        // Điều chỉnh font và chiều rộng của tiêu đề

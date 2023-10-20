@@ -69,6 +69,10 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         }
     }
    
+    public void visibleDialog(){
+        GUI_ThongTinMuaSanPham guiThongTinSp = new GUI_ThongTinMuaSanPham(this, true, sp);
+        guiThongTinSp.setVisible(true);
+    }
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,6 +94,11 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -130,6 +139,11 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
 
         jButton2.setText("MUA");
         jButton2.setPreferredSize(new java.awt.Dimension(240, 23));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2);
 
         jPanel4.add(jPanel3);
@@ -141,8 +155,18 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
 
     private void jlbHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbHinhAnhMouseClicked
         // TODO add your handling code here:
-        
+        this.visibleDialog();
     }//GEN-LAST:event_jlbHinhAnhMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        this.visibleDialog();      
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.visibleDialog();   
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

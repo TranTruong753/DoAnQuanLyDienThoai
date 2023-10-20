@@ -31,8 +31,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     public void showSp(){
         listsp.addAll(spBus.getList());
         long soLuong = Math.round(Double.valueOf(listsp.size())/3) + 1  ;
-        int height = (int)soLuong * 317;
-        System.out.println(height);
+        int height = (int)soLuong * 317;       
         Dimension preferredSize = new Dimension(850, height); 
         jPanelSPs.setPreferredSize(preferredSize);
      

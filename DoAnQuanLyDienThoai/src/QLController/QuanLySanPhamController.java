@@ -33,27 +33,33 @@ import javax.swing.table.TableRowSorter;
  */
 public class QuanLySanPhamController {
     private TableRowSorter<TableModel> rowSorter ;
-    public BUS_SanPham spBus = new BUS_SanPham();
+    private BUS_SanPham spBus = new BUS_SanPham();
+    public ArrayList<DTO_SanPham> listSp = new ArrayList<>();
+    public JTable jtable ;
+
+    public QuanLySanPhamController() {
+    }
+ 
+    public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,JTable jtb) {
+        this.jtable = jtb;
+        this.listSp.addAll(listSp) ;
+        this.loadSanPhamList(listSp,jtb);
+    }
+    
+    
     funcDungChung fuc = new funcDungChung();
     //FUCTION 
     // tùy chỉnh giao diện bảng 
-    public void changeTable(JTable tbl_Sp){
-        // Điều chỉnh chiều rộng của các cột tại đây
-        //tbl_HoaDon.getColumnModel().getColumn(0).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 0 là 100 pixels
-        //tbl_HoaDon.getColumnModel().getColumn(1).setPreferredWidth(200); // Ví dụ: Đặt chiều rộng của cột 1 là 80 pixels
-        // Thực hiện tương tự cho các cột còn lại
-        // Điều chỉnh chiều cao của các dòng
+    public void changeTable(JTable tbl_Sp){       
        tbl_Sp.setRowHeight(40);
-
        // Điều chỉnh font và chiều rộng của tiêu đề
        JTableHeader header = tbl_Sp.getTableHeader();
        header.setFont(new Font("Tahoma", Font.BOLD, 14));
        header.setPreferredSize(new Dimension(50, 50));
-
        // Căn giữa tiêu đề theo chiều dọc
        DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
        centerRenderer.setHorizontalAlignment(JLabel.CENTER);   
-   
+  
        CenterRenderer centerRendererRow = new CenterRenderer();
 
         // Áp dụng renderer cho các cột cụ thể (thay thế 'columnIndex' bằng chỉ số cột của bạn)
@@ -164,7 +170,6 @@ public class QuanLySanPhamController {
                     }
                     
                     GUI_UpdateThongTinSanPham spFrame = new GUI_UpdateThongTinSanPham(sp,QuanLySanPhamController.this);
-//                    GUI_ThongTinHoaDon hdFrame = new GUI_ThongTinHoaDon(hd,QuanLyHoaDonController.this);
                     spFrame.setTitle("Thông tin sản phẩm");
                     spFrame.setResizable(false);
                     spFrame.setLocationRelativeTo(null);

@@ -23,4 +23,17 @@ public class BUS_SanPham {
     public ArrayList<DTO_SanPham> timSp(String key){     
         return sp_DAL.timSp(key);
     }
+    
+    public boolean addSanPham(DTO_SanPham sp){
+        if(sp_DAL.addDTO_SanPham(sp))
+            return true;
+          return false;
+        
+    }
+    public boolean updateNhanVien(DTO_SanPham sp){
+        if(sp_DAL.updateDTO_SanPham(sp))
+            return true;
+          return false;
+           
+    }
 }

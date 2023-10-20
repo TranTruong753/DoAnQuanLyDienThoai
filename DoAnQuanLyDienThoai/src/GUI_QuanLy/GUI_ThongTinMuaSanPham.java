@@ -1,13 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package GUI_QuanLy;
 
 import BUS.BUS_SanPham;
-import DTO.DTO_SanPham;
-import QLController.QuanLySanPhamController;
+import DTO.*;
 import function.*;
+import java.awt.Frame;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -15,45 +15,40 @@ import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author Admin
  */
-public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GUI_UpdateThongTinSanPham2
-     */
-    private DTO_SanPham spDTO = new DTO_SanPham();
-    private BUS_SanPham spBUS = new BUS_SanPham();
-    private QuanLySanPhamController ql = new QuanLySanPhamController();
+public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
+    
+    private JPanel parentPanel; // Thêm một trường JPanel
     private funcDungChung fuc = new funcDungChung();
     private ArrayList<String> listMau ;
-    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql) {
+    private DTO_SanPham spDTO = new DTO_SanPham();
+    private BUS_SanPham spBUS = new BUS_SanPham();
+    
+    public GUI_ThongTinMuaSanPham(JPanel parent, boolean modal, DTO_SanPham sp) {
+        super((Frame) SwingUtilities.getWindowAncestor(parent), modal);
+        this.parentPanel = parent; // Lưu trữ JPanel làm parentPanel
+        this.spDTO = sp ;
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.spDTO = sp;
-        this.ql = ql;
+        setLocationRelativeTo(null) ;
         this.loadListMauSacComBox();
         this.viewThongTinSp();
     }
     
-    public void onOrOffEdit(boolean state){
-        jtfMaSp.setEditable(state);
-        jtfMaTh.setEditable(state);
-        jtfTenSp.setEditable(state);
-        jtfDungLuong.setEditable(state);
-        jtfDonGia.setEditable(state);
-        jtfKhuyenMai.setEditable(state);
-        jtfSl.setEditable(state);
-        jcbMauSac.setEnabled(state);
-    }
-    
     public void viewThongTinSp(){
-        onOrOffEdit(false);
+        jtfMaSp.setEditable(false);
+        jtfMaTh.setEditable(false);
+        jtfTenSp.setEditable(false);
+        jtfDungLuong.setEditable(false);
+        jtfDonGia.setEditable(false);
+        jtfKhuyenMai.setEditable(false);
+        jtfSl.setEditable(false);
+        jcbMauSac.setEnabled(false);
         
         jtfMaSp.setText(spDTO.getMaSp().toString());
         jtfMaTh.setText(spDTO.getMaThuongHieu().toString());
@@ -118,7 +113,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         // Đặt model cho JComboBox
         jcbMauSac.setModel(model);
     }
-     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,17 +150,14 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jlbHinhAnh = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1009, 552));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 574));
@@ -219,7 +211,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel28.setText("Mã TH");
         jLabel28.setPreferredSize(new java.awt.Dimension(50, 17));
-        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 67, -1, 30));
 
         jtfMaTh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMaTh.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -229,7 +221,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel29.setText("Màu Sắc");
         jLabel29.setPreferredSize(new java.awt.Dimension(180, 17));
-        jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 80, 60, -1));
+        jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 97, -1));
 
         jcbMauSac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbMauSac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách màu", " " }));
@@ -256,7 +248,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("Dung lượng");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 127, -1, 30));
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
 
         jtfDungLuong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDungLuong.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -266,7 +258,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel30.setText("Đơn giá");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 127, 60, 30));
+        jPanel8.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 137, 60, 20));
 
         jtfDonGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDonGia.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -291,17 +283,22 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel31.setText("Khuyến mãi");
-        jLabel31.setPreferredSize(new java.awt.Dimension(110, 30));
-        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
+        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 187, -1, 30));
 
         jtfKhuyenMai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfKhuyenMai.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfKhuyenMaiActionPerformed(evt);
+            }
+        });
         jPanel8.add(jtfKhuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setText("SL tồn kho");
-        jLabel32.setPreferredSize(new java.awt.Dimension(125, 30));
-        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 80, 30));
+        jLabel32.setPreferredSize(new java.awt.Dimension(125, 17));
+        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 187, 80, 30));
 
         jtfSl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfSl.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -341,21 +338,10 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(17, 153, 142));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        jButton2.setText("Lưu");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton2);
-
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhsuaHang.png"))); // NOI18N
-        jButton3.setText("Sửa");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartadd.png"))); // NOI18N
+        jButton3.setText("Thêm");
+        jButton3.setPreferredSize(new java.awt.Dimension(110, 40));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -363,16 +349,11 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         });
         jPanel5.add(jButton3);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaSanPham.png"))); // NOI18N
-        jButton4.setText("Xóa");
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton4);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
+        jButton2.setText("Hủy");
+        jButton2.setPreferredSize(new java.awt.Dimension(110, 40));
+        jPanel5.add(jButton2);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
@@ -388,17 +369,16 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 
         jPanel6.add(jPanel7);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Chọn");
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel6.add(jButton1);
-
         jPanel1.add(jPanel6, java.awt.BorderLayout.LINE_START);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfKhuyenMaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfKhuyenMaiActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
@@ -407,33 +387,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.jtfDonGia.setEditable(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        String donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", ""));
-        spDTO.setDonGia(Double.valueOf(donGia));
-        if(spBUS.updateNhanVien(spDTO)){
-            JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
-            ql.loadSanPhamList(spBUS.getList(), ql.jtable);
-            this.dispose();
-        }
-        else
-            JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thất bại !");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        spDTO.setTrangThai(0);
-        if(spBUS.updateNhanVien(spDTO)){
-            JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
-            ql.loadSanPhamList(spBUS.getList(), ql.jtable);
-            this.dispose();
-        }
-        else
-            JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,32 +406,34 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinMuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinMuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinMuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinMuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
 //
-//        /* Create and display the form */
+//        /* Create and display the dialog */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new GUI_UpdateThongTinSanPham().setVisible(true);
+//                GUI_ThongTinMuaSanPham dialog = new GUI_ThongTinMuaSanPham(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
 //            }
 //        });
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
