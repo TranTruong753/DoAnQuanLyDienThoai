@@ -32,6 +32,8 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private QuanLySanPhamController ql = new QuanLySanPhamController();
     private funcDungChung fuc = new funcDungChung();
     private ArrayList<String> listMau ;
+    private GUI_TrangChuBanHang trangBanHang ;
+    
     public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -417,6 +419,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         if(spBUS.updateNhanVien(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
             ql.loadSanPhamList(spBUS.getList(), ql.jtable);
+            
             this.dispose();
         }
         else
@@ -428,7 +431,8 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         spDTO.setTrangThai(0);
         if(spBUS.updateNhanVien(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
-            ql.loadSanPhamList(spBUS.getList(), ql.jtable);
+            ql.loadSanPhamList(spBUS.getList(), ql.jtable);        
+            trangBanHang = new GUI_TrangChuBanHang();
             this.dispose();
         }
         else

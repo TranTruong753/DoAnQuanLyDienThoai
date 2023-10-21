@@ -6,8 +6,10 @@ package GUI_QuanLy;
 
 import BUS.*;
 import DTO.*;
+import QLController.QuanLySanPhamController;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,39 +20,55 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     /**
      * Creates new form GUI_TrangChuBanHang
      */
+    public QuanLySanPhamController ql ;
     public DTO_SanPham sp = new DTO_SanPham();
     public ArrayList<DTO_SanPham> listsp = new ArrayList<>();
     public BUS_SanPham spBus = new BUS_SanPham();
     public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
     
     public GUI_TrangChuBanHang() {
-        initComponents();
-        showSp();
+       initComponents();     
+       ql = new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs);
+    }
+
+    public void load(){
+        ql.showSp(spBus.getList(), containers, jPanelSPs); ;
     }
 
     public void showSp(){
-        listsp.addAll(spBus.getList());
-        long soLuong = Math.round(Double.valueOf(listsp.size())/3) + 1  ;
+        System.out.println(spBus.getList().size());
+        jPanelSPs.removeAll();  
+        jPanelSPs.revalidate(); // Cập nhật giao diện người dùng
+        jPanelSPs.repaint(); // Vẽ lại JPanel
+//        listsp.clear();
+//           System.out.println(listsp.size());
+//        listsp.addAll(spBus.getList());
+        containers.clear();
+        long soLuong = Math.round(Double.valueOf(spBus.getList().size())/3) + 1  ;
         int height = (int)soLuong * 317;       
         Dimension preferredSize = new Dimension(850, height); 
         jPanelSPs.setPreferredSize(preferredSize);
      
-        for(int i = 0;i<listsp.size();i++){
-            sp = listsp.get(i);
-            GUI_ContainerPhone container = new GUI_ContainerPhone(sp);
+        for(int i = 0;i<spBus.getList().size();i++){
+           // sp = spBus.getList().get(i);
+            if(!spBus.getList().contains(spBus.getList().get(i))){
+                 GUI_ContainerPhone container = new GUI_ContainerPhone(spBus.getList().get(i));
             containers.add(container);       
+            }
+           
         }
-        for(GUI_ContainerPhone ctn:containers){
-            jPanelSPs.add(ctn);
+        for(GUI_ContainerPhone ctn:containers){         
+                jPanelSPs.add(ctn);                      
         }
         
-        
+       
     }
      
-    public static void main(String[] args) {
-         GUI_TrangChuBanHang sp = new GUI_TrangChuBanHang();
-         
-    }
+//    public static void main(String[] args) {
+//        
+//         GUI_TrangChuBanHang sp = new GUI_TrangChuBanHang();
+//         
+//    }
  
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,6 +85,8 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanelSPs = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -111,6 +131,20 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
 
+        jButton1.setText("delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("show");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -118,14 +152,24 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(571, Short.MAX_VALUE))
+                .addGap(188, 188, 188)
+                .addComponent(jButton1)
+                .addGap(91, 91, 91)
+                .addComponent(jButton2)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(38, 38, 38))
         );
 
         jPanel15.add(jPanel16, java.awt.BorderLayout.CENTER);
@@ -271,8 +315,24 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jPanelSPs.removeAll();  
+        jPanelSPs.revalidate(); // Cập nhật giao diện người dùng
+        jPanelSPs.repaint(); // Vẽ lại JPanel
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        ql.showSp(spBus.getList(), containers, jPanelSPs); ;
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

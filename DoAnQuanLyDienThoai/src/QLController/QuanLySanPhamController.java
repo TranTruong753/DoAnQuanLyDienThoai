@@ -6,6 +6,7 @@ package QLController;
 
 import BUS.*;
 import DTO.*;
+import GUI_QuanLy.GUI_ContainerPhone;
 import GUI_QuanLy.GUI_UpdateThongTinSanPham;
 import function.*;
 import java.awt.Dimension;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -34,22 +36,60 @@ import javax.swing.table.TableRowSorter;
 public class QuanLySanPhamController {
     private TableRowSorter<TableModel> rowSorter ;
     private BUS_SanPham spBus = new BUS_SanPham();
+
     public ArrayList<DTO_SanPham> listSp = new ArrayList<>();
     public JTable jtable ;
-
+    public funcDungChung fuc = new funcDungChung();
+    public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
+    public JPanel jPanelSPs  ;
     public QuanLySanPhamController() {
     }
  
+    public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs) {
+        this.listSp.clear();
+        this.listSp.addAll(listSp);
+        this.jPanelSPs = new JPanel(); 
+        this.jPanelSPs = jPanelSPs;
+        this.containers.clear();
+        this.containers.addAll(containers);
+        this.showSp(listSp, containers, jPanelSPs);
+       
+    }
+    
     public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,JTable jtb) {
         this.jtable = jtb;
-        this.listSp.addAll(listSp) ;
+       // this.listSp.addAll(listSp) ;
         this.loadSanPhamList(listSp,jtb);
     }
     
     
-    funcDungChung fuc = new funcDungChung();
+    
     //FUCTION 
     // tùy chỉnh giao diện bảng 
+    
+     public void showSp(List<DTO_SanPham> listsp, ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs){           
+        jPanelSPs.removeAll();     
+        jPanelSPs.revalidate(); // Cập nhật giao diện người dùng
+        jPanelSPs.repaint(); // Vẽ lại JPanel       
+        containers.clear();
+        int soLuong = listsp.size()/3 + 1;
+        int height = (int)soLuong * 317;
+       
+        for(int i = 0;i<listsp.size();i++){           
+            GUI_ContainerPhone container = new GUI_ContainerPhone(listsp.get(i));
+            containers.add(container);       
+        }
+        
+        
+        Dimension preferredSize = new Dimension(850, height); 
+        jPanelSPs.setPreferredSize(preferredSize);
+        for(GUI_ContainerPhone ctn:containers){
+            jPanelSPs.add(ctn);
+        }
+        
+        
+    }
+    
     public void changeTable(JTable tbl_Sp){       
        tbl_Sp.setRowHeight(40);
        // Điều chỉnh font và chiều rộng của tiêu đề
