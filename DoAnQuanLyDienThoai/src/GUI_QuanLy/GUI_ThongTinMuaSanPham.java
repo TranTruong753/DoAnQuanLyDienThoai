@@ -61,7 +61,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         
         String imagePath = spDTO.getImg(); // Đường dẫn tới hình ảnh
         int desiredWidth = 300; // Chiều rộng mong muốn
-        int desiredHeight = 300; // Chiều cao mong muốn
+        int desiredHeight = 200; // Chiều cao mong muốn
 
         try {
             // Đọc hình ảnh từ đường dẫn
