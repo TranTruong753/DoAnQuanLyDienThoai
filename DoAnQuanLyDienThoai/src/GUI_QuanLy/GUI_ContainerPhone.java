@@ -38,7 +38,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
     public GUI_ContainerPhone(DTO_SanPham sp) {
         initComponents();
         this.sp = sp;
-        this.loadHinhAnhSp(this.sp.getImg().toString(), jlbHinhAnh, 250,250);
+        this.loadHinhAnhSp(this.sp.getImg().toString(), jlbHinhAnh, 250,167);
         this.jlbTen.setText(this.sp.getTenSp());
     }
     
