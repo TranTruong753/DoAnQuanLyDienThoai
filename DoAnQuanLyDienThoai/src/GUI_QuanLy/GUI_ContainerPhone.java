@@ -20,10 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Admin
- */
+
 public class GUI_ContainerPhone extends javax.swing.JPanel {
 
     /**
