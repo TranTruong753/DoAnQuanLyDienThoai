@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DAL/DAL_PhieuNhap.java</file>
             <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DTO/DTO_PhieuNhap.java</file>
             <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DTO/DTO_CTPN.java</file>
@@ -15,6 +16,22 @@
             <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/QLController/TablePhieuPhap.java</file>
             <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DAL/DAL_CTPN.java</file>
             <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/BUS/BUS_CTPN.java</file>
+=======
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/BUS/BUS_SanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAL_SanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_UpdateThongTinSanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLySanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinMuaSanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_TrangChuBanHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLyNhanVienController.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLySPvaKM.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyHoaDon.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinNhanVien.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ContainerPhone.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_GiaoDienChinh.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLySanPhamController.java</file>
+>>>>>>> fixbanhang
         </group>
     </open-files>
 </project-private>

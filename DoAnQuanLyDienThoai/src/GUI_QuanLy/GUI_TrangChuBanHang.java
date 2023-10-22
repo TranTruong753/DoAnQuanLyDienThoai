@@ -6,70 +6,32 @@ package GUI_QuanLy;
 
 import BUS.*;
 import DTO.*;
-import QLController.QuanLySanPhamController;
+import QLController.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
-/**
- *
- * @author Admin
- */
+
 public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
     /**
      * Creates new form GUI_TrangChuBanHang
      */
-    public QuanLySanPhamController ql ;
+
+    public QuanLySanPhamControllerfix qlf ;
     public DTO_SanPham sp = new DTO_SanPham();
-    public ArrayList<DTO_SanPham> listsp = new ArrayList<>();
     public BUS_SanPham spBus = new BUS_SanPham();
     public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
     
     public GUI_TrangChuBanHang() {
        initComponents();     
-       ql = new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
+       qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
     }
 
     public void load(){
-        ql = new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
-
+        qlf.showSp(spBus.getList(), containers, this.jPanelSPs);     
     }
 
-//    public void showSp(){
-//        System.out.println(spBus.getList().size());
-//        jPanelSPs.removeAll();  
-//        jPanelSPs.revalidate(); // Cập nhật giao diện người dùng
-//        jPanelSPs.repaint(); // Vẽ lại JPanel
-////        listsp.clear();
-////           System.out.println(listsp.size());
-////        listsp.addAll(spBus.getList());
-//        containers.clear();
-//        long soLuong = Math.round(Double.valueOf(spBus.getList().size())/3) + 1  ;
-//        int height = (int)soLuong * 317;       
-//        Dimension preferredSize = new Dimension(850, height); 
-//        jPanelSPs.setPreferredSize(preferredSize);
-//     
-//        for(int i = 0;i<spBus.getList().size();i++){
-//           // sp = spBus.getList().get(i);
-//            if(!spBus.getList().contains(spBus.getList().get(i))){
-//                 GUI_ContainerPhone container = new GUI_ContainerPhone(spBus.getList().get(i));
-//            containers.add(container);       
-//            }
-//           
-//        }
-//        for(GUI_ContainerPhone ctn:containers){         
-//                jPanelSPs.add(ctn);                      
-//        }
-//        
-//       
-//    }
-     
-//    public static void main(String[] args) {
-//        
-//         GUI_TrangChuBanHang sp = new GUI_TrangChuBanHang();
-//         
-//    }
  
     /**
      * This method is called from within the constructor to initialize the form.

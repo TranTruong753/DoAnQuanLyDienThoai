@@ -16,25 +16,18 @@ import java.util.ArrayList;
 public class GUI_QuanLySanPham extends javax.swing.JPanel {
     
     private GUI_ThemThongTinSanPham themSp ;
-    private QuanLySanPhamController ql ;
+    private QuanLySanPhamControllerfix qlf ;
     private BUS_SanPham spBus = new BUS_SanPham();
-    
-    /**
-     * Creates new form GUI_QuanLySanPham
-     */
+   
     
     public GUI_QuanLySanPham(GUI_TrangChuBanHang panelBanHang) {
-        initComponents();
-        
-        ql =  new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(),this.tblSp,panelBanHang);
-        //ql.loadSanPhamList(spBus.getList(), this.tblSp);
-        ql.eventFind(this.jtfTimKiem);
-        ql.eventClickTable(tblSp);
+        initComponents();       
+        qlf = new QuanLySanPhamControllerfix(jpnView, btnThem, jtfTim,btnXuatfile,this, panelBanHang);
+        qlf.setDateToTable();
+   //   qlfix.setEvent();    
     }
     
-    public void loadListHoaDon(){
-        ql.loadSanPhamList(spBus.getList(), tblSp);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,15 +39,13 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
         QuanlySanPham = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jtfTimKiem = new javax.swing.JTextField();
+        jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblSp = new javax.swing.JTable();
+        btnXuatfile = new javax.swing.JButton();
+        jpnView = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -66,8 +57,8 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jtfTimKiem.setPreferredSize(new java.awt.Dimension(250, 30));
-        jPanel6.add(jtfTimKiem);
+        jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTim);
 
         QuanlySanPham.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -92,17 +83,17 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themSanPham2.png"))); // NOI18N
-        jButton4.setText("THÊM SP ");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setPreferredSize(new java.awt.Dimension(140, 50));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themSanPham2.png"))); // NOI18N
+        btnThem.setText("THÊM SP ");
+        btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton4);
+        jPanel8.add(btnThem);
 
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
@@ -112,69 +103,50 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
         jPanel8.add(jButton7);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton3.setText("XUẤT FILE");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton3);
+        btnXuatfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnXuatfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
+        btnXuatfile.setText("XUẤT FILE");
+        btnXuatfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnXuatfile.setPreferredSize(new java.awt.Dimension(140, 50));
+        jPanel8.add(btnXuatfile);
 
         QuanlySanPham.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jpnView.setBackground(new java.awt.Color(255, 255, 255));
+        jpnView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        tblSp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tblSp.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MÃ SP", "TÊN SP", "MÃ THƯƠNG HIỆU", "MÀU SẮC", "DUNG LƯỢNG", "ĐƠN GIÁ", "KHUYẾN MÃI", "SỐ LƯỢNG TỒN KHO"
-            }
-        ));
-        jScrollPane1.setViewportView(tblSp);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1180, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1192, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
-                .addContainerGap())
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 646, Short.MAX_VALUE)
         );
 
-        QuanlySanPham.add(jPanel2, java.awt.BorderLayout.CENTER);
+        QuanlySanPham.add(jpnView, java.awt.BorderLayout.CENTER);
 
         add(QuanlySanPham, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        themSp = new GUI_ThemThongTinSanPham(ql);
+        themSp = new GUI_ThemThongTinSanPham(qlf);
         themSp.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlySanPham;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXuatfile;
     private javax.swing.JButton jButton7;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jtfTimKiem;
-    private javax.swing.JTable tblSp;
+    private javax.swing.JPanel jpnView;
+    private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables
 }

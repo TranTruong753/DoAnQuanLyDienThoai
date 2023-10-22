@@ -6,7 +6,7 @@ package GUI_QuanLy;
 
 import BUS.BUS_SanPham;
 import DTO.DTO_SanPham;
-import QLController.QuanLySanPhamController;
+import QLController.*;
 import function.*;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -30,21 +30,21 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     
     private DTO_SanPham spDTO = new DTO_SanPham();
     private BUS_SanPham spBUS = new BUS_SanPham();
-    private QuanLySanPhamController ql = new QuanLySanPhamController();
+    private QuanLySanPhamControllerfix qlf;
     private funcDungChung fuc = new funcDungChung();
     private ArrayList<String> listMau ;
     private GUI_TrangChuBanHang trangBanHang ;
 
-    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql,GUI_TrangChuBanHang panelBanHang ) {
+    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamControllerfix ql,GUI_TrangChuBanHang panelBanHang ) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.spDTO = sp;
-        this.ql = ql;
+        this.qlf = ql;
         this.loadListMauSacComBox();
         this.viewThongTinSp();
         this.trangBanHang=panelBanHang;
-
     }
+
     
     public void onOrOffEdit(boolean state){
         jtfMaSp.setEditable(state);
@@ -416,18 +416,19 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:      
         String donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", ""));
-        spDTO.setDonGia(Double.valueOf(donGia));
-        if(spBUS.updateNhanVien(spDTO)){
-            JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
-            ql.loadSanPhamList(spBUS.getList(), ql.jtable);
- 
-            trangBanHang.load();
-            
-            
-            this.dispose();
-        }
+        if(!donGia.isEmpty()){
+            spDTO.setDonGia(Double.valueOf(donGia));
+            if(spBUS.updateNhanVien(spDTO)){
+                JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
+                //ql.loadSanPhamList(spBUS.getList(), ql.jtable);
+                qlf.setDateToTable();
+                qlf.jtfTim.setText("");
+                trangBanHang.load();
+                this.dispose();
+            }
+        }       
         else
             JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thất bại !");
     }//GEN-LAST:event_btnLuuActionPerformed
@@ -437,8 +438,9 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         spDTO.setTrangThai(0);
         if(spBUS.updateNhanVien(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
-            ql.loadSanPhamList(spBUS.getList(), ql.jtable);     
-           
+            //ql.loadSanPhamList(spBUS.getList(), ql.jtable);     
+            qlf.setDateToTable();
+            qlf.jtfTim.setText("");
             trangBanHang.load();
             this.dispose();
         }

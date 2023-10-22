@@ -11,10 +11,7 @@ import function.*;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author Admin
- */
+
 public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
     /**
@@ -22,16 +19,18 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
      */
     private DTO_SanPham spDTO = new DTO_SanPham();
     private BUS_SanPham spBUS = new BUS_SanPham();
-    private QuanLySanPhamController ql = new QuanLySanPhamController();
+    private QuanLySanPhamControllerfix qlf ;
+    
     
     private ArrayList<String> listMau ;
-    public GUI_ThemThongTinSanPham( QuanLySanPhamController ql) {
+    
+    public GUI_ThemThongTinSanPham( QuanLySanPhamControllerfix qlf) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.ql = ql;
+        this.qlf = qlf;
         this.loadListMauSacComBox();
     }
-
+    
     public void loadListMauSacComBox(){
         listMau = new ArrayList<>();
         listMau.add("Danh sách màu");
