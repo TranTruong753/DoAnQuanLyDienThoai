@@ -7,6 +7,7 @@ package QLController;
 import BUS.*;
 import DTO.*;
 import GUI_QuanLy.GUI_ContainerPhone;
+import GUI_QuanLy.GUI_TrangChuBanHang;
 import GUI_QuanLy.GUI_UpdateThongTinSanPham;
 import function.*;
 import java.awt.Dimension;
@@ -42,10 +43,11 @@ public class QuanLySanPhamController {
     public funcDungChung fuc = new funcDungChung();
     public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
     public JPanel jPanelSPs  ;
+    GUI_TrangChuBanHang panelBanHang;
     public QuanLySanPhamController() {
     }
  
-    public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs) {
+    public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs,GUI_TrangChuBanHang panelBanHang) {
         this.listSp.clear();
         this.listSp.addAll(listSp);
         this.jPanelSPs = new JPanel(); 
@@ -53,13 +55,15 @@ public class QuanLySanPhamController {
         this.containers.clear();
         this.containers.addAll(containers);
         this.showSp(listSp, containers, jPanelSPs);
+        this.panelBanHang=panelBanHang;
        
     }
     
-    public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,JTable jtb) {
+    public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,JTable jtb,GUI_TrangChuBanHang panelBanHang) {
         this.jtable = jtb;
        // this.listSp.addAll(listSp) ;
         this.loadSanPhamList(listSp,jtb);
+        this.panelBanHang=panelBanHang;
     }
     
     
@@ -209,7 +213,7 @@ public class QuanLySanPhamController {
                         }
                     }
                     
-                    GUI_UpdateThongTinSanPham spFrame = new GUI_UpdateThongTinSanPham(sp,QuanLySanPhamController.this);
+                    GUI_UpdateThongTinSanPham spFrame = new GUI_UpdateThongTinSanPham(sp,QuanLySanPhamController.this,panelBanHang);
                     spFrame.setTitle("Thông tin sản phẩm");
                     spFrame.setResizable(false);
                     spFrame.setLocationRelativeTo(null);

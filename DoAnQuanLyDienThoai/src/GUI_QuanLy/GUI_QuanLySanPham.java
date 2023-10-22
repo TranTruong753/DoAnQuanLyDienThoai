@@ -18,13 +18,15 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
     private GUI_ThemThongTinSanPham themSp ;
     private QuanLySanPhamController ql ;
     private BUS_SanPham spBus = new BUS_SanPham();
+    
     /**
      * Creates new form GUI_QuanLySanPham
      */
     
-    public GUI_QuanLySanPham() {
+    public GUI_QuanLySanPham(GUI_TrangChuBanHang panelBanHang) {
         initComponents();
-        ql =  new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(),this.tblSp);
+        
+        ql =  new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(),this.tblSp,panelBanHang);
         //ql.loadSanPhamList(spBus.getList(), this.tblSp);
         ql.eventFind(this.jtfTimKiem);
         ql.eventClickTable(tblSp);

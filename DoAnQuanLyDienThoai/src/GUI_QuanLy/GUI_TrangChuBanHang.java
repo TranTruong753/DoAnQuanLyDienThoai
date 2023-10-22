@@ -28,7 +28,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     
     public GUI_TrangChuBanHang() {
        initComponents();     
-       ql = new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs);
+       ql = new QuanLySanPhamController((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
     }
 
     public void load(){
