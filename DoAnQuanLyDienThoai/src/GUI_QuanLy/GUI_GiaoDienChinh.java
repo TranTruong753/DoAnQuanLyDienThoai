@@ -22,7 +22,7 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     // lưu chữa biến GUI
     private GUI_TrangChuBanHang panelBanHang = new GUI_TrangChuBanHang();
     private GUI_QuanLyNVvaTK panelNVvaTK = new GUI_QuanLyNVvaTK();
-    private GUI_QuanLySPvaKM panelSPvaKM = new GUI_QuanLySPvaKM();
+    private GUI_QuanLySPvaKM panelSPvaKM = new GUI_QuanLySPvaKM(panelBanHang);
     private GUI_QuanLyHoaDon panelHoaDon = new GUI_QuanLyHoaDon();
     private GUI_QuanLyKHvaBH panelKHvaBH = new GUI_QuanLyKHvaBH();
     private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC();

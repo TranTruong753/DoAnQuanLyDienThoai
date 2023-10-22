@@ -12,13 +12,16 @@ import javax.swing.ImageIcon;
  * @author Admin
  */
 public class GUI_QuanLySPvaKM extends javax.swing.JPanel {
-    public GUI_QuanLySanPham guiSanPham = new GUI_QuanLySanPham();
+    public GUI_QuanLySanPham guiSanPham ;
     public GUI_QuanLyKhuyenMai guiKhuyenMai = new GUI_QuanLyKhuyenMai();
+    GUI_TrangChuBanHang panelBanHang;
     /**
      * Creates new form GUI_QuanLySPvaKM
      */
-    public GUI_QuanLySPvaKM() {
+    public GUI_QuanLySPvaKM(GUI_TrangChuBanHang panelBanHang) {
         initComponents();
+        this.panelBanHang=panelBanHang;
+        guiSanPham = new GUI_QuanLySanPham(panelBanHang);
         jTabbedPane1.addTab(" Quản lý Sản Phẩm", guiSanPham);
         jTabbedPane1.addTab("Quản lý Khuyến Mãi", guiKhuyenMai);
 //        

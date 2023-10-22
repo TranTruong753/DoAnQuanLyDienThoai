@@ -27,6 +27,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     /**
      * Creates new form GUI_UpdateThongTinSanPham2
      */
+    
     private DTO_SanPham spDTO = new DTO_SanPham();
     private BUS_SanPham spBUS = new BUS_SanPham();
     private QuanLySanPhamController ql = new QuanLySanPhamController();
@@ -34,13 +35,14 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private ArrayList<String> listMau ;
     private GUI_TrangChuBanHang trangBanHang ;
     
-    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql) {
+    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql,GUI_TrangChuBanHang panelBanHang) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.spDTO = sp;
         this.ql = ql;
         this.loadListMauSacComBox();
         this.viewThongTinSp();
+        trangBanHang=panelBanHang;
     }
     
     public void onOrOffEdit(boolean state){
@@ -419,6 +421,8 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         if(spBUS.updateNhanVien(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
             ql.loadSanPhamList(spBUS.getList(), ql.jtable);
+            trangBanHang.load();
+            
             
             this.dispose();
         }
