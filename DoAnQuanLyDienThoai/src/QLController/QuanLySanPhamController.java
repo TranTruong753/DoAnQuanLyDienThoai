@@ -6,9 +6,7 @@ package QLController;
 
 import BUS.*;
 import DTO.*;
-import GUI_QuanLy.GUI_ContainerPhone;
-import GUI_QuanLy.GUI_TrangChuBanHang;
-import GUI_QuanLy.GUI_UpdateThongTinSanPham;
+import GUI_QuanLy.*;
 import function.*;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -61,7 +59,7 @@ public class QuanLySanPhamController {
     
     public QuanLySanPhamController(ArrayList<DTO_SanPham> listSp,JTable jtb,GUI_TrangChuBanHang panelBanHang) {
         this.jtable = jtb;
-       // this.listSp.addAll(listSp) ;
+//      this.listSp.addAll(listSp) ;
         this.loadSanPhamList(listSp,jtb);
         this.panelBanHang=panelBanHang;
     }
@@ -124,6 +122,7 @@ public class QuanLySanPhamController {
     
     // hàm tạo bảng 
     public void loadSanPhamList(List<DTO_SanPham> sanPham, JTable table) {
+     
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {        //Không được chỉnh sửa hàng và cột của bảng
@@ -163,7 +162,8 @@ public class QuanLySanPhamController {
             
             dtm.addRow(row);
         }
-        changeTable(table);      
+        changeTable(table); 
+       
     }
     
     public void eventFind(JTextField jTextField1){

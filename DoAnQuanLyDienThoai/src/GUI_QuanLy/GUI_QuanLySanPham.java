@@ -31,7 +31,10 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         ql.eventFind(this.jtfTimKiem);
         ql.eventClickTable(tblSp);
     }
-
+    
+    public void loadListHoaDon(){
+        ql.loadSanPhamList(spBus.getList(), tblSp);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

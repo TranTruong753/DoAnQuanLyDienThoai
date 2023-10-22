@@ -34,15 +34,16 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private funcDungChung fuc = new funcDungChung();
     private ArrayList<String> listMau ;
     private GUI_TrangChuBanHang trangBanHang ;
-    
-    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql,GUI_TrangChuBanHang panelBanHang) {
+
+    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamController ql,GUI_TrangChuBanHang panelBanHang ) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.spDTO = sp;
         this.ql = ql;
         this.loadListMauSacComBox();
         this.viewThongTinSp();
-        trangBanHang=panelBanHang;
+        this.trangBanHang=panelBanHang;
+
     }
     
     public void onOrOffEdit(boolean state){
@@ -159,9 +160,9 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnLuu = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jlbHinhAnh = new javax.swing.JLabel();
@@ -345,38 +346,38 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(17, 153, 142));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        jButton2.setText("Lưu");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLuu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
+        btnLuu.setText("Lưu");
+        btnLuu.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLuuActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton2);
+        jPanel5.add(btnLuu);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhsuaHang.png"))); // NOI18N
-        jButton3.setText("Sửa");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/chinhsuaHang.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3);
+        jPanel5.add(btnSua);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaSanPham.png"))); // NOI18N
-        jButton4.setText("Xóa");
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaSanPham.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton4);
+        jPanel5.add(btnXoa);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
@@ -409,18 +410,19 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         this.jtfDonGia.setEditable(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         String donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", ""));
         spDTO.setDonGia(Double.valueOf(donGia));
         if(spBUS.updateNhanVien(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
             ql.loadSanPhamList(spBUS.getList(), ql.jtable);
+ 
             trangBanHang.load();
             
             
@@ -428,20 +430,21 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         }
         else
             JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thất bại !");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnLuuActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         spDTO.setTrangThai(0);
         if(spBUS.updateNhanVien(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
-            ql.loadSanPhamList(spBUS.getList(), ql.jtable);        
-            trangBanHang = new GUI_TrangChuBanHang();
+            ql.loadSanPhamList(spBUS.getList(), ql.jtable);     
+           
+            trangBanHang.load();
             this.dispose();
         }
         else
             JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,10 +485,10 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
