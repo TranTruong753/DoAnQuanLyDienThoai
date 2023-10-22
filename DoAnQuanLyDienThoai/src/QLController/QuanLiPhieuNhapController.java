@@ -9,6 +9,7 @@ import DTO.DTO_PhieuNhap;
 import GUI_QuanLy.GUI_QuanLyNCC;
 
 import GUI_QuanLy.GUI_ThongTinPhieuNhap;
+import function.funcDungChung;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -42,7 +43,7 @@ public class QuanLiPhieuNhapController {
     private BUS_PhieuNhap nvbus=new BUS_PhieuNhap();
     private String[] listColumn = {"Mã HDNH","Mã NCC", "Tên NCC","Ngày giao","Tổng tiền"};
     private TableRowSorter<TableModel> rowSorter = null;
-
+    private funcDungChung fuc = new funcDungChung();
     public QuanLiPhieuNhapController(JPanel jpnView, JButton btnThem, JTextField jtfTim,JButton btnXuat,GUI_QuanLyNCC ql){
         this.jpnView = jpnView;
         this.btnThem = btnThem;
@@ -88,7 +89,7 @@ public class QuanLiPhieuNhapController {
                 
             }
         });
-        
+        table.setFont(new Font("Tahoma",Font.PLAIN,14));
         table.getColumnModel().getColumn(0).setMaxWidth(120);
         table.getColumnModel().getColumn(0).setMinWidth(120);
         table.getColumnModel().getColumn(0).setPreferredWidth(120);
@@ -105,7 +106,9 @@ public class QuanLiPhieuNhapController {
                     PhieuNhap.setMANCC(model.getValueAt(SRow,1).toString());
                     PhieuNhap.setTENNCC(model.getValueAt(SRow, 2) != null ? model.getValueAt(SRow, 2).toString() : "");
                     PhieuNhap.setNGAYGIAO((Date) model.getValueAt(SRow, 3));
-                    PhieuNhap.setTONGTIEN((double) model.getValueAt(SRow, 4));
+                    String tongTien = fuc.traVeMacDinh(model.getValueAt(SRow, 4).toString());
+                    PhieuNhap.setTONGTIEN(Double.valueOf(tongTien));
+                 //   PhieuNhap.setTONGTIEN((double) model.getValueAt(SRow, 4));
                     PhieuNhap.setTRANGTHAI(1);
                     //PhieuNhap.setTrangThai((int) model.getValueAt(SRow, 6));
                     

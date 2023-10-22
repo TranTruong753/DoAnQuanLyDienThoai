@@ -7,19 +7,20 @@ package GUI_QuanLy;
 import DTO.DTO_PhieuNhap;
 import QLController.QuanLiPhieuNhapController;
 import QLController.QuanLyCTHDNHController;
+import function.funcDungChung;
 
 /**
  *
  * @author Admin
  */
 public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
-
+    funcDungChung fuc = new funcDungChung();
     /**
      * Creates new form GUI_ThongTinPhieuNhap2
      */
     public GUI_ThongTinPhieuNhap(DTO_PhieuNhap pn,QuanLiPhieuNhapController ql) {
         initComponents();
-        String s=String.valueOf(pn.getTONGTIEN());
+        String s=fuc.doubleToFormattedString(pn.getTONGTIEN());
         this.setLocationRelativeTo(null);
         QuanLyCTHDNHController controller= new QuanLyCTHDNHController(jpnView, pn.getMAHDNH());
         controller.setDateToTable();
@@ -138,7 +139,7 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jtfTENNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                     .addComponent(jcalendar, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,15 +164,17 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jpnView.setPreferredSize(new java.awt.Dimension(666, 322));
+
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 644, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 269, Short.MAX_VALUE)
+            .addGap(0, 322, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -182,9 +185,7 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                    .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -193,7 +194,7 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
+                .addGap(25, 25, 25))
         );
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.LINE_START);

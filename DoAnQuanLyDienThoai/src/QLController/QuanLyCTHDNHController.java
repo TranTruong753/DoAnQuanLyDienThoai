@@ -63,7 +63,7 @@ public class QuanLyCTHDNHController {
         table.setRowSorter(rowSorter);
         
         
-        
+        table.setFont(new Font("Tahoma",Font.PLAIN,14));
         table.getColumnModel().getColumn(0).setMaxWidth(120);
         table.getColumnModel().getColumn(0).setMinWidth(120);
         table.getColumnModel().getColumn(0).setPreferredWidth(120);
@@ -76,7 +76,7 @@ public class QuanLyCTHDNHController {
         
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.getViewport().add(table);
-        scrollPane.setPreferredSize(new Dimension(800,400));
+        scrollPane.setPreferredSize(new Dimension(666,322));
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());
         jpnView.add(scrollPane);

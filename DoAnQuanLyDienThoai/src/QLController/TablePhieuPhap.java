@@ -5,6 +5,7 @@
 package QLController;
 
 import DTO.DTO_PhieuNhap;
+import function.funcDungChung;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class TablePhieuPhap {
+    funcDungChung fuc = new funcDungChung();
     public DefaultTableModel setTableKH(List<DTO_PhieuNhap> ListItem, String[] listColumn){
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
@@ -34,7 +36,7 @@ public class TablePhieuPhap {
                 obj[1] = nv.getMANCC();
                 obj[2] = nv.getTENNCC();
                 obj[3] = nv.getNGAYGIAO();
-                obj[4] = nv.getTONGTIEN();
+                obj[4] = fuc.doubleToFormattedString(nv.getTONGTIEN());
                 
 //                obj[6] = khachHang.getTrangThai();
                 

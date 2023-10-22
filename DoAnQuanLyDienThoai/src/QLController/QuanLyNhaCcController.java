@@ -108,7 +108,7 @@ public class QuanLyNhaCcController {
                 
             }
         });
-        
+        table.setFont(new Font("Tahoma",Font.PLAIN,14));
         table.getColumnModel().getColumn(0).setMaxWidth(120);
         table.getColumnModel().getColumn(0).setMinWidth(120);
         table.getColumnModel().getColumn(0).setPreferredWidth(120);
