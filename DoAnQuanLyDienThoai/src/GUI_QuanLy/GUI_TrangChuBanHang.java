@@ -8,7 +8,10 @@ import BUS.*;
 import DTO.*;
 import QLController.*;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 
@@ -25,13 +28,30 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     
     public GUI_TrangChuBanHang() {
        initComponents();     
-       qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
+       qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);     
     }
 
     public void load(){
         qlf.showSp(spBus.getList(), containers, this.jPanelSPs);     
     }
-
+    
+//    public void eventTimKiem(){
+//        this.jTextField1.addKeyListener(new KeyListener() {
+//            private JPanel jPanelSPs;
+//            @Override
+//            public void keyTyped(KeyEvent e) {
+//            }
+//
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//            }
+//
+//            @Override
+//            public void keyReleased(KeyEvent e) {
+//                qlf.showSp(spBus.timSp(jTextField1.getText().toString().trim()), containers, this.jPanelSPs);
+//            }
+//        });
+//    }
  
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,6 +111,11 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -251,6 +276,15 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        String key = jTextField1.getText().toString().trim();
+        if(!key.isEmpty()){
+          qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.timSpDaKhoa(key), containers, this.jPanelSPs,this);    
+        }
+        else     
+         qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
+    }//GEN-LAST:event_jTextField1KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

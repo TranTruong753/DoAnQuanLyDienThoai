@@ -78,9 +78,17 @@ public void showSp(List<DTO_SanPham> listsp, ArrayList<GUI_ContainerPhone> conta
     jPanelSPs.revalidate(); // Cập nhật giao diện người dùng
     jPanelSPs.repaint(); // Vẽ lại JPanel       
     containers.clear();
-    int soLuong = listsp.size()/3 + 1;
-    int height = (int)soLuong * 317;
-
+//    int soLuong = listsp.size()/3 + 1;
+//    int height = (int)soLuong * 317;
+    int soLuongSp = listsp.size() ;
+    int size = 0;
+    if(soLuongSp%3==0){
+        size = soLuongSp/3;
+    }
+    else{
+        size = soLuongSp/3 + 1;
+    }
+    int height = (int)size * 317;
     for(int i = 0;i<listsp.size();i++){           
         GUI_ContainerPhone container = new GUI_ContainerPhone(listsp.get(i));
         containers.add(container);       

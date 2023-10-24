@@ -420,7 +420,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         String donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", ""));
         if(!donGia.isEmpty()){
             spDTO.setDonGia(Double.valueOf(donGia));
-            if(spBUS.updateNhanVien(spDTO)){
+            if(spBUS.updateSanPham(spDTO)){
                 JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
                 //ql.loadSanPhamList(spBUS.getList(), ql.jtable);
                 qlf.setDateToTable();
@@ -436,13 +436,16 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         spDTO.setTrangThai(0);
-        if(spBUS.updateNhanVien(spDTO)){
+        if(spBUS.updateSanPham(spDTO)&&this.spDTO.getSoLuong()==0){
             JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
             //ql.loadSanPhamList(spBUS.getList(), ql.jtable);     
             qlf.setDateToTable();
             qlf.jtfTim.setText("");
             trangBanHang.load();
             this.dispose();
+        }
+        else if(this.spDTO.getSoLuong()>0){
+            JOptionPane.showMessageDialog(rootPane, "Xóa thất bại ! vì số lượng sản phẩm còn "+ spDTO.getSoLuong() +" cái");
         }
         else
             JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");

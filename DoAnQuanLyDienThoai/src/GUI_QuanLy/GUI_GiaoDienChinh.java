@@ -5,11 +5,14 @@
 package GUI_QuanLy;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -20,7 +23,7 @@ import javax.swing.JPanel;
 public class GUI_GiaoDienChinh extends javax.swing.JFrame {
 
     // lưu chữa biến GUI
-    private GUI_TrangChuBanHang panelBanHang = new GUI_TrangChuBanHang();
+    private GUI_TrangChuBanHang panelBanHang  = new GUI_TrangChuBanHang();
     private GUI_QuanLyNVvaTK panelNVvaTK = new GUI_QuanLyNVvaTK();
     private GUI_QuanLySPvaKM panelSPvaKM = new GUI_QuanLySPvaKM(panelBanHang);
     private GUI_QuanLyHoaDon panelHoaDon = new GUI_QuanLyHoaDon();
@@ -54,16 +57,16 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
 
     //FUNCITION
   
-    
+ 
 public void addMenu(){    
-    jTabbedPane1.add(panelBanHang);
-    jTabbedPane1.add(panelSPvaKM);
-    jTabbedPane1.add(panelNVvaTK);
-    jTabbedPane1.add(panelKHvaBH);
-    jTabbedPane1.add(panelHoaDon);
-    jTabbedPane1.add(panelNCC);
-    jTabbedPane1.add(panelThongKe);
-    jTabbedPane1.add(panelThongTinDangNhap);       
+    jTabbedPane1.add(panelBanHang,1);
+    jTabbedPane1.add(panelSPvaKM,2);
+    jTabbedPane1.add(panelNVvaTK,3);
+    jTabbedPane1.add(panelKHvaBH,4);
+    jTabbedPane1.add(panelHoaDon,5);
+    jTabbedPane1.add(panelNCC,6);
+    jTabbedPane1.add(panelThongKe,7);
+    jTabbedPane1.add(panelThongTinDangNhap,8);       
 }
 
 
@@ -72,11 +75,20 @@ public void addMenu(){
      ColorMain = new Color(17,153,142);
      ColorClick = new Color(17,153,142) ;
      sidebar = new Color(102,102,102);
+    
  }
 
  public void clickChangeColor(JPanel panelMenu, Color colorMenu) 
  {
-     panelMenu.setBackground(colorMenu);
+    jPanelMenu1.setBackground(sidebar);
+    jPanelMenu2.setBackground(sidebar);
+    jPanelMenu3.setBackground(sidebar);
+    jPanelMenu4.setBackground(sidebar);
+    jPanelMenu5.setBackground(sidebar);
+    jPanelMenu6.setBackground(sidebar);
+    jPanelMenu7.setBackground(sidebar);
+    jPanelMenu8.setBackground(sidebar);
+    panelMenu.setBackground(colorMenu);
  }
 
  public void visibleJPanelMenu1Title(boolean visibleOnOff){
@@ -630,42 +642,53 @@ public void closeSideBar(int width, int height) {
 
     private void jPanelMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseClicked
         // TODO add your handling code here:
+//        this.jTabbedPane1.remove(1);
+//        panelBanHang = new GUI_TrangChuBanHang();
+//        this.jTabbedPane1.add(panelBanHang, 1);
+        clickChangeColor(jPanelMenu1,ColorClick);
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMenu1MouseClicked
 
     private void jPanelMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu2MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(2);
+        clickChangeColor(jPanelMenu2,ColorClick);
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jPanelMenu2MouseClicked
 
     private void jPanelMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu3MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(3);
+        clickChangeColor(jPanelMenu3,ColorClick);
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jPanelMenu3MouseClicked
 
     private void jPanelMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu4MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(4);
+        clickChangeColor(jPanelMenu4,ColorClick);
+        jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_jPanelMenu4MouseClicked
 
     private void jPanelMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu5MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(5);
+        clickChangeColor(jPanelMenu5,ColorClick);
+        jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_jPanelMenu5MouseClicked
 
     private void jPanelMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu6MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(6);
+        clickChangeColor(jPanelMenu6,ColorClick);
+        jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_jPanelMenu6MouseClicked
 
     private void jPanelMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu7MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(7);
+        clickChangeColor(jPanelMenu7,ColorClick);
+        jTabbedPane1.setSelectedIndex(7);
     }//GEN-LAST:event_jPanelMenu7MouseClicked
 
     private void jPanelMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu8MouseClicked
         // TODO add your handling code here:
-           jTabbedPane1.setSelectedIndex(8);
+        clickChangeColor(jPanelMenu8,ColorClick);
+        jTabbedPane1.setSelectedIndex(8);
     }//GEN-LAST:event_jPanelMenu8MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
