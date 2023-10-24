@@ -35,23 +35,8 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         qlf.showSp(spBus.getList(), containers, this.jPanelSPs);     
     }
     
-//    public void eventTimKiem(){
-//        this.jTextField1.addKeyListener(new KeyListener() {
-//            private JPanel jPanelSPs;
-//            @Override
-//            public void keyTyped(KeyEvent e) {
-//            }
-//
-//            @Override
-//            public void keyPressed(KeyEvent e) {
-//            }
-//
-//            @Override
-//            public void keyReleased(KeyEvent e) {
-//                qlf.showSp(spBus.timSp(jTextField1.getText().toString().trim()), containers, this.jPanelSPs);
-//            }
-//        });
-//    }
+
+
  
     /**
      * This method is called from within the constructor to initialize the form.
