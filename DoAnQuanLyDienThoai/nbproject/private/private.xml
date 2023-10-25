@@ -3,28 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyNCC.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLiPhieuNhapController.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinSanPham.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/TableNhaCC.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/TablePhieuPhap.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinPhieuNhap.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_UpdateThongTinSanPham.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/TableNhanVien.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLySanPham.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DTO/DTO_CTPN.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_TrangChuBanHang.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/function/funcDungChung.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLyNhanVienController.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_HoaDonXacNhanNhapHang.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLyNhaCcController.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAL_PhieuNhap.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLyCTHDNHController.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/TableCTHDNH.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/QLController/QuanLySanPhamControllerfix.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ContainerPhone.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_GiaoDienChinh.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinSanPham.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLySanPham.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/QLController/QuanLySanPhamControllerfix.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_TrangChuBanHang.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinNhanVien.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DAL/DAL_NhanVien.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/QLController/QuanLyNhanVienController.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinTaiKhoan.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyNhanVien.java</file>
         </group>
     </open-files>
 </project-private>
