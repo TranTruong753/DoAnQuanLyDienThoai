@@ -18,7 +18,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
     private GUI_ThemThongTinSanPham themSp ;
     private QuanLySanPhamControllerfix qlf ;
     private BUS_SanPham spBus = new BUS_SanPham();
-   
+    
     
     public GUI_QuanLySanPham(GUI_TrangChuBanHang panelBanHang) {
         initComponents();       
