@@ -110,7 +110,6 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jlbHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbHinhAnh.setText("HÌNH ẢNH");
         jlbHinhAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(17, 153, 142)));
         jlbHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
