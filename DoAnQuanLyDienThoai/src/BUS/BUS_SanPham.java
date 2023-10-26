@@ -7,6 +7,7 @@ package BUS;
 import DTO.*;
 import DAL.*;
 import java.awt.Component;
+import java.io.IOException;
 import java.util.*;
 /**
  *
@@ -39,7 +40,7 @@ public class BUS_SanPham {
             return true;
           return false;           
     }
-    public int themDS(){         
+    public int themDS() throws IOException{         
          return sp_DAL.themDS();
     }
 }
