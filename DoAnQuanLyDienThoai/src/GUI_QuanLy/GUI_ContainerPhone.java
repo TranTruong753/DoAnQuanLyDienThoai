@@ -14,6 +14,7 @@ import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -39,15 +40,23 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         this.jlbTen.setText(this.sp.getTenSp());
     }
     
-    public void loadHinhAnhSp(String scr,JLabel jlb,int width,int height){
+    public void loadHinhAnhSp(String src,JLabel jlb,int width,int height){
        int desiredWidth = width; // Chiều rộng mong muốn
         int desiredHeight = height; // Chiều cao mong muốn
 
         try {
             // Kiểm tra xem đường dẫn không null
-            if (scr != null) {
+            if (src != null) {
                 // Đọc hình ảnh từ đường dẫn
-                BufferedImage originalImage = ImageIO.read(getClass().getResource(scr));
+                BufferedImage originalImage;
+                if(src.contains("/")){
+                    originalImage = ImageIO.read(getClass().getResource(src));
+                }
+                else{
+                    File imageFile = new File(src);
+                    originalImage = ImageIO.read(imageFile);
+                } 
+                
 
                 // Thay đổi kích thước hình ảnh
                 Image resizedImage = originalImage.getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);

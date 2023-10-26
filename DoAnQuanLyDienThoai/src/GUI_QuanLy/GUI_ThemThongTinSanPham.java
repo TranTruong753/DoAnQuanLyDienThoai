@@ -8,6 +8,7 @@ import BUS.*;
 import DTO.*;
 import QLController.*;
 import function.*;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -31,17 +32,27 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private QuanLySanPhamControllerfix qlf ;
     private ArrayList<DTO_SanPham> listSp = new ArrayList<>();
     private ArrayList<DTO_ThuongHieu> listth = new ArrayList<>();
-    
+    public GUI_TrangChuBanHang panelBanHang;
     
     private ArrayList<String> listMau ;
     
-    public GUI_ThemThongTinSanPham( QuanLySanPhamControllerfix qlf) {
+//    public GUI_ThemThongTinSanPham( QuanLySanPhamControllerfix qlf) {
+//        initComponents();
+//        this.setLocationRelativeTo(null);
+//        this.qlf = qlf;
+//        this.loadListMauSacComBox();
+//        listSp=(ArrayList<DTO_SanPham>) spBUS.getList();
+//        listth=thbus.getList();
+//    }
+    
+    public GUI_ThemThongTinSanPham( QuanLySanPhamControllerfix qlf,GUI_TrangChuBanHang panelBanHang ) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.qlf = qlf;
         this.loadListMauSacComBox();
         listSp=(ArrayList<DTO_SanPham>) spBUS.getList();
         listth=thbus.getList();
+        this.panelBanHang = panelBanHang;
     }
     
     public void loadListMauSacComBox(){
@@ -98,7 +109,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jlbHinhAnh = new javax.swing.JLabel();
         btnchon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -300,22 +311,8 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hình ảnh", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(300, 350));
-
-        jLabel3.setText("jLabel3");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-        );
+        jPanel7.setLayout(new java.awt.BorderLayout());
+        jPanel7.add(jlbHinhAnh, java.awt.BorderLayout.CENTER);
 
         jPanel6.add(jPanel7);
 
@@ -369,8 +366,10 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
                 spDTO.setSoLuong(0);
                 spDTO.setTrangThai(1);
                 if(spBUS.addSanPham(spDTO))
-                {JOptionPane.showMessageDialog(null, "Thêm thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                qlf.setDateToTable();
+                {
+                    JOptionPane.showMessageDialog(null, "Thêm thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    qlf.setDateToTable();
+                    panelBanHang.load();
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
@@ -389,22 +388,55 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         fileChooser.setFileSelectionMode (JFileChooser.FILES_ONLY); //chi hien thi f
         int returnValue = fileChooser.showOpenDialog(this);
         if(returnValue==JFileChooser.APPROVE_OPTION)
-        {File file=fileChooser.getSelectedFile();
-         String path1=file.getAbsolutePath();
-         int index = path1.indexOf("\\img");
-         String subStr = path1.substring(index);
-         path = subStr.replace('\\', '/');
-         
-                
-        BufferedImage b;
-        try {
-            b=ImageIO.read(file);
-            jLabel3.setIcon(new ImageIcon (b));
+        {
+            File file=fileChooser.getSelectedFile();
+            String path1=file.getAbsolutePath();
+            System.out.println(path1);
+            path = file.getAbsolutePath();
+            int desiredWidth = 300; // Chiều rộng mong muốn
+            int desiredHeight = 200; // Chiều cao mong muốn
+            
+                 try {
+            // Kiểm tra định dạng tệp hình ảnh
+            if (isImageFile(file)) {
+                File imageFile = new File(path1);
+                BufferedImage originalImage = ImageIO.read(imageFile);
+
+                // Thay đổi kích thước hình ảnh
+                Image resizedImage = originalImage.getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
+
+                // Tạo biểu tượng từ hình ảnh đã thay đổi kích thước
+                ImageIcon imageIcon = new ImageIcon(resizedImage);
+
+                // Đặt biểu tượng cho thành phần giao diện người dùng
+                jlbHinhAnh.setIcon(imageIcon);
+            } else {
+                System.out.println("Tệp không phải là hình ảnh hợp lệ.");
+            }
         } catch (Exception e) {
+            e.printStackTrace();
         }
-        }
+            
+           
+
+   //         int index = path1.indexOf("\\img");
+   //         String subStr = path1.substring(index);
+   //         path = subStr.replace('\\', '/');
+   //         
+   //                
+   //        BufferedImage b;
+   //        try {
+   //            b=ImageIO.read(file);
+   //            jlbHinhAnh.setIcon(new ImageIcon (b));
+   //        } catch (Exception e) {
+   //        }
+        }                 
     }//GEN-LAST:event_btnchonActionPerformed
 
+    private boolean isImageFile(File file) {
+    String name = file.getName().toLowerCase();
+    return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".bmp");
+}
     private void jtfKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfKMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfKMActionPerformed
@@ -462,7 +494,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
@@ -476,6 +507,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JComboBox<String> jcbMAUSAC;
+    private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDONGIA;
     private javax.swing.JTextField jtfDUNGLUONG;
     private javax.swing.JTextField jtfKM;

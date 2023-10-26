@@ -10,6 +10,7 @@ import function.*;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -64,8 +65,16 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         int desiredHeight = 200; // Chiều cao mong muốn
 
         try {
+            BufferedImage originalImage ;
             // Đọc hình ảnh từ đường dẫn
-            BufferedImage originalImage = ImageIO.read(getClass().getResource(imagePath));
+            if(imagePath.contains("/")){
+                originalImage = ImageIO.read(getClass().getResource(imagePath));
+            }
+            
+            else{
+                File imageFile = new File(imagePath);
+                originalImage = ImageIO.read(imageFile);
+            }
 
             // Thay đổi kích thước hình ảnh
             Image resizedImage = originalImage.getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);

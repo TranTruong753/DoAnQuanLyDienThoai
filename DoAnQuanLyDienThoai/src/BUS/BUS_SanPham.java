@@ -37,7 +37,9 @@ public class BUS_SanPham {
     public boolean updateSanPham(DTO_SanPham sp){
         if(sp_DAL.updateDTO_SanPham(sp))
             return true;
-          return false;
-           
+          return false;           
+    }
+    public int themDS(){         
+         return sp_DAL.themDS();
     }
 }

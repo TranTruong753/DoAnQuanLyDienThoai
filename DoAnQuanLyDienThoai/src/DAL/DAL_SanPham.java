@@ -5,12 +5,22 @@
 package DAL;
 
 import DTO.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -84,7 +94,7 @@ public class DAL_SanPham {
     
     public ArrayList<DTO_SanPham> timSpDaKhoa(String key) {
         ArrayList<DTO_SanPham> list =new ArrayList<>();    
-        String sql="SELECT * FROM SanPham where MASP like N'%"+ key +"%' or TENSP like N'%"+ key +"%' or MAUSAC like N'%"+ key +"%'";
+        String sql="SELECT * FROM SanPham where TRANGTHAI = 1 AND (MASP like N'%"+ key +"%' or TENSP like N'%"+ key +"%' or MAUSAC like N'%"+ key +"%')";
         try {
             Connection conn = DAO.getConnection();
             PreparedStatement ps= conn.prepareStatement(sql);
@@ -161,4 +171,90 @@ public class DAL_SanPham {
         }
         return false;
     }
+    
+   public int themDS() throws IOException {
+    JFileChooser fileChooser = new JFileChooser();
+    FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xlsx", "xls");
+    fileChooser.setFileFilter(filter);
+    int result = fileChooser.showOpenDialog(null);
+
+    if (result == JFileChooser.APPROVE_OPTION) {
+        FileInputStream file = null;
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            File selectedFile = fileChooser.getSelectedFile();
+            file = new FileInputStream(selectedFile);
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            conn = DAO.getConnection();
+
+            String sql = "MERGE INTO SanPham AS target " +
+                    "USING (VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)) AS source (MASP, TENSP, MATH, MAUSAC, DUNGLUONG, DONGIA, KHUYENMAI, SLTON, IMG, TRANGTHAI) " +
+                    "ON (target.MASP = source.MASP) " +
+                    "WHEN MATCHED THEN " +
+                    "    UPDATE SET target.TENSP = source.TENSP, " +
+                    "               target.MATH = source.MATH, " +
+                    "               target.MAUSAC = source.MAUSAC, " +
+                    "               target.DUNGLUONG = source.DUNGLUONG, " +
+                    "               target.DONGIA = source.DONGIA, " +
+                    "               target.KHUYENMAI = source.KHUYENMAI, " +
+                    "               target.SLTON = source.SLTON, " +
+                    "               target.IMG = source.IMG, " +
+                    "               target.TRANGTHAI = source.TRANGTHAI " +
+                    "WHEN NOT MATCHED THEN " +
+                    "    INSERT (MASP, TENSP, MATH, MAUSAC, DUNGLUONG, DONGIA, KHUYENMAI, SLTON, IMG, TRANGTHAI) " +
+                    "    VALUES (source.MASP, source.TENSP, source.MATH, source.MAUSAC, source.DUNGLUONG, source.DONGIA, source.KHUYENMAI, source.SLTON, source.IMG, source.TRANGTHAI);";
+
+            statement = conn.prepareStatement(sql);
+
+            DataFormatter dataFormatter = new DataFormatter();
+
+            // Loop through rows in Excel sheet and insert/update data into the database
+            for (int i = sheet.getFirstRowNum() + 1; i <= sheet.getLastRowNum(); i++) {
+                XSSFRow row = sheet.getRow(i);
+                if (row == null) {
+                    continue;
+                }
+
+                statement.setString(1, row.getCell(1).getStringCellValue()); // MASP
+                statement.setString(2, row.getCell(2).getStringCellValue()); // TENSP
+                statement.setString(3, row.getCell(3).getStringCellValue()); // MATH
+                statement.setString(4, row.getCell(4).getStringCellValue()); // MAUSAC
+                statement.setString(5, row.getCell(5).getStringCellValue()); // DUNGLUONG
+                statement.setDouble(6, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(6)))); // DONGIA
+                statement.setDouble(7, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(7)))); // KHUYENMAI
+                statement.setDouble(8, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(8)))); // SLTON
+                statement.setString(9, row.getCell(9).getStringCellValue()); // IMG
+                statement.setInt(10, 1); // TRANGTHAI
+
+                // Execute the statement for each row
+                statement.executeUpdate();
+            }
+
+            JOptionPane.showMessageDialog(null, "Thêm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Thêm thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (file != null) {
+                    file.close();
+                }
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    return 0;
+}
+
+
 }
