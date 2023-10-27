@@ -22,8 +22,8 @@ public class BUS_HoaDon {
         return hd_DAL.getList();
     }
    
-//    public ArrayList<DTO_HoaDon> timHd(String tk){
-//        
-//        return hd_DAL.timHd(tk);
-//    }
+    public ArrayList<DTO_HoaDon> timHd(String tk){
+        
+        return hd_DAL.timHd(tk);
+    }
 }
