@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -163,7 +165,11 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
     private void btnNhapfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapfileActionPerformed
     if(evt.getSource()==btnNhapfile){
+        try {
             spBus.themDS();
+        } catch (IOException ex) {
+            Logger.getLogger(GUI_QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
             qlf.setDateToTable();    
             panelBanHang.load();
         }
