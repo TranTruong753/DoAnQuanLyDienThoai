@@ -24,7 +24,7 @@ public class DAL_BaoHanh {
     public ArrayList<DTO_BaoHanh> getList() {
         try{
             Connection conn = DAO.getConnection();
-            String sql ="select * from DTO_BaoHanh";
+            String sql ="select * from BaoHanh";
             ArrayList<DTO_BaoHanh> list= new ArrayList<>();
             PreparedStatement ps=conn.prepareCall(sql);
             ResultSet rs= ps.executeQuery();
@@ -52,7 +52,7 @@ public class DAL_BaoHanh {
     
     }
     public boolean addDTO_BaoHanh(DTO_BaoHanh s) {
-        String sql="insert into DTO_BaoHanh(MABH,MAKH,MAHD,MASP,LYDO,NGAYLAP,TRANGTHAI)"
+        String sql="insert into BaoHanh(MABH,MAKH,MAHD,MASP,LYDO,NGAYLAP,TRANGTHAI)"
                + "VALUES(?,?,?,?,?,?,?)";
         
         
@@ -74,7 +74,7 @@ public class DAL_BaoHanh {
          return false;
     }
     public boolean xoaDTO_BaoHanh(DTO_BaoHanh s) {
-        String sql="update DTO_BaoHanh set MABH=? , MAKH=? ,MAHD=? ,MASP=? ,LYDO=? ,NGAYLAP=? ,TRANGTHAI=? where MABH=?";
+        String sql="update BaoHanh set MABH=? , MAKH=? ,MAHD=? ,MASP=? ,LYDO=? ,NGAYLAP=? ,TRANGTHAI=? where MABH=?";
                
       
         try {
