@@ -453,7 +453,7 @@ public java.sql.Date cover(Date d){
                 Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
                 Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
                 // Tạo đối tượng Paragraph với văn bản "HOA DON MUA HANG" và định dạng chữ in đậm
-                BaseFont unicodeFont = BaseFont.createFont("C:\\Windows\\Fonts\\ARIALUNI.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                BaseFont unicodeFont = BaseFont.createFont("\\Font\\ARIALUNI.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 int fontSize = 12;
                 Paragraph centerText = new Paragraph("CỬA HÀNG BÁN ĐIỆN THOẠI HASOLIFE", new Font(unicodeFont, fontSize));
                 centerText.setAlignment(Element.ALIGN_CENTER);
