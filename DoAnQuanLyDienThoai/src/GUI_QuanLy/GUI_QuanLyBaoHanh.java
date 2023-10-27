@@ -4,6 +4,8 @@
  */
 package GUI_QuanLy;
 
+import QLController.QuanLyBaoHanhController;
+
 /**
  *
  * @author Admin
@@ -15,6 +17,9 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
      */
     public GUI_QuanLyBaoHanh() {
         initComponents();
+        QuanLyBaoHanhController controller = new QuanLyBaoHanhController(jpnView, btnThem, jtfTim, btnXuat, this);
+        controller.setDateToTable();
+        controller.setEvent();
     }
 
     /**
@@ -28,14 +33,13 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
 
         QuanlyBaoHanh = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnXuat = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jpnView = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -46,8 +50,8 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jPanel6.add(jTextField1);
+        jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTim);
 
         QuanlyBaoHanh.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -72,35 +76,40 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton7.setText("NHẬP FILE");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton7);
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
+        btnThem.setText("THÊM");
+        btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnThem);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton3.setText("XUẤT FILE");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton3);
+        btnXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
+        btnXuat.setText("XUẤT FILE");
+        btnXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnXuat.setPreferredSize(new java.awt.Dimension(140, 50));
+        jPanel8.add(btnXuat);
 
         QuanlyBaoHanh.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách bảo hành", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MÃ BẢO HÀNH", "MÃ SẢN PHẨM", "MÃ KHÁCH HÀNG", "MÃ HÓA ĐƠN", "NGÀY BẮT ĐẦU", "NGÀY KẾT THÚC"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1180, Short.MAX_VALUE)
+        );
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,14 +117,14 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1180, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -124,17 +133,20 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         add(QuanlyBaoHanh, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+
+    }//GEN-LAST:event_btnThemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyBaoHanh;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXuat;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jpnView;
+    private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables
 }
