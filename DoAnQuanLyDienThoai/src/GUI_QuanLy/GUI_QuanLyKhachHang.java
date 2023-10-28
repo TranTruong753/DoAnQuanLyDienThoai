@@ -4,17 +4,20 @@
  */
 package GUI_QuanLy;
 
+import DAL.DAL_KhachHang;
+import QLController.QuanLyKhachHangController;
+
 /**
  *
  * @author Admin
  */
 public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
-
-    /**
-     * Creates new form GUI_QuanLyKhachHang
-     */
+    DAL_KhachHang khbus=new DAL_KhachHang();
+    QuanLyKhachHangController controller;
     public GUI_QuanLyKhachHang() {
         initComponents();
+        controller = new QuanLyKhachHangController(jpnView, jtfTim, this);
+        controller.setDateToTable();    
     }
 
     /**
@@ -28,14 +31,13 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
 
         QuanlyKhachHang = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jpnView = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -46,8 +48,8 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jPanel6.add(jTextField1);
+        jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
+        jPanel6.add(jtfTim);
 
         QuanlyKhachHang.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -92,15 +94,16 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MÃ KH", "TÊN KH", "SĐT", "GIỚI TÍNH"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1180, Short.MAX_VALUE)
+        );
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,14 +111,14 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1180, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -133,8 +136,7 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jpnView;
+    private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables
 }
