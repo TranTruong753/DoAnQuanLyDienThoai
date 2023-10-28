@@ -37,7 +37,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
     
     public GUI_QuanLySanPham(GUI_TrangChuBanHang panelBanHang) {
         initComponents();       
-        qlf = new QuanLySanPhamControllerfix(jpnView, btnThem, jtfTim,btnXuatfile,this, panelBanHang);
+        qlf = new QuanLySanPhamControllerfix(jPanel9, btnThem, jtfTim,btnXuatfile,this, panelBanHang);
         qlf.setDateToTable();
         this.panelBanHang = panelBanHang;
     }
@@ -60,6 +60,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnNhapfile = new javax.swing.JButton();
         btnXuatfile = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -137,21 +138,38 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
 
         QuanlySanPham.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
-        jpnView.setBackground(new java.awt.Color(255, 255, 255));
-        jpnView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1192, Short.MAX_VALUE)
+            .addGap(0, 1180, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
+            .addGap(0, 634, Short.MAX_VALUE)
         );
 
-        QuanlySanPham.add(jpnView, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        QuanlySanPham.add(jPanel9, java.awt.BorderLayout.CENTER);
 
         add(QuanlySanPham, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -280,6 +298,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jpnView;
     private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables

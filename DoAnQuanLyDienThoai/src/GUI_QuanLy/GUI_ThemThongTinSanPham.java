@@ -36,14 +36,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     
     private ArrayList<String> listMau ;
     
-//    public GUI_ThemThongTinSanPham( QuanLySanPhamControllerfix qlf) {
-//        initComponents();
-//        this.setLocationRelativeTo(null);
-//        this.qlf = qlf;
-//        this.loadListMauSacComBox();
-//        listSp=(ArrayList<DTO_SanPham>) spBUS.getList();
-//        listth=thbus.getList();
-//    }
+
     
     public GUI_ThemThongTinSanPham( QuanLySanPhamControllerfix qlf,GUI_TrangChuBanHang panelBanHang ) {
         initComponents();
@@ -342,7 +335,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
                 
                 spDTO.setMauSac(jcbMAUSAC.getSelectedItem().toString());
                 spDTO.setMaThuongHieu(jtfTH.getText());
- //               spDTO.setKhuyenMai(0.0);
                 spDTO.setDungLuong(jtfDUNGLUONG.getText());
                 spDTO.setDonGia(Double.parseDouble(jtfDONGIA.getText()));
                 spDTO.setImg(path);
@@ -401,19 +393,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
             e.printStackTrace();
         }
             
-           
-
-   //         int index = path1.indexOf("\\img");
-   //         String subStr = path1.substring(index);
-   //         path = subStr.replace('\\', '/');
-   //         
-   //                
-   //        BufferedImage b;
-   //        try {
-   //            b=ImageIO.read(file);
-   //            jlbHinhAnh.setIcon(new ImageIcon (b));
-   //        } catch (Exception e) {
-   //        }
+    
         }                 
     }//GEN-LAST:event_btnchonActionPerformed
 

@@ -53,7 +53,6 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jtfTenSp.setEditable(state);
         jtfDungLuong.setEditable(state);
         jtfDonGia.setEditable(state);
-//        jtfKhuyenMai.setEditable(state);
         jtfSl.setEditable(state);
         jcbMauSac.setEnabled(state);
     }
