@@ -40,7 +40,6 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         qlf = new QuanLySanPhamControllerfix(jpnView, btnThem, jtfTim,btnXuatfile,this, panelBanHang);
         qlf.setDateToTable();
         this.panelBanHang = panelBanHang;
-   //   qlfix.setEvent();    
     }
     
 
@@ -197,12 +196,10 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
                     cell=headerRow.createCell(5,CellType.STRING);
                     cell.setCellValue("Dung lượng");
                     cell=headerRow.createCell(6,CellType.STRING);
-                    cell.setCellValue("Đơn giá");
+                    cell.setCellValue("Đơn giá");                 
                     cell=headerRow.createCell(7,CellType.STRING);
-                    cell.setCellValue("Khuyến mãi");
-                    cell=headerRow.createCell(8,CellType.STRING);
                     cell.setCellValue("Số lượng tồn");
-                    cell=headerRow.createCell(9,CellType.STRING);
+                    cell=headerRow.createCell(8,CellType.STRING);
                     cell.setCellValue("Đường dẫn hình ảnh");
 //                    row =sheet.createRow(7);
                     DAL_SanPham sanPhamService = new DAL_SanPham();
@@ -234,10 +231,8 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
                             cell=row.createCell(6,CellType.STRING);
                             cell.setCellValue(sanpham.getDonGia());
                             cell=row.createCell(7,CellType.STRING);
-                            cell.setCellValue(sanpham.getKhuyenMai());
-                            cell=row.createCell(8,CellType.STRING);
                             cell.setCellValue(sanpham.getSoLuong());
-                            cell=row.createCell(9,CellType.STRING);
+                            cell=row.createCell(8,CellType.STRING);
                             cell.setCellValue(sanpham.getImg());
                             }
                         }

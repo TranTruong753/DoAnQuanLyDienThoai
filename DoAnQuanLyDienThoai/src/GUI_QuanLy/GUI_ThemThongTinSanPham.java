@@ -98,8 +98,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jtfDONGIA = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jtfKM = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -236,21 +234,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
         jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel31.setText("Khuyến mãi");
-        jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 187, -1, 30));
-
-        jtfKM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfKM.setPreferredSize(new java.awt.Dimension(200, 30));
-        jtfKM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfKMActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jtfKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
-
         jPanel2.add(jPanel8);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -359,7 +342,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
                 
                 spDTO.setMauSac(jcbMAUSAC.getSelectedItem().toString());
                 spDTO.setMaThuongHieu(jtfTH.getText());
-                spDTO.setKhuyenMai(0.0);
+ //               spDTO.setKhuyenMai(0.0);
                 spDTO.setDungLuong(jtfDUNGLUONG.getText());
                 spDTO.setDonGia(Double.parseDouble(jtfDONGIA.getText()));
                 spDTO.setImg(path);
@@ -370,6 +353,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Thêm thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
                     qlf.setDateToTable();
                     panelBanHang.load();
+                    this.dispose();
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
@@ -437,10 +421,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     String name = file.getName().toLowerCase();
     return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".bmp");
 }
-    private void jtfKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfKMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfKMActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -495,7 +475,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -510,7 +489,6 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDONGIA;
     private javax.swing.JTextField jtfDUNGLUONG;
-    private javax.swing.JTextField jtfKM;
     private javax.swing.JTextField jtfMASP;
     private javax.swing.JTextField jtfTENSP;
     private javax.swing.JTextField jtfTH;

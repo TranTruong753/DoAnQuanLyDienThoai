@@ -10,7 +10,8 @@ package DTO;
  */
 public class DTO_SanPham {
     private String maSp,tenSp,maThuongHieu,mauSac,dungLuong,img;
-    private Double donGia,khuyenMai;
+    private Double donGia;
+   // private Double khuyenMai;
     private int soLuong,trangThai;
     
     static int maSo = 1000;
@@ -18,7 +19,7 @@ public class DTO_SanPham {
     public DTO_SanPham() {
     }
 
-    public DTO_SanPham( String tenSp, String maThuongHieu, String mauSac, String dungLuong, String img, Double donGia, Double khuyenMai, int soLuong, int trangThai) {
+    public DTO_SanPham( String tenSp, String maThuongHieu, String mauSac, String dungLuong, String img, Double donGia, int soLuong, int trangThai) {
         maSo++;
         this.maSp = maThuongHieu + maSo;
         this.tenSp = tenSp;
@@ -27,7 +28,7 @@ public class DTO_SanPham {
         this.dungLuong = dungLuong;
         this.img = img;
         this.donGia = donGia;
-        this.khuyenMai = khuyenMai;
+//        this.khuyenMai = khuyenMai;
         this.soLuong = soLuong;
         this.trangThai = trangThai;
     }
@@ -88,14 +89,7 @@ public class DTO_SanPham {
         this.donGia = donGia;
     }
 
-    public Double getKhuyenMai() {
-        return khuyenMai;
-    }
-
-    public void setKhuyenMai(Double khuyenMai) {
-        this.khuyenMai = khuyenMai;
-    }
-
+  
     public int getSoLuong() {
         return soLuong;
     }

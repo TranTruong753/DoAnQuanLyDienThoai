@@ -47,7 +47,6 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jtfTenSp.setEditable(false);
         jtfDungLuong.setEditable(false);
         jtfDonGia.setEditable(false);
-        jtfKhuyenMai.setEditable(false);
         jtfSl.setEditable(false);
         jcbMauSac.setEnabled(false);
         
@@ -56,7 +55,6 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jtfTenSp.setText(spDTO.getTenSp().toString());
         jtfDungLuong.setText(spDTO.getDungLuong());
         jtfDonGia.setText(fuc.doubleToFormattedString(spDTO.getDonGia())+" VNĐ");
-        jtfKhuyenMai.setText(fuc.doubleToFormattedString(spDTO.getKhuyenMai())+" VNĐ");
         jtfSl.setText(spDTO.getSoLuong()+"");
         timMauCbb(spDTO.getMauSac(), jcbMauSac);
         
@@ -150,8 +148,6 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel30 = new javax.swing.JLabel();
         jtfDonGia = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jtfKhuyenMai = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jtfSl = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -289,29 +285,14 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
 
         jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel31.setText("Khuyến mãi");
-        jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 187, -1, 30));
-
-        jtfKhuyenMai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfKhuyenMai.setPreferredSize(new java.awt.Dimension(200, 30));
-        jtfKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfKhuyenMaiActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jtfKhuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
-
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setText("SL tồn kho");
         jLabel32.setPreferredSize(new java.awt.Dimension(125, 17));
-        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 187, 80, 30));
+        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 80, 30));
 
         jtfSl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfSl.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
+        jPanel8.add(jtfSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jPanel2.add(jPanel8);
 
@@ -385,10 +366,6 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfKhuyenMaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfKhuyenMaiActionPerformed
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         this.dispose();
@@ -451,7 +428,6 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -467,7 +443,6 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDonGia;
     private javax.swing.JTextField jtfDungLuong;
-    private javax.swing.JTextField jtfKhuyenMai;
     private javax.swing.JTextField jtfMaSp;
     private javax.swing.JTextField jtfMaTh;
     private javax.swing.JTextField jtfSl;

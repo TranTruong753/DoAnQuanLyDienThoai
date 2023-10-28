@@ -45,7 +45,6 @@ public class DAL_SanPham {
                 sp.setMauSac(rs.getString("MAUSAC"));
                 sp.setDungLuong(rs.getString("DUNGLUONG"));
                 sp.setDonGia(rs.getDouble("DONGIA"));
-                sp.setKhuyenMai(rs.getDouble("KHUYENMAI"));
                 sp.setSoLuong(rs.getInt("SLTON"));
                 sp.setImg(rs.getString("IMG"));
                 sp.setTrangThai(rs.getInt("TRANGTHAI"));
@@ -80,7 +79,6 @@ public class DAL_SanPham {
                 sp.setMauSac(rs.getString("MAUSAC"));
                 sp.setDungLuong(rs.getString("DUNGLUONG"));
                 sp.setDonGia(rs.getDouble("DONGIA"));
-                sp.setKhuyenMai(rs.getDouble("KHUYENMAI"));
                 sp.setSoLuong(rs.getInt("SLTON"));
                 sp.setImg(rs.getString("IMG"));
                 sp.setTrangThai(rs.getInt("TRANGTHAI"));
@@ -108,7 +106,6 @@ public class DAL_SanPham {
                 sp.setMauSac(rs.getString("MAUSAC"));
                 sp.setDungLuong(rs.getString("DUNGLUONG"));
                 sp.setDonGia(rs.getDouble("DONGIA"));
-                sp.setKhuyenMai(rs.getDouble("KHUYENMAI"));
                 sp.setSoLuong(rs.getInt("SLTON"));
                 sp.setImg(rs.getString("IMG"));
                 sp.setTrangThai(rs.getInt("TRANGTHAI"));
@@ -121,8 +118,8 @@ public class DAL_SanPham {
     }
      
      public boolean addDTO_SanPham(DTO_SanPham sp) {
-        String sql="insert into SanPham(MASP,TENSP,MATH,MAUSAC,DUNGLUONG,DONGIA,KHUYENMAI,SLTON,IMG,TRANGTHAI)"
-               + "VALUES(?,?,?,?,?,?,?,?,?,?)";             
+        String sql="insert into SanPham(MASP,TENSP,MATH,MAUSAC,DUNGLUONG,DONGIA,SLTON,IMG,TRANGTHAI)"
+               + "VALUES(?,?,?,?,?,?,?,?,?)";             
         try {
             Connection conn = DAO.getConnection();
            PreparedStatement ps= conn.prepareStatement(sql);
@@ -132,11 +129,10 @@ public class DAL_SanPham {
            ps.setString(4, sp.getMauSac());
            ps.setString(5, sp.getDungLuong());
            ps.setDouble(6, sp.getDonGia());
-           ps.setDouble(7, sp.getKhuyenMai());
-           ps.setInt(8, sp.getSoLuong());
-           ps.setString(9, sp.getImg());
+           ps.setInt(7, sp.getSoLuong());
+           ps.setString(8, sp.getImg());
            sp.setTrangThai(1);
-           ps.setInt(10, sp.getTrangThai());
+           ps.setInt(9, sp.getTrangThai());
            return ps.executeUpdate()>0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -146,7 +142,7 @@ public class DAL_SanPham {
 
     
     public boolean updateDTO_SanPham(DTO_SanPham s) {
-        String sql="update SanPham set TENSP=? , MATH=? ,MAUSAC=? ,DUNGLUONG=? ,DONGIA=? ,KHUYENMAI=? ,SLTON=? ,IMG=? ,TRANGTHAI=? where MASP=?";
+        String sql="update SanPham set TENSP=? , MATH=? ,MAUSAC=? ,DUNGLUONG=? ,DONGIA=? ,SLTON=? ,IMG=? ,TRANGTHAI=? where MASP=?";
                
       
         try {
@@ -159,11 +155,10 @@ public class DAL_SanPham {
            ps.setString(3,s.getMauSac());
            ps.setString(4, s.getDungLuong());
            ps.setDouble(5, s.getDonGia());
-           ps.setDouble(6, s.getKhuyenMai());
-           ps.setInt(7, s.getSoLuong());
-           ps.setString(8, s.getImg());
-           ps.setInt(9, s.getTrangThai());
-           ps.setString(10, s.getMaSp());
+           ps.setInt(6, s.getSoLuong());
+           ps.setString(7, s.getImg());
+           ps.setInt(8, s.getTrangThai());
+           ps.setString(9, s.getMaSp());
            
            return ps.executeUpdate()>0;
         } catch (Exception e) {
@@ -191,21 +186,20 @@ public class DAL_SanPham {
             conn = DAO.getConnection();
 
             String sql = "MERGE INTO SanPham AS target " +
-                    "USING (VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)) AS source (MASP, TENSP, MATH, MAUSAC, DUNGLUONG, DONGIA, KHUYENMAI, SLTON, IMG, TRANGTHAI) " +
+                    "USING (VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)) AS source (MASP, TENSP, MATH, MAUSAC, DUNGLUONG, DONGIA, SLTON, IMG, TRANGTHAI) " +
                     "ON (target.MASP = source.MASP) " +
                     "WHEN MATCHED THEN " +
                     "    UPDATE SET target.TENSP = source.TENSP, " +
                     "               target.MATH = source.MATH, " +
                     "               target.MAUSAC = source.MAUSAC, " +
                     "               target.DUNGLUONG = source.DUNGLUONG, " +
-                    "               target.DONGIA = source.DONGIA, " +
-                    "               target.KHUYENMAI = source.KHUYENMAI, " +
+                    "               target.DONGIA = source.DONGIA, " +                               
                     "               target.SLTON = source.SLTON, " +
                     "               target.IMG = source.IMG, " +
                     "               target.TRANGTHAI = source.TRANGTHAI " +
                     "WHEN NOT MATCHED THEN " +
-                    "    INSERT (MASP, TENSP, MATH, MAUSAC, DUNGLUONG, DONGIA, KHUYENMAI, SLTON, IMG, TRANGTHAI) " +
-                    "    VALUES (source.MASP, source.TENSP, source.MATH, source.MAUSAC, source.DUNGLUONG, source.DONGIA, source.KHUYENMAI, source.SLTON, source.IMG, source.TRANGTHAI);";
+                    "    INSERT (MASP, TENSP, MATH, MAUSAC, DUNGLUONG, DONGIA, SLTON, IMG, TRANGTHAI) " +
+                    "    VALUES (source.MASP, source.TENSP, source.MATH, source.MAUSAC, source.DUNGLUONG, source.DONGIA, source.SLTON, source.IMG, source.TRANGTHAI);";
 
             statement = conn.prepareStatement(sql);
 
@@ -224,10 +218,9 @@ public class DAL_SanPham {
                 statement.setString(4, row.getCell(4).getStringCellValue()); // MAUSAC
                 statement.setString(5, row.getCell(5).getStringCellValue()); // DUNGLUONG
                 statement.setDouble(6, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(6)))); // DONGIA
-                statement.setDouble(7, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(7)))); // KHUYENMAI
-                statement.setDouble(8, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(8)))); // SLTON
-                statement.setString(9, row.getCell(9).getStringCellValue()); // IMG
-                statement.setInt(10, 1); // TRANGTHAI
+                statement.setDouble(7, Double.parseDouble(dataFormatter.formatCellValue(row.getCell(7)))); // SLTON
+                statement.setString(8, row.getCell(8).getStringCellValue()); // IMG
+                statement.setInt(9, 1); // TRANGTHAI
 
                 // Execute the statement for each row
                 statement.executeUpdate();

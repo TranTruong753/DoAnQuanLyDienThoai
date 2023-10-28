@@ -43,7 +43,7 @@ private JButton btnThem,btnXuat;
 public JTextField jtfTim;
 private BUS_SanPham spbus = new BUS_SanPham();
 private String[] listColumn = 
-{"Mã sản phẩm","Tên sản phẩm", "Mã thương hiệu","Màu sắc","Dung lượng","Đơn giá","Khuyến mãi","Số lượng tồn",};
+{"Mã sản phẩm","Tên sản phẩm", "Mã thương hiệu","Màu sắc","Dung lượng","Đơn giá","Số lượng tồn",};
 private TableRowSorter<TableModel> rowSorter = null;
 public GUI_TrangChuBanHang panelBanHang;
 
@@ -149,7 +149,6 @@ public void setDateToTable(){
     table.getColumnModel().getColumn(4).setCellRenderer(centerRendererRow);
     table.getColumnModel().getColumn(5).setCellRenderer(centerRendererRow);
     table.getColumnModel().getColumn(6).setCellRenderer(centerRendererRow);
-    table.getColumnModel().getColumn(7).setCellRenderer(centerRendererRow);
     table.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {

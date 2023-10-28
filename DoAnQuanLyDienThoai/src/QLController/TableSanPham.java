@@ -38,8 +38,8 @@ public class TableSanPham {
                 obj[3] = sp.getMauSac();
                 obj[4] = sp.getDungLuong();
                 obj[5] = fuc.doubleToFormattedString(sp.getDonGia());
-                obj[6] = fuc.doubleToFormattedString(sp.getKhuyenMai());
-                obj[7] = sp.getSoLuong();
+//                obj[6] = fuc.doubleToFormattedString(sp.getKhuyenMai());
+                obj[6] = sp.getSoLuong();
              
                 
                 if(sp.getTrangThai()!= 0){
