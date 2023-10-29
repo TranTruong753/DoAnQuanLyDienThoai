@@ -12,11 +12,13 @@ import DTO.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -70,7 +72,7 @@ public class DAL_NhanVien {
            PreparedStatement ps= conn.prepareStatement(sql);
            ps.setString(1, s.getMANV());
            ps.setString(2, s.getTENNV());
-           ps.setDate(3, (Date) s.getNGAYSINH());
+           ps.setDate(3, cover(s.getNGAYSINH()));
            ps.setString(4, s.getSDT());
            ps.setString(5, s.getDIACHI());
            ps.setString(6, s.getGIOITINH());
@@ -94,7 +96,7 @@ public class DAL_NhanVien {
             //java.util.Date a=  s.getNgaysinh();
            ps.setString(1, s.getMANV());
            ps.setString(2, s.getTENNV());
-           ps.setDate(3, (Date) s.getNGAYSINH());
+           ps.setDate(3, cover(s.getNGAYSINH()));
            ps.setString(4, s.getSDT());
            ps.setString(5, s.getDIACHI());
            ps.setString(6, s.getGIOITINH());
@@ -178,7 +180,9 @@ public class DAL_NhanVien {
                         statement.setString(3, row.getCell(3).getStringCellValue()); // SDT
                         statement.setString(4, row.getCell(4).getStringCellValue()); // DIACHI
                         statement.setString(5, row.getCell(5).getStringCellValue());//GIOITINH
-                        statement.setDate(6,cover(row.getCell(6).getDateCellValue())); // NGÁYINH
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        Date d=dateFormat.parse(row.getCell(6).getStringCellValue());
+                        statement.setDate(6,cover(d)); // NGÁYINH
                         statement.setInt(7, 1); // trangthai
                         
                         
