@@ -4,6 +4,7 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_KhuyenMai;
 import BUS.BUS_SanPham;
 import DTO.*;
 import function.*;
@@ -11,7 +12,10 @@ import java.awt.Frame;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -30,7 +34,10 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private ArrayList<String> listMau ;
     private DTO_SanPham spDTO = new DTO_SanPham();
     private BUS_SanPham spBUS = new BUS_SanPham();
-    
+    private BUS_KhuyenMai km =new BUS_KhuyenMai();
+    private double dg,dgg,ptkm;
+    String date;
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     public GUI_ThongTinMuaSanPham(JPanel parent, boolean modal, DTO_SanPham sp) {
         super((Frame) SwingUtilities.getWindowAncestor(parent), modal);
         this.parentPanel = parent; // Lưu trữ JPanel làm parentPanel
@@ -39,6 +46,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         setLocationRelativeTo(null) ;
         this.loadListMauSacComBox();
         this.viewThongTinSp();
+        this.LoadGiamGia();
     }
     
     public void viewThongTinSp(){
@@ -120,6 +128,25 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         // Đặt model cho JComboBox
         jcbMauSac.setModel(model);
     }
+    public void LoadGiamGia(){
+        ArrayList<DTO_KhuyenMai> listkm= km.timnv(jtfMaSp.getText());
+        dg=(spDTO.getDonGia());
+        Date d= new Date(System.currentTimeMillis());
+        date=dateFormat.format(d);
+        for(DTO_KhuyenMai x: listkm)
+        {String date3=dateFormat.format(x.getNGAYBD());
+         String date4=dateFormat.format(x.getNGAYKT());
+            if(date.compareTo(date3)>=0 && date.compareTo(date4)<=0)
+            { ptkm=x.getPHANTRAMKM();
+              dgg=(double) (dg-dg*ptkm*0.01);
+              jtfDonGiaGiam.setText(fuc.doubleToFormattedString(dgg)+" VNĐ");
+              break;
+            }
+            else
+                jtfDonGiaGiam.setText(jtfDonGia.getText());
+             
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,6 +177,9 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jPanel10 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jtfSl = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jtfDonGiaGiam = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -180,11 +210,11 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Mã SP");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 50, 30));
+        jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 30));
 
         jtfMaSp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMaSp.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfMaSp, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jPanel8.add(jtfMaSp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -216,11 +246,11 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel28.setText("Mã TH");
         jLabel28.setPreferredSize(new java.awt.Dimension(50, 17));
-        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 67, -1, 30));
+        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
 
         jtfMaTh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMaTh.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfMaTh, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
+        jPanel8.add(jtfMaTh, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -253,21 +283,21 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("Dung lượng");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 140, -1, 30));
 
         jtfDungLuong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDungLuong.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfDungLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        jPanel8.add(jtfDungLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel30.setText("Đơn giá");
+        jLabel30.setText("Đơn giá giảm giá");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 137, 60, 20));
+        jPanel8.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, 20));
 
         jtfDonGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDonGia.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
+        jPanel8.add(jtfDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(650, 30));
@@ -288,11 +318,28 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setText("SL tồn kho");
         jLabel32.setPreferredSize(new java.awt.Dimension(125, 17));
-        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 80, 30));
+        jPanel8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 80, 30));
 
         jtfSl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfSl.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        jPanel8.add(jtfSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel31.setText("Đơn giá");
+        jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
+        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 137, 60, 20));
+
+        jtfDonGiaGiam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfDonGiaGiam.setEnabled(false);
+        jtfDonGiaGiam.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel8.add(jtfDonGiaGiam, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, 30));
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel33.setText("Đơn giá");
+        jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
+        jPanel8.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 137, 60, 20));
 
         jPanel2.add(jPanel8);
 
@@ -428,7 +475,9 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -442,6 +491,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jcbMauSac;
     private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDonGia;
+    private javax.swing.JTextField jtfDonGiaGiam;
     private javax.swing.JTextField jtfDungLuong;
     private javax.swing.JTextField jtfMaSp;
     private javax.swing.JTextField jtfMaTh;
