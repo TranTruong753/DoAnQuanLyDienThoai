@@ -146,6 +146,8 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
                 jtfDonGiaGiam.setText(jtfDonGia.getText());
              
         }
+        if(listkm.size()==0)
+            jtfDonGiaGiam.setText(jtfDonGia.getText());
     }
     
     /**
