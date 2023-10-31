@@ -8,7 +8,7 @@ import BUS.BUS_NhaCc;
 import DAL.DAL_NhanVien;
 import DTO.DTO_NhaCc;
 import DTO.DTO_NhanVien;
-import QLController.QuanLiPhieuNhapController;
+import QLController.QuanLyPhieuNhapController;
 import QLController.QuanLyNhaCcController;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,13 +38,13 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
      */
      private BUS_NhaCc nccbus=new BUS_NhaCc();
      QuanLyNhaCcController controller;
-     QuanLiPhieuNhapController controllerpn;
+     QuanLyPhieuNhapController controllerpn;
     public GUI_QuanLyNCC() {
         initComponents();
         controller = new QuanLyNhaCcController(jpnView, btnThem, jtfTim,btnXuatfile,this);
         controller.setDateToTable();
         controller.setEvent();
-        controllerpn=new QuanLiPhieuNhapController(jpnView1, btnNhap, jtfTim1, btnXuat1, this);
+        controllerpn=new QuanLyPhieuNhapController(jpnView1, btnNhap, jtfTim1, btnXuat1, this);
         controllerpn.setDateToTable();
     }
 

@@ -5,7 +5,7 @@
 package GUI_QuanLy;
 
 import DTO.DTO_PhieuNhap;
-import QLController.QuanLiPhieuNhapController;
+import QLController.QuanLyPhieuNhapController;
 import QLController.QuanLyCTHDNHController;
 import function.funcDungChung;
 
@@ -18,7 +18,7 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
     /**
      * Creates new form GUI_ThongTinPhieuNhap2
      */
-    public GUI_ThongTinPhieuNhap(DTO_PhieuNhap pn,QuanLiPhieuNhapController ql) {
+    public GUI_ThongTinPhieuNhap(DTO_PhieuNhap pn,QuanLyPhieuNhapController ql) {
         initComponents();
         String s=fuc.doubleToFormattedString(pn.getTONGTIEN());
         this.setLocationRelativeTo(null);
