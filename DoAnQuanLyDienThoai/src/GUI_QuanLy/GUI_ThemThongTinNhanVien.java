@@ -97,6 +97,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jTextField15 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -337,11 +338,14 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(17, 153, 142));
         kGradientPanel1.setPreferredSize(new java.awt.Dimension(1000, 70));
 
+        jLabel5.setPreferredSize(new java.awt.Dimension(32, 32));
+        kGradientPanel1.add(jLabel5);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("NHÂN VIÊN");
-        jLabel1.setPreferredSize(new java.awt.Dimension(630, 44));
+        jLabel1.setPreferredSize(new java.awt.Dimension(600, 44));
         kGradientPanel1.add(jLabel1);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cross32.png"))); // NOI18N
@@ -466,6 +470,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;

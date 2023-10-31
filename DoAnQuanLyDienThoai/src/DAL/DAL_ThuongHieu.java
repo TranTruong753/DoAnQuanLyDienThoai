@@ -43,5 +43,22 @@ public class DAL_ThuongHieu {
     
     }
     
+    public boolean addThuongHieu(DTO_ThuongHieu th) {
+        String sql="insert into ThuongHieu(MATH,TENTH,TRANGTHAI)"
+               + "VALUES(?,?,?)";             
+        try {
+            Connection conn = DAO.getConnection();
+           PreparedStatement ps= conn.prepareStatement(sql);
+           ps.setString(1, th.getMATH());
+           ps.setString(2, th.getTENTH());      
+           th.setTRANGTHAI(1);
+           ps.setInt(3, th.getTRANGTHAI());
+           return ps.executeUpdate()>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return false;
+    }
+    
     
 }

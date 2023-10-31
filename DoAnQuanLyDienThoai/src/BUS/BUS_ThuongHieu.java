@@ -13,9 +13,15 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class BUS_ThuongHieu {
-    DAL_ThuongHieu nv= new DAL_ThuongHieu();
+    DAL_ThuongHieu thDal= new DAL_ThuongHieu();
     
     public ArrayList<DTO_ThuongHieu> getList() {
-        return nv.getList();
+        return thDal.getList();
+    }
+    
+    public boolean addThuongHieu(DTO_ThuongHieu tH){
+        if(thDal.addThuongHieu(tH))
+            return true;
+          return false;       
     }
 }

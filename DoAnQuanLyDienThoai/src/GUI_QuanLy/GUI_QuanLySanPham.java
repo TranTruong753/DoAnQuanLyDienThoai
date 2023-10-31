@@ -60,6 +60,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnNhapfile = new javax.swing.JButton();
         btnXuatfile = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
@@ -135,6 +136,16 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
             }
         });
         jPanel8.add(btnXuatfile);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("THƯƠNG HIỆU");
+        jButton1.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton1);
 
         QuanlySanPham.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
@@ -289,12 +300,19 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
                 }
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        GUI_DanhSachThuongHieu guiDsTh = new GUI_DanhSachThuongHieu(this, true);
+        guiDsTh.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlySanPham;
     private javax.swing.JButton btnNhapfile;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXuatfile;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
