@@ -32,9 +32,8 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private QuanLySanPhamControllerfix qlf ;
     private ArrayList<DTO_SanPham> listSp = new ArrayList<>();
     private ArrayList<DTO_ThuongHieu> listth = new ArrayList<>();
-    public GUI_TrangChuBanHang panelBanHang;
-    
-    private ArrayList<String> listMau ;
+    public GUI_TrangChuBanHang panelBanHang;   
+    private ArrayList<String>  listTh ;
     
 
     
@@ -42,28 +41,31 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.qlf = qlf;
-        this.loadListMauSacComBox();
+        this.loadListMaTh();
         listSp=(ArrayList<DTO_SanPham>) spBUS.getList();
         listth=thbus.getList();
         this.panelBanHang = panelBanHang;
+        this.jtfMASP.setText(capNhatMaSp(jcbMaTh.getSelectedItem().toString()));
     }
     
-    public void loadListMauSacComBox(){
-        listMau = new ArrayList<>();
-        listMau.add("Danh sách màu");
-        for(DTO_SanPham sp:spBUS.getList()){
-             String mauSac = sp.getMauSac();      
+    public void loadListMaTh(){
+        listTh = new ArrayList<>();
+        listTh.add("Danh sách mã thương hiệu");
+        for(DTO_ThuongHieu th:thbus.getList()){
+             String maTh = th.getMATH();      
             // Kiểm tra xem màu này đã tồn tại trong danh sách chưa
-            if (!listMau.contains(mauSac)) {
-                listMau.add(mauSac);
+            if (!listTh.contains(maTh)) {
+                listTh.add(maTh);
             }
         }
          // Tạo một DefaultComboBoxModel với danh sách màu
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(listMau.toArray(new String[0]));
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(listTh.toArray(new String[0]));
 
         // Đặt model cho JComboBox
-        jcbMAUSAC.setModel(model);
+        jcbMaTh.setModel(model);
     }
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,15 +84,17 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jtfTENSP = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jtfTH = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jcbMAUSAC = new javax.swing.JComboBox<>();
+        jcbMaTh = new javax.swing.JComboBox<>();
         jPanel9 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jtfDUNGLUONG = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jtfDONGIA = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
+        jtfMAUSAC = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jtfRam = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -116,6 +120,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
         jPanel8.setOpaque(false);
+        jPanel8.setPreferredSize(new java.awt.Dimension(680, 300));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -160,20 +165,21 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jLabel28.setPreferredSize(new java.awt.Dimension(50, 17));
         jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 67, -1, 30));
 
-        jtfTH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfTH.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfTH, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
-
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel29.setText("Màu Sắc");
         jLabel29.setPreferredSize(new java.awt.Dimension(180, 17));
         jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 97, -1));
 
-        jcbMAUSAC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jcbMAUSAC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách màu", " " }));
-        jcbMAUSAC.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel8.add(jcbMAUSAC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 200, -1));
+        jcbMaTh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbMaTh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách màu", " " }));
+        jcbMaTh.setPreferredSize(new java.awt.Dimension(80, 30));
+        jcbMaTh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMaThActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jcbMaTh, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 200, -1));
 
         jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(650, 30));
@@ -193,13 +199,13 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel27.setText("Dung lượng(GB)");
+        jLabel27.setText("Dung lượng(Gb)");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
 
         jtfDUNGLUONG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDUNGLUONG.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel8.add(jtfDUNGLUONG, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        jPanel8.add(jtfDUNGLUONG, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -226,6 +232,20 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         );
 
         jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        jtfMAUSAC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfMAUSAC.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel8.add(jtfMAUSAC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel31.setText("Ram(Gb)");
+        jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
+        jPanel8.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
+
+        jtfRam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfRam.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel8.add(jtfRam, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
         jPanel2.add(jPanel8);
 
@@ -307,35 +327,45 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public String capNhatMaSp(String maTh){
+        String maSp = "";
+        if(jcbMaTh.getSelectedIndex()!=0){
+            listSp = spBUS.timThTrongSp(jcbMaTh.getSelectedItem().toString());
+            int soThuTuMa = listSp.size()+1;
+            if(soThuTuMa<10){
+                maSp = jcbMaTh.getSelectedItem().toString() + "0" + soThuTuMa;
+            }
+            else{
+                maSp = jcbMaTh.getSelectedItem().toString() + soThuTuMa;
+            }
+        }
+        
+        return maSp ;
+        
+    }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        int i;
-        for( i=0;i<listth.size();i++)
-            if(listth.get(i).getMATH().equals(jtfTH.getText()))
-                break;
+      
+       
         
-        
-        if(jtfMASP.getText().equals("") || jtfTENSP.getText().equals("") || jtfTH.getText().equals("")
-                || jtfDUNGLUONG.getText().equals("")|| jtfDONGIA.getText().equals("") || jcbMAUSAC.getSelectedItem()==null ||
-                jtfDUNGLUONG.getText().matches("\\d+")==false || jtfDONGIA.getText().matches("\\d+")==false)
+        if(jtfMASP.getText().equals("") || jtfTENSP.getText().equals("") || jtfMAUSAC.getText().equals("")
+                || jtfDUNGLUONG.getText().equals("")|| jtfDONGIA.getText().equals("") || jcbMaTh.getSelectedItem()==null ||
+                jtfDUNGLUONG.getText().matches("\\d+")==false || jtfDONGIA.getText().matches("\\d+")==false
+                ||jcbMaTh.getSelectedIndex()==0||jtfRam.getText().equals(""))
             JOptionPane.showMessageDialog(null, "Thông tin chưa hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
         else
             if(path.equals(""))
                 JOptionPane.showMessageDialog(null, "Hãy chọn hình ảnh", "Thông báo", JOptionPane.WARNING_MESSAGE);
             else if(spBUS.timSp(jtfMASP.getText()).size()!=0)
                 JOptionPane.showMessageDialog(null, "Mã sản phẩm bị trùng", "Thông báo", JOptionPane.WARNING_MESSAGE);
-        else
-            if(i==listth.size())
-            JOptionPane.showMessageDialog(null, "Mã thương hiệu không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            
+       
                 
             else{
                 spDTO.setMaSp(jtfMASP.getText());
-                spDTO.setTenSp(jtfTENSP.getText());
-                
-                spDTO.setMauSac(jcbMAUSAC.getSelectedItem().toString());
-                spDTO.setMaThuongHieu(jtfTH.getText());
-                spDTO.setDungLuong(jtfDUNGLUONG.getText());
+                spDTO.setTenSp(jtfTENSP.getText());               
+                spDTO.setMauSac(jtfMAUSAC.getText());
+                spDTO.setMaThuongHieu(jcbMaTh.getSelectedItem().toString());
+                String cauHinh = jtfRam.getText() + "GB-" +jtfDUNGLUONG.getText() +"GB";
+                spDTO.setDungLuong(cauHinh);
                 spDTO.setDonGia(Double.parseDouble(jtfDONGIA.getText()));
                 spDTO.setImg(path);
                 spDTO.setSoLuong(0);
@@ -397,6 +427,11 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         }                 
     }//GEN-LAST:event_btnchonActionPerformed
 
+    private void jcbMaThActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMaThActionPerformed
+        // TODO add your handling code here:
+        jtfMASP.setText(capNhatMaSp(jcbMaTh.getSelectedItem().toString()));
+    }//GEN-LAST:event_jcbMaThActionPerformed
+
     private boolean isImageFile(File file) {
     String name = file.getName().toLowerCase();
     return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".bmp");
@@ -455,6 +490,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -465,13 +501,14 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JComboBox<String> jcbMAUSAC;
+    private javax.swing.JComboBox<String> jcbMaTh;
     private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDONGIA;
     private javax.swing.JTextField jtfDUNGLUONG;
     private javax.swing.JTextField jtfMASP;
+    private javax.swing.JTextField jtfMAUSAC;
+    private javax.swing.JTextField jtfRam;
     private javax.swing.JTextField jtfTENSP;
-    private javax.swing.JTextField jtfTH;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

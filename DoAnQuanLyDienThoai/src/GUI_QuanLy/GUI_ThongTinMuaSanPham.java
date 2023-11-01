@@ -191,6 +191,8 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel31 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         lbGia = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -245,11 +247,11 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
@@ -282,11 +284,11 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
@@ -312,11 +314,11 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
@@ -342,10 +344,17 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
         jPanel8.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 137, 60, 20));
 
-        lbGia.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lbGia.setFont(new java.awt.Font("Segoe UI", 0, 34)); // NOI18N
         lbGia.setText("Số tiền");
         lbGia.setPreferredSize(new java.awt.Dimension(36, 44));
-        jPanel8.add(lbGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 490, 90));
+        jPanel8.add(lbGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 460, 90));
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 80, 50));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setText("NHẬP SL:");
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 110, 90));
 
         jPanel2.add(jPanel8);
 
@@ -481,6 +490,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -494,6 +504,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcbMauSac;
     private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDonGia;
