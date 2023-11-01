@@ -6,6 +6,7 @@ package GUI_QuanLy;
 
 import BUS.*;
 import DTO.*;
+import QLController.QuanLyDSBH;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -30,14 +31,16 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
     public DTO_SanPham sp = new DTO_SanPham();
     public BUS_SanPham spBus = new BUS_SanPham();
     public ArrayList<GUI_ContainerPhone> container = new ArrayList<>();
-
+    
+    QuanLyDSBH dsbh;
   
     
-    public GUI_ContainerPhone(DTO_SanPham sp) {
+    public GUI_ContainerPhone(DTO_SanPham sp,QuanLyDSBH dsbh) {
         initComponents();
         this.sp = sp;
         this.loadHinhAnhSp(this.sp.getImg().toString(), jlbHinhAnh, 250,167);
         this.jlbTen.setText(this.sp.getTenSp());
+        this.dsbh=dsbh;
     }
     
     public void loadHinhAnhSp(String src,JLabel jlb,int width,int height){
@@ -76,7 +79,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
     }
    
     public void visibleDialog(){
-        GUI_ThongTinMuaSanPham guiThongTinSp = new GUI_ThongTinMuaSanPham(this, true, sp);
+        GUI_ThongTinMuaSanPham guiThongTinSp = new GUI_ThongTinMuaSanPham(this, true, sp,dsbh);
         guiThongTinSp.setVisible(true);
     }
    

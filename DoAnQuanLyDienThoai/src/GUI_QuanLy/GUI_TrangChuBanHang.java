@@ -25,14 +25,18 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     public DTO_SanPham sp = new DTO_SanPham();
     public BUS_SanPham spBus = new BUS_SanPham();
     public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
+    private QuanLyDSBH controller;
     
     public GUI_TrangChuBanHang() {
-       initComponents();     
-       qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);     
+       initComponents();   
+       controller=new QuanLyDSBH(jpnView, this);
+       controller.setDateToTable(null, 0);
+       qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this,this.controller);
+       
     }
 
     public void load(){
-        qlf.showSp(spBus.getList(), containers, this.jPanelSPs);     
+        qlf.showSp(spBus.getList(), containers, this.jPanelSPs,controller);     
     }
     
 
@@ -58,8 +62,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jpnView = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -147,17 +150,18 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
         jPanel7.setLayout(new java.awt.BorderLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 377, Short.MAX_VALUE)
+        );
 
-            },
-            new String [] {
-                "MÃ SP", "TÊN SP", "SỐ LƯỢNG", "GIÁ"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jPanel7.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel7.add(jpnView, java.awt.BorderLayout.CENTER);
 
         jPanel6.add(jPanel7, java.awt.BorderLayout.CENTER);
 
@@ -265,10 +269,10 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String key = jTextField1.getText().toString().trim();
         if(!key.isEmpty()){
-          qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.timSpDaKhoa(key), containers, this.jPanelSPs,this);    
+          qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.timSpDaKhoa(key), containers, this.jPanelSPs,this,this.controller);    
         }
         else     
-         qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this);
+         qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this,this.controller);
     }//GEN-LAST:event_jTextField1KeyReleased
 
 
@@ -295,12 +299,11 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelSPs;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     public javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel jpnView;
     // End of variables declaration//GEN-END:variables
 
 }

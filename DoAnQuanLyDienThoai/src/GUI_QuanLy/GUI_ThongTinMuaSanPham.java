@@ -7,6 +7,7 @@ package GUI_QuanLy;
 import BUS.BUS_KhuyenMai;
 import BUS.BUS_SanPham;
 import DTO.*;
+import QLController.QuanLyDSBH;
 import function.*;
 import java.awt.Frame;
 import java.awt.Image;
@@ -36,9 +37,10 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private BUS_SanPham spBUS = new BUS_SanPham();
     private BUS_KhuyenMai km =new BUS_KhuyenMai();
     private double dg,dgg,ptkm;
+    QuanLyDSBH dsbh;
     String date;
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    public GUI_ThongTinMuaSanPham(JPanel parent, boolean modal, DTO_SanPham sp) {
+    public GUI_ThongTinMuaSanPham(JPanel parent, boolean modal, DTO_SanPham sp,QuanLyDSBH dsbh) {
         super((Frame) SwingUtilities.getWindowAncestor(parent), modal);
         this.parentPanel = parent; // Lưu trữ JPanel làm parentPanel
         this.spDTO = sp ;
@@ -47,6 +49,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         this.loadListMauSacComBox();
         this.viewThongTinSp();
         this.LoadGiamGia();
+        this.dsbh=dsbh;
     }
     
     public void viewThongTinSp(){
@@ -193,7 +196,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -379,16 +382,16 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jPanel5.setPreferredSize(new java.awt.Dimension(630, 80));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartadd.png"))); // NOI18N
-        jButton3.setText("Thêm");
-        jButton3.setPreferredSize(new java.awt.Dimension(110, 50));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartadd.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.setPreferredSize(new java.awt.Dimension(110, 40));
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+        jPanel5.add(btnThem);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
@@ -422,9 +425,9 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        dsbh.setDateToTable(spDTO, 0);
+    }//GEN-LAST:event_btnThemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,8 +472,8 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;

@@ -50,34 +50,38 @@ public GUI_TrangChuBanHang panelBanHang;
 public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
 public JPanel jPanelSPs  ;
 public ArrayList<DTO_SanPham> listSp = new ArrayList<>();
+QuanLyDSBH dsbh;
 
 
-public QuanLySanPhamControllerfix(JPanel jpnView, JButton btnThem, JTextField jtfTim,JButton btnXuat,GUI_QuanLySanPham ql,GUI_TrangChuBanHang panelBanHang ){
+public QuanLySanPhamControllerfix(JPanel jpnView, JButton btnThem, JTextField jtfTim,JButton btnXuat,GUI_QuanLySanPham ql,GUI_TrangChuBanHang panelBanHang){
     this.jpnView = jpnView;
     this.btnThem = btnThem;
     this.jtfTim = jtfTim;
     this.btnXuat=btnXuat;
     this.ql=ql;
     this.panelBanHang = panelBanHang;
+    
 }
 
-public QuanLySanPhamControllerfix(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs,GUI_TrangChuBanHang panelBanHang) {
+public QuanLySanPhamControllerfix(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs,GUI_TrangChuBanHang panelBanHang,QuanLyDSBH dsbh ) {
         this.listSp.clear();
         this.listSp.addAll(listSp);
         this.jPanelSPs = new JPanel(); 
         this.jPanelSPs = jPanelSPs;
         this.containers.clear();
         this.containers.addAll(containers);
-        this.showSp(listSp, containers, jPanelSPs);
-        this.panelBanHang=panelBanHang;
+        this.showSp(listSp, containers, jPanelSPs,dsbh);
+        this.panelBanHang = panelBanHang;
+        this.dsbh=dsbh;
        
     }
 
-public void showSp(List<DTO_SanPham> listsp, ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs){           
+public void showSp(List<DTO_SanPham> listsp, ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs,QuanLyDSBH dsbh ){           
     jPanelSPs.removeAll();     
     jPanelSPs.revalidate(); // Cập nhật giao diện người dùng
     jPanelSPs.repaint(); // Vẽ lại JPanel       
     containers.clear();
+    this.dsbh=dsbh;
 //    int soLuong = listsp.size()/3 + 1;
 //    int height = (int)soLuong * 317;
     int soLuongSp = listsp.size() ;
@@ -90,7 +94,7 @@ public void showSp(List<DTO_SanPham> listsp, ArrayList<GUI_ContainerPhone> conta
     }
     int height = (int)size * 317;
     for(int i = 0;i<listsp.size();i++){           
-        GUI_ContainerPhone container = new GUI_ContainerPhone(listsp.get(i));
+        GUI_ContainerPhone container = new GUI_ContainerPhone(listsp.get(i),this.dsbh);
         containers.add(container);       
     }
     Dimension preferredSize = new Dimension(850, height); 
