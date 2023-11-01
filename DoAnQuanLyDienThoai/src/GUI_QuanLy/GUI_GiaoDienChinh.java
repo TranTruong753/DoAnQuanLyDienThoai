@@ -145,8 +145,6 @@ public void closeSideBar(int width, int height) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
@@ -204,7 +202,6 @@ public void closeSideBar(int width, int height) {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        setType(java.awt.Window.Type.POPUP);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1500, 861));
@@ -830,8 +827,6 @@ public void closeSideBar(int width, int height) {
     private javax.swing.JPanel jPanelMenu8Title;
     private javax.swing.JPanel jPanelMenuAll;
     private javax.swing.JPanel jPanelSidebar;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
