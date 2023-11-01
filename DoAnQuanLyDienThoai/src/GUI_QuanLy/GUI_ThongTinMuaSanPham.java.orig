@@ -382,16 +382,28 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jPanel5.setPreferredSize(new java.awt.Dimension(630, 80));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartadd.png"))); // NOI18N
+        jButton3.setText("Thêm");
+        jButton3.setPreferredSize(new java.awt.Dimension(110, 50));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+=======
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartadd.png"))); // NOI18N
         btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(110, 50));
+        btnThem.setPreferredSize(new java.awt.Dimension(110, 40));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> cuuphan1
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        jPanel5.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+<<<<<<< HEAD
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+=======
+        jPanel5.add(btnThem);
+>>>>>>> cuuphan1
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
