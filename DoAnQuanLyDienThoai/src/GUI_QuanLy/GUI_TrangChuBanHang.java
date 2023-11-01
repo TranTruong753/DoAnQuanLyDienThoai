@@ -64,14 +64,21 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -165,58 +172,95 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(400, 110));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DANH SÁCH CHỌN");
         jPanel8.add(jLabel2);
 
         jPanel6.add(jPanel8, java.awt.BorderLayout.PAGE_START);
 
         jPanel9.setBackground(new java.awt.Color(17, 153, 142));
-        jPanel9.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel9.setPreferredSize(new java.awt.Dimension(400, 370));
         jPanel9.setLayout(new java.awt.BorderLayout());
 
         jPanel12.setOpaque(false);
-        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 40));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel13.setOpaque(false);
-        jPanel13.setPreferredSize(new java.awt.Dimension(350, 90));
-        jPanel13.setLayout(new java.awt.GridLayout(3, 2));
+        jPanel4.setOpaque(false);
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Tổng tiền");
-        jPanel13.add(jLabel3);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Số điện thoại:");
+        jLabel1.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel4.add(jLabel1);
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel13.add(jTextField2);
+        jTextField2.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jTextField2);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("VAT");
-        jPanel13.add(jLabel4);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Họ Tên khách hàng:");
+        jLabel3.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel4.add(jLabel3);
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel13.add(jTextField3);
+        jTextField3.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jTextField3);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Khách phải trả");
-        jPanel13.add(jLabel5);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Tổng tiền:");
+        jLabel4.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel4.add(jLabel4);
 
-        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel13.add(jTextField4);
+        jTextField4.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jTextField4);
 
-        jPanel12.add(jPanel13);
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Số tiền được giảm:");
+        jLabel5.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel4.add(jLabel5);
+
+        jTextField5.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jTextField5);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Khách trả:");
+        jLabel6.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel4.add(jLabel6);
+
+        jTextField6.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jTextField6);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Tiền thừa:");
+        jLabel7.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel4.add(jLabel7);
+
+        jTextField7.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jTextField7);
+
+        jPanel12.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 370, 250));
 
         jPanel9.add(jPanel12, java.awt.BorderLayout.CENTER);
 
         jPanel14.setBackground(new java.awt.Color(17, 153, 142));
         jPanel14.setPreferredSize(new java.awt.Dimension(400, 80));
+        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
+        jButton1.setText("XÓA SP");
+        jButton1.setPreferredSize(new java.awt.Dimension(170, 50));
+        jPanel14.add(jButton1);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/billTichXanh.png"))); // NOI18N
         jButton9.setText("THANH TOÁN");
-        jButton9.setPreferredSize(new java.awt.Dimension(190, 50));
+        jButton9.setPreferredSize(new java.awt.Dimension(170, 50));
         jPanel14.add(jButton9);
 
         jPanel9.add(jPanel14, java.awt.BorderLayout.PAGE_END);
@@ -273,21 +317,25 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     public javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -301,6 +349,9 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 
 }
