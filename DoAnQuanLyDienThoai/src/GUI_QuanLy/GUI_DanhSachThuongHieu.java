@@ -53,9 +53,9 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        btnThem = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        btnThem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jtfMaTh = new javax.swing.JTextField();
         lbMaTh = new javax.swing.JLabel();
@@ -68,29 +68,31 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jpnView.setBackground(new java.awt.Color(255, 255, 255));
+        jpnView.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 486, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 289, Short.MAX_VALUE)
+            .addGap(0, 317, Short.MAX_VALUE)
         );
 
         jPanel2.add(jpnView, java.awt.BorderLayout.CENTER);
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setPreferredSize(new java.awt.Dimension(444, 40));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
+        jPanel9.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel9.setPreferredSize(new java.awt.Dimension(444, 50));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 10));
 
         jtfTim.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel9.add(jtfTim);
@@ -120,7 +122,7 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
@@ -138,69 +140,61 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setPreferredSize(new java.awt.Dimension(694, 80));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setPreferredSize(new java.awt.Dimension(200, 309));
-        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setMinimumSize(new java.awt.Dimension(200, 200));
-        jPanel7.setPreferredSize(new java.awt.Dimension(200, 200));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
+        jPanel4.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setPreferredSize(new java.awt.Dimension(694, 70));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         btnThem.setText("THÊM");
-        btnThem.setPreferredSize(new java.awt.Dimension(150, 30));
+        btnThem.setPreferredSize(new java.awt.Dimension(180, 40));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        jPanel7.add(btnThem);
+        jPanel4.add(btnThem);
 
+        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
+
+        jPanel5.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel5.setPreferredSize(new java.awt.Dimension(230, 309));
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 50));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setMinimumSize(new java.awt.Dimension(200, 200));
+        jPanel7.setOpaque(false);
+        jPanel7.setPreferredSize(new java.awt.Dimension(230, 200));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("MÃ TH");
-        jLabel1.setPreferredSize(new java.awt.Dimension(40, 30));
+        jLabel1.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel7.add(jLabel1);
 
-        jtfMaTh.setPreferredSize(new java.awt.Dimension(100, 30));
+        jtfMaTh.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel7.add(jtfMaTh);
 
         lbMaTh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbMaTh.setText("Thông báo");
-        lbMaTh.setPreferredSize(new java.awt.Dimension(150, 17));
+        lbMaTh.setPreferredSize(new java.awt.Dimension(170, 17));
         jPanel7.add(lbMaTh);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("TÊN TH");
-        jLabel2.setPreferredSize(new java.awt.Dimension(40, 30));
+        jLabel2.setPreferredSize(new java.awt.Dimension(50, 30));
         jPanel7.add(jLabel2);
 
-        jtfTenTh.setPreferredSize(new java.awt.Dimension(100, 30));
+        jtfTenTh.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel7.add(jtfTenTh);
 
         lbTenTh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbTenTh.setText("Thông báo");
-        lbTenTh.setPreferredSize(new java.awt.Dimension(150, 17));
+        lbTenTh.setPreferredSize(new java.awt.Dimension(170, 17));
         jPanel7.add(lbTenTh);
 
         jPanel5.add(jPanel7);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.LINE_END);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(249, 249, 249));
         jPanel6.setPreferredSize(new java.awt.Dimension(20, 309));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -211,7 +205,7 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel6, java.awt.BorderLayout.LINE_START);

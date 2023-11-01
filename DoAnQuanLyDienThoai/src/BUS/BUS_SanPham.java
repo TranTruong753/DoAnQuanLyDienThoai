@@ -25,6 +25,10 @@ public class BUS_SanPham {
         return sp_DAL.timSp(key);
     }
     
+    public ArrayList<DTO_SanPham> timThTrongSp(String key){     
+        return sp_DAL.timThTrongSp(key);
+    }
+    
     public ArrayList<DTO_SanPham> timSpDaKhoa(String key){     
         return sp_DAL.timSpDaKhoa(key);
     }
