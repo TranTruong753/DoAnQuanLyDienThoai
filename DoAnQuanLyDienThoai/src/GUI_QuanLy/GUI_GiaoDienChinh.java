@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class GUI_GiaoDienChinh extends javax.swing.JFrame {
 
     // lưu chữa biến GUI
-    private GUI_TrangChuBanHang panelBanHang  = new GUI_TrangChuBanHang();
+    private GUI_TrangChuBanHang panelBanHang  = new GUI_TrangChuBanHang(this);
     private GUI_QuanLyNVvaTK panelNVvaTK = new GUI_QuanLyNVvaTK();
     private GUI_QuanLySPvaKM panelSPvaKM = new GUI_QuanLySPvaKM(panelBanHang);
     private GUI_QuanLyHoaDon panelHoaDon = new GUI_QuanLyHoaDon();
@@ -56,6 +56,10 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     }
 
     //FUNCITION
+
+    public GUI_QuanLySPvaKM getPanelSPvaKM() {
+        return panelSPvaKM;
+    }
   
  
 public void addMenu(){    

@@ -27,6 +27,11 @@ public class GUI_QuanLySPvaKM extends javax.swing.JPanel {
 //        
     }
 
+    public GUI_QuanLySanPham getGuiSanPham() {
+        return guiSanPham;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

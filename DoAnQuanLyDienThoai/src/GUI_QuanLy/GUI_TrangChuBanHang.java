@@ -60,13 +60,13 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     public ArrayList<String> listtg = new ArrayList<>();
     public ArrayList<DTO_KhachHang> listkh = new ArrayList<>();
     List<DTO_SanPham> listItem= new ArrayList<>();
-    
-    public GUI_TrangChuBanHang() {
+    GUI_GiaoDienChinh gd;
+    public GUI_TrangChuBanHang(GUI_GiaoDienChinh gd) {
        initComponents();   
        controller=new QuanLyDSBH(jpnView, this,btnXoa,containers, this.jPanelSPs);
        controller.setDateToTable(null, 0,0);
        controller.setEvent();
-       
+       this.gd=gd;
        qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this,this.controller);
        
     }
@@ -596,6 +596,7 @@ public void showthongbao(){
             jtfTongTien.setText("0");
             
             this.load();
+            gd.getPanelSPvaKM().getGuiSanPham().getQlf().setDateToTable();
             
             
             
