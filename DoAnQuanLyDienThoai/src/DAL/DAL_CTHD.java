@@ -50,6 +50,31 @@ public class DAL_CTHD {
         }
         return null;
     }
+    public boolean addDTO_CTHD(DTO_CTHD s) {
+        String sql="insert into CTHD(MAHD,MASP,TENSP,SL,DONGIA,THANHTIEN)"
+               + "VALUES(?,?,?,?,?,?)";
+        
+        
+        try {
+            Connection conn = DAO.getConnection();
+           PreparedStatement ps= conn.prepareStatement(sql);
+           ps.setString(1, s.getMaHD());
+           ps.setString(2, s.getMaSp());
+           
+           ps.setString(3, s.getTenSp());
+           ps.setInt(4, s.getSoLuong());
+           ps.setDouble(5, s.getDonGia());
+           ps.setDouble(6, s.getThanhTien());
+           
+           return ps.executeUpdate()>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return false;
+    }
+    public java.sql.Date cover(java.util.Date d){
+        return new java.sql.Date(d.getTime());
+    }
     
     public ArrayList<DTO_CTHD> timCthd(String key) {
         ArrayList<DTO_CTHD> list =new ArrayList<>();

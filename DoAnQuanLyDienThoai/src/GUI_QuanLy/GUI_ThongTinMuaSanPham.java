@@ -17,12 +17,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import org.apache.poi.hssf.record.PageBreakRecord;
 
 /**
  *
@@ -36,20 +39,23 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private DTO_SanPham spDTO = new DTO_SanPham();
     private BUS_SanPham spBUS = new BUS_SanPham();
     private BUS_KhuyenMai km =new BUS_KhuyenMai();
-    private double dg,dgg,ptkm;
+    private double dg,dgg,ptkm,tgg;
     QuanLyDSBH dsbh;
     String date;
+    List<DTO_SanPham> listItem;
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     public GUI_ThongTinMuaSanPham(JPanel parent, boolean modal, DTO_SanPham sp,QuanLyDSBH dsbh) {
         super((Frame) SwingUtilities.getWindowAncestor(parent), modal);
         this.parentPanel = parent; // Lưu trữ JPanel làm parentPanel
         this.spDTO = sp ;
+        this.listItem=listItem;
         initComponents();
         setLocationRelativeTo(null) ;
         this.loadListMauSacComBox();
         this.viewThongTinSp();
         this.LoadGiamGia();
         this.dsbh=dsbh;
+        
     }
     
     public void viewThongTinSp(){
@@ -66,7 +72,16 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jtfTenSp.setText(spDTO.getTenSp().toString());
         jtfDungLuong.setText(spDTO.getDungLuong());
         jtfDonGia.setText(fuc.doubleToFormattedString(spDTO.getDonGia())+" VNĐ");
-        jtfSl.setText(spDTO.getSoLuong()+"");
+        int dem=0;
+        if(listItem!=null ){
+            for(DTO_SanPham x : listItem)
+                if(x.getMaSp().equals(spDTO.getMaSp())&& x.getSoLuong()!=0)
+                { jtfSl.setText(x.getSoLuong()+"");
+                dem=1;
+                break;}
+        }
+        if(dem==0) 
+            jtfSl.setText(spDTO.getSoLuong()+"");
         timMauCbb(spDTO.getMauSac(), jcbMauSac);
         
         String imagePath = spDTO.getImg(); // Đường dẫn tới hình ảnh
@@ -144,17 +159,20 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
               dgg=(double) (dg-dg*ptkm*0.01);
           //    jtfDonGiaGiam.setText(fuc.doubleToFormattedString(dgg)+" VNĐ");
               lbGia.setText("Giá hiện tại: "+fuc.doubleToFormattedString(dgg)+" VNĐ");
+              tgg=dgg;
               break;
             }
             else{
             //    jtfDonGiaGiam.setText(jtfDonGia.getText());
                 lbGia.setText("Giá hiện tại: "+jtfDonGia.getText());
+                tgg=spDTO.getDonGia();
             }
               
              
         }
         if(listkm.size()==0){
             lbGia.setText("Giá hiện tại: "+jtfDonGia.getText());
+            tgg=spDTO.getDonGia();
          //   jtfDonGiaGiam.setText(jtfDonGia.getText());
         }
             
@@ -191,7 +209,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel31 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         lbGia = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfSL = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
@@ -349,8 +367,9 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         lbGia.setPreferredSize(new java.awt.Dimension(36, 44));
         jPanel8.add(lbGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 460, 90));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 80, 50));
+        jtfSL.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfSL.setText("1");
+        jPanel8.add(jtfSL, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 80, 50));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("NHẬP SL:");
@@ -435,7 +454,14 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        dsbh.setDateToTable(spDTO, 0);
+      if( jtfSL.getText().matches("\\d+")==false || Integer.parseInt(jtfSL.getText())>spDTO.getSoLuong())
+          JOptionPane.showMessageDialog(rootPane, "Số lượng không hợp lệ !");
+      else
+          if(Integer.parseInt(jtfSL.getText())<1 )
+              JOptionPane.showMessageDialog(rootPane, "Số lượng không hợp lệ !");
+      else
+          {dsbh.setDateToTable(spDTO,Integer.parseInt(jtfSL.getText()),spDTO.getDonGia()-tgg);
+          this.setVisible(false);}
     }//GEN-LAST:event_btnThemActionPerformed
 
     /**
@@ -504,13 +530,13 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcbMauSac;
     private javax.swing.JLabel jlbHinhAnh;
     private javax.swing.JTextField jtfDonGia;
     private javax.swing.JTextField jtfDungLuong;
     private javax.swing.JTextField jtfMaSp;
     private javax.swing.JTextField jtfMaTh;
+    private javax.swing.JTextField jtfSL;
     private javax.swing.JTextField jtfSl;
     private javax.swing.JTextField jtfTenSp;
     private keeptoo.KGradientPanel kGradientPanel1;

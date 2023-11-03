@@ -63,7 +63,8 @@ public QuanLySanPhamControllerfix(JPanel jpnView, JButton btnThem, JTextField jt
     
 }
 
-public QuanLySanPhamControllerfix(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs,GUI_TrangChuBanHang panelBanHang,QuanLyDSBH dsbh ) {
+public QuanLySanPhamControllerfix(ArrayList<DTO_SanPham> listSp,ArrayList<GUI_ContainerPhone> containers, JPanel jPanelSPs,
+        GUI_TrangChuBanHang panelBanHang,QuanLyDSBH dsbh ) {
         this.listSp.clear();
         this.listSp.addAll(listSp);
         this.jPanelSPs = new JPanel(); 

@@ -26,4 +26,10 @@ public class BUS_HoaDon {
         
         return hd_DAL.timHd(tk);
     }
+    public boolean addHoaDon(DTO_HoaDon s){
+        if(hd_DAL.addDTO_HoaDon(s))
+            return true;
+          return false;
+        
+    }
 }

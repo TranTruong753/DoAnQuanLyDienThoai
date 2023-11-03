@@ -97,7 +97,7 @@ return false;
     
     public ArrayList<DTO_KhachHang> timkh(String tk) {
         ArrayList<DTO_KhachHang> list =new ArrayList<>();
-        String sql="SELECT * FROM KhachHang where TENKH like N'%"+ tk +"%' or MAKH like N'%"+ tk +"%' ";
+        String sql="SELECT * FROM KhachHang where SDTKH like N'%"+ tk +"%' or MAKH like N'%"+ tk +"%' ";
         try {
             Connection conn = DAO.getConnection();
             PreparedStatement ps= conn.prepareStatement(sql);
