@@ -41,6 +41,11 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         qlf.setDateToTable();
         this.panelBanHang = panelBanHang;
     }
+
+    public QuanLySanPhamControllerfix getQlf() {
+        return qlf;
+    }
+    
     
 
     /**
