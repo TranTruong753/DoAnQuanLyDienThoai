@@ -25,4 +25,10 @@ public class BUS_CTHD {
     public ArrayList<DTO_CTHD> timCthd(String key){     
         return cthd_DAL.timCthd(key);
     }
+    public boolean addCTHD(DTO_CTHD s){
+        if(cthd_DAL.addDTO_CTHD(s))
+            return true;
+          return false;
+        
+    }
 }

@@ -7,12 +7,37 @@ package GUI_QuanLy;
 import BUS.*;
 import DTO.*;
 import QLController.*;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+import function.funcDungChung;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 public class GUI_TrangChuBanHang extends javax.swing.JPanel {
@@ -24,13 +49,24 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     public QuanLySanPhamControllerfix qlf ;
     public DTO_SanPham sp = new DTO_SanPham();
     public BUS_SanPham spBus = new BUS_SanPham();
+    public BUS_HoaDon hdbus=new BUS_HoaDon();
+    public BUS_CTHD cthdbus=new BUS_CTHD();
+    public BUS_KhachHang khbus=new BUS_KhachHang();
     public ArrayList<GUI_ContainerPhone> containers = new ArrayList<>();
+    public double tt=0,tg=0,t=0,tienthua=0,tienkhach=0;
+    private funcDungChung fuc = new funcDungChung();
     private QuanLyDSBH controller;
+    public ArrayList<String> listsl = new ArrayList<>();
+    public ArrayList<String> listtg = new ArrayList<>();
+    public ArrayList<DTO_KhachHang> listkh = new ArrayList<>();
+    List<DTO_SanPham> listItem= new ArrayList<>();
     
     public GUI_TrangChuBanHang() {
        initComponents();   
-       controller=new QuanLyDSBH(jpnView, this);
-       controller.setDateToTable(null, 0);
+       controller=new QuanLyDSBH(jpnView, this,btnXoa,containers, this.jPanelSPs);
+       controller.setDateToTable(null, 0,0);
+       controller.setEvent();
+       
        qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this,this.controller);
        
     }
@@ -40,8 +76,30 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     }
     
 
+    public void setTinhTien(double jtfTienGiam,double jtfTongTien,int sl) {//cap nhap lai tien khi tang so luong 1 sp hoac khi them 1 sp moi
+        tt=tt+jtfTongTien*sl;
+        tg=tg+jtfTienGiam*sl;
+        
+        this.jtfTienGiam.setText(fuc.doubleToFormattedString(tg)+" VNĐ");
+        
+        this.jtfTongTien.setText(fuc.doubleToFormattedString(tt)+" VNĐ");
+        
+        t=tt-tg;
+        this.jtfThanhTien.setText(fuc.doubleToFormattedString(t)+" VNĐ");
+    }
+    public void setUpdate(double jtfTienGiam,double jtfTongTien,int sl){ //cap nhap lai tien khi giam so luong 1 sp hoac khi xoa 1 sp
+        
+        tt=tt-jtfTongTien*sl;
+        tg=tg-jtfTienGiam*sl;
+        
+        this.jtfTienGiam.setText(fuc.doubleToFormattedString(tg)+" VNĐ");
+        
+        this.jtfTongTien.setText(fuc.doubleToFormattedString(tt)+" VNĐ");
+        
+        t=tt-tg;
+        this.jtfThanhTien.setText(fuc.doubleToFormattedString(t)+" VNĐ");
+    }
 
- 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,20 +127,22 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel12 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtfSdt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtfHotenKH = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jtfTongTien = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jtfTienGiam = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jtfThanhTien = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jtfTienKhachDua = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jtfTienThua = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnThanhToan = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
 
@@ -199,8 +259,13 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel4.add(jLabel1);
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(jTextField2);
+        jtfSdt.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfSdt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfSdtKeyReleased(evt);
+            }
+        });
+        jPanel4.add(jtfSdt);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,8 +273,8 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel4.add(jLabel3);
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(jTextField3);
+        jtfHotenKH.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jtfHotenKH);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,8 +282,10 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jLabel4.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel4.add(jLabel4);
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(jTextField4);
+        jtfTongTien.setText("0");
+        jtfTongTien.setEnabled(false);
+        jtfTongTien.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jtfTongTien);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -226,28 +293,53 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jLabel5.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel4.add(jLabel5);
 
-        jTextField5.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(jTextField5);
+        jtfTienGiam.setText("0");
+        jtfTienGiam.setEnabled(false);
+        jtfTienGiam.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jtfTienGiam);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Khách trả:");
+        jLabel6.setText("Thành tiền:");
         jLabel6.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel4.add(jLabel6);
 
-        jTextField6.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(jTextField6);
+        jtfThanhTien.setText("0");
+        jtfThanhTien.setEnabled(false);
+        jtfThanhTien.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(jtfThanhTien);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tiền thừa:");
+        jLabel7.setText("Tiền khách trả:");
         jLabel7.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel4.add(jLabel7);
 
-        jTextField7.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(jTextField7);
+        jtfTienKhachDua.setText("0");
+        jtfTienKhachDua.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfTienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfTienKhachDuaKeyReleased(evt);
+            }
+        });
+        jPanel4.add(jtfTienKhachDua);
 
         jPanel12.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 370, 250));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Tiền Thừa:");
+        jLabel8.setPreferredSize(new java.awt.Dimension(150, 30));
+        jPanel12.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jtfTienThua.setEnabled(false);
+        jtfTienThua.setPreferredSize(new java.awt.Dimension(200, 30));
+        jtfTienThua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfTienThuaActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jtfTienThua, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
         jPanel9.add(jPanel12, java.awt.BorderLayout.CENTER);
 
@@ -255,17 +347,22 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel14.setPreferredSize(new java.awt.Dimension(400, 80));
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
-        jButton1.setText("XÓA SP");
-        jButton1.setPreferredSize(new java.awt.Dimension(170, 50));
-        jPanel14.add(jButton1);
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
+        btnXoa.setText("XÓA SP");
+        btnXoa.setPreferredSize(new java.awt.Dimension(170, 50));
+        jPanel14.add(btnXoa);
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/billTichXanh.png"))); // NOI18N
-        jButton9.setText("THANH TOÁN");
-        jButton9.setPreferredSize(new java.awt.Dimension(170, 50));
-        jPanel14.add(jButton9);
+        btnThanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/billTichXanh.png"))); // NOI18N
+        btnThanhToan.setText("THANH TOÁN");
+        btnThanhToan.setPreferredSize(new java.awt.Dimension(170, 50));
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
+            }
+        });
+        jPanel14.add(btnThanhToan);
 
         jPanel9.add(jPanel14, java.awt.BorderLayout.PAGE_END);
 
@@ -309,7 +406,9 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
+public void showthongbao(){
+    JOptionPane.showMessageDialog(null, "Hãy chọn sản phẩm cần xóa", "Thông báo", JOptionPane.WARNING_MESSAGE);
+}
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String key = jTextField1.getText().toString().trim();
         if(!key.isEmpty()){
@@ -319,10 +418,250 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
          qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this,this.controller);
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jtfTienThuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTienThuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfTienThuaActionPerformed
+
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        listItem=controller.getListItem();
+        listsl=controller.getListsl();
+        listtg=controller.getListtg();
+        if(tt==0)
+                    JOptionPane.showMessageDialog(null, "Hãy chọn sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        
+        else
+            if(check_NumberPhone(jtfSdt.getText())==false)
+                JOptionPane.showMessageDialog(null, "Số điện thoại khách hàng không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else
+            if(jtfHotenKH.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Thông tin khách hàng chưa đầy đủ", "Thông báo", JOptionPane.WARNING_MESSAGE);    
+        else
+                if(jtfTienThua.getText().equals(""))
+                    JOptionPane.showMessageDialog(null, "Tiền khách đưa không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else{
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("File PDF", "pdf");
+        fileChooser.setFileFilter(filter);
+
+        int returnValue = fileChooser.showSaveDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+            // Đảm bảo đuôi file .pdf
+            if (!filePath.endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+             
+             Document doc=new Document(PageSize.A4, 20, 20, 20, 20);
+             try {
+                 PdfWriter.getInstance(doc, new FileOutputStream(filePath));
+                 
+                 doc.open();
+                // Tạo đối tượng Font cho chữ in đậm
+                Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
+                Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
+                // Tạo đối tượng Paragraph với văn bản "HOA DON MUA HANG" và định dạng chữ in đậm
+                BaseFont unicodeFont = BaseFont.createFont("\\Font\\ARIALUNI.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                int fontSize = 12;
+                Paragraph centerText = new Paragraph("CỬA HÀNG BÁN ĐIỆN THOẠI HASOLIFE", new Font(unicodeFont, fontSize));
+                centerText.setAlignment(Element.ALIGN_CENTER);
+
+                // Thêm đối tượng Paragraph vào tài liệu
+                 doc.add(centerText);
+                 doc.add(new Paragraph("\n"));
+                 doc.add(new Paragraph("Đia Chỉ: 273 An Dương Vương, Phường 3, Quận 5, TPHCM",new Font(unicodeFont, fontSize)));
+                 doc.add(new Paragraph("Liên hệ: 028 3835 4409",new Font(unicodeFont, fontSize)));
+                 doc.add(new Paragraph("Tên khách hàng: "+ jtfHotenKH.getText()+"                                 "+" Số điện thoại: "+jtfSdt.getText(),new Font(unicodeFont, fontSize)));
+                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                 Date d= new Date(System.currentTimeMillis());
+                 Calendar calendar = Calendar.getInstance();
+                calendar.setTime(d);
+                calendar.add(Calendar.MONTH, 3);
+                Date futureDate = calendar.getTime();
+                 doc.add(new Paragraph("Ngày lập: "+dateFormat.format(d)+"                   "+"Ngày kết thúc bảo hành: "+
+                         dateFormat.format(futureDate),new Font(unicodeFont, fontSize)));
+                 doc.add(new Paragraph("\n"));
+                 float[] columnWidths = {1.5f, 2.5f, 1.5f, 1.5f};
+                 PdfPTable b1 = new PdfPTable(columnWidths);
+                 b1.addCell(new Paragraph("Mã Sản Phẩm",new Font(unicodeFont, fontSize)));
+                  b1.addCell(new Paragraph("Tên Sản Phẩm",new Font(unicodeFont, fontSize)));
+                   b1.addCell(new Paragraph("Đơn giá",new Font(unicodeFont, fontSize)));
+                    b1.addCell(new Paragraph("Số lượng",new Font(unicodeFont, fontSize)));
+                 for (int i = 0; i < controller.getTable().getRowCount(); i++) {
+                     String masp=controller.getTable().getValueAt(i, 0).toString();
+                     String tensp=controller.getTable().getValueAt(i, 1).toString();
+                     String dongia= controller.getTable().getValueAt(i, 2).toString();
+                     String sl=controller.getTable().getValueAt(i, 3).toString();
+                     
+                     b1.addCell(masp);
+                     b1.addCell(tensp);
+                     b1.addCell(dongia);
+                     b1.addCell(sl);
+                     
+            
+                 }
+                 doc.add(b1);
+                 doc.add(new Paragraph("\n"));
+                doc.add(new Paragraph("Tổng tiền: "+jtfTongTien.getText()+"                                       "+"Giảm giá: "+jtfTienGiam.getText()
+                         ,new Font(unicodeFont, fontSize))); 
+                doc.add(new Paragraph("Tiền Thanh toán: " +jtfThanhTien.getText()+"                               "+ ""+"Tiền khách: "+fuc.doubleToFormattedString(tienkhach)+" VNĐ",new Font(unicodeFont, fontSize))); 
+                 doc.add(new Paragraph("Tiền thối: " +jtfTienThua.getText(),new Font(unicodeFont, fontSize))); 
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
+                 JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+             } catch (DocumentException ex) {
+                 Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
+                 JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+             }  catch (IOException ex) {
+                    Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
+                }
+           doc.close();
+           DTO_HoaDon hd=new DTO_HoaDon();
+           int t =hdbus.getList().size()+1;
+          
+            if(t<10)
+                hd.setMaHD("HD0"+t);
+            else
+                hd.setMaHD("HD"+t);
+            DTO_KhachHang kh=new DTO_KhachHang();
+            listkh=khbus.timnv(jtfSdt.getText());
+            if(listkh.size()==0)
+            { int k =khbus.getList().size()+1;
+                
+                 if(k<10)
+                     kh.setMAKH("KH0"+k);
+                 else
+                     kh.setMAKH("KH"+k);
+                 kh.setSDTKH(jtfSdt.getText());
+                 kh.setTENKH(jtfHotenKH.getText());
+                 kh.setTRANGTHAI(1);
+                 khbus.addKhachHang(kh);
+                 hd.setMaKH(kh.getMAKH());
+                 
+            }
+            else
+                hd.setMaKH(listkh.get(0).getMAKH());
+                
+            
+            hd.setMaNV("NV001");
+            Date d= new Date(System.currentTimeMillis());
+            hd.setNgayLap(d);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(d);
+            calendar.add(Calendar.MONTH, 3);
+            Date futureDate = calendar.getTime();
+            hd.setNgayKtBh(futureDate);
+            //
+            hd.setTienKhach(tienkhach);
+            hd.setTienThanhToan(this.t);
+            hd.setTienThoi(tienthua);
+            hd.setTongTien(tt);
+            hd.setTrangThai(1);
+            hd.setGiamGia(tg);
+            hdbus.addHoaDon(hd);
+            for(int i=0;i<listItem.size();i++)
+            {
+            DTO_CTHD cthd=new DTO_CTHD();
+            cthd.setMaHD(hd.getMaHD());
+            cthd.setMaSp(listItem.get(i).getMaSp());
+            cthd.setSoLuong(Integer.parseInt(listsl.get(i)));
+            cthd.setTenSp(listItem.get(i).getTenSp());
+            cthd.setThanhTien(listItem.get(i).getDonGia()*Integer.parseInt(listsl.get(i)));
+            cthd.setDonGia(listItem.get(i).getDonGia());
+            cthdbus.addCTHD(cthd);
+                    }
+            for(int i=0;i<listItem.size();i++)
+            {
+                spBus.updateSanPham(listItem.get(i));
+            }
+            listItem.clear();
+            listsl.clear();
+            listtg.clear();
+            controller.getListslbd().clear();
+            controller.setListItem(listItem);
+            controller.setListsl(listsl);
+            controller.setListslbd(controller.getListslbd());
+            controller.setListtg(listtg);
+            controller.setDateToTable(null, 0, 0);
+            tt=0;
+            tg=0;
+            this.t=0;
+            tienthua=0;
+            jtfTienKhachDua.setText("");
+            jtfSdt.setText("");
+            jtfHotenKH.setText("");
+            jtfThanhTien.setText("0");
+            jtfTienGiam.setText("0");
+            jtfTienThua.setText("");
+            jtfTongTien.setText("0");
+            
+            this.load();
+            
+            
+            
+            
+            
+                
+            
+        }   
+        }
+        
+        
+    }//GEN-LAST:event_btnThanhToanActionPerformed
+public boolean check_NumberPhone(String str) {
+      Pattern p_Viettel=Pattern.compile("^03[2-9][0-9]{8}$");
+      Pattern p_Mobifone=Pattern.compile("^07(0|9|7|6|8)[0-9]{7}$");
+      Pattern p_Vinaphone=Pattern.compile("^08[1-5][0-9]{7}$");
+      Pattern p_Vietnamobile=Pattern.compile("^05(6|8)[0-9]{7}$");
+      Pattern p_Gmobile=Pattern.compile("^059[0-9]{7}$");
+        
+        
+        if(str.length()==10 && str.indexOf("0")==0 )
+        {
+            return true;
+            
+        }else
+        {
+            return false;
+        }
+    }
+    private void jtfSdtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSdtKeyReleased
+       ArrayList<DTO_KhachHang> listkh=khbus.getList();
+            for (DTO_KhachHang x: listkh){
+                if(x.getSDTKH().equals(jtfSdt.getText()))
+                {jtfHotenKH.setText(x.getTENKH());
+                jtfHotenKH.setEnabled(false);
+                break;
+                }
+                else
+                {jtfHotenKH.setText("");
+                jtfHotenKH.setEnabled(true);}
+                    
+                
+            }
+    }//GEN-LAST:event_jtfSdtKeyReleased
+
+    private void jtfTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTienKhachDuaKeyReleased
+      if(!jtfTienKhachDua.getText().equals("") && jtfTienKhachDua.getText().matches("\\d+")==true)
+      { tienkhach=Double.parseDouble(jtfTienKhachDua.getText());
+      if(tienkhach>=t)
+      {
+       jtfTienThua.setText(fuc.doubleToFormattedString(tienkhach-t)+" VNĐ");
+       tienthua=tienkhach-t;
+      }
+      else
+      {jtfTienThua.setText("");
+      tienthua=0;}
+      }
+      else
+      {jtfTienThua.setText("");
+      tienthua=0;}
+    }//GEN-LAST:event_jtfTienKhachDuaKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton9;
+    public javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -330,6 +669,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -348,13 +688,14 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelSPs;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel jpnView;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jtfHotenKH;
+    private javax.swing.JTextField jtfSdt;
+    private javax.swing.JTextField jtfThanhTien;
+    private javax.swing.JTextField jtfTienGiam;
+    private javax.swing.JTextField jtfTienKhachDua;
+    private javax.swing.JTextField jtfTienThua;
+    private javax.swing.JTextField jtfTongTien;
     // End of variables declaration//GEN-END:variables
 
 }

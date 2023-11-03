@@ -6,6 +6,7 @@ package QLController;
 
 import DTO.DTO_SanPham;
 import function.funcDungChung;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableDSBH {
     private funcDungChung fuc = new funcDungChung();
-    public DefaultTableModel setTableSp(List<DTO_SanPham> ListItem, String[] listColumn,int sl){
+    public DefaultTableModel setTableSp(List<DTO_SanPham> ListItem, String[] listColumn,ArrayList<String> listsl){
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {        //Không được chỉnh sửa hàng và cột của bảng
@@ -37,7 +38,7 @@ public class TableDSBH {
                 
                 obj[2] = fuc.doubleToFormattedString(sp.getDonGia());
 //                obj[6] = fuc.doubleToFormattedString(sp.getKhuyenMai());
-                obj[3] =sl;
+                obj[3] =listsl.get(i);
                 
              
                 
