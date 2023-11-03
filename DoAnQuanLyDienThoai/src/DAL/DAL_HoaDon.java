@@ -55,6 +55,35 @@ public class DAL_HoaDon {
         }
         return null;
     }
+    public boolean addDTO_HoaDon(DTO_HoaDon s) {
+        String sql="insert into HoaDon(MAHD,MANV,MAKH,NGAYLAP,TONGTIEN,GIAMGIA,TIENTHANHTOAN,TIENKHACH,TIENTHOI,NGAYKTBH,TRANGTHAI)"
+               + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        
+        
+        try {
+            Connection conn = DAO.getConnection();
+           PreparedStatement ps= conn.prepareStatement(sql);
+           ps.setString(1, s.getMaHD());
+           
+           ps.setString(2, s.getMaNV());
+           ps.setString(3, s.getMaKH());
+           ps.setDate(4, cover(s.getNgayLap()));
+           ps.setDouble(5, s.getTongTien());
+           ps.setDouble(6, s.getGiamGia());
+           ps.setDouble(7, s.getTienThanhToan());
+           ps.setDouble(8, s.getTienKhach());
+           ps.setDouble(9, s.getTienThoi());
+           ps.setDate(10, cover(s.getNgayKtBh()));
+           ps.setInt(11, 1);
+           return ps.executeUpdate()>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return false;
+    }
+    public java.sql.Date cover(java.util.Date d){
+        return new java.sql.Date(d.getTime());
+    }
     
     public ArrayList<DTO_HoaDon> timHd(String tk) {
         ArrayList<DTO_HoaDon> list =new ArrayList<>();

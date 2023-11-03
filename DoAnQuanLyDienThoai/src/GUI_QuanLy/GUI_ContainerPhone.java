@@ -17,6 +17,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,7 +34,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
     public ArrayList<GUI_ContainerPhone> container = new ArrayList<>();
     
     QuanLyDSBH dsbh;
-  
+  List<DTO_SanPham> listItem;
     
     public GUI_ContainerPhone(DTO_SanPham sp,QuanLyDSBH dsbh) {
         initComponents();
@@ -41,6 +42,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         this.loadHinhAnhSp(this.sp.getImg().toString(), jlbHinhAnh, 250,167);
         this.jlbTen.setText(this.sp.getTenSp());
         this.dsbh=dsbh;
+        this.listItem=listItem;
     }
     
     public void loadHinhAnhSp(String src,JLabel jlb,int width,int height){
