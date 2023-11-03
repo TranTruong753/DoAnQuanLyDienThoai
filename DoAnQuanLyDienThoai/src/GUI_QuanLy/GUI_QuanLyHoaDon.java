@@ -32,10 +32,7 @@ import javax.swing.table.TableRowSorter;
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     private QuanLyHoaDonController ql = new QuanLyHoaDonController();
     public BUS_HoaDon hdBus = new BUS_HoaDon();
-    
-    /**
-     * Creates new form GUI_QuanLyHoaDon
-     */
+        
     public GUI_QuanLyHoaDon() {
         initComponents();
         ql.loadHoaDonList(hdBus.getList(),this.tbl_HoaDon);

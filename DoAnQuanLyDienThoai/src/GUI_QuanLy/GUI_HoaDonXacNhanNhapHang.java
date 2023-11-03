@@ -147,7 +147,7 @@ public class GUI_HoaDonXacNhanNhapHang extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách nhà cung cấp", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setMinimumSize(new java.awt.Dimension(72, 30));
         jComboBox2.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, -1, -1));
+        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themSanPham2.png"))); // NOI18N

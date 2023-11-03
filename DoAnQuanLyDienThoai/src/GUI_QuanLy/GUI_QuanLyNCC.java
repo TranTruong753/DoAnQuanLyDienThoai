@@ -31,7 +31,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class GUI_QuanLyNCC extends javax.swing.JPanel {
     
-    private GUI_HoaDonXacNhanNhapHang nhapHang ;
+    //private GUI_HoaDonXacNhanNhapHang nhapHang ;
+    private  GUI_XacNhanNhapHang xnNhapHang;
     private GUI_ThemThongTinNcc themNcc ;
     /**
      * Creates new form GUI_QuanLyNCC
@@ -289,8 +290,10 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
 
     private void btnNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapActionPerformed
         // TODO add your handling code here:
-        nhapHang = new GUI_HoaDonXacNhanNhapHang();
-        nhapHang.setVisible(true);
+//        nhapHang = new GUI_HoaDonXacNhanNhapHang();
+//        nhapHang.setVisible(true);
+          xnNhapHang = new GUI_XacNhanNhapHang(this, true);
+          xnNhapHang.setVisible(true);
     }//GEN-LAST:event_btnNhapActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
