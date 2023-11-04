@@ -34,11 +34,9 @@ public class DAL_NhaCc {
             while (rs.next()){
                 DTO_NhaCc nv=new DTO_NhaCc();
                nv.setMANCC(rs.getString("MANCC"));
-               nv.setTENNCC(rs.getString("TENNCC"));
-               
+               nv.setTENNCC(rs.getString("TENNCC"));              
                nv.setSDTNCC(rs.getString("SDTNCC"));
-               nv.setDIACHI(rs.getString("DIACHI"));
-               
+               nv.setDIACHI(rs.getString("DIACHI"));               
                nv.setTRANGTHAI(rs.getInt("TRANGTHAI"));
                list.add(nv);
             }
@@ -54,6 +52,31 @@ public class DAL_NhaCc {
     
     }
 
+    public ArrayList<DTO_NhaCc> timNcc(String key) {
+        ArrayList<DTO_NhaCc> list =new ArrayList<>();
+        String sql="SELECT * FROM NHACC where TENNCC = '" + key + "'";
+        try {
+            Connection conn = DAO.getConnection();
+            PreparedStatement ps= conn.prepareStatement(sql);
+           ResultSet rs=ps.executeQuery();
+           while(rs.next()){
+                DTO_NhaCc ncc = new DTO_NhaCc();
+                
+                ncc.setMANCC(rs.getString("MANCC"));
+                ncc.setTENNCC(rs.getString("TENNCC"));
+                ncc.setSDTNCC(rs.getString("SDTNCC"));
+                ncc.setDIACHI(rs.getString("DIACHI"));               
+                ncc.setTRANGTHAI(rs.getInt("TRANGTHAI"));
+                if(ncc.getTRANGTHAI()==1){
+                    list.add(ncc);
+                }
+                
+           }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     
     public boolean addDTO_NhaCc(DTO_NhaCc s) {
         String sql="insert into NHACC(MANCC,TENNCC,SDTNCC,DIACHI,TRANGTHAI)"
@@ -162,4 +185,11 @@ public class DAL_NhaCc {
         }
         return 0;
     }
+//    public static void main(String[] args) {
+//        DAL_NhaCc ncc = new DAL_NhaCc();
+//        for(DTO_NhaCc ncc1 :ncc.timNcc("Quang Truong VIP PRO")){
+//            System.out.println(ncc1.getMANCC());
+//        }
+//        
+//    }
 }

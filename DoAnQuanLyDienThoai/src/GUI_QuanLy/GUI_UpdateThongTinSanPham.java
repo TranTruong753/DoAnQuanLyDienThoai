@@ -419,7 +419,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
                 //ql.loadSanPhamList(spBUS.getList(), ql.jtable);
                 qlf.setDateToTable();
-                qlf.jtfTim.setText("");
+                qlf.getJtfTim().setText("");
                 trangBanHang.load();
                 this.dispose();
             }
@@ -431,11 +431,11 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         spDTO.setTrangThai(0);
-        if(spBUS.updateSanPham(spDTO)&&this.spDTO.getSoLuong()==0){
+        if(this.spDTO.getSoLuong()==0&&spBUS.updateSanPham(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
             //ql.loadSanPhamList(spBUS.getList(), ql.jtable);     
             qlf.setDateToTable();
-            qlf.jtfTim.setText("");
+            qlf.getJtfTim().setText("");
             trangBanHang.load();
             this.dispose();
         }
@@ -446,6 +446,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */

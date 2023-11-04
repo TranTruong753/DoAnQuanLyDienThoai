@@ -51,7 +51,7 @@ public class DAL_CTPN {
     
     public boolean addDTO_CTPN(DTO_CTPN s) {
         String sql="insert into CTHDNH(MAHDNH,MASP,TENSP,SL,DONGIA,THANHTIEN)"
-               + "VALUES(?,?,?,?,?,?,?)";
+               + "VALUES(?,?,?,?,?,?)";
         
         
         try {
@@ -72,10 +72,9 @@ public class DAL_CTPN {
     }
 
     
+    
     public boolean updateDTO_CTPN(DTO_CTPN s) {
-        String sql="update CTHDNH set MAHDNH=? , MASP=?,TENSP=? ,SL=? ,DONGIA=? ,THANHTIEN=? where MAHDNH=?";
-               
-      
+        String sql="update CTHDNH set MAHDNH=? , MASP=?,TENSP=? ,SL=? ,DONGIA=? ,THANHTIEN=? where MAHDNH=?";     
         try {
             
             Connection conn = DAO.getConnection();

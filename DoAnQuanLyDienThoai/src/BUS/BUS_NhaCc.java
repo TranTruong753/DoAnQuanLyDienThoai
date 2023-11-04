@@ -14,26 +14,30 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class BUS_NhaCc {
-    DAL_NhaCc nv= new DAL_NhaCc();
+    DAL_NhaCc nccDAL= new DAL_NhaCc();
     
     public ArrayList<DTO_NhaCc> getList() {
-        return nv.getList();
+        return nccDAL.getList();
     }
     public boolean addNhaCc(DTO_NhaCc s){
-        if(nv.addDTO_NhaCc(s))
+        if(nccDAL.addDTO_NhaCc(s))
             return true;
           return false;
         
     }
     public boolean updateNhaCc(DTO_NhaCc s){
-        if(nv.updateDTO_NhaCc(s))
+        if(nccDAL.updateDTO_NhaCc(s))
             return true;
           return false;
            
     }
     public int themDS(){
          
-         return nv.themDS();
+         return nccDAL.themDS();
      }
+    
+    public ArrayList<DTO_NhaCc> timNcc(String key){     
+        return nccDAL.timNcc(key);
+    }
     
 }

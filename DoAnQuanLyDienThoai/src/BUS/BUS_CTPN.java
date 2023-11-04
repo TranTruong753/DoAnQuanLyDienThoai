@@ -22,9 +22,9 @@ public class BUS_CTPN {
     public boolean addCTPN(DTO_CTPN s){
         if(nv.addDTO_CTPN(s))
             return true;
-          return false;
-        
+          return false;        
     }
+      
     public boolean updateCTPN(DTO_CTPN s){
         if(nv.updateDTO_CTPN(s))
             return true;

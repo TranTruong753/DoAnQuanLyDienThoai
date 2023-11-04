@@ -31,17 +31,18 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class GUI_QuanLyNCC extends javax.swing.JPanel {
     
-    //private GUI_HoaDonXacNhanNhapHang nhapHang ;
     private  GUI_XacNhanNhapHang xnNhapHang;
     private GUI_ThemThongTinNcc themNcc ;
+    private GUI_GiaoDienChinh gd;
     /**
      * Creates new form GUI_QuanLyNCC
      */
-     private BUS_NhaCc nccbus=new BUS_NhaCc();
-     QuanLyNhaCcController controller;
-     QuanLyPhieuNhapController controllerpn;
-    public GUI_QuanLyNCC() {
+    private BUS_NhaCc nccbus=new BUS_NhaCc();
+    private QuanLyNhaCcController controller;
+    private QuanLyPhieuNhapController controllerpn;
+    public GUI_QuanLyNCC(GUI_GiaoDienChinh gd) {
         initComponents();
+        this.gd = gd;
         controller = new QuanLyNhaCcController(jpnView, btnThem, jtfTim,btnXuatfile,this);
         controller.setDateToTable();
         controller.setEvent();
@@ -289,10 +290,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapActionPerformed
-        // TODO add your handling code here:
-//        nhapHang = new GUI_HoaDonXacNhanNhapHang();
-//        nhapHang.setVisible(true);
-          xnNhapHang = new GUI_XacNhanNhapHang(this, true);
+          xnNhapHang = new GUI_XacNhanNhapHang(this, true, controllerpn, gd);
           xnNhapHang.setVisible(true);
     }//GEN-LAST:event_btnNhapActionPerformed
 
