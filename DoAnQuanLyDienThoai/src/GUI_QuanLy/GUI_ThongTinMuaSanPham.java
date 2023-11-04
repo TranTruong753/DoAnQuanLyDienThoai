@@ -315,7 +315,7 @@ public class GUI_ThongTinMuaSanPham extends javax.swing.JDialog {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("Dung lượng");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
-        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 80, 30));
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 80, 30));
 
         jtfDungLuong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDungLuong.setPreferredSize(new java.awt.Dimension(200, 30));

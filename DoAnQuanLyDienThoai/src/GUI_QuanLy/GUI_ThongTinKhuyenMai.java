@@ -99,19 +99,21 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(204, 255, 255));
         jPanel12.setOpaque(false);
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel30.setText("Mã KM");
         jLabel30.setPreferredSize(new java.awt.Dimension(50, 17));
 
+        jtfMAKM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMAKM.setEnabled(false);
         jtfMAKM.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel31.setText("Tên KM");
         jLabel31.setPreferredSize(new java.awt.Dimension(50, 17));
 
+        jtfTENSP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTENSP.setEnabled(false);
         jtfTENSP.setPreferredSize(new java.awt.Dimension(200, 30));
 
@@ -120,6 +122,7 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
         jLabel33.setText("Mã SP");
         jLabel33.setPreferredSize(new java.awt.Dimension(50, 17));
 
+        jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTim.setPreferredSize(new java.awt.Dimension(200, 30));
         jtfTim.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -127,35 +130,38 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
             }
         });
 
-        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Tên SP");
         jLabel34.setPreferredSize(new java.awt.Dimension(100, 17));
 
-        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel35.setText("% KM");
         jLabel35.setPreferredSize(new java.awt.Dimension(70, 17));
 
+        jtfPTKM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfPTKM.setPreferredSize(new java.awt.Dimension(200, 30));
 
+        jtfTENKM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTENKM.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel32.setText("Tìm");
         jLabel32.setPreferredSize(new java.awt.Dimension(50, 17));
 
-        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel37.setText("Ngày KT");
         jLabel37.setPreferredSize(new java.awt.Dimension(70, 17));
 
-        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel36.setText("Ngày BĐ");
         jLabel36.setPreferredSize(new java.awt.Dimension(70, 17));
 
+        jcbMASP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbMASP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         jcbMASP.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -167,7 +173,7 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
 
         jCalendarBD.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Mã SP");
         jLabel38.setPreferredSize(new java.awt.Dimension(100, 17));
@@ -289,8 +295,8 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
 
         btnLuu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        btnLuu.setText("Lưu");
-        btnLuu.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnLuu.setText("Thoát");
+        btnLuu.setPreferredSize(new java.awt.Dimension(150, 40));
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLuuActionPerformed(evt);

@@ -15,6 +15,7 @@ public class GUI_ThemThongTinTaiKhoan extends javax.swing.JFrame {
      */
     public GUI_ThemThongTinTaiKhoan() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +49,7 @@ public class GUI_ThemThongTinTaiKhoan extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(526, 441));
         jPanel1.setLayout(new java.awt.BorderLayout());

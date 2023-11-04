@@ -71,6 +71,7 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(526, 468));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(526, 441));
@@ -85,25 +86,28 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(500, 300));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Tài khoản :");
 
+        jtfTK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTK.setEnabled(false);
         jtfTK.setPreferredSize(new java.awt.Dimension(250, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Mã nhân viên :");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mật khẩu :");
 
+        jtfMK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMK.setEnabled(false);
         jtfMK.setPreferredSize(new java.awt.Dimension(250, 30));
 
+        jtfMANV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMANV.setEnabled(false);
         jtfMANV.setPreferredSize(new java.awt.Dimension(250, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Chức vụ :");
 
         jcbPQ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -125,7 +129,7 @@ public class GUI_ThongTinTaiKhoan extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

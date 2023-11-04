@@ -143,7 +143,7 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jPanel2.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setPreferredSize(new java.awt.Dimension(621, 400));
+        jPanel5.setPreferredSize(new java.awt.Dimension(621, 100));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(17, 153, 142));
@@ -182,6 +182,7 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jLabel25.setText("Mã Bảo Hành");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfMABH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMABH.setEnabled(false);
         jtfMABH.setPreferredSize(new java.awt.Dimension(200, 30));
 
@@ -190,6 +191,7 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jLabel26.setText("Mã Hóa Đơn");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfMAHD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMAHD.setPreferredSize(new java.awt.Dimension(200, 30));
         jtfMAHD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -232,6 +234,7 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jLabel27.setText("MÃ Khách hàng");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfMAKH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMAKH.setEnabled(false);
         jtfMAKH.setPreferredSize(new java.awt.Dimension(200, 30));
 
@@ -284,7 +287,9 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jCalendar.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jtfLYDO.setColumns(20);
+        jtfLYDO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfLYDO.setRows(5);
+        jtfLYDO.setEnabled(false);
         jScrollPane1.setViewportView(jtfLYDO);
 
         jcbSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -386,7 +391,7 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.LINE_START);
@@ -422,78 +427,77 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         {jcbSP.setEnabled(false);
         jcbSP.removeAllItems();}
     }//GEN-LAST:event_jtfMAHDKeyReleased
+
+    private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
+        if(jtfMAKH.getText().equals("") || jtfLYDO.getText().equals(""))
+        JOptionPane.showMessageDialog(rootPane, "Thông tin chưa đầy đủ !");
+        else{
+            DTO_BaoHanh bh= new DTO_BaoHanh(jtfMABH.getText(),jtfMAKH.getText(),jtfMAHD.getText(),
+                jcbSP.getSelectedItem().toString(),jtfLYDO.getText(),cover(jCalendar.getDate()),1);
+            JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("File PDF", "pdf");
+            fileChooser.setFileFilter(filter);
+
+            int returnValue = fileChooser.showSaveDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                // Đảm bảo đuôi file .pdf
+                if (!filePath.endsWith(".pdf")) {
+                    filePath += ".pdf";
+                }
+
+                Document doc=new Document(PageSize.A4, 20, 20, 20, 20);
+                try {
+                    PdfWriter.getInstance(doc, new FileOutputStream(filePath));
+
+                    doc.open();
+                    // Tạo đối tượng Font cho chữ in đậm
+                    Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
+                    Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
+                    // Tạo đối tượng Paragraph với văn bản "HOA DON MUA HANG" và định dạng chữ in đậm
+                    BaseFont unicodeFont = BaseFont.createFont("\\Font\\ARIALUNI.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    int fontSize = 12;
+                    Paragraph centerText = new Paragraph("CỬA HÀNG BÁN ĐIỆN THOẠI HASOLIFE", new Font(unicodeFont, fontSize));
+                    centerText.setAlignment(Element.ALIGN_CENTER);
+
+                    // Thêm đối tượng Paragraph vào tài liệu
+                    doc.add(centerText);
+                    doc.add(new Paragraph("\n"));
+                    doc.add(new Paragraph("CỬA HÀNG BÁN ĐIỆN THOẠI HASOLIFE",new Font(unicodeFont, fontSize)));
+                    doc.add(new Paragraph("Đia Chỉ: 273 An Dương Vương, Phường 3, Quận 5, TPHCM",new Font(unicodeFont, fontSize)));
+                    doc.add(new Paragraph("Liên hệ: 028 3835 4409",new Font(unicodeFont, fontSize)));
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    doc.add(new Paragraph("Mã bảo hành: "+jtfMABH.getText()+"                                                  "+"Ngày lập: "+dateFormat.format(jCalendar.getDate()),new Font(unicodeFont, fontSize)));
+                    doc.add(new Paragraph("Mã hóa đơn: "+jtfMAHD.getText()+"                                                "+"   Mã khách hàng: "+jtfMAKH.getText()+"\n",new Font(unicodeFont, fontSize)));
+                    doc.add(new Paragraph("Mã sản phẩm: "+jcbSP.getSelectedItem().toString(),new Font(unicodeFont, fontSize)));
+                    doc.add(new Paragraph("Lý do bảo hành: "+jtfLYDO.getText(),new Font(unicodeFont, fontSize)));
+                    doc.add(new Paragraph("\n"));
+
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                } catch (DocumentException ex) {
+                    Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }  catch (IOException ex) {
+                    Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                doc.close();
+
+                if(bhbus.addDTO_BaoHanh(bh))
+                {JOptionPane.showMessageDialog(rootPane, "Xuất thành công !");
+                    ql.setDateToTable();}
+                else
+                JOptionPane.showMessageDialog(rootPane, "Xuất thất bại !");
+            }
+
+        }
+
+    }//GEN-LAST:event_btnXuatActionPerformed
 public java.sql.Date cover(Date d){
         return new java.sql.Date(d.getTime());
     }
-    private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
-        if(jtfMAKH.getText().equals("") || jtfLYDO.getText().equals(""))
-            JOptionPane.showMessageDialog(rootPane, "Thông tin chưa đầy đủ !");
-        else{
-            DTO_BaoHanh bh= new DTO_BaoHanh(jtfMABH.getText(),jtfMAKH.getText(),jtfMAHD.getText(),
-                    jcbSP.getSelectedItem().toString(),jtfLYDO.getText(),cover(jCalendar.getDate()),1);
-            JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("File PDF", "pdf");
-        fileChooser.setFileFilter(filter);
-
-        int returnValue = fileChooser.showSaveDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
-
-            // Đảm bảo đuôi file .pdf
-            if (!filePath.endsWith(".pdf")) {
-                filePath += ".pdf";
-            }
-             
-             Document doc=new Document(PageSize.A4, 20, 20, 20, 20);
-             try {
-                 PdfWriter.getInstance(doc, new FileOutputStream(filePath));
-                 
-                 doc.open();
-                // Tạo đối tượng Font cho chữ in đậm
-                Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 24);
-                Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
-                // Tạo đối tượng Paragraph với văn bản "HOA DON MUA HANG" và định dạng chữ in đậm
-                BaseFont unicodeFont = BaseFont.createFont("\\Font\\ARIALUNI.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                int fontSize = 12;
-                Paragraph centerText = new Paragraph("CỬA HÀNG BÁN ĐIỆN THOẠI HASOLIFE", new Font(unicodeFont, fontSize));
-                centerText.setAlignment(Element.ALIGN_CENTER);
-
-                // Thêm đối tượng Paragraph vào tài liệu
-                 doc.add(centerText);
-                 doc.add(new Paragraph("\n"));
-                 doc.add(new Paragraph("CỬA HÀNG BÁN ĐIỆN THOẠI HASOLIFE",new Font(unicodeFont, fontSize)));
-                 doc.add(new Paragraph("Đia Chỉ: 273 An Dương Vương, Phường 3, Quận 5, TPHCM",new Font(unicodeFont, fontSize)));
-                 doc.add(new Paragraph("Liên hệ: 028 3835 4409",new Font(unicodeFont, fontSize)));
-                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                 doc.add(new Paragraph("Mã bảo hành: "+jtfMABH.getText()+"                                                  "+"Ngày lập: "+dateFormat.format(jCalendar.getDate()),new Font(unicodeFont, fontSize)));
-                 doc.add(new Paragraph("Mã hóa đơn: "+jtfMAHD.getText()+"                                                "+"   Mã khách hàng: "+jtfMAKH.getText()+"\n",new Font(unicodeFont, fontSize)));
-                 doc.add(new Paragraph("Mã sản phẩm: "+jcbSP.getSelectedItem().toString(),new Font(unicodeFont, fontSize)));
-                 doc.add(new Paragraph("Lý do bảo hành: "+jtfLYDO.getText(),new Font(unicodeFont, fontSize)));
-                 doc.add(new Paragraph("\n"));
-                 
-                 
-             } catch (FileNotFoundException ex) {
-                 Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
-                 JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
-             } catch (DocumentException ex) {
-                 Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
-                 JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
-             }  catch (IOException ex) {
-                    Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
-                }
-           doc.close();
-            
-            if(bhbus.addDTO_BaoHanh(bh))
-            {JOptionPane.showMessageDialog(rootPane, "Xuất thành công !");
-            ql.setDateToTable();}
-            else
-                JOptionPane.showMessageDialog(rootPane, "Xuất thất bại !");
-        }
-        
-        }
-        
-    }//GEN-LAST:event_btnXuatActionPerformed
-
     /**
      * @param args the command line arguments
      */

@@ -34,13 +34,7 @@ public class funcDungChung {
         SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         return dateFormat.format(date);
     }
-     
-    public String layNgayHienTai() {
-        LocalDate ngayHienTai = LocalDate.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return ngayHienTai.format(dtf);
-    }
-    
+       
     public String traVeMacDinh(String number){
         return number.replace(".", "");
     }

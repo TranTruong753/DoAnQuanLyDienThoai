@@ -165,6 +165,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -324,28 +325,23 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         });
         jPanel4.add(jtfTienKhachDua);
 
-        jPanel12.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 370, 250));
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Tiền Thừa:");
         jLabel8.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel12.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        jPanel4.add(jLabel8);
 
         jtfTienThua.setEnabled(false);
         jtfTienThua.setPreferredSize(new java.awt.Dimension(200, 30));
-        jtfTienThua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfTienThuaActionPerformed(evt);
-            }
-        });
-        jPanel12.add(jtfTienThua, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+        jPanel4.add(jtfTienThua);
+
+        jPanel12.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 370, 280));
 
         jPanel9.add(jPanel12, java.awt.BorderLayout.CENTER);
 
         jPanel14.setBackground(new java.awt.Color(17, 153, 142));
         jPanel14.setPreferredSize(new java.awt.Dimension(400, 80));
-        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
+        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 20));
 
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
@@ -417,10 +413,6 @@ public void showthongbao(){
         else     
          qlf = new QuanLySanPhamControllerfix((ArrayList<DTO_SanPham>) spBus.getList(), containers, this.jPanelSPs,this,this.controller);
     }//GEN-LAST:event_jTextField1KeyReleased
-
-    private void jtfTienThuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTienThuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTienThuaActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         listItem=controller.getListItem();

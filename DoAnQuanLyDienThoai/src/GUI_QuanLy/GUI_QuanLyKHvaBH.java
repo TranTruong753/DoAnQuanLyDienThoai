@@ -34,6 +34,8 @@ public class GUI_QuanLyKHvaBH extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(1250, 789));
         setLayout(new java.awt.BorderLayout());
+
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         add(jTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 

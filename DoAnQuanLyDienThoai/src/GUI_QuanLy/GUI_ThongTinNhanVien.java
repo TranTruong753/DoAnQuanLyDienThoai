@@ -72,10 +72,6 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaDIACHI = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
         jrdNAM = new javax.swing.JRadioButton();
         jrdNU = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
@@ -105,19 +101,21 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
         jPanel8.setEnabled(false);
         jPanel8.setOpaque(false);
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Mã Nhân Viên");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfMANV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMANV.setEnabled(false);
         jtfMANV.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên Nhân viên");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfTENNV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTENNV.setEnabled(false);
         jtfTENNV.setPreferredSize(new java.awt.Dimension(200, 30));
 
@@ -135,15 +133,16 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("SĐT");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfSDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfSDT.setEnabled(false);
         jtfSDT.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel30.setText("Ngày sinh");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -165,31 +164,21 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel31.setText("Giới tính");
         jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("Địa chỉ");
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
 
         jtaDIACHI.setColumns(20);
+        jtaDIACHI.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtaDIACHI.setRows(5);
         jtaDIACHI.setEnabled(false);
-        jtaDIACHI.setPreferredSize(new java.awt.Dimension(200, 80));
         jScrollPane1.setViewportView(jtaDIACHI);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Tài khoản");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Mật khẩu");
-
-        jTextField14.setPreferredSize(new java.awt.Dimension(200, 30));
-
-        jTextField15.setPreferredSize(new java.awt.Dimension(200, 30));
 
         grpGioiTinh.add(jrdNAM);
         jrdNAM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -211,21 +200,13 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jrdNAM)
-                                .addGap(18, 18, 18)
-                                .addComponent(jrdNU)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jrdNAM)
+                        .addGap(18, 18, 18)
+                        .addComponent(jrdNU)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -288,19 +269,11 @@ public class GUI_ThongTinNhanVien extends javax.swing.JFrame {
                                 .addComponent(jrdNAM)
                                 .addComponent(jrdNU)
                                 .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(20, 20, 20))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(32, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -502,11 +475,9 @@ private static boolean is18YearsOld(Date dateOfBirth, Date currentDate) {
     private javax.swing.ButtonGroup grpGioiTinh;
     private com.toedter.calendar.JDateChooser jCalendar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
@@ -520,8 +491,6 @@ private static boolean is18YearsOld(Date dateOfBirth, Date currentDate) {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JRadioButton jrdNAM;
     private javax.swing.JRadioButton jrdNU;
     private javax.swing.JTextArea jtaDIACHI;

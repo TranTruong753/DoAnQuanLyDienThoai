@@ -50,6 +50,7 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
+        jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jtfTim);
 
@@ -76,11 +77,10 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
         btnThem.setText("THÊM");
-        btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnThem.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnThem.setPreferredSize(new java.awt.Dimension(150, 50));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -88,11 +88,11 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         });
         jPanel8.add(btnThem);
 
-        btnXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
         btnXuat.setText("XUẤT FILE");
         btnXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnXuat.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnXuat.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(btnXuat);
 
         QuanlyBaoHanh.add(jPanel8, java.awt.BorderLayout.LINE_END);
