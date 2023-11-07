@@ -5,6 +5,7 @@
 package GUI_QuanLy;
 
 import BUS.BUS_NhaCc;
+import BUS.BUS_PhieuNhap;
 import DAL.DAL_NhanVien;
 import DTO.DTO_NhaCc;
 import DTO.DTO_NhanVien;
@@ -38,6 +39,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
      * Creates new form GUI_QuanLyNCC
      */
     private BUS_NhaCc nccbus=new BUS_NhaCc();
+    private BUS_PhieuNhap pnbus = new BUS_PhieuNhap();
     private QuanLyNhaCcController controller;
     private QuanLyPhieuNhapController controllerpn;
     public GUI_QuanLyNCC(GUI_GiaoDienChinh gd) {
@@ -76,6 +78,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         btnNhap = new javax.swing.JButton();
+        btnNhapFileHd = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jpnView1 = new javax.swing.JPanel();
 
@@ -239,6 +242,19 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         });
         jPanel11.add(btnNhap);
 
+        btnNhapFileHd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNhapFileHd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
+        btnNhapFileHd.setText("NHẬP FILE");
+        btnNhapFileHd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNhapFileHd.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhapFileHd.setPreferredSize(new java.awt.Dimension(160, 50));
+        btnNhapFileHd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapFileHdActionPerformed(evt);
+            }
+        });
+        jPanel11.add(btnNhapFileHd);
+
         QuanlyHoaDonGiaoHang.add(jPanel11, java.awt.BorderLayout.LINE_END);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -290,7 +306,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
 
     private void btnNhapfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapfileActionPerformed
        nccbus.themDS();
-            controller.setDateToTable();
+       controller.setDateToTable();
     }//GEN-LAST:event_btnNhapfileActionPerformed
 
     private void btnXuatfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatfileActionPerformed
@@ -375,11 +391,18 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
                 
     }//GEN-LAST:event_btnXuatfileActionPerformed
 
+    private void btnNhapFileHdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapFileHdActionPerformed
+        // TODO add your handling code here:
+        pnbus.themDS();
+        controllerpn.setDateToTable();
+    }//GEN-LAST:event_btnNhapFileHdActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyHoaDonGiaoHang;
     private javax.swing.JPanel QuanlyNhaCungCap;
     private javax.swing.JButton btnNhap;
+    private javax.swing.JButton btnNhapFileHd;
     private javax.swing.JButton btnNhapfile;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXuatfile;

@@ -31,4 +31,8 @@ public class BUS_PhieuNhap {
            
     }
     
+     public int themDS(){         
+         return nv.themDS();
+    }
+    
 }
