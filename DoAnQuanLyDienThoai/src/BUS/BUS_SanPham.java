@@ -25,6 +25,10 @@ public class BUS_SanPham {
         return sp_DAL.timSp(key);
     }
     
+    public DTO_SanPham timSp2(String key){     
+        return sp_DAL.timSp2(key);
+    }
+    
     public ArrayList<DTO_SanPham> timThTrongSp(String key){     
         return sp_DAL.timThTrongSp(key);
     }
@@ -44,7 +48,22 @@ public class BUS_SanPham {
             return true;
           return false;           
     }
+    
+    public boolean updateSoLuongSp(DTO_SanPham sp){
+        if(sp_DAL.updateSoLuongSp(sp))
+            return true;
+          return false;           
+    }
+    
+    public boolean updateSoLuongSp2(int sl, String maSp, DTO_SanPham sp){
+        if(sp_DAL.updateSoLuongSp2(sp,sl,maSp))
+            return true;
+          return false;           
+    }
+     
     public int themDS() throws IOException{         
          return sp_DAL.themDS();
     }
+    
+    
 }

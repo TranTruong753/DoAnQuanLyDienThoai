@@ -34,7 +34,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
     public ArrayList<GUI_ContainerPhone> container = new ArrayList<>();
     
     QuanLyDSBH dsbh;
-  List<DTO_SanPham> listItem;
+    List<DTO_SanPham> listItem;
     
     public GUI_ContainerPhone(DTO_SanPham sp,QuanLyDSBH dsbh) {
         initComponents();

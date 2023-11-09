@@ -53,4 +53,42 @@ public class TableCTHDNH {
         return dtm;
     }
     
+    public DefaultTableModel setTablePN(List<DTO_CTPN> ListItem, String[] listColumn){
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {        //Không được chỉnh sửa hàng và cột của bảng
+                return false;
+            }
+            
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        int columns = listColumn.length;
+        Object[] obj = null;
+        int rows = ListItem.size();
+        if(rows > 0){
+            for(int i = 0;i<rows;i++){
+                DTO_CTPN nv = ListItem.get(i);
+                obj = new Object[columns];              //Mỗi phần tử trong mảng là một cột
+                //obj[0] = (i+1);
+                
+                obj[0] = nv.getMAHDNH();
+                obj[1] = nv.getMASP();
+                obj[2] = nv.getTENSP();
+                obj[3] = nv.getSL();
+                obj[4] = fuc.doubleToFormattedString(nv.getDONGIA());
+                obj[5] = fuc.doubleToFormattedString(nv.getTHANHTIEN());
+                
+//                obj[6] = khachHang.getTrangThai();
+                
+               
+                dtm.addRow(obj);
+                
+                
+            }
+        }
+       
+        
+        return dtm;
+    }
+    
 }

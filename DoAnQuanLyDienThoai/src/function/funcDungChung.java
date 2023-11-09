@@ -6,6 +6,8 @@ package function;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -32,9 +34,9 @@ public class funcDungChung {
         SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         return dateFormat.format(date);
     }
-    
+       
     public String traVeMacDinh(String number){
-        return number.replace(",", "");
+        return number.replace(".", "");
     }
     
     public  boolean checkPassword(String password) {

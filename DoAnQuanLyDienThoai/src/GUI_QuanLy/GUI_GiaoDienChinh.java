@@ -28,7 +28,7 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     private GUI_QuanLySPvaKM panelSPvaKM = new GUI_QuanLySPvaKM(panelBanHang);
     private GUI_QuanLyHoaDon panelHoaDon = new GUI_QuanLyHoaDon();
     private GUI_QuanLyKHvaBH panelKHvaBH = new GUI_QuanLyKHvaBH();
-    private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC();
+    private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC(this);
     private GUI_QuanLyThongKe panelThongKe = new GUI_QuanLyThongKe();
     private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
     
@@ -60,9 +60,16 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     public GUI_QuanLySPvaKM getPanelSPvaKM() {
         return panelSPvaKM;
     }
+
+    public GUI_TrangChuBanHang getPanelBanHang() {
+        return panelBanHang;
+    }
+    
+    
   
  
-public void addMenu(){    
+public void addMenu()
+{    
     jTabbedPane1.add(panelBanHang,1);
     jTabbedPane1.add(panelSPvaKM,2);
     jTabbedPane1.add(panelNVvaTK,3);
@@ -75,7 +82,7 @@ public void addMenu(){
 
 
  public void settingColor(){
-     jCheckBox1.setOpaque(false);
+    // jCheckBox1.setOpaque(false);
      ColorMain = new Color(17,153,142);
      ColorClick = new Color(17,153,142) ;
      sidebar = new Color(102,102,102);
@@ -108,41 +115,41 @@ public void addMenu(){
 
 
  
-public void openSideBar(int width, int height) {
-    new Thread(new Runnable() {
-        @Override
-        public void run() {        
-         visibleJPanelMenu1Title(true);
-            for (int i = 0; i <= width; i++) {
-               // jPanelSidebar.setBounds(i, y, width, height);
-               jPanelSidebar.setSize(i, height);
-                try {
-                    Thread.sleep(2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-        }
-    }).start();
-}
+//public void openSideBar(int width, int height) {
+//    new Thread(new Runnable() {
+//        @Override
+//        public void run() {        
+//         visibleJPanelMenu1Title(true);
+//            for (int i = 0; i <= width; i++) {
+//               // jPanelSidebar.setBounds(i, y, width, height);
+//               jPanelSidebar.setSize(i, height);
+//                try {
+//                    Thread.sleep(2);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//            
+//        }
+//    }).start();
+//}
 
-public void closeSideBar(int width, int height) {
-    new Thread(new Runnable() {
-        @Override
-        public void run() {
-            for (int i = width; i >= 0; i--) {
-                jPanelSidebar.setSize(i, height);
-                try {
-                    Thread.sleep(2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }).start();
-      
-}
+//public void closeSideBar(int width, int height) {
+//    new Thread(new Runnable() {
+//        @Override
+//        public void run() {
+//            for (int i = width; i >= 0; i--) {
+//                jPanelSidebar.setSize(i, height);
+//                try {
+//                    Thread.sleep(2);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
+//    }).start();
+//      
+//}
 
 
     @SuppressWarnings("unchecked")
@@ -201,8 +208,6 @@ public void closeSideBar(int width, int height) {
         jLabelTitleMenu9 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -588,30 +593,6 @@ public void closeSideBar(int width, int height) {
 
         jPanelMenuAll.add(jPanelSidebar, java.awt.BorderLayout.CENTER);
 
-        jPanel7.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel7.setDoubleBuffered(false);
-        jPanel7.setEnabled(false);
-        jPanel7.setFocusable(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(250, 64));
-        jPanel7.setRequestFocusEnabled(false);
-        jPanel7.setVerifyInputWhenFocusTarget(false);
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
-
-        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jCheckBox1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/CloseListBlackx64.png"))); // NOI18N
-        jCheckBox1.setPreferredSize(new java.awt.Dimension(64, 64));
-        jCheckBox1.setRolloverEnabled(false);
-        jCheckBox1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/ListBlackx64.png"))); // NOI18N
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jCheckBox1);
-
-        jPanelMenuAll.add(jPanel7, java.awt.BorderLayout.PAGE_START);
-
         jPanelMain.add(jPanelMenuAll, java.awt.BorderLayout.LINE_START);
 
         jPanel1.add(jPanelMain, java.awt.BorderLayout.CENTER);
@@ -629,17 +610,6 @@ public void closeSideBar(int width, int height) {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-        if(jCheckBox1.isSelected()){
-            closeSideBar(250, jPanelSidebar.getHeight());           
-        }
-        else{
-             openSideBar(250, jPanelSidebar.getHeight());
-        }
-      
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jPanelMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseClicked
         // TODO add your handling code here:
@@ -697,7 +667,8 @@ public void closeSideBar(int width, int height) {
          if (JOptionPane.showConfirmDialog(this, 
             "Bạn có muốn thoát ứng dụng?", "Close Đăng nhập?", 
             JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION)
+         {
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             System.exit(0);
         }
@@ -778,7 +749,6 @@ public void closeSideBar(int width, int height) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -811,7 +781,6 @@ public void closeSideBar(int width, int height) {
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelMenu1;
     private javax.swing.JPanel jPanelMenu1Title;

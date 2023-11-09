@@ -82,13 +82,45 @@ public class DAL_SanPham {
                 sp.setSoLuong(rs.getInt("SLTON"));
                 sp.setImg(rs.getString("IMG"));
                 sp.setTrangThai(rs.getInt("TRANGTHAI"));
-                list.add(sp);
+                if(sp.getTrangThai()==1){
+                    list.add(sp);
+                }
+                
            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
     }
+    
+    public DTO_SanPham timSp2(String key) {
+        DTO_SanPham sp = new DTO_SanPham();
+        String sql="SELECT * FROM SanPham where MASP = '" + key + "' AND TRANGTHAI = 1";
+        try {
+            Connection conn = DAO.getConnection();
+            PreparedStatement ps= conn.prepareStatement(sql);
+           ResultSet rs=ps.executeQuery();
+           while(rs.next()){
+                
+                
+                sp.setMaSp(rs.getString("MASP"));
+                sp.setTenSp(rs.getString("TENSP"));
+                sp.setMaThuongHieu(rs.getString("MATH"));
+                sp.setMauSac(rs.getString("MAUSAC"));
+                sp.setDungLuong(rs.getString("DUNGLUONG"));
+                sp.setDonGia(rs.getDouble("DONGIA"));
+                sp.setSoLuong(rs.getInt("SLTON"));
+                sp.setImg(rs.getString("IMG"));
+                sp.setTrangThai(rs.getInt("TRANGTHAI"));
+                
+                
+           }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sp;
+    }
+    
     
     public ArrayList<DTO_SanPham> timThTrongSp(String key) {
         ArrayList<DTO_SanPham> list =new ArrayList<>();
@@ -167,7 +199,38 @@ public class DAL_SanPham {
          return false;
     }
 
+    public boolean updateSoLuongSp(DTO_SanPham s){
+        String sql="update SanPham set SLTON=? where MASP = ?";                  
+        try {
+            Connection conn = DAO.getConnection();
+           PreparedStatement ps= conn.prepareStatement(sql);
+            //java.util.Date a=  s.getNgaysinh();        
+           ps.setInt(1, s.getSoLuong());         
+           ps.setString(2, s.getMaSp());
+           
+           return ps.executeUpdate()>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     
+     public boolean updateSoLuongSp2(DTO_SanPham s,int sl, String maSp){
+        String sql="update SanPham set SLTON=? where MASP = ? AND TRANGTHAI = 1";                  
+        try {
+            Connection conn = DAO.getConnection();
+           PreparedStatement ps= conn.prepareStatement(sql);
+            //java.util.Date a=  s.getNgaysinh();        
+           ps.setInt(1, s.getSoLuong()+sl);         
+           ps.setString(2, maSp);
+           
+           return ps.executeUpdate()>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+     
     public boolean updateDTO_SanPham(DTO_SanPham s) {
         String sql="update SanPham set TENSP=? , MATH=? ,MAUSAC=? ,DUNGLUONG=? ,DONGIA=? ,SLTON=? ,IMG=? ,TRANGTHAI=? where MASP=?";
                
@@ -275,6 +338,15 @@ public class DAL_SanPham {
     }
     return 0;
 }
+//    public static void main(String[] args) {
+//        DAL_SanPham sp = new DAL_SanPham();
+//        DTO_SanPham spDto = sp.timSp2("CL01");
+//        System.out.println(spDto.getSoLuong());
+//        sp.updateSoLuongSp2(spDto, 3, "CL01");
+//        DTO_SanPham spDto2 = sp.timSp2("CL01");
+//        System.out.println(spDto2.getSoLuong());
+//    }
 
+   
 
 }

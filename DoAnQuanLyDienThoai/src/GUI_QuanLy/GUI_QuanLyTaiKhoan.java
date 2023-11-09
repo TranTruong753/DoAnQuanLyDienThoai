@@ -52,6 +52,7 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
+        jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jtfTim);
 
@@ -78,11 +79,11 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themNhanVien.png"))); // NOI18N
         jButton4.setText("THÊM TK ");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton4.setPreferredSize(new java.awt.Dimension(150, 50));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -90,25 +91,27 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
         });
         jPanel8.add(jButton4);
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
         jButton7.setText("NHẬP FILE");
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton7.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(jButton7);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
         jButton3.setText("XUẤT FILE");
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton3.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(jButton3);
 
         QuanlyTaiKhoan.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách tài khoản", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        jpnView.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);

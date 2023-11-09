@@ -33,9 +33,6 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
@@ -69,36 +66,16 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
 
         QuanlyKhachHang.add(jPanel7, java.awt.BorderLayout.PAGE_END);
 
-        jPanel8.setBackground(new java.awt.Color(17, 153, 142));
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
-
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton7.setText("NHẬP FILE");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton7);
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton3.setText("XUẤT FILE");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel8.add(jButton3);
-
-        QuanlyKhachHang.add(jPanel8, java.awt.BorderLayout.LINE_END);
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        jpnView.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1180, Short.MAX_VALUE)
+            .addGap(0, 1410, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,12 +107,9 @@ public class GUI_QuanLyKhachHang extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyKhachHang;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jpnView;
     private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables

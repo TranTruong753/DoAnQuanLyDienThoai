@@ -121,7 +121,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
         jPanel8.setOpaque(false);
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Mã Nhân Viên");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -129,7 +129,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jtfMANV.setEnabled(false);
         jtfMANV.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên Nhân viên");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -150,14 +150,14 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("SĐT");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
         jtfSDT.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel30.setText("Ngày sinh");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -178,7 +178,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel31.setText("Giới tính");
         jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -191,7 +191,7 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jrdNU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrdNU.setText("Nữ");
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("Địa chỉ");
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -201,10 +201,10 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jtaDIACHI.setPreferredSize(new java.awt.Dimension(200, 80));
         jScrollPane1.setViewportView(jtaDIACHI);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Tài khoản");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mật khẩu");
 
         jTextField14.setPreferredSize(new java.awt.Dimension(200, 30));

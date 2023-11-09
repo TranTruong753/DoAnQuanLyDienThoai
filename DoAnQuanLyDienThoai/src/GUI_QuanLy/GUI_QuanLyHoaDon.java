@@ -32,10 +32,7 @@ import javax.swing.table.TableRowSorter;
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     private QuanLyHoaDonController ql = new QuanLyHoaDonController();
     public BUS_HoaDon hdBus = new BUS_HoaDon();
-    
-    /**
-     * Creates new form GUI_QuanLyHoaDon
-     */
+        
     public GUI_QuanLyHoaDon() {
         initComponents();
         ql.loadHoaDonList(hdBus.getList(),this.tbl_HoaDon);
@@ -72,6 +69,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
+        jtfTimKiem.setFont(new java.awt.Font("Raavi", 0, 14)); // NOI18N
         jtfTimKiem.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jtfTimKiem);
 

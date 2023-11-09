@@ -77,38 +77,42 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
 
         jPanel4.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Mã HĐNH");
         jLabel1.setPreferredSize(new java.awt.Dimension(50, 30));
 
+        jtfTENNCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTENNCC.setEnabled(false);
         jtfTENNCC.setPreferredSize(new java.awt.Dimension(250, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Ngày giao");
         jLabel2.setPreferredSize(new java.awt.Dimension(50, 30));
 
+        jtfMANCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMANCC.setEnabled(false);
         jtfMANCC.setPreferredSize(new java.awt.Dimension(250, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mã NCC");
         jLabel3.setPreferredSize(new java.awt.Dimension(50, 30));
 
+        jtfMAHDNH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMAHDNH.setEnabled(false);
         jtfMAHDNH.setPreferredSize(new java.awt.Dimension(250, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Tên NCC");
         jLabel4.setPreferredSize(new java.awt.Dimension(50, 30));
 
         jcalendar.setEnabled(false);
         jcalendar.setPreferredSize(new java.awt.Dimension(88, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Tổng tiền");
         jLabel6.setPreferredSize(new java.awt.Dimension(50, 30));
 
+        jtfTONGTIEN.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTONGTIEN.setEnabled(false);
         jtfTONGTIEN.setPreferredSize(new java.awt.Dimension(250, 30));
 

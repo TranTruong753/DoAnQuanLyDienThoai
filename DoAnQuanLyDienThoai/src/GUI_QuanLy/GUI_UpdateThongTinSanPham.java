@@ -171,11 +171,9 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jlbHinhAnh = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1009, 552));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 574));
@@ -388,11 +386,6 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 
         jPanel6.add(jPanel7);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Chọn");
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel6.add(jButton1);
-
         jPanel1.add(jPanel6, java.awt.BorderLayout.LINE_START);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -419,7 +412,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
                 //ql.loadSanPhamList(spBUS.getList(), ql.jtable);
                 qlf.setDateToTable();
-                qlf.jtfTim.setText("");
+                qlf.getJtfTim().setText("");
                 trangBanHang.load();
                 this.dispose();
             }
@@ -431,11 +424,11 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         spDTO.setTrangThai(0);
-        if(spBUS.updateSanPham(spDTO)&&this.spDTO.getSoLuong()==0){
+        if(this.spDTO.getSoLuong()==0&&spBUS.updateSanPham(spDTO)){
             JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
             //ql.loadSanPhamList(spBUS.getList(), ql.jtable);     
             qlf.setDateToTable();
-            qlf.jtfTim.setText("");
+            qlf.getJtfTim().setText("");
             trangBanHang.load();
             this.dispose();
         }
@@ -446,6 +439,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -488,7 +482,6 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;

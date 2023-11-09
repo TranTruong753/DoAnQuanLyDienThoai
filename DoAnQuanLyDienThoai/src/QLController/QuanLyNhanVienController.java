@@ -20,6 +20,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import function.CenterRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -36,6 +37,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -44,7 +46,9 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -108,17 +112,25 @@ public class QuanLyNhanVienController {
             }
         });
         
-        table.getColumnModel().getColumn(0).setMaxWidth(120);
-        table.getColumnModel().getColumn(0).setMinWidth(120);
-        table.getColumnModel().getColumn(0).setPreferredWidth(120);
+        //chỉnh bảng
+        table.setRowHeight(40);
+        table.setFont(new Font("Tahoma",Font.PLAIN,14));
+        CenterRenderer centerRendererRow = new CenterRenderer();
+
+        // Áp dụng renderer cho các cột cụ thể (thay thế 'columnIndex' bằng chỉ số cột của bạn)
+        table.getColumnModel().getColumn(0).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(1).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(2).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(3).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(4).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(5).setCellRenderer(centerRendererRow);
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(e.getClickCount()==2 && table.getSelectedRow() != -1){
                     DefaultTableModel model = (DefaultTableModel) table.getModel();
                     int SRow = table.getSelectedRow();                       //Lay Index dong duoc chon
-                    SRow = table.convertRowIndexToModel(SRow);     //Khi sap xep, Index dong duoc chon van dung
-                    
+                    SRow = table.convertRowIndexToModel(SRow);     //Khi sap xep, Index dong duoc chon van dung                   
                     DTO_NhanVien NhanVien = new DTO_NhanVien();
                     NhanVien.setMANV((String) model.getValueAt(SRow, 0));
                     NhanVien.setTENNV(model.getValueAt(SRow,1).toString());
@@ -137,9 +149,13 @@ public class QuanLyNhanVienController {
             }
             
         });
-        table.getTableHeader().setFont(new Font("Arial",Font.BOLD,14));
-        table.getTableHeader().setPreferredSize(new Dimension(50,50));
-        table.setRowHeight(50);
+        //chỉnh tiêu đề
+       JTableHeader header = table.getTableHeader();
+       header.setFont(new Font("Tahoma", Font.BOLD, 14));
+       header.setPreferredSize(new Dimension(50, 50));
+       // Căn giữa tiêu đề theo chiều dọc
+       DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
+       centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.validate();
         table.repaint();
         

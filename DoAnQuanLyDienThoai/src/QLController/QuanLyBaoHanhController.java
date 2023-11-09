@@ -10,6 +10,7 @@ import GUI_QuanLy.GUI_QuanLyBaoHanh;
 import GUI_QuanLy.GUI_QuanLyBaoHanh;
 import GUI_QuanLy.GUI_ThemThongTinNhanVien;
 import GUI_QuanLy.GUI_ThongTinBaoHanh;
+import function.CenterRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,7 +27,9 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -89,13 +93,26 @@ public class QuanLyBaoHanhController {
             }
         });
         
-        table.getColumnModel().getColumn(0).setMaxWidth(120);
-        table.getColumnModel().getColumn(0).setMinWidth(120);
-        table.getColumnModel().getColumn(0).setPreferredWidth(120);
-        
-        table.getTableHeader().setFont(new Font("Arial",Font.BOLD,14));
-        table.getTableHeader().setPreferredSize(new Dimension(50,50));
-        table.setRowHeight(50);
+        //chỉnh bảng
+        table.setRowHeight(40);
+        table.setFont(new Font("Tahoma",Font.PLAIN,14));
+        CenterRenderer centerRendererRow = new CenterRenderer();
+
+        // Áp dụng renderer cho các cột cụ thể (thay thế 'columnIndex' bằng chỉ số cột của bạn)
+        table.getColumnModel().getColumn(0).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(1).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(2).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(3).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(4).setCellRenderer(centerRendererRow);
+        table.getColumnModel().getColumn(5).setCellRenderer(centerRendererRow);
+       
+       //chỉnh tiêu đề
+       JTableHeader header = table.getTableHeader();
+       header.setFont(new Font("Tahoma", Font.BOLD, 14));
+       header.setPreferredSize(new Dimension(50, 50));
+       // Căn giữa tiêu đề theo chiều dọc
+       DefaultTableCellRenderer centerRenderer = (DefaultTableCellRenderer) header.getDefaultRenderer();
+       centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.validate();
         table.repaint();
         

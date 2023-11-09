@@ -63,6 +63,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(678, 425));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(678, 510));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -77,8 +78,9 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
         jPanel8.setOpaque(false);
+        jPanel8.setPreferredSize(new java.awt.Dimension(656, 200));
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Mã Khách hàng");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -86,7 +88,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         jtfMAKH.setEnabled(false);
         jtfMAKH.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên Khách hàng");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -124,7 +126,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("SĐT");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
@@ -205,7 +207,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(7, 7, 7)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel8);

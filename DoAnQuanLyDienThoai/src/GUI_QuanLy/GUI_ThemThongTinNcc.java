@@ -87,35 +87,38 @@ public class GUI_ThemThongTinNcc extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
         jPanel8.setOpaque(false);
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Mã Nhà cung cấp");
         jLabel25.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfMANCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMANCC.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Tên Nhà cung cấp");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfTENNCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTENNCC.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("SĐT ");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfSDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfSDT.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("Địa chỉ");
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
 
         jtfDIACHI.setColumns(20);
+        jtfDIACHI.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDIACHI.setRows(5);
-        jtfDIACHI.setPreferredSize(new java.awt.Dimension(200, 80));
         jScrollPane1.setViewportView(jtfDIACHI);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);

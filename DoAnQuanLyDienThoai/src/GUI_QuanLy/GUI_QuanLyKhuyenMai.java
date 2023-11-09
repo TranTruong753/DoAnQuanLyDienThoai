@@ -51,6 +51,7 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
+        jtfTim1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTim1.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jtfTim1);
 
@@ -77,11 +78,11 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        btnThem2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThem2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
         btnThem2.setText("THÊM");
         btnThem2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnThem2.setPreferredSize(new java.awt.Dimension(140, 50));
+        btnThem2.setPreferredSize(new java.awt.Dimension(150, 50));
         btnThem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThem2ActionPerformed(evt);
@@ -89,19 +90,19 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         });
         jPanel8.add(btnThem2);
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
         jButton7.setText("NHẬP FILE");
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton7.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(jButton7);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
         jButton3.setText("XUẤT FILE");
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(140, 50));
+        jButton3.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(jButton3);
 
         QuanLyKhuyenMai.add(jPanel8, java.awt.BorderLayout.LINE_END);
@@ -149,8 +150,6 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanLyKhuyenMai;
-    private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnThem1;
     private javax.swing.JButton btnThem2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
