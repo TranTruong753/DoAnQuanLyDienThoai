@@ -17,34 +17,6 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class DAL_TaiKhoan {
-    
-     public DTO_TaiKhoan login(String tdn, String mk) {
-        Connection cons = DAO.getConnection();
-        String sql = "SELECT * FROM TaiKhoan WHERE TENDN LIKE ? AND MK LIKE ?";
-        DTO_TaiKhoan tk = null;
-        try {
-            PreparedStatement ps = (PreparedStatement) cons.prepareStatement(sql);
-            ps.setString(1, tdn);
-            ps.setString(2, mk);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                tk = new DTO_TaiKhoan();
-                tk.setMANV(rs.getString("MANV"));
-                tk.setMK(rs.getString("MK"));
-                tk.setPQ(rs.getString("PQ"));
-                tk.setTRANGTHAI(rs.getInt("TRANGTHAI"));
-                tk.setTENDN(rs.getString("TENDN"));
-            }
-            ps.close();
-            cons.close();
-            return tk;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }    
-    
-    
     public ArrayList<DTO_TaiKhoan> getList() {
         try{
             Connection conn = DAO.getConnection();
@@ -74,7 +46,31 @@ public class DAL_TaiKhoan {
     
     }
 
-    
+    public DTO_TaiKhoan login(String tdn, String mk) {
+        Connection cons = DAO.getConnection();
+        String sql = "SELECT * FROM TaiKhoan WHERE TENDN LIKE ? AND MK LIKE ?";
+        DTO_TaiKhoan tk = null;
+        try {
+            PreparedStatement ps = (PreparedStatement) cons.prepareStatement(sql);
+            ps.setString(1, tdn);
+            ps.setString(2, mk);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tk = new DTO_TaiKhoan();
+                tk.setMANV(rs.getString("MANV"));
+                tk.setMK(rs.getString("MK"));
+                tk.setPQ(rs.getString("PQ"));
+                tk.setTRANGTHAI(rs.getInt("TRANGTHAI"));
+                tk.setTENDN(rs.getString("TENDN"));
+            }
+            ps.close();
+            cons.close();
+            return tk;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }    
     public boolean addDTO_TaiKhoan(DTO_TaiKhoan s) {
         String sql="insert into TaiKhoan(TENDN,MANV,MK,PQ,TRANGTHAI)"
                + "VALUES(?,?,?,?,?)";
@@ -94,9 +90,7 @@ public class DAL_TaiKhoan {
         }
          return false;
     }
-
-    
-    public boolean updateDTO_TaiKhoan(DTO_TaiKhoan s) {
+public boolean updateDTO_TaiKhoan(DTO_TaiKhoan s) {
         String sql="update TaiKhoan set TENDN=? , MANV=? ,MK=? ,PQ=? ,TRANGTHAI=? where TENDN=?";
                
       

@@ -25,6 +25,11 @@ public class BUS_TaiKhoan {
           return false;
         
     }
+    
+     public DTO_TaiKhoan login(String tdn, String mk) {
+         return nv.login(tdn, mk);
+    }
+    
     public boolean updateTaiKhoan(DTO_TaiKhoan s){
         if(nv.updateDTO_TaiKhoan(s))
             return true;
