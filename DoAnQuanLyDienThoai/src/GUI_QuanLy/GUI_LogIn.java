@@ -68,7 +68,6 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btn_login = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jLabel_sigup = new javax.swing.JLabel();
         jPanel_left_top = new javax.swing.JPanel();
         btn_close = new javax.swing.JButton();
 
@@ -228,7 +227,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setOpaque(false);
 
-        btn_login.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_login.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_login.setText("Đặng nhập");
         btn_login.setBorder(null);
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -244,18 +243,6 @@ public class GUI_LogIn extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setOpaque(false);
-
-        jLabel_sigup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_sigup.setText("Đăng kí");
-        jLabel_sigup.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jLabel_sigup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel_sigup.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_sigupMouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel_sigup);
-
         jPanel_left_bot.add(jPanel5);
 
         jPanel_left.add(jPanel_left_bot, java.awt.BorderLayout.PAGE_END);
@@ -351,8 +338,11 @@ public class GUI_LogIn extends javax.swing.JFrame {
                 }
             }
             if(!jtfTK.getText().isEmpty()&&!laymk().isEmpty()){
+                jlbMsgMissMk.setText("");
+                jlbMsgMiss.setText("");
                 if(timTk(jtfTK.getText(), laymk())){
-                    GUI_GiaoDienChinh giaoDienChinh = new GUI_GiaoDienChinh(tk,nv);
+                    GUI_GiaoDienChinh giaoDienChinh = new GUI_GiaoDienChinh(tk,nv,this);
+                    JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công!");                
                     giaoDienChinh.setVisible(true);
                     this.dispose();
                 }
@@ -363,17 +353,10 @@ public class GUI_LogIn extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_loginActionPerformed
 
-    private void jLabel_sigupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_sigupMouseClicked
-        // TODO add your handling code here:
-        GUI_SignUp signUp = new GUI_SignUp();
-        signUp.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel_sigupMouseClicked
-
     public String laymk(){
-          char[] passwordChars = jtfMK.getPassword();
-          String password = new String(passwordChars);
-          return password;
+        char[] passwordChars = jtfMK.getPassword();
+        String password = new String(passwordChars);
+        return password;
 
     }
     
@@ -442,7 +425,6 @@ public class GUI_LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_login;
-    private javax.swing.JLabel jLabel_sigup;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

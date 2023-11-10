@@ -32,9 +32,9 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     private GUI_QuanLyHoaDon panelHoaDon = new GUI_QuanLyHoaDon();
     private GUI_QuanLyKHvaBH panelKHvaBH = new GUI_QuanLyKHvaBH();
     private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC(this);
+    private GUI_LogIn lg ;
     private GUI_QuanLyThongKe panelThongKe;
-    private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap;
-    
+    private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap;    
     private BUS_TaiKhoan tkbus = new BUS_TaiKhoan(); 
     private DTO_TaiKhoan tkDto ;
     private DTO_NhanVien nvDto ;
@@ -53,13 +53,14 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     /**
      * Creates new form GUI_GiaoDienChinh
      */
-    public GUI_GiaoDienChinh(DTO_TaiKhoan tkDto, DTO_NhanVien nvDto) {
+    public GUI_GiaoDienChinh(DTO_TaiKhoan tkDto, DTO_NhanVien nvDto, GUI_LogIn lg) {
         this.setUndecorated(true);      
         initComponents();       
         this.setLocationRelativeTo(null) ;   
         this.settingColor();           
         this.tkDto = tkDto;
         this.nvDto = nvDto;
+        this.lg = lg;
         this.addMenu();
         phanQuyen(this.tkDto);
     }
@@ -88,23 +89,6 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
        
     }
     
-//    public GUI_GiaoDienChinh(String tk) {
-//        this.setUndecorated(true);      
-//        initComponents();       
-//        this.setLocationRelativeTo(null) ;   
-//        this.settingColor();    
-//       // this.addMenu();  
-//        this.settingColor();   
-//        String manv = null;
-//        ArrayList<DTO_TaiKhoan> taiKhoan = tkbus.getList();
-//        for(DTO_TaiKhoan x:taiKhoan)
-//            if(x.getTENDN().equals(tk)){
-//                manv=x.getMANV();
-//                break;
-//            }
-//        this.addMenu(manv);  
-//    }
-    //FUNCITION
 
     public GUI_QuanLySPvaKM getPanelSPvaKM() {
         return panelSPvaKM;
@@ -118,7 +102,7 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
 public void addMenu()
 {   
     panelThongKe = new GUI_QuanLyThongKe(tkDto,nvDto);
-    panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap(tkDto,nvDto);
+    panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap(tkDto,nvDto,lg,this);
     jTabbedPane1.add(panelBanHang,1);
     jTabbedPane1.add(panelSPvaKM,2);
     jTabbedPane1.add(panelNVvaTK,3);
@@ -153,16 +137,6 @@ public void addMenu()
     panelMenu.setBackground(colorMenu);
  }
 
- public void visibleJPanelMenu1Title(boolean visibleOnOff){
-     jPanelMenu1Title.setVisible(visibleOnOff);
-     jPanelMenu2Title.setVisible(visibleOnOff);
-     jPanelMenu3Title.setVisible(visibleOnOff);
-     jPanelMenu4Title.setVisible(visibleOnOff);
-     jPanelMenu5Title.setVisible(visibleOnOff);
-     jPanelMenu6Title.setVisible(visibleOnOff);
-     jPanelMenu7Title.setVisible(visibleOnOff);
-     jPanelMenu8Title.setVisible(visibleOnOff);
- }
 
 
     @SuppressWarnings("unchecked")
@@ -298,28 +272,6 @@ public void addMenu()
 
         jPanelSidebar.setBackground(new java.awt.Color(102, 102, 102));
         jPanelSidebar.setMinimumSize(new java.awt.Dimension(0, 681));
-        jPanelSidebar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanelSidebarMouseDragged(evt);
-            }
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jPanelSidebarMouseMoved(evt);
-            }
-        });
-        jPanelSidebar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanelSidebarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanelSidebarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanelSidebarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanelSidebarMouseReleased(evt);
-            }
-        });
 
         jPanelMenu1.setBackground(new java.awt.Color(102, 102, 102));
         jPanelMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -327,12 +279,6 @@ public void addMenu()
         jPanelMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanelMenu1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanelMenu1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanelMenu1MouseExited(evt);
             }
         });
         jPanelMenu1.setLayout(new java.awt.BorderLayout());
@@ -616,10 +562,6 @@ public void addMenu()
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseClicked
-        // TODO add your handling code here:
-//        this.jTabbedPane1.remove(1);
-//        panelBanHang = new GUI_TrangChuBanHang();
-//        this.jTabbedPane1.add(panelBanHang, 1);
         clickChangeColor(jPanelMenu1,ColorClick);
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMenu1MouseClicked
@@ -679,43 +621,6 @@ public void addMenu()
         else
           this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);			
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jPanelSidebarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseEntered
-        // TODO add your handling code here: 
-    }//GEN-LAST:event_jPanelSidebarMouseEntered
-
-    private void jPanelSidebarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseExited
-        // TODO add your handling code here:  
-    }//GEN-LAST:event_jPanelSidebarMouseExited
-
-    private void jPanelSidebarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMousePressed
-        // TODO add your handling code here:
- 
-    }//GEN-LAST:event_jPanelSidebarMousePressed
-
-    private void jPanelSidebarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseReleased
-        // TODO add your handling code here:
-    
-    }//GEN-LAST:event_jPanelSidebarMouseReleased
-
-    private void jPanelSidebarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseDragged
-        // TODO add your handling code here:
-   
-    }//GEN-LAST:event_jPanelSidebarMouseDragged
-
-    private void jPanelSidebarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSidebarMouseMoved
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jPanelSidebarMouseMoved
-
-    private void jPanelMenu1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseEntered
-        // TODO add your handling code here:
-   
-    }//GEN-LAST:event_jPanelMenu1MouseEntered
-
-    private void jPanelMenu1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseExited
-        // TODO add your handling code here:      
-    }//GEN-LAST:event_jPanelMenu1MouseExited
 
     /**
      * @param args the command line arguments

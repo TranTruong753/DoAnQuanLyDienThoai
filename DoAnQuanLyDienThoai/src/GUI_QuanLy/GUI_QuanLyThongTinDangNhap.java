@@ -6,6 +6,7 @@ package GUI_QuanLy;
 
 import DTO.DTO_NhanVien;
 import DTO.DTO_TaiKhoan;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +19,14 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
      */
     private DTO_NhanVien nv ;
     private DTO_TaiKhoan tk ;
-    public GUI_QuanLyThongTinDangNhap(DTO_TaiKhoan tk, DTO_NhanVien nv) {
+    private GUI_LogIn lg ;
+    private GUI_GiaoDienChinh main;
+    public GUI_QuanLyThongTinDangNhap(DTO_TaiKhoan tk, DTO_NhanVien nv, GUI_LogIn lg, GUI_GiaoDienChinh main) {
         initComponents();
         this.tk = tk;
         this.nv = nv;
+        this.lg = lg;
+        this.main = main;
         showThongTin();
     }
     public void showThongTin(){
@@ -69,8 +74,6 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jtfTk = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtfMk = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -91,6 +94,8 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jLabel26.setText("Tên Người dùng");
         jLabel26.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfTen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTen.setEnabled(false);
         jtfTen.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -98,6 +103,8 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jLabel27.setText("SĐT");
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfSdt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfSdt.setEnabled(false);
         jtfSdt.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -105,6 +112,8 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jLabel30.setText("Ngày sinh");
         jLabel30.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        jtfNgaySinh.setEnabled(false);
+        jtfNgaySinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfNgaySinh.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -121,18 +130,16 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jLabel33.setText("Địa chỉ");
         jLabel33.setPreferredSize(new java.awt.Dimension(110, 17));
 
-        jLabel4.setText("Thông báo");
         jLabel4.setPreferredSize(new java.awt.Dimension(200, 16));
 
-        jLabel8.setText("Thông báo");
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 16));
 
-        jLabel7.setText("Thông báo");
         jLabel7.setPreferredSize(new java.awt.Dimension(200, 16));
 
         jtfDiaChi.setColumns(20);
+        jtfDiaChi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDiaChi.setRows(5);
-        jtfDiaChi.setPreferredSize(new java.awt.Dimension(200, 80));
+        jtfDiaChi.setEnabled(false);
         jScrollPane1.setViewportView(jtfDiaChi);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -240,16 +247,16 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Tài khoản :");
 
+        jtfTk.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTk.setEnabled(false);
         jtfTk.setPreferredSize(new java.awt.Dimension(250, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mật khẩu :");
 
+        jtfMk.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfMk.setEnabled(false);
         jtfMk.setPreferredSize(new java.awt.Dimension(250, 30));
-
-        jLabel5.setText("Thông báo");
-
-        jLabel6.setText("Thông báo");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -262,27 +269,22 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfTk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtfMk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jtfMk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(65, 65, 65))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtfTk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtfMk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -313,12 +315,30 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/exit.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel2);
 
         jPanel4.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         add(jPanel4, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, 
+            "Bạn có muốn thoát ra khỏi phần mềm?", "Close ?", 
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+                main.dispose();
+                lg.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -331,8 +351,6 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
