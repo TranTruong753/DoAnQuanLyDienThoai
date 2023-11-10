@@ -18,7 +18,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
     QuanLyThongKeController controller = new QuanLyThongKeController();
     public GUI_QuanLyThongKe() {
         initComponents();
-     //   controller.setDataToChart2(TKview);
+        controller.setDataToChart2(TKview);
     }
 
     /**
@@ -34,6 +34,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
+        TKview = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -45,7 +46,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DoanhThu", "SPBC", "NVBC" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(150, 40));
         jPanel8.add(jComboBox1);
 
@@ -53,17 +54,20 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông kê", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout TKviewLayout = new javax.swing.GroupLayout(TKview);
+        TKview.setLayout(TKviewLayout);
+        TKviewLayout.setHorizontalGroup(
+            TKviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1010, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        TKviewLayout.setVerticalGroup(
+            TKviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 765, Short.MAX_VALUE)
         );
+
+        jPanel2.add(TKview, java.awt.BorderLayout.CENTER);
 
         ThongKE.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -72,6 +76,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel TKview;
     private javax.swing.JPanel ThongKE;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel2;

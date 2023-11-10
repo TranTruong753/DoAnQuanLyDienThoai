@@ -32,7 +32,7 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     private GUI_QuanLyKHvaBH panelKHvaBH = new GUI_QuanLyKHvaBH();
     private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC(this);
     private GUI_QuanLyThongKe panelThongKe = new GUI_QuanLyThongKe();
-    //private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
+    private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
     
     private BUS_TaiKhoan tkbus = new BUS_TaiKhoan(); 
     // biến màu          
@@ -50,13 +50,13 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     /**
      * Creates new form GUI_GiaoDienChinh
      */
-//    public GUI_GiaoDienChinh() {
-//        this.setUndecorated(true);      
-//        initComponents();       
-//        this.setLocationRelativeTo(null) ;   
-//        this.settingColor();    
-//        this.addMenu();  
-//    }
+    public GUI_GiaoDienChinh() {
+        this.setUndecorated(true);      
+        initComponents();       
+        this.setLocationRelativeTo(null) ;   
+        this.settingColor();    
+        this.addMenu();  
+    }
     
     public GUI_GiaoDienChinh(String tk) {
         this.setUndecorated(true);      
@@ -85,11 +85,23 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     }
     
     
-  
+public void addMenu()
+{    
+   
+    jTabbedPane1.add(panelBanHang,1);
+    jTabbedPane1.add(panelSPvaKM,2);
+    jTabbedPane1.add(panelNVvaTK,3);
+    jTabbedPane1.add(panelKHvaBH,4);
+    jTabbedPane1.add(panelHoaDon,5);
+    jTabbedPane1.add(panelNCC,6);
+    jTabbedPane1.add(panelThongKe,7);
+    jTabbedPane1.add(panelThongTinDangNhap,8);
+    
+}  
  
 public void addMenu(String manv)
 {    
-    GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
+    //GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
     jTabbedPane1.add(panelBanHang,1);
     jTabbedPane1.add(panelSPvaKM,2);
     jTabbedPane1.add(panelNVvaTK,3);
@@ -737,37 +749,37 @@ public void addMenu(String manv)
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//               new GUI_GiaoDienChinh().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               new GUI_GiaoDienChinh().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
