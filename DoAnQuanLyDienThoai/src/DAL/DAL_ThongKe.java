@@ -7,6 +7,7 @@ package DAL;
 import DTO.DTO_CTHD;
 import DTO.DTO_HoaDon;
 import DTO.DTO_NVTK;
+import DTO.DTO_TaiKhoan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -100,6 +101,39 @@ public class DAL_ThongKe {
             e.printStackTrace();
         }
         return null;
+    }
+        
+    public DTO_NVTK getNhanVien(String maNv) {
+        Connection cons = DAO.getConnection();
+        String sql = "SELECT nv.TENNV, COUNT(hd.MANV) as SL\n" +
+                    "FROM HoaDon as hd, NhanVien as nv\n" +
+                    "WHERE hd.MANV = nv.MANV AND nv.MANV LIKE ?\n" +
+                    "GROUP BY nv.TENNV\n" +
+                    "ORDER BY SL DESC;";
+        
+       DTO_NVTK nvtk = null;
+        try {
+            PreparedStatement ps = (PreparedStatement) cons.prepareStatement(sql);
+            ps.setString(1, maNv);         
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                nvtk = new DTO_NVTK();
+                nvtk.setTENNV(rs.getString("TENNV"));
+                nvtk.setSL(rs.getInt("SL"));
+            }
+            ps.close();
+            cons.close();
+            return nvtk;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static void main(String[] args) {
+        DAL_ThongKe tk = new DAL_ThongKe();
+        DTO_NVTK nv = new DTO_NVTK();
+        nv = tk.getNhanVien("NV005");
+        System.out.println(nv.getSL());
     }
 }
 

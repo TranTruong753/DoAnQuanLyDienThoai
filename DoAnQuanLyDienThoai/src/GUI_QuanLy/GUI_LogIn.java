@@ -4,6 +4,10 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_NhanVien;
+import BUS.BUS_TaiKhoan;
+import DTO.DTO_NhanVien;
+import DTO.DTO_TaiKhoan;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,13 +26,15 @@ public class GUI_LogIn extends javax.swing.JFrame {
     /**
      * Creates new form GUI_LogIn
      */
-    public GUI_LogIn() {
-       
+    private DTO_TaiKhoan tk = new DTO_TaiKhoan();
+    private DTO_NhanVien nv = new DTO_NhanVien();
+    private BUS_TaiKhoan tkBus = new BUS_TaiKhoan();
+    private BUS_NhanVien nvBus = new BUS_NhanVien();
+    public GUI_LogIn() {       
         initComponents();
         setLocationRelativeTo(null) ;
         btn_login.setBackground(Color.WHITE);
         btn_close.setBackground(Color.WHITE);
-
     }
 
     /**
@@ -51,12 +57,12 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jtfTK = new javax.swing.JTextField();
+        jlbMsgMiss = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField_pass = new javax.swing.JPasswordField();
+        jtfMK = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jlbMsgMissMk = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jPanel_left_bot = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -155,29 +161,29 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jLabel3.setText("User");
         jPanel2.add(jLabel3);
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jTextField3.setOpaque(true);
-        jPanel2.add(jTextField3);
+        jtfTK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jtfTK.setOpaque(true);
+        jPanel2.add(jtfTK);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Thông báo !");
-        jPanel2.add(jLabel1);
+        jlbMsgMiss.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbMsgMiss.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel2.add(jlbMsgMiss);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Password");
         jPanel2.add(jLabel4);
 
-        jPasswordField_pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jPasswordField_pass);
+        jtfMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jtfMK);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.GridLayout(1, 2));
 
-        jLabel2.setBackground(new java.awt.Color(223, 223, 223));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Thông báo !");
-        jPanel3.add(jLabel2);
+        jlbMsgMissMk.setBackground(new java.awt.Color(223, 223, 223));
+        jlbMsgMissMk.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbMsgMissMk.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel3.add(jlbMsgMissMk);
 
         jCheckBox1.setBackground(new java.awt.Color(253, 253, 253));
         jCheckBox1.setText("Show password");
@@ -321,17 +327,40 @@ public class GUI_LogIn extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
           if(jCheckBox1.isSelected()){
-            this.jPasswordField_pass.setEchoChar((char)0);
+            this.jtfMK.setEchoChar((char)0);
         }
         else
-            this.jPasswordField_pass.setEchoChar('*');
+            this.jtfMK.setEchoChar('*');
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-//        GUI_GiaoDienChinh main = new GUI_GiaoDienChinh();
-//        main.setVisible(true);
-//        this.dispose();
+        if(evt.getSource() == btn_login){
+            if(jtfTK.getText().isEmpty()){
+                jlbMsgMissMk.setText("");
+                jlbMsgMiss.setText("Vui lòng nhập Tài khoản!");
+                if(laymk().isEmpty()){
+                    jlbMsgMissMk.setText("Vui lòng nhập Mật khẩu!");
+                }
+            }
+            else if(laymk().isEmpty()){
+                jlbMsgMiss.setText("");
+                jlbMsgMissMk.setText("Vui lòng nhập Mật khẩu!");
+                if(jtfTK.getText().isEmpty()){
+                    jlbMsgMiss.setText("Vui lòng nhập Tài khoản!");
+                }
+            }
+            if(!jtfTK.getText().isEmpty()&&!laymk().isEmpty()){
+                if(timTk(jtfTK.getText(), laymk())){
+                    GUI_GiaoDienChinh giaoDienChinh = new GUI_GiaoDienChinh(tk,nv);
+                    giaoDienChinh.setVisible(true);
+                    this.dispose();
+                }
+                
+            }
+            
+        }
+
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void jLabel_sigupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_sigupMouseClicked
@@ -341,6 +370,33 @@ public class GUI_LogIn extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel_sigupMouseClicked
 
+    public String laymk(){
+          char[] passwordChars = jtfMK.getPassword();
+          String password = new String(passwordChars);
+          return password;
+
+    }
+    
+    public boolean timTk(String tdn, String mk){
+         tk = new DTO_TaiKhoan();
+         nv = new DTO_NhanVien(); 
+        tk = tkBus.login(tdn, mk);
+        
+        if(tk==null){
+            JOptionPane.showMessageDialog(rootPane, "Tài khoản và mật không đúng mời bạn nhập lại!","Thông báo", JOptionPane.WARNING_MESSAGE);      
+            return false;
+        }           
+        else{
+            nv = nvBus.login(tk.getMANV());
+            if(nv==null){
+                JOptionPane.showMessageDialog(rootPane, "Nhân viên của tài khoản này đã bị xóa khỏi danh sách!","Thông báo", JOptionPane.WARNING_MESSAGE);       
+               return false;
+            }
+                
+        }
+        return true;
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -380,8 +436,6 @@ public class GUI_LogIn extends javax.swing.JFrame {
     private javax.swing.JButton btn_close;
     private javax.swing.JButton btn_login;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -399,8 +453,10 @@ public class GUI_LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_left_bot;
     private javax.swing.JPanel jPanel_left_center;
     private javax.swing.JPanel jPanel_left_top;
-    private javax.swing.JPasswordField jPasswordField_pass;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jlbMsgMiss;
+    private javax.swing.JLabel jlbMsgMissMk;
+    private javax.swing.JPasswordField jtfMK;
+    private javax.swing.JTextField jtfTK;
     private keeptoo.KGradientPanel kGradientPanel_right;
     // End of variables declaration//GEN-END:variables
 class RoundedPanel extends JPanel

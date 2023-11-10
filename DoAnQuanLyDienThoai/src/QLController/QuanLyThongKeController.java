@@ -123,4 +123,29 @@ public class QuanLyThongKeController {
         jpnItem.validate();
         jpnItem.repaint();
     }
+    
+    public void setDataToChartNv(JPanel jpnItem, String maNv){
+        DTO_NVTK nv = tkBus.getNhanVien(maNv);
+        if(nv!=null){
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+      
+        dataset.addValue(nv.getSL(), "Số Lượng".toUpperCase(),nv.getTENNV());
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Biểu đồ nhân viên" + nv.getTENNV() + " bán được".toUpperCase(),
+                "Tên nhân viên".toUpperCase(), "Số Lượng".toUpperCase(),
+                dataset, PlotOrientation.VERTICAL, false, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(408, 305));
+
+        jpnItem.removeAll();
+        jpnItem.setLayout(new CardLayout());
+        jpnItem.add(chartPanel);
+        jpnItem.validate();
+        jpnItem.repaint();
+        }
+        
+    }
+    
+    
 }

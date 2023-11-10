@@ -205,6 +205,33 @@ public class DAL_NhanVien {
         return 0;
     }
     
+    public DTO_NhanVien login(String maNv) {
+        Connection cons = DAO.getConnection();
+        String sql = "SELECT * FROM NhanVien WHERE MANV LIKE ? AND TRANGTHAI = 1";
+        DTO_NhanVien nv = null;
+        try {
+            PreparedStatement ps = (PreparedStatement) cons.prepareStatement(sql);
+            ps.setString(1, maNv);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+               nv = new DTO_NhanVien();
+               nv.setMANV(rs.getString("MANV"));
+               nv.setTENNV(rs.getString("TENNV"));
+               nv.setNGAYSINH(rs.getDate("NGAYSINH"));
+               nv.setSDT(rs.getString("SDT"));
+               nv.setDIACHI(rs.getString("DIACHI"));
+               nv.setGIOITINH(rs.getString("GIOITINH"));
+               nv.setTRANGTHAI(rs.getInt("TRANGTHAI"));
+            }
+            ps.close();
+            cons.close();
+            return nv;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }    
+    
 }
     
 

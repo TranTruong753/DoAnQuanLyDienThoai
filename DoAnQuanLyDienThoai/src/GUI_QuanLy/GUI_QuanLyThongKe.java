@@ -4,7 +4,12 @@
  */
 package GUI_QuanLy;
 
+import DTO.DTO_NVTK;
+import DTO.DTO_NhanVien;
+import DTO.DTO_TaiKhoan;
 import QLController.QuanLyThongKeController;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -15,12 +20,30 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
     /**
      * Creates new form GUI_QuanLyThongKe
      */
+    DTO_NhanVien nv ;
+    DTO_TaiKhoan tk ;
     QuanLyThongKeController controller = new QuanLyThongKeController();
-    public GUI_QuanLyThongKe() {
+    public GUI_QuanLyThongKe(DTO_TaiKhoan tk ,DTO_NhanVien nv) {
         initComponents();
-        controller.setDataToChart2(TKview);
+        this.tk = tk;
+        this.nv = nv;
+        setGiaoDien();
+        
     }
 
+    public void setGiaoDien(){
+        if(tk.getPQ().equals("ql"))
+        {
+            jPanel8.setVisible(true);
+            ListTK.setVisible(true);
+            controller.setDataToChart2(TKview);
+        }
+        else if(tk.getPQ().equals("nv")){
+            jPanel8.setVisible(false);
+            ListTK.setVisible(false);
+            controller.setDataToChartNv(TKview, nv.getMANV());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +69,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        ListTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DoanhThu", "SPBC", "NVBC" }));
+        ListTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DoanhThu", "SPBC", "NVBC", "TongKet" }));
         ListTK.setPreferredSize(new java.awt.Dimension(150, 40));
         ListTK.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -87,9 +110,18 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
           controller.setDataToChart1(TKview);         
         }else if(ListTK.getSelectedItem().toString().equals("NVBC")){
           controller.setDataToChart3(TKview);
+        }else if(ListTK.getSelectedItem().toString().equals("TongKet")){
+          tongKet(TKview);
         }
     }//GEN-LAST:event_ListTKItemStateChanged
-
+    public void tongKet(JPanel jpnItem){
+        GUI_TongDoanhThu tdt = new GUI_TongDoanhThu();
+        jpnItem.removeAll();
+        jpnItem.setLayout(new CardLayout());
+        jpnItem.add(tdt);
+        jpnItem.validate();
+        jpnItem.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ListTK;

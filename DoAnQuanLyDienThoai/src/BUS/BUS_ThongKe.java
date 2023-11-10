@@ -25,6 +25,9 @@ public class BUS_ThongKe {
     public List<DTO_CTHD> getListTopSanPham() {
         return hdi.getListTopSanPham();
     }
+    public DTO_NVTK getNhanVien(String maNv){
+        return hdi.getNhanVien(maNv);
+    }
 }
     
 

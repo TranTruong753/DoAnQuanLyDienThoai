@@ -16,6 +16,7 @@ import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import BUS.*;
+import DTO.DTO_NhanVien;
 import DTO.DTO_TaiKhoan;
 import java.util.ArrayList;
 /**
@@ -31,10 +32,12 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     private GUI_QuanLyHoaDon panelHoaDon = new GUI_QuanLyHoaDon();
     private GUI_QuanLyKHvaBH panelKHvaBH = new GUI_QuanLyKHvaBH();
     private GUI_QuanLyNCC panelNCC = new GUI_QuanLyNCC(this);
-    private GUI_QuanLyThongKe panelThongKe = new GUI_QuanLyThongKe();
-    private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
+    private GUI_QuanLyThongKe panelThongKe;
+    private GUI_QuanLyThongTinDangNhap panelThongTinDangNhap;
     
     private BUS_TaiKhoan tkbus = new BUS_TaiKhoan(); 
+    private DTO_TaiKhoan tkDto ;
+    private DTO_NhanVien nvDto ;
     // biến màu          
     public Color ColorMain,ColorClick,sidebar ;
     
@@ -50,12 +53,39 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     /**
      * Creates new form GUI_GiaoDienChinh
      */
-    public GUI_GiaoDienChinh() {
+    public GUI_GiaoDienChinh(DTO_TaiKhoan tkDto, DTO_NhanVien nvDto) {
         this.setUndecorated(true);      
         initComponents();       
         this.setLocationRelativeTo(null) ;   
-        this.settingColor();    
-        this.addMenu();  
+        this.settingColor();           
+        this.tkDto = tkDto;
+        this.nvDto = nvDto;
+        this.addMenu();
+        phanQuyen(this.tkDto);
+    }
+    
+    public void phanQuyen(DTO_TaiKhoan tkDto){
+        if(tkDto.getPQ().equals("ql")){           
+            hienThi(true,true,true,true,true,true,true,true);
+        }
+        else if(tkDto.getPQ().equals("nv")){
+            hienThi(true,false,false,true,true,false,true,true);
+        }
+        else{
+            hienThi(false,false,true,false,false,false,false,true);
+        }
+    }
+    
+    public void hienThi(boolean bh,boolean sp, boolean nv, boolean kh, boolean hd, boolean ncc, boolean tk, boolean ttk ){
+        jPanelMenu1.setVisible(bh);
+        jPanelMenu2.setVisible(sp);
+        jPanelMenu3.setVisible(nv);
+        jPanelMenu4.setVisible(kh);
+        jPanelMenu5.setVisible(hd);
+        jPanelMenu6.setVisible(ncc);
+        jPanelMenu7.setVisible(tk);
+        jPanelMenu8.setVisible(ttk);
+       
     }
     
 //    public GUI_GiaoDienChinh(String tk) {
@@ -86,8 +116,9 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     
     
 public void addMenu()
-{    
-   
+{   
+    panelThongKe = new GUI_QuanLyThongKe(tkDto,nvDto);
+    panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap(tkDto,nvDto);
     jTabbedPane1.add(panelBanHang,1);
     jTabbedPane1.add(panelSPvaKM,2);
     jTabbedPane1.add(panelNVvaTK,3);
@@ -99,19 +130,6 @@ public void addMenu()
     
 }  
  
-//public void addMenu(String manv)
-//{    
-//    //GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
-//    jTabbedPane1.add(panelBanHang,1);
-//    jTabbedPane1.add(panelSPvaKM,2);
-//    jTabbedPane1.add(panelNVvaTK,3);
-//    jTabbedPane1.add(panelKHvaBH,4);
-//    jTabbedPane1.add(panelHoaDon,5);
-//    jTabbedPane1.add(panelNCC,6);
-//    jTabbedPane1.add(panelThongKe,7);
-//    jTabbedPane1.add(panelThongTinDangNhap,8);
-//    
-//}
 
 
  public void settingColor(){
@@ -145,44 +163,6 @@ public void addMenu()
      jPanelMenu7Title.setVisible(visibleOnOff);
      jPanelMenu8Title.setVisible(visibleOnOff);
  }
-
-
- 
-//public void openSideBar(int width, int height) {
-//    new Thread(new Runnable() {
-//        @Override
-//        public void run() {        
-//         visibleJPanelMenu1Title(true);
-//            for (int i = 0; i <= width; i++) {
-//               // jPanelSidebar.setBounds(i, y, width, height);
-//               jPanelSidebar.setSize(i, height);
-//                try {
-//                    Thread.sleep(2);
-//                } catch (InterruptedException ex) {
-//                    Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//            
-//        }
-//    }).start();
-//}
-
-//public void closeSideBar(int width, int height) {
-//    new Thread(new Runnable() {
-//        @Override
-//        public void run() {
-//            for (int i = width; i >= 0; i--) {
-//                jPanelSidebar.setSize(i, height);
-//                try {
-//                    Thread.sleep(2);
-//                } catch (InterruptedException ex) {
-//                    Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
-//    }).start();
-//      
-//}
 
 
     @SuppressWarnings("unchecked")
@@ -630,16 +610,7 @@ public void addMenu()
 
         jPanel1.add(jPanelMain, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -749,37 +720,37 @@ public void addMenu()
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               new GUI_GiaoDienChinh().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Windows".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//               new GUI_GiaoDienChinh().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

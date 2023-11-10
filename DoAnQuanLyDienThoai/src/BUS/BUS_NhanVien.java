@@ -25,6 +25,11 @@ public class BUS_NhanVien {
           return false;
         
     }
+    
+    public DTO_NhanVien login(String maNv) {
+         return nv.login(maNv);
+    }
+    
     public boolean updateNhanVien(DTO_NhanVien s){
         if(nv.updateDTO_NhanVien(s))
             return true;

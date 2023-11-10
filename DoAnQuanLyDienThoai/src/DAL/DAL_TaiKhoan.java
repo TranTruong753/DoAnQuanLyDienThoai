@@ -48,7 +48,7 @@ public class DAL_TaiKhoan {
 
     public DTO_TaiKhoan login(String tdn, String mk) {
         Connection cons = DAO.getConnection();
-        String sql = "SELECT * FROM TaiKhoan WHERE TENDN LIKE ? AND MK LIKE ?";
+        String sql = "SELECT * FROM TaiKhoan WHERE TENDN LIKE ? AND MK LIKE ? AND TRANGTHAI = 1";
         DTO_TaiKhoan tk = null;
         try {
             PreparedStatement ps = (PreparedStatement) cons.prepareStatement(sql);
@@ -71,6 +71,7 @@ public class DAL_TaiKhoan {
         }
         return null;
     }    
+    
     public boolean addDTO_TaiKhoan(DTO_TaiKhoan s) {
         String sql="insert into TaiKhoan(TENDN,MANV,MK,PQ,TRANGTHAI)"
                + "VALUES(?,?,?,?,?)";
