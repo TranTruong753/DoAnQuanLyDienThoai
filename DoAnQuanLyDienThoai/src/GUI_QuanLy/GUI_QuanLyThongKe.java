@@ -4,6 +4,8 @@
  */
 package GUI_QuanLy;
 
+import QLController.QuanLyThongKeController;
+
 /**
  *
  * @author Admin
@@ -13,8 +15,10 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
     /**
      * Creates new form GUI_QuanLyThongKe
      */
+    QuanLyThongKeController controller = new QuanLyThongKeController();
     public GUI_QuanLyThongKe() {
         initComponents();
+     //   controller.setDataToChart2(TKview);
     }
 
     /**

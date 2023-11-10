@@ -329,9 +329,9 @@ public class GUI_LogIn extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-        GUI_GiaoDienChinh main = new GUI_GiaoDienChinh();
-        main.setVisible(true);
-        this.dispose();
+//        GUI_GiaoDienChinh main = new GUI_GiaoDienChinh();
+//        main.setVisible(true);
+//        this.dispose();
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void jLabel_sigupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_sigupMouseClicked
