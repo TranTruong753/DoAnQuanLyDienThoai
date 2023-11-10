@@ -39,7 +39,7 @@ public class GUI_ThongTinHoaDon extends javax.swing.JFrame {
    
     funcDungChung fuc = new funcDungChung();
     QuanLyCTHDController qlcthd = new QuanLyCTHDController();
-    QuanLyHoaDonController ql = new QuanLyHoaDonController();
+    QuanLyHoaDonController ql ;
     DTO_HoaDon hd = new DTO_HoaDon();
     DTO_CTHD cthd = new DTO_CTHD();  
     private BUS_CTHD cthdbus = new BUS_CTHD();

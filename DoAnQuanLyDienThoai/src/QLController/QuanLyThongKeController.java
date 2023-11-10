@@ -131,8 +131,8 @@ public class QuanLyThongKeController {
       
         dataset.addValue(nv.getSL(), "Số Lượng".toUpperCase(),nv.getTENNV());
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ nhân viên" + nv.getTENNV() + " bán được".toUpperCase(),
-                "Tên nhân viên".toUpperCase(), "Số Lượng".toUpperCase(),
+                "Biểu đồ nhân viên có mã: " + maNv + " bán được: ".toUpperCase() + nv.getSL() +" Hóa đơn",
+                "Tên nhân viên".toUpperCase(), "Số Lượng hóa đơn".toUpperCase(),
                 dataset, PlotOrientation.VERTICAL, false, true, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);

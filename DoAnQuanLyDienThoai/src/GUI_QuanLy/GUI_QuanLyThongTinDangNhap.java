@@ -38,7 +38,7 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         if(nv.getGIOITINH().equals("Nam"))
             rbNam.setSelected(true);
         else
-            rbNam.setSelected(false);
+            rbNu.setSelected(true);
         jtfNgaySinh.setDate(nv.getNGAYSINH());
     }
     /**

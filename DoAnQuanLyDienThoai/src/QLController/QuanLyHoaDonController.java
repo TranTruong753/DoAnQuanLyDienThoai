@@ -12,12 +12,15 @@ import javax.swing.table.DefaultTableModel;
 import DTO.*;
 import GUI_QuanLy.GUI_ThongTinHoaDon;
 import function.*;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -32,11 +35,21 @@ import javax.swing.table.TableRowSorter;
  */
 public class QuanLyHoaDonController {
     private TableRowSorter<TableModel> rowSorter ;
+    JTable table;
     public BUS_HoaDon hdBus = new BUS_HoaDon();
-    funcDungChung fuc = new funcDungChung();
+    private funcDungChung fuc = new funcDungChung();
+    private JPanel jpnView;
+    private String[] listColumn = 
+{"Mã hóa đơn","Mã nhân viên", "Mã khách hàng","Ngày lập","Tổng tiền","Giảm giá","Tiền thanh toán","Tiền khách","Tiền thừa","Ngày kết thúc bảo hành"};
+
+    public QuanLyHoaDonController(JPanel jpnView) {
+        this.jpnView = jpnView;
+        loadHoaDonList();
+    }
     
-    //FUCTION 
-    // tùy chỉnh giao diện bảng 
+    
+    
+    
     public void changeTable(JTable tbl_HoaDon){
         // Điều chỉnh chiều rộng của các cột tại đây
        tbl_HoaDon.setRowHeight(40);
@@ -70,50 +83,20 @@ public class QuanLyHoaDonController {
        tbl_HoaDon.repaint();
     }
     // hàm tạo bảng 
-    public void loadHoaDonList(List<DTO_HoaDon> hoadon, JTable table) {
-        DefaultTableModel dtm = new DefaultTableModel(){
-            @Override
-            public boolean isCellEditable(int row, int column) {        //Không được chỉnh sửa hàng và cột của bảng
-                return false;
-            }
-            
-        };
-        dtm.addColumn("MÃ HĐ");
-        dtm.addColumn("MÃ NV");
-        dtm.addColumn("MÃ KH");
-        dtm.addColumn("Ngày lập");
-        dtm.addColumn("Tổng Tiền");
-        dtm.addColumn("Giảm giá");
-        dtm.addColumn("Tiền thanh toán");
-        dtm.addColumn("Tiền khách");
-        dtm.addColumn("Tiền thừa");
-        dtm.addColumn("Ngày kết thúc bảo hành");
-        table.setModel(dtm);
-        
-        List<DTO_HoaDon> arr = new ArrayList<>() ;
-        //arr = empBUS.getAllEmployees();
-        arr = hoadon;
-        for (int i = 0; i < arr.size(); i++) {
-            DTO_HoaDon em = arr.get(i);
-            
-            String maHd = em.getMaHD();
-            String maNv = em.getMaNV();
-            String maKh = em.getMaKH();
-            Date ngayLap = em.getNgayLap();
-            Double tongTien = em.getTongTien();
-            Double giamGia = em.getGiamGia();
-            Double tienThanhToan = em.getTienThanhToan();
-            Double tienKhach = em.getTienKhach();
-            Double tienThua = em.getTienThoi();
-            Date ngayKtBh = em.getNgayKtBh();
-            
-            Object[] row = {maHd, maNv, maKh, ngayLap, fuc.doubleToFormattedString(tongTien), fuc.doubleToFormattedString(giamGia), 
-                fuc.doubleToFormattedString(tienThanhToan), fuc.doubleToFormattedString(tienKhach), 
-                fuc.doubleToFormattedString(tienThua), ngayKtBh };
-            dtm.addRow(row);
-        }
+    public void loadHoaDonList() {    
+        List<DTO_HoaDon> listItem = hdBus.getList();
+        DefaultTableModel model = new TableHoaDon().setTableHd(listItem, listColumn);
+        table = new JTable(model);
         changeTable(table);
-        
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.getViewport().add(table);
+        scrollPane.setPreferredSize(new Dimension(jpnView.getWidth(),jpnView.getHeight()));
+        eventClickTable(table);
+        jpnView.removeAll();
+        jpnView.setLayout(new BorderLayout());
+        jpnView.add(scrollPane);
+        jpnView.validate();
+        jpnView.repaint();
     
     }
     

@@ -621,7 +621,8 @@ public void addMenu()
         else
           this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);			
     }//GEN-LAST:event_jLabel5MouseClicked
-
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -656,6 +657,22 @@ public void addMenu()
 //            }
 //        });
 //    }
+
+    public GUI_QuanLyThongKe getPanelThongKe() {
+        return panelThongKe;
+    }
+
+    public GUI_QuanLyHoaDon getPanelHoaDon() {
+        return panelHoaDon;
+    }
+    
+    
+    
+    public DTO_NhanVien getNvDto() {
+        return nvDto;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

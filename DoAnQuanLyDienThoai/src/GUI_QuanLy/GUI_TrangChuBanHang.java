@@ -534,8 +534,8 @@ public void showthongbao(){
             else
                 hd.setMaKH(listkh.get(0).getMAKH());
                 
-            
-            hd.setMaNV("NV001");
+            String maNv = gd.getNvDto().getMANV();
+            hd.setMaNV(maNv);
             Date d= new Date(System.currentTimeMillis());
             hd.setNgayLap(d);
             Calendar calendar = Calendar.getInstance();
@@ -589,8 +589,8 @@ public void showthongbao(){
             
             this.load();
             gd.getPanelSPvaKM().getGuiSanPham().getQlf().setDateToTable();
-            
-            
+            gd.getPanelThongKe().setGiaoDien();
+            gd.getPanelHoaDon().loadHd();
             
             
             

@@ -30,16 +30,19 @@ import javax.swing.table.TableRowSorter;
  * @author Admin
  */
 public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
-    private QuanLyHoaDonController ql = new QuanLyHoaDonController();
+    private QuanLyHoaDonController ql ;
     public BUS_HoaDon hdBus = new BUS_HoaDon();
         
     public GUI_QuanLyHoaDon() {
         initComponents();
-        ql.loadHoaDonList(hdBus.getList(),this.tbl_HoaDon);
+        ql = new QuanLyHoaDonController(jpnView);
         ql.eventFind(this.jtfTimKiem);
-        ql.eventClickTable(this.tbl_HoaDon);
+       
     }
 
+    public void loadHd(){      
+         ql.loadHoaDonList();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,8 +57,7 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jtfTimKiem = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_HoaDon = new javax.swing.JTable();
+        jpnView = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1250, 768));
         setLayout(new java.awt.BorderLayout());
@@ -93,34 +95,20 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        tbl_HoaDon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tbl_HoaDon.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MÃ HĐ", "MÃ NV", "MÃ KH", "NGÀY LẬP", "TỔNG TIỀN", "GIẢM GIÁ", "TIỀN THANH TOÁN", "TIỀN KH", "TIỀN THÓI"
-            }
-        ));
-        jScrollPane1.setViewportView(tbl_HoaDon);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1228, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
+        jpnView.setLayout(jpnViewLayout);
+        jpnViewLayout.setHorizontalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1240, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                .addContainerGap())
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 654, Short.MAX_VALUE)
         );
+
+        jPanel2.add(jpnView, java.awt.BorderLayout.CENTER);
 
         QuanLyHoaDon.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -133,9 +121,8 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpnView;
     private javax.swing.JTextField jtfTimKiem;
-    private javax.swing.JTable tbl_HoaDon;
     // End of variables declaration//GEN-END:variables
 
 
