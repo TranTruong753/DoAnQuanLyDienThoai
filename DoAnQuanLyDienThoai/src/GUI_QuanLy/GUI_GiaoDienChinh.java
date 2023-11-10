@@ -58,22 +58,22 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
         this.addMenu();  
     }
     
-    public GUI_GiaoDienChinh(String tk) {
-        this.setUndecorated(true);      
-        initComponents();       
-        this.setLocationRelativeTo(null) ;   
-        this.settingColor();    
-       // this.addMenu();  
-        this.settingColor();   
-        String manv = null;
-        ArrayList<DTO_TaiKhoan> taiKhoan = tkbus.getList();
-        for(DTO_TaiKhoan x:taiKhoan)
-            if(x.getTENDN().equals(tk)){
-                manv=x.getMANV();
-                break;
-            }
-        this.addMenu(manv);  
-    }
+//    public GUI_GiaoDienChinh(String tk) {
+//        this.setUndecorated(true);      
+//        initComponents();       
+//        this.setLocationRelativeTo(null) ;   
+//        this.settingColor();    
+//       // this.addMenu();  
+//        this.settingColor();   
+//        String manv = null;
+//        ArrayList<DTO_TaiKhoan> taiKhoan = tkbus.getList();
+//        for(DTO_TaiKhoan x:taiKhoan)
+//            if(x.getTENDN().equals(tk)){
+//                manv=x.getMANV();
+//                break;
+//            }
+//        this.addMenu(manv);  
+//    }
     //FUNCITION
 
     public GUI_QuanLySPvaKM getPanelSPvaKM() {
@@ -99,19 +99,19 @@ public void addMenu()
     
 }  
  
-public void addMenu(String manv)
-{    
-    //GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
-    jTabbedPane1.add(panelBanHang,1);
-    jTabbedPane1.add(panelSPvaKM,2);
-    jTabbedPane1.add(panelNVvaTK,3);
-    jTabbedPane1.add(panelKHvaBH,4);
-    jTabbedPane1.add(panelHoaDon,5);
-    jTabbedPane1.add(panelNCC,6);
-    jTabbedPane1.add(panelThongKe,7);
-    jTabbedPane1.add(panelThongTinDangNhap,8);
-    
-}
+//public void addMenu(String manv)
+//{    
+//    //GUI_QuanLyThongTinDangNhap panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap();
+//    jTabbedPane1.add(panelBanHang,1);
+//    jTabbedPane1.add(panelSPvaKM,2);
+//    jTabbedPane1.add(panelNVvaTK,3);
+//    jTabbedPane1.add(panelKHvaBH,4);
+//    jTabbedPane1.add(panelHoaDon,5);
+//    jTabbedPane1.add(panelNCC,6);
+//    jTabbedPane1.add(panelThongKe,7);
+//    jTabbedPane1.add(panelThongTinDangNhap,8);
+//    
+//}
 
 
  public void settingColor(){

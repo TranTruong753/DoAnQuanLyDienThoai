@@ -32,7 +32,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
 
         ThongKE = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ListTK = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         TKview = new javax.swing.JPanel();
 
@@ -46,9 +46,14 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DoanhThu", "SPBC", "NVBC" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(150, 40));
-        jPanel8.add(jComboBox1);
+        ListTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DoanhThu", "SPBC", "NVBC" }));
+        ListTK.setPreferredSize(new java.awt.Dimension(150, 40));
+        ListTK.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ListTKItemStateChanged(evt);
+            }
+        });
+        jPanel8.add(ListTK);
 
         ThongKE.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
@@ -74,11 +79,22 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         add(ThongKE, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ListTKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ListTKItemStateChanged
+        // TODO add your handling code here:
+        if(ListTK.getSelectedItem().toString().equals("DoanhThu")){
+          controller.setDataToChart2(TKview);
+        }else if(ListTK.getSelectedItem().toString().equals("SPBC")){
+          controller.setDataToChart1(TKview);         
+        }else if(ListTK.getSelectedItem().toString().equals("NVBC")){
+          controller.setDataToChart3(TKview);
+        }
+    }//GEN-LAST:event_ListTKItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ListTK;
     private javax.swing.JPanel TKview;
     private javax.swing.JPanel ThongKE;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     // End of variables declaration//GEN-END:variables
