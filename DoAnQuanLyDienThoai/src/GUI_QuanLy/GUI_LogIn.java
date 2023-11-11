@@ -160,6 +160,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jLabel3.setText("User");
         jPanel2.add(jLabel3);
 
+        jtfTK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfTK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jtfTK.setOpaque(true);
         jPanel2.add(jtfTK);
@@ -172,6 +173,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jLabel4.setText("Password");
         jPanel2.add(jLabel4);
 
+        jtfMK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPanel2.add(jtfMK);
 
@@ -231,7 +233,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         btn_login.setText("Đặng nhập");
         btn_login.setBorder(null);
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_login.setPreferredSize(new java.awt.Dimension(100, 35));
+        btn_login.setPreferredSize(new java.awt.Dimension(150, 35));
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
