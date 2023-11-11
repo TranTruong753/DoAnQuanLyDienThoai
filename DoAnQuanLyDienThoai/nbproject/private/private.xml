@@ -2,6 +2,35 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinKhuyenMai.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_DanhSachThuongHieu.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_XacNhanNhapHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyNhanVien.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinBaoHanh.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinMuaSanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinSanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyKhuyenMai.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_LogIn.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinNhanVien.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyTaiKhoan.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinNcc.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyKHvaBH.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinTaiKhoan.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyBaoHanh.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyNCC.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyThongKe.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThemThongTinSanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLySanPham.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyKhachHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAL_ThongKe.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_TrangChuBanHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThanhToanHoaDon.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyHoaDon.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ContainerPhone.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_GiaoDienChinh.java</file>
+            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyThongTinDangNhap.java</file>
+        </group>
     </open-files>
 </project-private>

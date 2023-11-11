@@ -151,6 +151,9 @@ public void addMenu()
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanelMenuAll = new javax.swing.JPanel();
         jPanelSidebar = new javax.swing.JPanel();
         jPanelMenu1 = new javax.swing.JPanel();
@@ -210,6 +213,12 @@ public void addMenu()
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("DEVSTORE");
+        jLabelTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelTitleMouseClicked(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cross32.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -249,17 +258,26 @@ public void addMenu()
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 30));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1250, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
-        );
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(17, 153, 142));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("CHÀO MỨNG ĐẾ VỚI DEVSTORE");
+        jLabel11.setPreferredSize(new java.awt.Dimension(1200, 50));
+        jPanel4.add(jLabel11);
+
+        jLabel12.setBackground(new java.awt.Color(253, 253, 253));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/bg-store-500.jpg"))); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(500, 500));
+        jPanel4.add(jLabel12);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(17, 153, 142));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("NƠI BÁN ĐIỆN THOẠI CHẤT LƯỢNG HUY TÍN ĐẶT LÊN HÀNG ĐẦU");
+        jLabel13.setPreferredSize(new java.awt.Dimension(1230, 50));
+        jPanel4.add(jLabel13);
 
         jTabbedPane1.addTab("tab1", jPanel4);
 
@@ -268,10 +286,11 @@ public void addMenu()
         jPanelMain.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanelMenuAll.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenuAll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(17, 153, 142)));
         jPanelMenuAll.setPreferredSize(new java.awt.Dimension(250, 760));
         jPanelMenuAll.setLayout(new java.awt.BorderLayout());
 
-        jPanelSidebar.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelSidebar.setBackground(new java.awt.Color(17, 153, 142));
         jPanelSidebar.setMinimumSize(new java.awt.Dimension(0, 681));
 
         jPanelMenu1.setBackground(new java.awt.Color(250, 250, 250));
@@ -541,21 +560,21 @@ public void addMenu()
         jPanelSidebarLayout.setVerticalGroup(
             jPanelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSidebarLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelMenu8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -630,6 +649,11 @@ public void addMenu()
         else
           this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);			
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabelTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTitleMouseClicked
+       clickChangeColor(jPanelMenu1,sidebar);
+       jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_jLabelTitleMouseClicked
     
     
     /**
@@ -686,6 +710,9 @@ public void addMenu()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
