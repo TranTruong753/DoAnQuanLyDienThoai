@@ -71,7 +71,8 @@ public class GUI_QuanLyHoaDon extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1432, 70));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        jtfTimKiem.setFont(new java.awt.Font("Raavi", 0, 14)); // NOI18N
+        jtfTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jtfTimKiem.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jtfTimKiem);
 

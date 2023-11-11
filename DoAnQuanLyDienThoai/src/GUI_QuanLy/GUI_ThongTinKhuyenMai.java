@@ -295,7 +295,7 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
 
         btnLuu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        btnLuu.setText("Thoát");
+        btnLuu.setText("Lưu");
         btnLuu.setPreferredSize(new java.awt.Dimension(150, 40));
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

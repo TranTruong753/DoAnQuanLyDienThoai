@@ -147,6 +147,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("MUA");
         jButton2.setPreferredSize(new java.awt.Dimension(240, 23));
         jButton2.addActionListener(new java.awt.event.ActionListener() {

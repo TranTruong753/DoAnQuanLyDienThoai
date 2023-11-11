@@ -312,6 +312,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
         jPanel6.add(jPanel7);
 
+        btnchon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnchon.setText("Chọn");
         btnchon.setPreferredSize(new java.awt.Dimension(100, 40));
         btnchon.addActionListener(new java.awt.event.ActionListener() {

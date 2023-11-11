@@ -129,11 +129,6 @@ public class DAL_ThongKe {
         }
         return null;
     }
-    public static void main(String[] args) {
-        DAL_ThongKe tk = new DAL_ThongKe();
-        DTO_NVTK nv = new DTO_NVTK();
-        nv = tk.getNhanVien("NV005");
-        System.out.println(nv.getSL());
-    }
+   
 }
 

@@ -121,8 +121,10 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
         jLabel31.setText("Giới tính");
         jLabel31.setPreferredSize(new java.awt.Dimension(110, 17));
 
+        rbNam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbNam.setText("Nam");
 
+        rbNu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbNu.setText("Nữ");
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -232,7 +234,7 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel5, java.awt.BorderLayout.CENTER);

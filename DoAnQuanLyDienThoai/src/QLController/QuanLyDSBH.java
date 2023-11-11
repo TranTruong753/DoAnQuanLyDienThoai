@@ -15,7 +15,7 @@ import GUI_QuanLy.GUI_ThongTinMuaSanPham;
 import GUI_QuanLy.GUI_ThongTinNhanVien;
 import GUI_QuanLy.GUI_ThongTinTaiKhoan;
 import GUI_QuanLy.GUI_TrangChuBanHang;
-import GUI_QuanLy.GUI_UpdateThongTinSanPham;
+import GUI_QuanLy.GUI_ThongTinSanPham;
 import function.CenterRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;

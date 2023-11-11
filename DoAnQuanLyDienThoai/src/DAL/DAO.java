@@ -33,9 +33,9 @@ public class DAO {
         return null;
     }
     
-    public static void main(String[] args) throws SQLException {
-        Connection c=getConnection();
-        System.out.println(c.toString());
-        c.close();
-    }
+//    public static void main(String[] args) throws SQLException {
+//        Connection c=getConnection();
+//        System.out.println(c.toString());
+//        c.close();
+//    }
 }

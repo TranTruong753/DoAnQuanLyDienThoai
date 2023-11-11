@@ -96,6 +96,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTim.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jtfTim.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel6.add(jtfTim);
 
@@ -204,6 +205,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jtfTim1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTim1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jtfTim1.setPreferredSize(new java.awt.Dimension(250, 30));
         jPanel9.add(jtfTim1);
 

@@ -94,6 +94,8 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jPanel9.setPreferredSize(new java.awt.Dimension(444, 50));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 10));
 
+        jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTim.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jtfTim.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel9.add(jtfTim);
 
@@ -145,8 +147,10 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jPanel4.setPreferredSize(new java.awt.Dimension(694, 70));
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
+        btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
         btnThem.setText("THÊM");
-        btnThem.setPreferredSize(new java.awt.Dimension(180, 40));
+        btnThem.setPreferredSize(new java.awt.Dimension(110, 40));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -175,6 +179,7 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jPanel7.add(jtfMaTh);
 
         lbMaTh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbMaTh.setForeground(new java.awt.Color(255, 0, 0));
         lbMaTh.setPreferredSize(new java.awt.Dimension(170, 17));
         jPanel7.add(lbMaTh);
 
@@ -187,6 +192,7 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jPanel7.add(jtfTenTh);
 
         lbTenTh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbTenTh.setForeground(new java.awt.Color(255, 0, 0));
         lbTenTh.setPreferredSize(new java.awt.Dimension(170, 17));
         jPanel7.add(lbTenTh);
 
@@ -228,6 +234,8 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
             thDto = new DTO_ThuongHieu(jtfMaTh.getText(), jtfTenTh.getText(), 1);
             if(thBus.addThuongHieu(thDto)){
                 JOptionPane.showMessageDialog(null, "Thêm thành công!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                jtfMaTh.setText("");
+                jtfTenTh.setText("");
                 ql.setDateToTable();
             }
             else

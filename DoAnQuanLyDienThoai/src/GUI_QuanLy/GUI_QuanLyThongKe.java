@@ -69,6 +69,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(230, 529));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
+        ListTK.setFont(new java.awt.Font("Raavi", 0, 14)); // NOI18N
         ListTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DoanhThu", "SPBC", "NVBC", "TongKet" }));
         ListTK.setPreferredSize(new java.awt.Dimension(150, 40));
         ListTK.addItemListener(new java.awt.event.ItemListener() {

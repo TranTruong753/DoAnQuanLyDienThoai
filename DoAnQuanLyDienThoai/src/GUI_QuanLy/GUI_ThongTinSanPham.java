@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  *
  * @author Admin
  */
-public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
+public class GUI_ThongTinSanPham extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI_UpdateThongTinSanPham2
@@ -36,7 +36,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
     private ArrayList<String> listMau ;
     private GUI_TrangChuBanHang trangBanHang ;
 
-    public GUI_UpdateThongTinSanPham(DTO_SanPham sp,QuanLySanPhamControllerfix ql,GUI_TrangChuBanHang panelBanHang ) {
+    public GUI_ThongTinSanPham(DTO_SanPham sp,QuanLySanPhamControllerfix ql,GUI_TrangChuBanHang panelBanHang ) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.spDTO = sp;
@@ -457,13 +457,13 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GUI_UpdateThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(GUI_ThongTinSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -473,7 +473,7 @@ public class GUI_UpdateThongTinSanPham extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new GUI_UpdateThongTinSanPham().setVisible(true);
+//                new GUI_ThongTinSanPham().setVisible(true);
 //            }
 //        });
 //    }

@@ -191,7 +191,7 @@ public void showSp(List<DTO_SanPham> listsp, ArrayList<GUI_ContainerPhone> conta
                         }
                     }
 
-                    GUI_UpdateThongTinSanPham spFrame = new GUI_UpdateThongTinSanPham(sp,QuanLySanPhamControllerfix.this,panelBanHang);
+                    GUI_ThongTinSanPham spFrame = new GUI_ThongTinSanPham(sp,QuanLySanPhamControllerfix.this,panelBanHang);
                     spFrame.setTitle("Thông tin sản phẩm");
                     spFrame.setResizable(false);
                     spFrame.setLocationRelativeTo(null);

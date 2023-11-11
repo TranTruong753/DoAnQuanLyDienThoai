@@ -14,8 +14,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -33,8 +38,16 @@ public class GUI_LogIn extends javax.swing.JFrame {
     public GUI_LogIn() {       
         initComponents();
         setLocationRelativeTo(null) ;
-        btn_login.setBackground(Color.WHITE);
+        btn_login.setBackground(Color.WHITE);     
         btn_close.setBackground(Color.WHITE);
+        KeyStroke enterKey = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+        btn_login.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(enterKey, "login");
+        btn_login.getActionMap().put("login", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btn_loginActionPerformed(e);
+            }
+        });       
     }
 
     /**
@@ -79,7 +92,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(253, 253, 253));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(17, 153, 142)));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 500));
 
@@ -95,31 +108,32 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/bg-store-350.jpg"))); // NOI18N
 
         jLabel_login.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel_login.setForeground(new java.awt.Color(17, 153, 142));
         jLabel_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_login.setText("DEVSTORE");
-        jLabel_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel_login.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(17, 153, 142), 2, true));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel_login, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jLabel_login, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jLabel_login)
-                .addGap(12, 12, 12))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout kGradientPanel_rightLayout = new javax.swing.GroupLayout(kGradientPanel_right);
@@ -160,8 +174,8 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jLabel3.setText("User");
         jPanel2.add(jLabel3);
 
-        jtfTK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfTK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jtfTK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfTK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jtfTK.setOpaque(true);
         jPanel2.add(jtfTK);
 
@@ -173,8 +187,8 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jLabel4.setText("Password");
         jPanel2.add(jLabel4);
 
-        jtfMK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jtfMK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanel2.add(jtfMK);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -187,6 +201,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel3.add(jlbMsgMissMk);
 
         jCheckBox1.setBackground(new java.awt.Color(253, 253, 253));
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jCheckBox1.setText("Show password");
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -214,8 +229,8 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel_left_centerLayout.setVerticalGroup(
             jPanel_left_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_left_centerLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
@@ -231,7 +246,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
 
         btn_login.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_login.setText("Đặng nhập");
-        btn_login.setBorder(null);
+        btn_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_login.setPreferredSize(new java.awt.Dimension(150, 35));
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -259,9 +274,9 @@ public class GUI_LogIn extends javax.swing.JFrame {
         btn_close.setMinimumSize(new java.awt.Dimension(40, 40));
         btn_close.setOpaque(true);
         btn_close.setPreferredSize(new java.awt.Dimension(40, 40));
-        btn_close.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_closeActionPerformed(evt);
+        btn_close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_closeMouseClicked(evt);
             }
         });
         jPanel_left_top.add(btn_close);
@@ -301,21 +316,9 @@ public class GUI_LogIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
-        // TODO add your handling code here:
-     if (JOptionPane.showConfirmDialog(this, 
-            "Bạn có muốn thoát?", "Close Đăng nhập?", 
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-            System.exit(0);
-        }
-    
-        
-    }//GEN-LAST:event_btn_closeActionPerformed
-
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-          if(jCheckBox1.isSelected()){
+        if(jCheckBox1.isSelected()){
             this.jtfMK.setEchoChar((char)0);
         }
         else
@@ -354,6 +357,16 @@ public class GUI_LogIn extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closeMouseClicked
+        // TODO add your handling code here:
+         if (JOptionPane.showConfirmDialog(this, 
+            "Bạn có muốn thoát?", "Close Đăng nhập?", 
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btn_closeMouseClicked
 
     public String laymk(){
         char[] passwordChars = jtfMK.getPassword();

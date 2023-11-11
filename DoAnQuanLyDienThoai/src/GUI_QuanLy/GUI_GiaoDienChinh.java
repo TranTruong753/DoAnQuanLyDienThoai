@@ -120,7 +120,7 @@ public void addMenu()
     // jCheckBox1.setOpaque(false);
      ColorMain = new Color(17,153,142);
      ColorClick = new Color(17,153,142) ;
-     sidebar = new Color(102,102,102);
+     sidebar = new Color(250,250,250);
     
  }
 
@@ -208,6 +208,7 @@ public void addMenu()
 
         jLabelTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("DEVSTORE");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cross32.png"))); // NOI18N
@@ -223,18 +224,18 @@ public void addMenu()
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1204, Short.MAX_VALUE)
+                .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1202, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabelTitle))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel5)
                 .addGap(0, 56, Short.MAX_VALUE))
+            .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
@@ -270,10 +271,11 @@ public void addMenu()
         jPanelMenuAll.setPreferredSize(new java.awt.Dimension(250, 760));
         jPanelMenuAll.setLayout(new java.awt.BorderLayout());
 
-        jPanelSidebar.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelSidebar.setBackground(new java.awt.Color(250, 250, 250));
         jPanelSidebar.setMinimumSize(new java.awt.Dimension(0, 681));
 
-        jPanelMenu1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu1.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu1.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,7 +304,8 @@ public void addMenu()
 
         jPanelMenu1.add(jPanel11, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu2.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu2.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -331,7 +334,8 @@ public void addMenu()
 
         jPanelMenu2.add(jPanel12, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu3.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu3.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -360,7 +364,8 @@ public void addMenu()
 
         jPanelMenu3.add(jPanel13, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu4.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu4.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu4.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -393,7 +398,8 @@ public void addMenu()
 
         jPanelMenu4.add(jPanel15, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu5.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu5.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu5.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -422,7 +428,8 @@ public void addMenu()
 
         jPanelMenu5.add(jPanel17, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu6.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu6.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu6.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -451,7 +458,8 @@ public void addMenu()
 
         jPanelMenu6.add(jPanel19, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu7.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu7.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu7.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -480,7 +488,8 @@ public void addMenu()
 
         jPanelMenu7.add(jPanel21, java.awt.BorderLayout.LINE_START);
 
-        jPanelMenu8.setBackground(new java.awt.Color(102, 102, 102));
+        jPanelMenu8.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelMenu8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelMenu8.setPreferredSize(new java.awt.Dimension(250, 80));
         jPanelMenu8.addMouseListener(new java.awt.event.MouseAdapter() {

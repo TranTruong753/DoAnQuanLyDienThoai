@@ -166,6 +166,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jTextField1.setPreferredSize(new java.awt.Dimension(250, 30));
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
