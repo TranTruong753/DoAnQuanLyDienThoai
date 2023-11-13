@@ -213,7 +213,7 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
                     tkadd.setTENDN(listItem.get(i).getMANV());
                     tkadd.setMANV(listItem.get(i).getMANV());
                     tkadd.setMK("123456789Aa@");
-                    tkadd.setPQ("Nhân viên");
+                    tkadd.setPQ("nv");
                     tk.addTaiKhoan(tkadd);
                     
                 }

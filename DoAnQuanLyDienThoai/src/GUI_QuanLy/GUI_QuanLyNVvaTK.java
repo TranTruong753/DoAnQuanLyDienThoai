@@ -4,6 +4,8 @@
  */
 package GUI_QuanLy;
 
+import javax.swing.JTabbedPane;
+
 /**
  *
  * @author Admin
@@ -39,7 +41,10 @@ public class GUI_QuanLyNVvaTK extends javax.swing.JPanel {
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         add(jTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;

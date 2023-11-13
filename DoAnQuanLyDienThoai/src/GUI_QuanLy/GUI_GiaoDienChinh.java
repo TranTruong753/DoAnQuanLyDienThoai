@@ -72,7 +72,8 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
         else if(tkDto.getPQ().equals("nv")){
             hienThi(true,false,false,true,true,false,true,true);
         }
-        else{
+        else if(tkDto.getPQ().equals("ad")){
+            lbNv.setText("QUẢN LÝ TÀI KHOẢN");
             hienThi(false,false,true,false,false,false,false,true);
         }
     }
@@ -105,6 +106,12 @@ public void addMenu()
     panelThongTinDangNhap = new GUI_QuanLyThongTinDangNhap(tkDto,nvDto,lg,this);
     jTabbedPane1.add(panelBanHang,1);
     jTabbedPane1.add(panelSPvaKM,2);
+    if(tkDto.getPQ().equals("ql")){
+        panelNVvaTK.getjTabbedPane1().remove(1);
+    }
+    else if(tkDto.getPQ().equals("ad")){
+        panelNVvaTK.getjTabbedPane1().remove(0);
+    }
     jTabbedPane1.add(panelNVvaTK,3);
     jTabbedPane1.add(panelKHvaBH,4);
     jTabbedPane1.add(panelHoaDon,5);
@@ -169,7 +176,7 @@ public void addMenu()
         jLabel2 = new javax.swing.JLabel();
         jPanelMenu3 = new javax.swing.JPanel();
         jPanelMenu3Title = new javax.swing.JPanel();
-        jLabelTitleMenu3 = new javax.swing.JLabel();
+        lbNv = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanelMenu4 = new javax.swing.JPanel();
@@ -271,7 +278,6 @@ public void addMenu()
 
         jLabel12.setBackground(new java.awt.Color(253, 253, 253));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/bg-store-500.jpg"))); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(500, 500));
         jPanel4.add(jLabel12);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -374,9 +380,9 @@ public void addMenu()
         jPanelMenu3Title.setOpaque(false);
         jPanelMenu3Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 25));
 
-        jLabelTitleMenu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelTitleMenu3.setText("QUẢN LÍ NHÂN VIÊN");
-        jPanelMenu3Title.add(jLabelTitleMenu3);
+        lbNv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbNv.setText("QUẢN LÍ NHÂN VIÊN");
+        jPanelMenu3Title.add(lbNv);
 
         jPanelMenu3.add(jPanelMenu3Title, java.awt.BorderLayout.CENTER);
 
@@ -736,7 +742,6 @@ public void addMenu()
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JLabel jLabelTitleMenu1;
     private javax.swing.JLabel jLabelTitleMenu2;
-    private javax.swing.JLabel jLabelTitleMenu3;
     private javax.swing.JLabel jLabelTitleMenu4;
     private javax.swing.JLabel jLabelTitleMenu5;
     private javax.swing.JLabel jLabelTitleMenu6;
@@ -775,5 +780,6 @@ public void addMenu()
     private javax.swing.JPanel jPanelMenuAll;
     private javax.swing.JPanel jPanelSidebar;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbNv;
     // End of variables declaration//GEN-END:variables
 }

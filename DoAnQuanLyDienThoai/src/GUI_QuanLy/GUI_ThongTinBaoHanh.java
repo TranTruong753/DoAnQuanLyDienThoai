@@ -107,6 +107,7 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(903, 470));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -289,7 +290,6 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jtfLYDO.setColumns(20);
         jtfLYDO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfLYDO.setRows(5);
-        jtfLYDO.setEnabled(false);
         jScrollPane1.setViewportView(jtfLYDO);
 
         jcbSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
