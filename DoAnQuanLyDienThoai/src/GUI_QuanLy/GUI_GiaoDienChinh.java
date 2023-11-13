@@ -164,6 +164,7 @@ public void addMenu()
         jPanelMenu2 = new javax.swing.JPanel();
         jPanelMenu2Title = new javax.swing.JPanel();
         jLabelTitleMenu2 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanelMenu3 = new javax.swing.JPanel();
@@ -185,6 +186,7 @@ public void addMenu()
         jPanelMenu6 = new javax.swing.JPanel();
         jPanelMenu6Title = new javax.swing.JPanel();
         jLabelTitleMenu6 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanelMenu7 = new javax.swing.JPanel();
@@ -306,7 +308,7 @@ public void addMenu()
 
         jPanelMenu1Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanelMenu1Title.setOpaque(false);
-        jPanelMenu1Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 25));
+        jPanelMenu1Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 25));
 
         jLabelTitleMenu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTitleMenu1.setText("QUẢN LÍ BÁN HÀNG");
@@ -336,11 +338,15 @@ public void addMenu()
 
         jPanelMenu2Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanelMenu2Title.setOpaque(false);
-        jPanelMenu2Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 25));
+        jPanelMenu2Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
 
         jLabelTitleMenu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTitleMenu2.setText("QUẢN LÍ SẢN PHẨM");
         jPanelMenu2Title.add(jLabelTitleMenu2);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("& KHUYẾN MÃI");
+        jPanelMenu2Title.add(jLabel14);
 
         jPanelMenu2.add(jPanelMenu2Title, java.awt.BorderLayout.CENTER);
 
@@ -396,10 +402,10 @@ public void addMenu()
 
         jPanelMenu4Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanelMenu4Title.setOpaque(false);
-        jPanelMenu4Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+        jPanelMenu4Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
 
         jLabelTitleMenu4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelTitleMenu4.setText("KHÁCH HÀNG ");
+        jLabelTitleMenu4.setText("QUẢN LÍ KHÁCH HÀNG ");
         jPanelMenu4Title.add(jLabelTitleMenu4);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -430,7 +436,7 @@ public void addMenu()
 
         jPanelMenu5Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanelMenu5Title.setOpaque(false);
-        jPanelMenu5Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 25));
+        jPanelMenu5Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 25));
 
         jLabelTitleMenu5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTitleMenu5.setText("QUẢN LÍ HÓA ĐƠN");
@@ -460,11 +466,15 @@ public void addMenu()
 
         jPanelMenu6Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanelMenu6Title.setOpaque(false);
-        jPanelMenu6Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 25));
+        jPanelMenu6Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 15));
 
         jLabelTitleMenu6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTitleMenu6.setText("QUẢN LÍ NCC");
         jPanelMenu6Title.add(jLabelTitleMenu6);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("& NHẬP HÀNG");
+        jPanelMenu6Title.add(jLabel15);
 
         jPanelMenu6.add(jPanelMenu6Title, java.awt.BorderLayout.CENTER);
 
@@ -490,7 +500,7 @@ public void addMenu()
 
         jPanelMenu7Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanelMenu7Title.setOpaque(false);
-        jPanelMenu7Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 25));
+        jPanelMenu7Title.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 25));
 
         jLabelTitleMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTitleMenu7.setText("QUẢN LÍ THÔNG KÊ");
@@ -713,6 +723,8 @@ public void addMenu()
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

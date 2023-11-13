@@ -341,7 +341,6 @@
                           </Constraints>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                            <Property name="alignment" type="int" value="0"/>
                             <Property name="horizontalGap" type="int" value="10"/>
                             <Property name="verticalGap" type="int" value="25"/>
                           </Layout>
@@ -424,9 +423,8 @@
                           </Constraints>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                            <Property name="alignment" type="int" value="0"/>
                             <Property name="horizontalGap" type="int" value="10"/>
-                            <Property name="verticalGap" type="int" value="25"/>
+                            <Property name="verticalGap" type="int" value="15"/>
                           </Layout>
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabelTitleMenu2">
@@ -435,6 +433,14 @@
                                   <Font name="Tahoma" size="14" style="1"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xcd; S&#x1ea2;N PH&#x1ea8;M"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel14">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Tahoma" size="14" style="1"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="&amp; KHUY&#x1ebe;N M&#xc3;I"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -591,7 +597,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
                             <Property name="horizontalGap" type="int" value="10"/>
-                            <Property name="verticalGap" type="int" value="10"/>
+                            <Property name="verticalGap" type="int" value="15"/>
                           </Layout>
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabelTitleMenu4">
@@ -599,7 +605,7 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Tahoma" size="14" style="1"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="KH&#xc1;CH H&#xc0;NG "/>
+                                <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xcd; KH&#xc1;CH H&#xc0;NG "/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel10">
@@ -680,7 +686,6 @@
                           </Constraints>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                            <Property name="alignment" type="int" value="0"/>
                             <Property name="horizontalGap" type="int" value="10"/>
                             <Property name="verticalGap" type="int" value="25"/>
                           </Layout>
@@ -763,9 +768,8 @@
                           </Constraints>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                            <Property name="alignment" type="int" value="0"/>
-                            <Property name="horizontalGap" type="int" value="10"/>
-                            <Property name="verticalGap" type="int" value="25"/>
+                            <Property name="horizontalGap" type="int" value="0"/>
+                            <Property name="verticalGap" type="int" value="15"/>
                           </Layout>
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabelTitleMenu6">
@@ -774,6 +778,14 @@
                                   <Font name="Tahoma" size="14" style="1"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xcd; NCC"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel15">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Tahoma" size="14" style="1"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="&amp; NH&#x1eac;P H&#xc0;NG"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -846,7 +858,6 @@
                           </Constraints>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                            <Property name="alignment" type="int" value="0"/>
                             <Property name="horizontalGap" type="int" value="10"/>
                             <Property name="verticalGap" type="int" value="25"/>
                           </Layout>

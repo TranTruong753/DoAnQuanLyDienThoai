@@ -349,6 +349,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
                     GUI_GiaoDienChinh giaoDienChinh = new GUI_GiaoDienChinh(tk,nv,this);
                     JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công!");                
                     giaoDienChinh.setVisible(true);
+                    this.jtfMK.setText("");
                     this.dispose();
                 }
                 
