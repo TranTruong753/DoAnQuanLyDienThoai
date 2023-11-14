@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/DAL/DAL_NhanVien.java</file>
-            <file>file:/C:/Users/Admin/Documents/CongNghePhanMem/DoAnLenGithub/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyNhanVien.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DAL/DAL_KhuyenMai.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_ThongTinKhuyenMai.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyKhuyenMai.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/DAL/DAL_NhanVien.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyBaoHanh.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/BUS/BUS_KhuyenMai.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/GUI_QuanLy/GUI_QuanLyNhanVien.java</file>
+            <file>file:/D:/DoAnCNPM/DoAn.cuu/DoAnQuanLyDienThoai/DoAnQuanLyDienThoai/src/QLController/QuanLyKhuyenMaiController.java</file>
         </group>
     </open-files>
 </project-private>

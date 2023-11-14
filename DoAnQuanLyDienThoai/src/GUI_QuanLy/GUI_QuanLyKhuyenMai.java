@@ -4,7 +4,25 @@
  */
 package GUI_QuanLy;
 
+import BUS.BUS_KhuyenMai;
+import DAL.DAL_KhuyenMai;
+import DTO.DTO_KhuyenMai;
 import QLController.QuanLyKhuyenMaiController;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -15,9 +33,13 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
     /**
      * Creates new form GUI_QuanLyKhuyenMai
      */
+    String date;
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private BUS_KhuyenMai kmbus=new BUS_KhuyenMai();
+    private QuanLyKhuyenMaiController controller;
     public GUI_QuanLyKhuyenMai() {
         initComponents();
-        QuanLyKhuyenMaiController controller=new QuanLyKhuyenMaiController(jpnView, btnThem2, jtfTim1, this);
+        controller=new QuanLyKhuyenMaiController(jpnView, btnThem2, jtfTim1, this);
         controller.setDateToTable();
         controller.setEvent();
     }
@@ -37,8 +59,8 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         btnThem2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnNhapFile = new javax.swing.JButton();
+        bntXuat = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
@@ -91,20 +113,30 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         });
         jPanel8.add(btnThem2);
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton7.setText("NHẬP FILE");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(150, 50));
-        jPanel8.add(jButton7);
+        btnNhapFile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNhapFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
+        btnNhapFile.setText("NHẬP FILE");
+        btnNhapFile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNhapFile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhapFile.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnNhapFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapFileActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnNhapFile);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton3.setText("XUẤT FILE");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(150, 50));
-        jPanel8.add(jButton3);
+        bntXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bntXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
+        bntXuat.setText("XUẤT FILE");
+        bntXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bntXuat.setPreferredSize(new java.awt.Dimension(150, 50));
+        bntXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntXuatActionPerformed(evt);
+            }
+        });
+        jPanel8.add(bntXuat);
 
         QuanLyKhuyenMai.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
@@ -148,12 +180,117 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnThem2ActionPerformed
 
+    private void bntXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntXuatActionPerformed
+        try{    
+                    System.out.println("xuat");
+                    XSSFWorkbook workbook =new XSSFWorkbook();
+                    XSSFSheet sheet =workbook.createSheet("Sản phẩm");
+                    XSSFRow headerRow = sheet.createRow(0);
+                    XSSFRow row=null;
+                    Cell cell=null;
+                    
+                    cell=headerRow.createCell(0,CellType.STRING);
+                    cell.setCellValue("STT");
+                    cell=headerRow.createCell(1,CellType.STRING);
+                    cell.setCellValue("Mã khuyến mãi");
+                    cell=headerRow.createCell(2,CellType.STRING);
+                    cell.setCellValue("Mã sản phẩm");
+                    cell=headerRow.createCell(3,CellType.STRING);
+                    cell.setCellValue("Tên sản phẩm");
+                    cell=headerRow.createCell(4,CellType.STRING);
+                    cell.setCellValue("Tên Khuyến mãi");
+                    cell=headerRow.createCell(5,CellType.STRING);
+                    cell.setCellValue("Phần trăm khuyến mãi");
+                    cell=headerRow.createCell(6,CellType.NUMERIC);
+                    cell.setCellValue("Ngày bắt đầu");
+                    cell=headerRow.createCell(7,CellType.STRING);
+                    cell.setCellValue("Ngày kết thúc");
+//                    row =sheet.createRow(7);
+                    DAL_KhuyenMai sanPhamService = new DAL_KhuyenMai();
+                    List<DTO_KhuyenMai> listItem= sanPhamService.getList();
+                    List<DTO_KhuyenMai> listItem1=new ArrayList<>();
+                    for (int i=0;i<listItem.size();i++){
+                        if(listItem.get(i).getTRANGTHAI()==1)
+                            listItem1.add(listItem.get(i));
+                    }
+                    Date d= new Date(System.currentTimeMillis());
+        
+                    date = dateFormat.format(d);
+                    if (listItem1 != null){
+                        int s=listItem1.size();
+                        int dem=0;
+                        for (int i=0;i<s;i++){
+                            DTO_KhuyenMai km=  listItem1.get(i);
+                            String date1=dateFormat.format(km.getNGAYKT());
+                            if(date.compareTo(date1)<=0){
+                            row =sheet.createRow(dem+1);
+                            dem++;
+                            cell=row.createCell(0,CellType.NUMERIC);
+                            cell.setCellValue(dem);
+                            cell=row.createCell(1,CellType.STRING);
+                            cell.setCellValue(km.getMAKM());
+                            cell=row.createCell(2,CellType.STRING);
+                            cell.setCellValue(km.getMASP());
+                            cell=row.createCell(3,CellType.STRING);
+                            cell.setCellValue(km.getTENSP());
+                            cell=row.createCell(4,CellType.STRING);
+                            cell.setCellValue(km.getTENKM());
+                            cell=row.createCell(5,CellType.NUMERIC);
+                            cell.setCellValue(km.getPHANTRAMKM());
+                            cell=row.createCell(6,CellType.STRING);
+                            cell.setCellValue(km.getNGAYBD().toString());
+                            cell=row.createCell(7,CellType.STRING);
+                            cell.setCellValue(km.getNGAYKT().toString());
+                            
+                            }
+                        }
+
+                       JFileChooser fileChooser = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("File Excel", "xlsx");
+                        fileChooser.setFileFilter(filter);
+
+                        int returnValue = fileChooser.showSaveDialog(null);
+                        if (returnValue == JFileChooser.APPROVE_OPTION) {
+                            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                            // Đảm bảo đuôi file .xlsx
+                            if (!filePath.endsWith(".xlsx")) {
+                                filePath += ".xlsx";
+                            }
+
+                            // Lưu workbook ra file theo đường dẫn và tên file của người dùng đã chọn
+                            FileOutputStream fileOut;
+                            try {
+                                fileOut = new FileOutputStream(filePath);
+                                workbook.write(fileOut);
+                                fileOut.close();
+                                workbook.close();
+                                JOptionPane.showMessageDialog(null, "Xuất thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } 
+                    }
+                    
+
+                }catch (Exception h){
+                    h.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Xuất thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
+    }//GEN-LAST:event_bntXuatActionPerformed
+
+    private void btnNhapFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapFileActionPerformed
+        kmbus.ThemDS();
+        controller.setDateToTable();
+        
+    }//GEN-LAST:event_btnNhapFileActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanLyKhuyenMai;
+    private javax.swing.JButton bntXuat;
+    private javax.swing.JButton btnNhapFile;
     private javax.swing.JButton btnThem2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

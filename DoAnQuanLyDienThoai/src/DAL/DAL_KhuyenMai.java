@@ -5,12 +5,21 @@
 package DAL;
 
 import DTO.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -127,6 +136,74 @@ public class DAL_KhuyenMai {
     
     public java.sql.Date cover(java.util.Date d){
         return new java.sql.Date(d.getTime());
+    }
+    public int themDS(){
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xlsx", "xls");
+        fileChooser.setFileFilter(filter);
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            try{
+                File selectedFile = fileChooser.getSelectedFile();
+//                        String filePath = selectedFile.getAbsolutePath();
+//                        System.out.println(filePath);
+                FileInputStream file = new FileInputStream(selectedFile);
+                XSSFWorkbook workbook = new XSSFWorkbook(file);
+                XSSFSheet sheet = workbook.getSheetAt(0);
+                Connection conn= DAO.getConnection();
+//                        String sql = "INSERT INTO SanPham (MaSP, MaNhom, TenSP, DonVi, DonGia, SLTon, TrangThai) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String sql="MERGE INTO KhuyenMai AS target "
+           + "USING (VALUES (?, ?, ?, ?, ?, ?, ?,?)) AS source (MAKM,MASP,TENSP,TENKM,PHANTRAMKM,NGAYBD,NGAYKT,TRANGTHAI) "
+           + "ON (target.MAKM = source.MAKM) "
+           + "WHEN MATCHED THEN "
+           + "    UPDATE SET target.MASP = source.MASP, "
+           + "               target.TENSP = source.TENSP, "
+           + "               target.TENKM = source.TENKM, "
+           + "               target.PHANTRAMKM = source.PHANTRAMKM, "
+           + "               target.NGAYBD = source.NGAYBD, "
+           + "               target.NGAYKT = source.NGAYKT, "             
+           + "               target.TRANGTHAI = source.TRANGTHAI "
+                                     
+           + "WHEN NOT MATCHED THEN "
+           + "    INSERT (MAKM,MASP,TENSP,TENKM,PHANTRAMKM,NGAYBD,NGAYKT,TRANGTHAI) "
+           + "    VALUES (source.MAKM, source.MASP, source.TENSP,source.TENKM, source.PHANTRAMKM, source.NGAYBD,source.NGAYKT, source.TRANGTHAI);";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                // Loop through rows in Excel sheet and insert data into database
+                for (int i = sheet.getFirstRowNum() + 1; i <= sheet.getLastRowNum(); i++) {
+                    XSSFRow row = sheet.getRow(i);
+                    if (row == null) {
+                        continue;
+                    }
+                        statement.setString(1, row.getCell(1).getStringCellValue()); // MANV
+                        statement.setString(2, row.getCell(2).getStringCellValue()); // TENNV
+                        statement.setString(3, row.getCell(3).getStringCellValue()); // SDT
+                        statement.setString(4, row.getCell(4).getStringCellValue()); // DIACHI
+                        statement.setInt(5, row.getCell(5).getColumnIndex());//GIOITINH
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        java.util.Date d=dateFormat.parse(row.getCell(6).getStringCellValue());
+                        statement.setDate(6,cover(d)); // NGÁYINH
+                        java.util.Date d1=dateFormat.parse(row.getCell(7).getStringCellValue());
+                        statement.setDate(7,cover(d1)); // NGÁYINH
+                        statement.setInt(8, 1); // trangthai
+                        
+                        
+                        statement.executeUpdate();
+                    }
+                // Close all resources
+                statement.close();
+                conn.close();
+                workbook.close();
+                file.close();
+                JOptionPane.showMessageDialog(null, "Thêm thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//                        System.out.println("Data imported successfully.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Thêm thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+//                        System.out.println("Data import failed.");
+            }
+        }
+        return 0;
     }
     
 }
