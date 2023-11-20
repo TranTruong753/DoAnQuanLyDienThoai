@@ -34,5 +34,9 @@ public class BUS_KhuyenMai {
         
         return nv.timnv(tk);
     }
+    public int ThemDS(){
+        nv.themDS();
+        return 1;
+    }
     
 }
