@@ -27,6 +27,8 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         this.kh=kh;
         this.ql=ql;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,7 +65,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(680, 376));
+        setPreferredSize(new java.awt.Dimension(713, 378));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(680, 376));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -75,11 +77,11 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(680, 284));
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 30));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
         jPanel8.setOpaque(false);
-        jPanel8.setPreferredSize(new java.awt.Dimension(656, 200));
+        jPanel8.setPreferredSize(new java.awt.Dimension(680, 200));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -206,7 +208,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel8);
@@ -349,6 +351,7 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
             return false;
         }
     }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

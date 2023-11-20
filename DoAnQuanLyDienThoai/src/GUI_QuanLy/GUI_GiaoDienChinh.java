@@ -19,10 +19,7 @@ import BUS.*;
 import DTO.DTO_NhanVien;
 import DTO.DTO_TaiKhoan;
 import java.util.ArrayList;
-/**
- *
- * @author Admin
- */
+
 public class GUI_GiaoDienChinh extends javax.swing.JFrame {
 
     // lưu chữa biến GUI
@@ -40,19 +37,8 @@ public class GUI_GiaoDienChinh extends javax.swing.JFrame {
     private DTO_NhanVien nvDto ;
     // biến màu          
     public Color ColorMain,ColorClick,sidebar ;
-    
-    // biến sự kiện
-    public boolean clickOnOffMenu1 = false ;
-    public boolean clickOnOffMenu2 = false ;
-    public boolean clickOnOffMenu3 = false ;
-    public boolean clickOnOffMenu4 = false ;
-    public boolean clickOnOffMenu5 = false ;
-    public boolean clickOnOffMenu6 = false ;
-    public boolean clickOnOffMenu7 = false ;
-    public boolean clickOnOffMenu8 = false ;
-    /**
-     * Creates new form GUI_GiaoDienChinh
-     */
+    private JLabel tmp = new JLabel();
+   
     public GUI_GiaoDienChinh(DTO_TaiKhoan tkDto, DTO_NhanVien nvDto, GUI_LogIn lg) {
         this.setUndecorated(true);      
         initComponents();       
@@ -131,7 +117,7 @@ public void addMenu()
     
  }
 
- public void clickChangeColor(JPanel panelMenu, Color colorMenu) 
+ public void clickChangeColor(JPanel panelMenu, Color colorMenu, JLabel tieuDe1, JLabel tieuDe2) 
  {
     jPanelMenu1.setBackground(sidebar);
     jPanelMenu2.setBackground(sidebar);
@@ -142,6 +128,31 @@ public void addMenu()
     jPanelMenu7.setBackground(sidebar);
     jPanelMenu8.setBackground(sidebar);
     panelMenu.setBackground(colorMenu);
+    jLabelTitleMenu1.setForeground(Color.BLACK);
+    //ql sản phẩm
+    jLabelTitleMenu2.setForeground(Color.BLACK);
+    jLabel14.setForeground(Color.BLACK);
+    
+    lbNv.setForeground(Color.BLACK);
+    
+    //khách hàng
+    jLabelTitleMenu4.setForeground(Color.BLACK);
+    jLabel10.setForeground(Color.BLACK);
+    
+    //hóa đơn
+    jLabelTitleMenu5.setForeground(Color.BLACK);
+    
+    //nhà cung cấp
+    jLabelTitleMenu6.setForeground(Color.BLACK);
+    jLabel15.setForeground(Color.BLACK);
+            
+    jLabelTitleMenu7.setForeground(Color.BLACK);
+    //thông tin đăng nhập
+    jLabelTitleMenu9.setForeground(Color.BLACK);
+    jLabelTitleMenu8.setForeground(Color.BLACK);
+    
+    tieuDe1.setForeground(Color.WHITE);
+    tieuDe2.setForeground(Color.WHITE);
  }
 
 
@@ -606,49 +617,49 @@ public void addMenu()
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu1MouseClicked
-        clickChangeColor(jPanelMenu1,ColorClick);
+        clickChangeColor(jPanelMenu1,ColorClick,jLabelTitleMenu1,tmp);       
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMenu1MouseClicked
 
     private void jPanelMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu2MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu2,ColorClick);
+        clickChangeColor(jPanelMenu2,ColorClick,jLabelTitleMenu2,jLabel14);
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jPanelMenu2MouseClicked
 
     private void jPanelMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu3MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu3,ColorClick);
+        clickChangeColor(jPanelMenu3,ColorClick,lbNv,tmp);
         jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jPanelMenu3MouseClicked
 
     private void jPanelMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu4MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu4,ColorClick);
+        clickChangeColor(jPanelMenu4,ColorClick,jLabelTitleMenu4,jLabel10);
         jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_jPanelMenu4MouseClicked
 
     private void jPanelMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu5MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu5,ColorClick);
+        clickChangeColor(jPanelMenu5,ColorClick,jLabelTitleMenu5,tmp);
         jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_jPanelMenu5MouseClicked
 
     private void jPanelMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu6MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu6,ColorClick);
+        clickChangeColor(jPanelMenu6,ColorClick,jLabelTitleMenu6,jLabel15);
         jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_jPanelMenu6MouseClicked
 
     private void jPanelMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu7MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu7,ColorClick);
+        clickChangeColor(jPanelMenu7,ColorClick,jLabelTitleMenu7,tmp);
         jTabbedPane1.setSelectedIndex(7);
     }//GEN-LAST:event_jPanelMenu7MouseClicked
 
     private void jPanelMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMenu8MouseClicked
         // TODO add your handling code here:
-        clickChangeColor(jPanelMenu8,ColorClick);
+        clickChangeColor(jPanelMenu8,ColorClick,jLabelTitleMenu8,jLabelTitleMenu9);
         jTabbedPane1.setSelectedIndex(8);
     }//GEN-LAST:event_jPanelMenu8MouseClicked
 
@@ -667,45 +678,11 @@ public void addMenu()
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabelTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTitleMouseClicked
-       clickChangeColor(jPanelMenu1,sidebar);
+       clickChangeColor(jPanelMenu1,sidebar,tmp,tmp);
        jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jLabelTitleMouseClicked
     
     
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GUI_GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//               new GUI_GiaoDienChinh().setVisible(true);
-//            }
-//        });
-//    }
 
     public GUI_QuanLyThongKe getPanelThongKe() {
         return panelThongKe;
@@ -713,16 +690,13 @@ public void addMenu()
 
     public GUI_QuanLyHoaDon getPanelHoaDon() {
         return panelHoaDon;
-    }
-    
-    
+    }  
     
     public DTO_NhanVien getNvDto() {
         return nvDto;
     }
     
-    
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

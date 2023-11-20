@@ -95,7 +95,7 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 10));
 
         jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfTim.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jtfTim.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(204, 204, 204)));
         jtfTim.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel9.add(jtfTim);
 
@@ -142,15 +142,14 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel4.setBackground(new java.awt.Color(17, 153, 142));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(694, 70));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
         btnThem.setText("THÊM");
-        btnThem.setPreferredSize(new java.awt.Dimension(110, 40));
+        btnThem.setPreferredSize(new java.awt.Dimension(110, 50));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);

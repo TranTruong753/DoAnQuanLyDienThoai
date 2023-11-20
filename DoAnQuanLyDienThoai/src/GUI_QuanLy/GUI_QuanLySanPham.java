@@ -110,7 +110,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themSanPham2.png"))); // NOI18N
         btnThem.setText("THÊM SP ");
-        btnThem.setPreferredSize(new java.awt.Dimension(170, 50));
+        btnThem.setPreferredSize(new java.awt.Dimension(175, 60));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -122,7 +122,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         btnNhapfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
         btnNhapfile.setText("NHẬP FILE");
         btnNhapfile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnNhapfile.setPreferredSize(new java.awt.Dimension(170, 50));
+        btnNhapfile.setPreferredSize(new java.awt.Dimension(175, 60));
         btnNhapfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNhapfileActionPerformed(evt);
@@ -133,7 +133,7 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         btnXuatfile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnXuatfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
         btnXuatfile.setText("XUẤT FILE");
-        btnXuatfile.setPreferredSize(new java.awt.Dimension(170, 50));
+        btnXuatfile.setPreferredSize(new java.awt.Dimension(175, 60));
         btnXuatfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatfileActionPerformed(evt);
@@ -142,8 +142,9 @@ public class GUI_QuanLySanPham extends javax.swing.JPanel {
         jPanel8.add(btnXuatfile);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/thuonghieu.png"))); // NOI18N
         jButton1.setText("THƯƠNG HIỆU");
-        jButton1.setPreferredSize(new java.awt.Dimension(170, 50));
+        jButton1.setPreferredSize(new java.awt.Dimension(175, 60));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

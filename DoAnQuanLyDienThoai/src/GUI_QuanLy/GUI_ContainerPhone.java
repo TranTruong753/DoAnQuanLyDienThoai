@@ -139,7 +139,7 @@ public class GUI_ContainerPhone extends javax.swing.JPanel {
         jPanel4.setPreferredSize(new java.awt.Dimension(250, 50));
         jPanel4.setLayout(new java.awt.GridLayout(2, 1));
 
-        jlbTen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlbTen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlbTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbTen.setText("TÊN PHONE");
         jPanel4.add(jlbTen);

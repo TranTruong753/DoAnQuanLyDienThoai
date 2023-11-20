@@ -104,8 +104,7 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         btnThem2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
         btnThem2.setText("THÊM");
-        btnThem2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnThem2.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnThem2.setPreferredSize(new java.awt.Dimension(170, 60));
         btnThem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThem2ActionPerformed(evt);
@@ -117,8 +116,7 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         btnNhapFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
         btnNhapFile.setText("NHẬP FILE");
         btnNhapFile.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnNhapFile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnNhapFile.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnNhapFile.setPreferredSize(new java.awt.Dimension(170, 60));
         btnNhapFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNhapFileActionPerformed(evt);
@@ -129,8 +127,7 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
         bntXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         bntXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
         bntXuat.setText("XUẤT FILE");
-        bntXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bntXuat.setPreferredSize(new java.awt.Dimension(150, 50));
+        bntXuat.setPreferredSize(new java.awt.Dimension(170, 60));
         bntXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntXuatActionPerformed(evt);
