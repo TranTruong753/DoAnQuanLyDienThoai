@@ -272,7 +272,7 @@ public void addMenu()
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(17, 153, 142));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("CHÀO MỨNG ĐẾ VỚI DEVSTORE");
+        jLabel11.setText("CHÀO MỪNG ĐẾN VỚI DEVSTORE");
         jLabel11.setPreferredSize(new java.awt.Dimension(1200, 50));
         jPanel4.add(jLabel11);
 
@@ -283,7 +283,7 @@ public void addMenu()
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(17, 153, 142));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("NƠI BÁN ĐIỆN THOẠI CHẤT LƯỢNG HUY TÍN ĐẶT LÊN HÀNG ĐẦU");
+        jLabel13.setText("NƠI BÁN ĐIỆN THOẠI CHẤT LƯỢNG UY TÍN ĐẶT LÊN HÀNG ĐẦU");
         jLabel13.setPreferredSize(new java.awt.Dimension(1230, 50));
         jPanel4.add(jLabel13);
 

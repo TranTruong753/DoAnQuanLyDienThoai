@@ -7,6 +7,7 @@ package GUI_QuanLy;
 import BUS.*;
 import DTO.*;
 import QLController.*;
+import com.lowagie.text.Rectangle;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -18,6 +19,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import function.funcDungChung;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -461,7 +463,6 @@ public void showthongbao(){
 
                 // Thêm đối tượng Paragraph vào tài liệu
                  doc.add(centerText);
-                 doc.add(new Paragraph("\n"));
                  doc.add(new Paragraph("Đia Chỉ: 273 An Dương Vương, Phường 3, Quận 5, TPHCM",new Font(unicodeFont, fontSize)));
                  doc.add(new Paragraph("Liên hệ: 028 3835 4409",new Font(unicodeFont, fontSize)));
                  doc.add(new Paragraph("Tên khách hàng: "+ jtfHotenKH.getText()+"                                 "+" Số điện thoại: "+jtfSdt.getText(),new Font(unicodeFont, fontSize)));
@@ -471,8 +472,7 @@ public void showthongbao(){
                 calendar.setTime(d);
                 calendar.add(Calendar.MONTH, 3);
                 Date futureDate = calendar.getTime();
-                 doc.add(new Paragraph("Ngày lập: "+dateFormat.format(d)+"                   "+"Ngày kết thúc bảo hành: "+
-                         dateFormat.format(futureDate),new Font(unicodeFont, fontSize)));
+                 doc.add(new Paragraph("Ngày lập: "+dateFormat.format(d)+"                                                         "+"Ngày kết thúc bảo hành: "+dateFormat.format(futureDate),new Font(unicodeFont, fontSize)));
                  doc.add(new Paragraph("\n"));
                  float[] columnWidths = {1.5f, 2.5f, 1.5f, 1.5f};
                  PdfPTable b1 = new PdfPTable(columnWidths);
@@ -495,7 +495,7 @@ public void showthongbao(){
                  }
                  doc.add(b1);
                  doc.add(new Paragraph("\n"));
-                doc.add(new Paragraph("Tổng tiền: "+jtfTongTien.getText()+"                                       "+"Giảm giá: "+jtfTienGiam.getText()
+                doc.add(new Paragraph("Tổng tiền: "+jtfTongTien.getText()+"                                         "+"Giảm giá: "+jtfTienGiam.getText()
                          ,new Font(unicodeFont, fontSize))); 
                 doc.add(new Paragraph("Tiền Thanh toán: " +jtfThanhTien.getText()+"                               "+ ""+"Tiền khách: "+fuc.doubleToFormattedString(tienkhach)+" VNĐ",new Font(unicodeFont, fontSize))); 
                  doc.add(new Paragraph("Tiền thối: " +jtfTienThua.getText(),new Font(unicodeFont, fontSize))); 

@@ -181,7 +181,7 @@
                               <Color blue="8e" green="99" red="11" type="rgb"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="CH&#xc0;O M&#x1ee8;NG &#x110;&#x1ebe; V&#x1eda;I DEVSTORE"/>
+                            <Property name="text" type="java.lang.String" value="CH&#xc0;O M&#x1eea;NG &#x110;&#x1ebe;N V&#x1eda;I DEVSTORE"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[1200, 50]"/>
                             </Property>
@@ -206,7 +206,7 @@
                               <Color blue="8e" green="99" red="11" type="rgb"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="N&#x1a0;I B&#xc1;N &#x110;I&#x1ec6;N THO&#x1ea0;I CH&#x1ea4;T L&#x1af;&#x1ee2;NG HUY T&#xcd;N &#x110;&#x1eb6;T L&#xca;N H&#xc0;NG &#x110;&#x1ea6;U"/>
+                            <Property name="text" type="java.lang.String" value="N&#x1a0;I B&#xc1;N &#x110;I&#x1ec6;N THO&#x1ea0;I CH&#x1ea4;T L&#x1af;&#x1ee2;NG UY T&#xcd;N &#x110;&#x1eb6;T L&#xca;N H&#xc0;NG &#x110;&#x1ea6;U"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[1230, 50]"/>
                             </Property>

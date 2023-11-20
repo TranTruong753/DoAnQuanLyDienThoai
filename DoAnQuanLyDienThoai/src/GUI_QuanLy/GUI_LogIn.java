@@ -81,6 +81,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btn_login = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        btnDoiMK = new javax.swing.JLabel();
         jPanel_left_top = new javax.swing.JPanel();
         btn_close = new javax.swing.JButton();
 
@@ -245,7 +246,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel4.setOpaque(false);
 
         btn_login.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_login.setText("Đặng nhập");
+        btn_login.setText("Đăng nhập");
         btn_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_login.setPreferredSize(new java.awt.Dimension(150, 35));
@@ -259,7 +260,18 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel_left_bot.add(jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel5.setOpaque(false);
+
+        btnDoiMK.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDoiMKMouseClicked(evt);
+            }
+        });
+        jPanel5.add(btnDoiMK);
+
         jPanel_left_bot.add(jPanel5);
 
         jPanel_left.add(jPanel_left_bot, java.awt.BorderLayout.PAGE_END);
@@ -369,6 +381,11 @@ public class GUI_LogIn extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_closeMouseClicked
 
+    private void btnDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiMKMouseClicked
+        new GUI_SignUp().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDoiMKMouseClicked
+
     public String laymk(){
         char[] passwordChars = jtfMK.getPassword();
         String password = new String(passwordChars);
@@ -382,7 +399,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         tk = tkBus.login(tdn, mk);
         
         if(tk==null){
-            JOptionPane.showMessageDialog(rootPane, "Tài khoản và mật không đúng mời bạn nhập lại!","Thông báo", JOptionPane.WARNING_MESSAGE);      
+            JOptionPane.showMessageDialog(rootPane, "Tài khoản và mật khẩu không đúng mời bạn nhập lại!","Thông báo", JOptionPane.WARNING_MESSAGE);      
             return false;
         }           
         else{
@@ -432,6 +449,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnDoiMK;
     private javax.swing.JButton btn_close;
     private javax.swing.JButton btn_login;
     private javax.swing.JCheckBox jCheckBox1;
