@@ -19,8 +19,7 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
     public GUI_QuanLyTaiKhoan() {
         initComponents();
         QuanLyTaiKhoanController controller =new QuanLyTaiKhoanController(jpnView, jtfTim);
-        controller.setDateToTable();
-        this.jpChucNang.setVisible(false);
+        controller.setDateToTable();      
     }
 
     /**
@@ -36,10 +35,6 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jtfTim = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jpChucNang = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
@@ -76,40 +71,6 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
 
         QuanlyTaiKhoan.add(jPanel7, java.awt.BorderLayout.PAGE_END);
 
-        jpChucNang.setBackground(new java.awt.Color(17, 153, 142));
-        jpChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jpChucNang.setPreferredSize(new java.awt.Dimension(230, 529));
-        jpChucNang.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themNhanVien.png"))); // NOI18N
-        jButton4.setText("THÊM TK ");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setPreferredSize(new java.awt.Dimension(150, 50));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jpChucNang.add(jButton4);
-
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/addFile.png"))); // NOI18N
-        jButton7.setText("NHẬP FILE");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setPreferredSize(new java.awt.Dimension(150, 50));
-        jpChucNang.add(jButton7);
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        jButton3.setText("XUẤT FILE");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(150, 50));
-        jpChucNang.add(jButton3);
-
-        QuanlyTaiKhoan.add(jpChucNang, java.awt.BorderLayout.LINE_END);
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách tài khoản", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -119,7 +80,7 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1180, Short.MAX_VALUE)
+            .addGap(0, 1410, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,23 +109,12 @@ public class GUI_QuanLyTaiKhoan extends javax.swing.JPanel {
         add(QuanlyTaiKhoan, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        themTk = new GUI_ThemThongTinTaiKhoan();
-        themTk.setVisible(true);
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyTaiKhoan;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jpChucNang;
     private javax.swing.JPanel jpnView;
     private javax.swing.JTextField jtfTim;
     // End of variables declaration//GEN-END:variables

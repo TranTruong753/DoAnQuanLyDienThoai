@@ -45,6 +45,7 @@ import org.jfree.data.time.Month;
 public class QuanLyThongKeController {
     private BUS_ThongKe tkBus = null;
 
+
     public QuanLyThongKeController() {
         this.tkBus = new BUS_ThongKe();
     }
@@ -82,7 +83,7 @@ public class QuanLyThongKeController {
         if (listItem != null) {
             for (DTO_HoaDon item : listItem) {
                 //Month Thang =  new Month(item.getNgaylap());
-                dataset.addValue(item.getTienThanhToan(), "Doanh thu".toUpperCase(), item.getNgayLap());
+                dataset.addValue(item.getTienThanhToan(), "Doanh thu".toUpperCase(), item.getNgayLap());              
             }
         }
 

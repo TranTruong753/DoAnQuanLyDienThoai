@@ -263,8 +263,9 @@ public class GUI_LogIn extends javax.swing.JFrame {
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel5.setOpaque(false);
 
-        btnDoiMK.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDoiMK.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         btnDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDoiMKMouseClicked(evt);
