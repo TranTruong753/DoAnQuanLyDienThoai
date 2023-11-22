@@ -88,6 +88,10 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         
         t=tt-tg;
         this.jtfThanhTien.setText(fuc.doubleToFormattedString(t)+" VNĐ");
+        if(Double.parseDouble(jtfTienKhachDua.getText())>=t&& jtfTienKhachDua.getText().matches("\\d+")==true)
+            jtfTienThua.setText(fuc.doubleToFormattedString(Double.parseDouble(jtfTienKhachDua.getText())-t)+" VNĐ");
+        else
+            jtfTienThua.setText("");
     }
     public void setUpdate(double jtfTienGiam,double jtfTongTien,int sl){ //cap nhap lai tien khi giam so luong 1 sp hoac khi xoa 1 sp
         
@@ -100,6 +104,10 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         
         t=tt-tg;
         this.jtfThanhTien.setText(fuc.doubleToFormattedString(t)+" VNĐ");
+        if(Double.parseDouble(jtfTienKhachDua.getText())>=t&& jtfTienKhachDua.getText().matches("\\d+")==true)
+            jtfTienThua.setText(fuc.doubleToFormattedString(Double.parseDouble(jtfTienKhachDua.getText())-t)+" VNĐ");
+        else
+            jtfTienThua.setText("");
     }
 
     /**
@@ -350,6 +358,11 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cartdelete.png"))); // NOI18N
         btnXoa.setText("XÓA SP");
         btnXoa.setPreferredSize(new java.awt.Dimension(170, 50));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         jPanel14.add(btnXoa);
 
         btnThanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -651,6 +664,10 @@ public boolean check_NumberPhone(String str) {
       {jtfTienThua.setText("");
       tienthua=0;}
     }//GEN-LAST:event_jtfTienKhachDuaKeyReleased
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        
+    }//GEN-LAST:event_btnXoaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

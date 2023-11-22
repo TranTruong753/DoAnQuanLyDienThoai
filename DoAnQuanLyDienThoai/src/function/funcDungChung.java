@@ -36,7 +36,7 @@ public class funcDungChung {
     }
        
     public String traVeMacDinh(String number){
-        return number.replace(".", "");
+        return number.replace(",", "");
     }
     
     public  boolean checkPassword(String password) {
