@@ -47,11 +47,10 @@ public class QuanLyBaoHanhController {
     private String[] listColumn = {"Mã bảo hành","Mã khách hàng", "Mã hóa đơn", "Mã sản phẩm","Lý do","Ngày lập"};
     private TableRowSorter<TableModel> rowSorter = null;
 
-    public QuanLyBaoHanhController(JPanel jpnView, JButton btnThem, JTextField jtfTim,JButton btnXuat,GUI_QuanLyBaoHanh ql){
+    public QuanLyBaoHanhController(JPanel jpnView, JButton btnThem, JTextField jtfTim,GUI_QuanLyBaoHanh ql){
         this.jpnView = jpnView;
         this.btnThem = btnThem;
-        this.jtfTim = jtfTim;
-        this.btnXuat=btnXuat;
+        this.jtfTim = jtfTim;    
         this.ql=ql;
     }
     public java.sql.Date cover(java.util.Date d){

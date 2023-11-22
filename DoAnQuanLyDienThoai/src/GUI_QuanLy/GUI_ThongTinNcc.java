@@ -22,7 +22,7 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
      * Creates new form GUI_ThongTinNcc2
      */
     QuanLyNhaCcController ql;
-    DTO_NhaCc nv= new DTO_NhaCc();
+    DTO_NhaCc nv;
     private BUS_NhaCc nccbus=new BUS_NhaCc();
     public GUI_ThongTinNcc(DTO_NhaCc ncc,QuanLyNhaCcController ql) {
         initComponents();
@@ -31,6 +31,7 @@ public class GUI_ThongTinNcc extends javax.swing.JFrame {
         jtfTENNCC.setText(ncc.getTENNCC());
         jtfSDT.setText(ncc.getSDTNCC());
         jtfDIACHI.setText(ncc.getDIACHI());
+        this.nv = ncc ;
         this.ql=ql;
         
     }

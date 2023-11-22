@@ -17,7 +17,7 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
      */
     public GUI_QuanLyBaoHanh() {
         initComponents();
-        QuanLyBaoHanhController controller = new QuanLyBaoHanhController(jpnView, btnThem, jtfTim, btnXuat, this);
+        QuanLyBaoHanhController controller = new QuanLyBaoHanhController(jpnView, btnThem, jtfTim, this);
         controller.setDateToTable();
         controller.setEvent();
     }
@@ -37,7 +37,6 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
-        btnXuat = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
@@ -89,13 +88,6 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
         });
         jPanel8.add(btnThem);
 
-        btnXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xuatFile.png"))); // NOI18N
-        btnXuat.setText("XUẤT FILE");
-        btnXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnXuat.setPreferredSize(new java.awt.Dimension(150, 50));
-        jPanel8.add(btnXuat);
-
         QuanlyBaoHanh.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,7 +134,6 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel QuanlyBaoHanh;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnXuat;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

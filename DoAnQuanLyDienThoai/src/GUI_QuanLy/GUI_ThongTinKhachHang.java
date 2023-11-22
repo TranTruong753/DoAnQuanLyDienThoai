@@ -61,7 +61,6 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnLuu = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -102,10 +101,8 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(650, 30));
 
-        jLabel2.setText("Thông báo");
         jLabel2.setPreferredSize(new java.awt.Dimension(200, 16));
 
-        jLabel4.setText("Thông báo");
         jLabel4.setPreferredSize(new java.awt.Dimension(200, 16));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -140,7 +137,6 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(650, 30));
 
-        jLabel3.setText("Thông báo");
         jLabel3.setPreferredSize(new java.awt.Dimension(200, 16));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -267,17 +263,6 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
         });
         jPanel5.add(btnSua);
 
-        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaNhanVien.png"))); // NOI18N
-        btnXoa.setText("Xóa");
-        btnXoa.setPreferredSize(new java.awt.Dimension(100, 40));
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnXoa);
-
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -322,18 +307,6 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
             jtfSDTKH.setEnabled(true);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-    if(evt.getSource()==btnXoa){
-        kh.setTRANGTHAI(0);
-        if(khbus.updateDTO_KhachHang(kh))
-        {JOptionPane.showMessageDialog(rootPane, "Xóa thành công !");
-        ql.setDateToTable();
-        this.setVisible(false);}
-        else
-            JOptionPane.showMessageDialog(rootPane, "Xóa thất bại !");
-    }
-    }//GEN-LAST:event_btnXoaActionPerformed
     public boolean check_NumberPhone(String str) {
       Pattern p_Viettel=Pattern.compile("^03[2-9][0-9]{8}$");
       Pattern p_Mobifone=Pattern.compile("^07(0|9|7|6|8)[0-9]{7}$");
@@ -357,7 +330,6 @@ public class GUI_ThongTinKhachHang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;

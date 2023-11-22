@@ -123,9 +123,11 @@ public class GUI_QuanLyThongTinDangNhap extends javax.swing.JPanel {
 
         rbNam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbNam.setText("Nam");
+        rbNam.setEnabled(false);
 
         rbNu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbNu.setText("Nữ");
+        rbNu.setEnabled(false);
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

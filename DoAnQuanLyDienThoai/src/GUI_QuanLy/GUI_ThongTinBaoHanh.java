@@ -203,10 +203,8 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(650, 30));
 
-        jLabel2.setText("Thông báo");
         jLabel2.setPreferredSize(new java.awt.Dimension(200, 16));
 
-        jLabel4.setText("Thông báo");
         jLabel4.setPreferredSize(new java.awt.Dimension(200, 16));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -242,10 +240,8 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
         jPanel11.setOpaque(false);
         jPanel11.setPreferredSize(new java.awt.Dimension(650, 30));
 
-        jLabel3.setText("Thông báo");
         jLabel3.setPreferredSize(new java.awt.Dimension(200, 16));
 
-        jLabel5.setText("Thông báo");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 16));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
