@@ -88,7 +88,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         
         t=tt-tg;
         this.jtfThanhTien.setText(fuc.doubleToFormattedString(t)+" VNĐ");
-        if(Double.parseDouble(jtfTienKhachDua.getText())>=t&& jtfTienKhachDua.getText().matches("\\d+")==true)
+        if(Double.parseDouble(jtfTienKhachDua.getText())>=t&& jtfTienKhachDua.getText().matches("\\d+")==true)// thêm hàm này
             jtfTienThua.setText(fuc.doubleToFormattedString(Double.parseDouble(jtfTienKhachDua.getText())-t)+" VNĐ");
         else
             jtfTienThua.setText("");
@@ -104,7 +104,7 @@ public class GUI_TrangChuBanHang extends javax.swing.JPanel {
         
         t=tt-tg;
         this.jtfThanhTien.setText(fuc.doubleToFormattedString(t)+" VNĐ");
-        if(Double.parseDouble(jtfTienKhachDua.getText())>=t&& jtfTienKhachDua.getText().matches("\\d+")==true)
+        if(Double.parseDouble(jtfTienKhachDua.getText())>=t&& jtfTienKhachDua.getText().matches("\\d+")==true)// thêm hàm này
             jtfTienThua.setText(fuc.doubleToFormattedString(Double.parseDouble(jtfTienKhachDua.getText())-t)+" VNĐ");
         else
             jtfTienThua.setText("");
