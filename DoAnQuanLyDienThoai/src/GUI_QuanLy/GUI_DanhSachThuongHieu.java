@@ -260,7 +260,7 @@ public class GUI_DanhSachThuongHieu extends javax.swing.JDialog {
 
     private boolean checkMaTh(String maTh){
         for (DTO_ThuongHieu th: thBus.getList()){
-            if(maTh.equals(th.getMATH())){
+            if(maTh.equalsIgnoreCase(th.getMATH())){
                 return false;
             }
         }

@@ -521,7 +521,7 @@ public class GUI_XacNhanNhapHang extends javax.swing.JDialog {
             return false;
         }     
         return true;
-    }
+    }   
     private void jtfGiaNhapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfGiaNhapKeyReleased
         // TODO add your handling code here:
         
