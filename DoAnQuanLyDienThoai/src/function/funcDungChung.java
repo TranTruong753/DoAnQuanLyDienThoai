@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -36,7 +37,23 @@ public class funcDungChung {
     }
        
     public String traVeMacDinh(String number){
-        return number.replace(".", "");
+        if(number.contains(".")){
+            return number.replace(".", "");
+        }
+        else
+            return number.replace(",", "");
+    }
+    
+     public boolean check_BirthDay(String str) {
+        Pattern p=Pattern.compile("^[0-9]$");
+        if(p.matcher(str).find() )  
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
     public  boolean checkPassword(String password) {

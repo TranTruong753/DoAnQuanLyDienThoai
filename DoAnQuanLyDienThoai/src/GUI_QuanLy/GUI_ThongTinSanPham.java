@@ -404,9 +404,12 @@ public class GUI_ThongTinSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        // TODO add your handling code here:      
-        String donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", ""));
-        if(!donGia.isEmpty()){
+        // TODO add your handling code here:        
+        String donGia = jtfDonGia.getText().trim();
+        if(donGia.contains("VNĐ")||donGia.contains(".")){
+            donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", "").trim());
+        }  
+        if(!donGia.isEmpty()&&donGia.matches("\\d+")==true){
             spDTO.setDonGia(Double.valueOf(donGia));
             if(spBUS.updateSanPham(spDTO)){
                 JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
