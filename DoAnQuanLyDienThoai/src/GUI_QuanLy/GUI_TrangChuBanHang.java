@@ -522,6 +522,7 @@ public void showthongbao(){
                     Logger.getLogger(GUI_ThongTinBaoHanh.class.getName()).log(Level.SEVERE, null, ex);
                 }
            doc.close();
+           JOptionPane.showMessageDialog(null, "Xuất hóa đơn thành công", "Thông báo", JOptionPane.WARNING_MESSAGE);
            DTO_HoaDon hd=new DTO_HoaDon();
            int t =hdbus.getList().size()+1;
           
@@ -593,7 +594,7 @@ public void showthongbao(){
             tg=0;
             this.t=0;
             tienthua=0;
-            jtfTienKhachDua.setText("");
+            jtfTienKhachDua.setText("0");
             jtfSdt.setText("");
             jtfHotenKH.setText("");
             jtfThanhTien.setText("0");

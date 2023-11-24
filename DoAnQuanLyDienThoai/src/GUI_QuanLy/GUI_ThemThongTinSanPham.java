@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 
@@ -349,9 +350,12 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
        
         
         if(jtfMASP.getText().equals("") || jtfTENSP.getText().equals("") || jtfMAUSAC.getText().equals("")
-                || jtfDUNGLUONG.getText().equals("")|| jtfDONGIA.getText().equals("") || jcbMaTh.getSelectedItem()==null ||
-                jtfDUNGLUONG.getText().matches("\\d+")==false || jtfDONGIA.getText().matches("\\d+")==false
-                ||jcbMaTh.getSelectedIndex()==0||jtfRam.getText().equals(""))
+                || jcbMaTh.getSelectedItem()==null ||
+                jtfDUNGLUONG.getText().matches("\\d+")==false || jtfDONGIA.getText().matches("\\d+")==false 
+                ||jtfRam.getText().matches("\\d+")==false
+                || Double.parseDouble(jtfDUNGLUONG.getText())==0 || Double.parseDouble(jtfRam.getText())==0 
+                || Double.parseDouble(jtfDONGIA.getText())==0
+                ||jcbMaTh.getSelectedIndex()==0)
             JOptionPane.showMessageDialog(null, "Thông tin chưa hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
         else
             if(path.equals(""))
@@ -392,7 +396,9 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
 
     private void btnchonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchonActionPerformed
         JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Hình ảnh", "jpg", "jpeg", "png", "gif");
         fileChooser.setFileSelectionMode (JFileChooser.FILES_ONLY); //chi hien thi f
+        fileChooser.setFileFilter(filter);
         int returnValue = fileChooser.showOpenDialog(this);
         if(returnValue==JFileChooser.APPROVE_OPTION)
         {
