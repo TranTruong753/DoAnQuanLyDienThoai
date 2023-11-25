@@ -334,7 +334,7 @@ public class GUI_LogIn extends javax.swing.JFrame {
         if(evt.getSource() == btn_login){
             if(jtfTK.getText().isEmpty()){
                 jlbMsgMissMk.setText("");
-                jlbMsgMiss.setText("Vui lòng nhập Tài khoản!");
+                jlbMsgMiss.setText("Vui lòng nhập Tên người dùng!");
                 if(laymk().isEmpty()){
                     jlbMsgMissMk.setText("Vui lòng nhập Mật khẩu!");
                 }

@@ -123,6 +123,7 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
         jLabel33.setPreferredSize(new java.awt.Dimension(50, 17));
 
         jtfTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTim.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
         jtfTim.setPreferredSize(new java.awt.Dimension(200, 30));
         jtfTim.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -148,7 +149,7 @@ public class GUI_ThongTinKhuyenMai extends javax.swing.JFrame {
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel32.setText("Tìm");
+        jLabel32.setText("Tìm SP");
         jLabel32.setPreferredSize(new java.awt.Dimension(50, 17));
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

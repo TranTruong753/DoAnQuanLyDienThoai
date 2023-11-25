@@ -379,6 +379,11 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaNhanVien.png"))); // NOI18N
         jButton4.setText("Hủy");
         jButton4.setPreferredSize(new java.awt.Dimension(100, 40));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton4);
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -451,6 +456,11 @@ public class GUI_ThemThongTinNhanVien extends javax.swing.JFrame {
          }
      }
     }//GEN-LAST:event_jbtthemActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

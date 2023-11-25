@@ -61,7 +61,6 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -205,7 +204,7 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
 
         kGradientPanel1.setkEndColor(new java.awt.Color(17, 153, 142));
         kGradientPanel1.setkStartColor(new java.awt.Color(17, 153, 142));
-        kGradientPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        kGradientPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,7 +214,9 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
         kGradientPanel1.add(jLabel7);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/cross32.png"))); // NOI18N
+        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.setPreferredSize(new java.awt.Dimension(32, 55));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -226,19 +227,12 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
         jPanel2.add(kGradientPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel5.setBackground(new java.awt.Color(17, 153, 142));
-        jPanel5.setPreferredSize(new java.awt.Dimension(785, 90));
+        jPanel5.setPreferredSize(new java.awt.Dimension(785, 70));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(17, 153, 142));
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/luuFile.png"))); // NOI18N
-        jButton3.setText("Lưu");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel6.add(jButton3);
-
         jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -261,7 +255,6 @@ public class GUI_ThongTinPhieuNhap extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

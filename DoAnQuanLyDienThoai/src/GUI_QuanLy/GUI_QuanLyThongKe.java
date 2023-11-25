@@ -89,7 +89,7 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
         TKview.setLayout(TKviewLayout);
         TKviewLayout.setHorizontalGroup(
             TKviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGap(0, 1240, Short.MAX_VALUE)
         );
         TKviewLayout.setVerticalGroup(
             TKviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +106,13 @@ public class GUI_QuanLyThongKe extends javax.swing.JPanel {
     private void ListTKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ListTKItemStateChanged
         // TODO add your handling code here:
         if(ListTK.getSelectedItem().toString().equals("DoanhThu")){
-          controller.setDataToChart2(TKview);
+            controller.setDataToChart2(TKview);
         }else if(ListTK.getSelectedItem().toString().equals("SPBC")){
-          controller.setDataToChart1(TKview);         
+            controller.setDataToChart1(TKview);
         }else if(ListTK.getSelectedItem().toString().equals("NVBC")){
-          controller.setDataToChart3(TKview);
+            controller.setDataToChart3(TKview);
         }else if(ListTK.getSelectedItem().toString().equals("TongKet")){
-          tongKet(TKview);
+            tongKet(TKview);
         }
     }//GEN-LAST:event_ListTKItemStateChanged
     public void tongKet(JPanel jpnItem){

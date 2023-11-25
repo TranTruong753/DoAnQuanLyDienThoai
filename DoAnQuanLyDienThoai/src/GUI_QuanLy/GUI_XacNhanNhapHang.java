@@ -261,7 +261,8 @@ public class GUI_XacNhanNhapHang extends javax.swing.JDialog {
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 7));
 
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnThem.setText("THÊM");
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
+        btnThem.setText("  THÊM");
         btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThem.setPreferredSize(new java.awt.Dimension(120, 40));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +273,8 @@ public class GUI_XacNhanNhapHang extends javax.swing.JDialog {
         jPanel15.add(btnThem);
 
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSua.setText("SỬA");
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/fix.png"))); // NOI18N
+        btnSua.setText("  SỬA");
         btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSua.setPreferredSize(new java.awt.Dimension(120, 40));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +285,8 @@ public class GUI_XacNhanNhapHang extends javax.swing.JDialog {
         jPanel15.add(btnSua);
 
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnXoa.setText("XÓA");
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Xoa32.png"))); // NOI18N
+        btnXoa.setText("  XÓA");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnXoa.setPreferredSize(new java.awt.Dimension(120, 40));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {

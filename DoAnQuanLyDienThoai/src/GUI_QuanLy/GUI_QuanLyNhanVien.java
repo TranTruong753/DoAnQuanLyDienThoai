@@ -119,11 +119,6 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
         btnThem.setText("THÊM ");
         btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnThem.setPreferredSize(new java.awt.Dimension(150, 50));
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
-            }
-        });
         jPanel8.add(btnThem);
 
         btnNhapfile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -190,11 +185,6 @@ public class GUI_QuanLyNhanVien extends javax.swing.JPanel {
 
         add(QuanlyNhanVien, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnNhapfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapfileActionPerformed
         if(evt.getSource()==btnNhapfile){

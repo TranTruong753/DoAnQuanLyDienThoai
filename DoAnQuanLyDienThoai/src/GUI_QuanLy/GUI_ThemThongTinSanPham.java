@@ -131,6 +131,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 50, 30));
 
         jtfMASP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfMASP.setEnabled(false);
         jtfMASP.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel8.add(jtfMASP, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
@@ -173,7 +174,7 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 97, -1));
 
         jcbMaTh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jcbMaTh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách màu", " " }));
+        jcbMaTh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Danh sách thương hiệu", " " }));
         jcbMaTh.setPreferredSize(new java.awt.Dimension(80, 30));
         jcbMaTh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,6 +298,11 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/xoaSanPham.png"))); // NOI18N
         jButton2.setText("Hủy");
         jButton2.setPreferredSize(new java.awt.Dimension(110, 40));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton2);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -438,6 +444,11 @@ public class GUI_ThemThongTinSanPham extends javax.swing.JFrame {
         // TODO add your handling code here:
         jtfMASP.setText(capNhatMaSp(jcbMaTh.getSelectedItem().toString()));
     }//GEN-LAST:event_jcbMaThActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private boolean isImageFile(File file) {
     String name = file.getName().toLowerCase();
