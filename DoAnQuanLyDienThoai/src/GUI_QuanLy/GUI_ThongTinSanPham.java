@@ -405,16 +405,16 @@ public class GUI_ThongTinSanPham extends javax.swing.JFrame {
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here: 
-        if(Double.valueOf(jtfDonGia.getText().trim())>0){
-             String donGia = jtfDonGia.getText().trim();
+      //  String dongia = jtfDonGia.getText().replace("VNĐ", "").replace(".", "").trim();
+       // if(Double.valueOf(dongia)>0){
+            String donGia = jtfDonGia.getText().trim();
             if(donGia.contains("VNĐ")||donGia.contains(".")){
                 donGia = fuc.traVeMacDinh(jtfDonGia.getText().replace("VNĐ", "").trim());
             }  
-            if(!donGia.isEmpty()&&donGia.matches("\\d+")==true){
+            else if(!donGia.isEmpty()&&donGia.matches("\\d+")==true&&Double.valueOf(donGia)>0){
                 spDTO.setDonGia(Double.valueOf(donGia));
                 if(spBUS.updateSanPham(spDTO)){
-                    JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");
-                    //ql.loadSanPhamList(spBUS.getList(), ql.jtable);
+                    JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công !");                  
                     qlf.setDateToTable();
                     qlf.getJtfTim().setText("");
                     trangBanHang.load();
@@ -423,9 +423,9 @@ public class GUI_ThongTinSanPham extends javax.swing.JFrame {
             }       
             else
                 JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thất bại !");
-        }
+       /* }
        else
-            JOptionPane.showMessageDialog(rootPane, "Số không được nhỏ hơn hoặc = 0 !");
+            JOptionPane.showMessageDialog(rootPane, "Số không được nhỏ hơn hoặc = 0 !");*/
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
