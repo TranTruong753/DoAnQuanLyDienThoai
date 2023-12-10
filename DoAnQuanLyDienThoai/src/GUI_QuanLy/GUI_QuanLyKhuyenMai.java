@@ -103,7 +103,7 @@ public class GUI_QuanLyKhuyenMai extends javax.swing.JPanel {
 
         btnThem2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
-        btnThem2.setText("THÊM");
+        btnThem2.setText("  THÊM");
         btnThem2.setPreferredSize(new java.awt.Dimension(170, 60));
         btnThem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

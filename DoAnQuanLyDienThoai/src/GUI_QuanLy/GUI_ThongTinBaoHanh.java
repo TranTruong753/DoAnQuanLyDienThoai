@@ -485,7 +485,9 @@ public class GUI_ThongTinBaoHanh extends javax.swing.JFrame {
 
                 if(bhbus.addDTO_BaoHanh(bh))
                 {JOptionPane.showMessageDialog(rootPane, "Xuất thành công !");
-                    ql.setDateToTable();}
+                    ql.setDateToTable();
+                    this.dispose();
+                }
                 else
                 JOptionPane.showMessageDialog(rootPane, "Xuất thất bại !");
             }

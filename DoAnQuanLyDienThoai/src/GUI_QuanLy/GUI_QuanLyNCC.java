@@ -125,8 +125,7 @@ public class GUI_QuanLyNCC extends javax.swing.JPanel {
 
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
-        btnThem.setText("THÊM");
-        btnThem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThem.setText("  THÊM");
         btnThem.setPreferredSize(new java.awt.Dimension(150, 50));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

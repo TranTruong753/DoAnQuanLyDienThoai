@@ -386,8 +386,8 @@ public class GUI_LogIn extends javax.swing.JFrame {
     }
     
     public boolean timTk(String tdn, String mk){
-         tk = new DTO_TaiKhoan();
-         nv = new DTO_NhanVien(); 
+        tk = new DTO_TaiKhoan();
+        nv = new DTO_NhanVien(); 
         tk = tkBus.login(tdn, mk);
         
         if(tk==null){

@@ -79,7 +79,7 @@ public class GUI_QuanLyBaoHanh extends javax.swing.JPanel {
 
         btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/themKieu1.png"))); // NOI18N
-        btnThem.setText("THÊM");
+        btnThem.setText("  THÊM");
         btnThem.setPreferredSize(new java.awt.Dimension(150, 50));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
